@@ -3,7 +3,7 @@ title: 玩转iOS中UITextField的placeholder颜色
 date: 2017-05-23 13:59:59
 tags:
 ---
-![珍惜时间](http://upload-images.jianshu.io/upload_images/2115041-10c128ad8e32e425.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![珍惜时间](http://oqepgj2jp.bkt.clouddn.com/wallpaper-2572384.jpg)
 >`UITextField`是iOS开发中经常使用到的控件，它有一个`placeholder`属性，也就是占位文字。默认占位文字颜色是` 70% gray`,但有时我们可能需要修改其占位文字的颜色，下文中将为大家介绍三中修改方法,并就动态改变颜色做相关说明（关于动态改变：当UITextField为第一响应者时为一种颜色，取消第一响应者时为另一种颜色）。
 
 ##方法1
