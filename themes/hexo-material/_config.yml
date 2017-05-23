@@ -87,7 +87,7 @@ card_elevation: 2
 
 # SNS Menu
 sns:
-    email: youremail@email.com
+    email: benkong_ah@foxmail.com
     facebook: "https://www.facebook.com/facebook"
     twitter: "https://twitter.com/twitter"
     googleplus: "https://www.google.com/"
@@ -124,15 +124,15 @@ sidebar:
         use: true
         icon: inbox
         divider: false
-    categories:
-        use: false
+    categories: 
+        use: true
         icon: chrome_reader_mode
         divider: false
     pages:
-        #About:
-            #link: "/about"
-            #icon: person
-            #divider: false
+        About:
+            link: "/about"
+            icon: person
+            divider: false
     article_num:
         use: false
         divider: false
