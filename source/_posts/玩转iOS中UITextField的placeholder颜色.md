@@ -13,7 +13,7 @@ tags:
 ---
 - 代码1（单色）
 
-```
+```objectivec
 NSMutableDictionary *attrs = [NSMutableDictionary dictionary]; // 创建属性字典
   attrs[NSFontAttributeName] = [UIFont systemFontOfSize:17]; // 设置font
   attrs[NSForegroundColorAttributeName] = [UIColor greenColor]; // 设置颜色
@@ -25,7 +25,7 @@ NSMutableDictionary *attrs = [NSMutableDictionary dictionary]; // 创建属性�
 
 - 代码2（复色）
 
-```
+```objectivec
 NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"夏虫不可以语冰"];
  [attStr setAttributes:@{NSForegroundColorAttributeName : [UIColor redColor],
                             NSFontAttributeName : [UIFont systemFontOfSize:15.0]} range:NSMakeRange(0, 2)];
@@ -45,7 +45,7 @@ NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithS
 ---
 - 代码
 
-```
+```objectivec
 - (void)drawPlaceholderInRect:(CGRect)rect
 {
     [self.placeholder drawInRect:CGRectMake(0, 2, rect.size.width, 25) withAttributes:@{ NSFontAttributeName: [UIFont systemFontOfSize:16.0],
@@ -62,7 +62,7 @@ NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithS
 
 - **拓展代码**（利用runTime找出成员变量和属性，程序中无需使用，只是帮助我们看清UITextField内部结构，知道其中的相关成员变量和属性，然后赋值即可）。
 
-```objc
+```objectivec
 #import "SJTextField.h"
 #import <objc/runtime.h>
 @implementation SJTextField
@@ -111,7 +111,7 @@ NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithS
 - **拓展点** 可以查到有两个关于`placeholder`的属性和变量，分别是`_placeholderLabel.textColor`和`_placeholderLabel`，故下面就是用来设置动态改变`placeholder`颜色的代码。
 - 代码（在自定义UITextField中）
 
-```objc
+```objectivec
 #import "SJTextField.h"
 #import <objc/runtime.h>
 @implementation SJTextField

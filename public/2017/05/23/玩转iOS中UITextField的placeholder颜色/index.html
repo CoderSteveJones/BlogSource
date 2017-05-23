@@ -12,7 +12,7 @@
         
             玩转iOS中UITextField的placeholder颜色 | 
         
-        Hexo
+        Aben
     </title>
 
     <!-- Meta & Info -->
@@ -30,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Aben">
     <meta name="description" content="null">
     <meta name="keywords" content="null">
 
@@ -53,12 +53,12 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hexo">
+    <meta name="apple-mobile-web-app-title" content="Aben">
 
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="玩转iOS中UITextField的placeholder颜色 | Hexo">
+    <meta property="og:title" content="玩转iOS中UITextField的placeholder颜色 | Aben">
     <meta property="og:description" content="null">
     
 
@@ -146,12 +146,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
-      }
-
-      /* blog_info bottom background */
-      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-        background-color: #fff;
+        background-image: url(/img/bg.png);
       }
     </style>
 
@@ -200,7 +195,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -302,7 +297,7 @@
     </div>
     <!-- Author Name & Date -->
     <div>
-        <strong>John Doe</strong>
+        <strong>Aben</strong>
         <span>5月 23, 2017</span>
     </div>
 
@@ -352,7 +347,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=玩转iOS中UITextField的placeholder颜色&url=http://yoursite.com//2017/05/23/玩转iOS中UITextField的placeholder颜色/index.html&via=John Doe" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=玩转iOS中UITextField的placeholder颜色&url=http://yoursite.com//2017/05/23/玩转iOS中UITextField的placeholder颜色/index.html&via=Aben" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -407,14 +402,27 @@
 <ul>
 <li>代码1（单色）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSMutableDictionary *attrs = [NSMutableDictionary dictionary]; // 创建属性字典</div><div class="line">  attrs[NSFontAttributeName] = [UIFont systemFontOfSize:17]; // 设置font</div><div class="line">  attrs[NSForegroundColorAttributeName] = [UIColor greenColor]; // 设置颜色</div><div class="line">  NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:@&quot;夏虫不可以语冰&quot; attributes:attrs]; // 初始化富文本占位字符串</div><div class="line">  self.textField.attributedPlaceholder = attStr;</div></pre></td></tr></table></figure>
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableDictionary <span class="token operator">*</span>attrs <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 创建属性字典</span>
+  attrs<span class="token punctuation">[</span>NSFontAttributeName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">17</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置font</span>
+  attrs<span class="token punctuation">[</span>NSForegroundColorAttributeName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor greenColor<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置颜色</span>
+  NSAttributedString <span class="token operator">*</span>attStr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSAttributedString alloc<span class="token punctuation">]</span> initWithString<span class="token punctuation">:</span><span class="token string">@"夏虫不可以语冰"</span> attributes<span class="token punctuation">:</span>attrs<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 初始化富文本占位字符串</span>
+  <span class="token keyword">self</span><span class="token punctuation">.</span>textField<span class="token punctuation">.</span>attributedPlaceholder <span class="token operator">=</span> attStr<span class="token punctuation">;</span>
+</code></pre>
 <ul>
 <li><p>效果1<br><img src="http://upload-images.jianshu.io/upload_images/2115041-b0b505d18f2888a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单色placeholder"></p>
 </li>
 <li><p>代码2（复色）</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@&quot;夏虫不可以语冰&quot;];</div><div class="line"> [attStr setAttributes:@&#123;NSForegroundColorAttributeName : [UIColor redColor],</div><div class="line">                            NSFontAttributeName : [UIFont systemFontOfSize:15.0]&#125; range:NSMakeRange(0, 2)];</div><div class="line"> [attStr setAttributes:@&#123;NSForegroundColorAttributeName : [UIColor greenColor],</div><div class="line">                            NSFontAttributeName : [UIFont systemFontOfSize:17.0]&#125; range:NSMakeRange(2, 3)];</div><div class="line"> [attStr setAttributes:@&#123;NSForegroundColorAttributeName : [UIColor blueColor],</div><div class="line">                            NSFontAttributeName : [UIFont systemFontOfSize:15.0]&#125; range:NSMakeRange(5, 2)];</div><div class="line">    self.textField.attributedPlaceholder = attStr;</div></pre></td></tr></table></figure>
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableAttributedString <span class="token operator">*</span>attStr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableAttributedString alloc<span class="token punctuation">]</span> initWithString<span class="token punctuation">:</span><span class="token string">@"夏虫不可以语冰"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token punctuation">[</span>attStr setAttributes<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span>NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            NSFontAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">15.0</span><span class="token punctuation">]</span><span class="token punctuation">}</span> range<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token punctuation">[</span>attStr setAttributes<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span>NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor greenColor<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            NSFontAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">17.0</span><span class="token punctuation">]</span><span class="token punctuation">}</span> range<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token punctuation">[</span>attStr setAttributes<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span>NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor blueColor<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            NSFontAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">15.0</span><span class="token punctuation">]</span><span class="token punctuation">}</span> range<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>textField<span class="token punctuation">.</span>attributedPlaceholder <span class="token operator">=</span> attStr<span class="token punctuation">;</span>
+</code></pre>
 <ul>
 <li>效果<br><img src="http://upload-images.jianshu.io/upload_images/2115041-d9430dd8f3e57343.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="复色placeholder"></li>
 </ul>
@@ -427,7 +435,13 @@
 <ul>
 <li>代码</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)drawPlaceholderInRect:(CGRect)rect</div><div class="line">&#123;</div><div class="line">    [self.placeholder drawInRect:CGRectMake(0, 2, rect.size.width, 25) withAttributes:@&#123; NSFontAttributeName: [UIFont systemFontOfSize:16.0],</div><div class="line">                                        NSForegroundColorAttributeName : [UIColor blueColor],</div><div class="line">                                     &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>drawPlaceholderInRect<span class="token punctuation">:</span><span class="token punctuation">(</span>CGRect<span class="token punctuation">)</span>rect
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>placeholder drawInRect<span class="token punctuation">:</span><span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span> withAttributes<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span> NSFontAttributeName<span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">16.0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                                        NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor blueColor<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                                     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <ul>
 <li>效果<br><img src="http://upload-images.jianshu.io/upload_images/2115041-cf46f67c604c2c9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="placeholder"></li>
 </ul>
@@ -439,12 +453,91 @@
 <li><p><strong>拓展代码</strong>（利用runTime找出成员变量和属性，程序中无需使用，只是帮助我们看清UITextField内部结构，知道其中的相关成员变量和属性，然后赋值即可）。</p>
 </li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SJTextField.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SJTextField</span></span></div><div class="line"></div><div class="line"><span class="comment">// 初始化调用一次 用于查看UITextField中的成员属性和变量</span></div><div class="line">+ (<span class="keyword">void</span>)initialize</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">self</span> getIvars];</div><div class="line">    <span class="comment">// [self getProperties];</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 获取所有属性</span></div><div class="line">+ (<span class="keyword">void</span>)getProperties</div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    objc_property_t *properties = class_copyPropertyList([<span class="built_in">UITextField</span> <span class="keyword">class</span>], &amp;count);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;count; i++) &#123;</div><div class="line">        <span class="comment">// 取出属性</span></div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        </div><div class="line">        <span class="comment">// 打印属性名字</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%s&lt;----&gt;%s"</span>, property_getName(property), property_getAttributes(property));</div><div class="line">    &#125;</div><div class="line">    free(properties);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 获取所有成员变量</span></div><div class="line">+ (<span class="keyword">void</span>)getIvars</div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 拷贝出所有的成员变量列表</span></div><div class="line">    Ivar *ivars = class_copyIvarList([<span class="built_in">UITextField</span> <span class="keyword">class</span>], &amp;count);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;count; i++) &#123;</div><div class="line">        <span class="comment">// 取出成员变量</span></div><div class="line">        <span class="comment">//        Ivar ivar = *(ivars + i);</span></div><div class="line">        Ivar ivar = ivars[i];</div><div class="line">        </div><div class="line">        <span class="comment">// 打印成员变量名字</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%s %s"</span>, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 释放</span></div><div class="line">    free(ivars);</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">import</span> "SJTextField.h"</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> &lt;objc/runtime.h></span>
+<span class="token keyword">@implementation</span> SJTextField
+
+<span class="token comment" spellcheck="true">// 初始化调用一次 用于查看UITextField中的成员属性和变量</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> getIvars<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// [self getProperties];</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 获取所有属性</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>getProperties
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    objc_property_t <span class="token operator">*</span>properties <span class="token operator">=</span> <span class="token function">class_copyPropertyList</span><span class="token punctuation">(</span><span class="token punctuation">[</span>UITextField class<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 取出属性</span>
+        objc_property_t property <span class="token operator">=</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 打印属性名字</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%s&lt;---->%s"</span><span class="token punctuation">,</span> <span class="token function">property_getName</span><span class="token punctuation">(</span>property<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">property_getAttributes</span><span class="token punctuation">(</span>property<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 获取所有成员变量</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>getIvars
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 拷贝出所有的成员变量列表</span>
+    Ivar <span class="token operator">*</span>ivars <span class="token operator">=</span> <span class="token function">class_copyIvarList</span><span class="token punctuation">(</span><span class="token punctuation">[</span>UITextField class<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 取出成员变量</span>
+        <span class="token comment" spellcheck="true">//        Ivar ivar = *(ivars + i);</span>
+        Ivar ivar <span class="token operator">=</span> ivars<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 打印成员变量名字</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%s %s"</span><span class="token punctuation">,</span> <span class="token function">ivar_getName</span><span class="token punctuation">(</span>ivar<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">ivar_getTypeEncoding</span><span class="token punctuation">(</span>ivar<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 释放</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>ivars<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@end</span>
+</code></pre>
 <ul>
 <li><strong>拓展点</strong> 可以查到有两个关于<code>placeholder</code>的属性和变量，分别是<code>_placeholderLabel.textColor</code>和<code>_placeholderLabel</code>，故下面就是用来设置动态改变<code>placeholder</code>颜色的代码。</li>
 <li>代码（在自定义UITextField中）</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SJTextField.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SJTextField</span></span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> * <span class="keyword">const</span> SJPlacerholderColorKeyPath = <span class="string">@"_placeholderLabel.textColor"</span>;</div><div class="line">- (<span class="keyword">void</span>)awakeFromNib</div><div class="line">&#123;</div><div class="line"><span class="comment">// 设置placeholder开始颜色（方式一）</span></div><div class="line"><span class="comment">//    UILabel *placeholderLabel = [self valueForKeyPath:@"_placeholderLabel"];</span></div><div class="line"><span class="comment">//    placeholderLabel.textColor = [UIColor redColor];   </span></div><div class="line">   <span class="comment">// 设置placeholder开始颜色（方式二）</span></div><div class="line">    [<span class="keyword">self</span> setValue:[<span class="built_in">UIColor</span> greenColor] forKeyPath:SJPlacerholderColorKeyPath];</div><div class="line">    <span class="comment">// 不成为第一响应者</span></div><div class="line">    [<span class="keyword">self</span> resignFirstResponder];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 当前文本框聚焦时就会调用</div><div class="line"> */</div><div class="line">- (<span class="built_in">BOOL</span>)becomeFirstResponder</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 修改占位文字颜色</span></div><div class="line">    [<span class="keyword">self</span> setValue:[<span class="built_in">UIColor</span> redColor] forKeyPath:SJPlacerholderColorKeyPath];</div><div class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> becomeFirstResponder];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 当前文本框失去焦点时就会调用</div><div class="line"> */</div><div class="line">- (<span class="built_in">BOOL</span>)resignFirstResponder</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 修改占位文字颜色</span></div><div class="line">    [<span class="keyword">self</span> setValue:[<span class="built_in">UIColor</span> greenColor] forKeyPath:SJPlacerholderColorKeyPath];</div><div class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> resignFirstResponder];</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">import</span> "SJTextField.h"</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> &lt;objc/runtime.h></span>
+<span class="token keyword">@implementation</span> SJTextField
+<span class="token keyword">static</span> NSString <span class="token operator">*</span> <span class="token keyword">const</span> SJPlacerholderColorKeyPath <span class="token operator">=</span> <span class="token string">@"_placeholderLabel.textColor"</span><span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>awakeFromNib
+<span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 设置placeholder开始颜色（方式一）</span>
+<span class="token comment" spellcheck="true">//    UILabel *placeholderLabel = [self valueForKeyPath:@"_placeholderLabel"];</span>
+<span class="token comment" spellcheck="true">//    placeholderLabel.textColor = [UIColor redColor];   </span>
+   <span class="token comment" spellcheck="true">// 设置placeholder开始颜色（方式二）</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor greenColor<span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span>SJPlacerholderColorKeyPath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 不成为第一响应者</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> resignFirstResponder<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 当前文本框聚焦时就会调用
+ */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>becomeFirstResponder
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 修改占位文字颜色</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span>SJPlacerholderColorKeyPath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token keyword">super</span> becomeFirstResponder<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 当前文本框失去焦点时就会调用
+ */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>resignFirstResponder
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 修改占位文字颜色</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor greenColor<span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span>SJPlacerholderColorKeyPath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token keyword">super</span> resignFirstResponder<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@end</span>
+</code></pre>
 <ul>
 <li>效果</li>
 </ul>
@@ -521,7 +614,7 @@
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="John Doe's avatar">
+        <img src="/img/avatar.png" alt="Aben's avatar">
     </div>
 
     <!-- Sidebar Email -->
@@ -717,7 +810,7 @@ It will not impact the appearance and can give developers a lot of support :)
                 var fd = new Date();
                 document.write(fd.getFullYear());
             </script>
-            &nbsp;Hexo
+            &nbsp;Aben
         </div>
 
         <!-- Paradox Footer Right Section -->
