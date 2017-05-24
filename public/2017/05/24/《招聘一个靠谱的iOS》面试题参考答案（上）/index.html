@@ -426,61 +426,61 @@
 <li><a href="https://github.com/ChenYilong/iOSInterviewQuestions/blob/master/01《招聘一个靠谱的iOS》面试题参考答案/《招聘一个靠谱的iOS》面试题参考答案（上）.md#20-一个objc对象的isa的指针指向什么有什么作用" target="_blank" rel="external">一个objc对象的isa的指针指向什么？有什么作用？</a></li>
 <li><a href="https://github.com/ChenYilong/iOSInterviewQuestions/blob/master/01《招聘一个靠谱的iOS》面试题参考答案/《招聘一个靠谱的iOS》面试题参考答案（上）.md#21-下面的代码输出什么" target="_blank" rel="external">下面的代码输出什么？</a> </li>
 </ol>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    @implementation Son : Father
-    - (id)init
-    {
-        self = [super init];
-        if (self) {
-            NSLog(@"%@", NSStringFromClass([self class]));
-            NSLog(@"%@", NSStringFromClass([super class]));
-        }
-        return self;
-    }
-    @end
+<pre class=" language-objectivec"><code class="language-objectivec">    <span class="token keyword">@implementation</span> Son <span class="token punctuation">:</span> Father
+    <span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>init
+    <span class="token punctuation">{</span>
+        <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">super</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">@end</span>
 </code></pre>
 <ol>
 <li>22–55题，请看下篇。</li>
 </ol>
 <h3 id="1-风格纠错题"><a href="#1-风格纠错题" class="headerlink" title="1. 风格纠错题"></a>1. 风格纠错题</h3><p><img src="http://i.imgur.com/O7Zev94.png" alt="enter image description here"><br>修改完的代码：</p>
 <p>修改方法有很多种，现给出一种做示例：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .h文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 修改完的代码，这是第一种修改方法，后面会给出第二种修改方法
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .h文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 修改完的代码，这是第一种修改方法，后面会给出第二种修改方法</span>
 
-typedef NS_ENUM(NSInteger, CYLSex) {
-    CYLSexMan,
+<span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> CYLSex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    CYLSexMan<span class="token punctuation">,</span>
     CYLSexWoman
-};
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-@interface CYLUser : NSObject<NSCopying>
+<span class="token keyword">@interface</span> CYLUser <span class="token punctuation">:</span> NSObject<span class="token operator">&lt;</span>NSCopying<span class="token operator">></span>
 
-@property (nonatomic, readonly, copy) NSString *name;
-@property (nonatomic, readonly, assign) NSUInteger age;
-@property (nonatomic, readonly, assign) CYLSex sex;
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> NSUInteger age<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> CYLSex sex<span class="token punctuation">;</span>
 
-- (instancetype)initWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-+ (instancetype)userWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>userWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>下面对具体修改的地方，分两部分做下介绍：<strong>硬伤部分</strong> 和 <strong>优化部分</strong><br>。因为<strong>硬伤部分</strong>没什么技术含量，为了节省大家时间，放在后面讲，大神请直接看<strong>优化部分</strong>。</p>
 <h4 id="优化部分"><a href="#优化部分" class="headerlink" title="优化部分"></a><strong>优化部分</strong></h4><ol>
 <li>enum 建议使用 <code>NS_ENUM</code> 和 <code>NS_OPTIONS</code> 宏来定义枚举类型，参见官方的 <a href="https://developer.apple.com/library/ios/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html" target="_blank" rel="external">Adopting Modern Objective-C</a> 一文：</li>
 </ol>
-<pre class=" language-objective-c"><code class="language-objective-c">//定义一个枚举
-    typedef NS_ENUM(NSInteger, CYLSex) {
-        CYLSexMan,
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//定义一个枚举</span>
+    <span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> CYLSex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CYLSexMan<span class="token punctuation">,</span>
         CYLSexWoman
-    };
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p> （仅仅让性别包含男和女可能并不严谨，最严谨的做法可以参考 <a href="https://github.com/ChenYilong/iOSInterviewQuestions/issues/9" target="_blank" rel="external">这里</a> 。）</p>
 <ol>
 <li><p>age 属性的类型：应避免使用基本类型，建议使用 Foundation 数据类型，对应关系如下：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">int -> NSInteger
-unsigned -> NSUInteger
-float -> CGFloat
-动画时间 -> NSTimeInterval
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">int</span> <span class="token operator">-></span> NSInteger
+<span class="token keyword">unsigned</span> <span class="token operator">-></span> NSUInteger
+<span class="token keyword">float</span> <span class="token operator">-></span> CGFloat
+动画时间 <span class="token operator">-></span> NSTimeInterval
 </code></pre>
 <p>同时考虑到 age 的特点，应使用 NSUInteger ，而非 int 。<br>这样做的是基于64-bit 适配考虑，详情可参考出题者的博文<a href="http://blog.sunnyxx.com/2014/12/20/64-bit-tips/" target="_blank" rel="external">《64-bit Tips》</a>。</p>
 </li>
@@ -501,12 +501,12 @@ float -> CGFloat
 <p>应为 <code>-logIn</code> （注意： <code>Login</code> 是名词， <code>LogIn</code>  是动词，都表示登陆。  见<a href="http://grammarist.com/spelling/log-in-login/" target="_blank" rel="external"> <strong><em>Log in vs. login</em></strong> </a>）</p>
 </li>
 <li><p><code>-(id)initUserModelWithUserName: (NSString*)name withAge:(int)age;</code>方法中不要用 <code>with</code> 来连接两个参数: <code>withAge:</code> 应当换为<code>age:</code>，<code>age:</code> 已经足以清晰说明参数的作用，也不建议用 <code>andAge:</code> ：通常情况下，即使有类似 <code>withA:withB:</code> 的命名需求，也通常是使用<code>withA:andB:</code> 这种命名，用来表示方法执行了两个相对独立的操作（<em>从设计上来说，这时候也可以拆分成两个独立的方法</em>），它不应该用作阐明有多个参数，比如下面的：</p>
-<pre class=" language-objective-c"><code class="language-objective-c">//错误，不要使用"and"来连接参数
-- (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;
-//错误，不要使用"and"来阐明有多个参数
-- (instancetype)initWithName:(CGFloat)width andAge:(CGFloat)height;
-//正确，使用"and"来表示两个相对独立的操作
-- (BOOL)openFile:(NSString *)fullPath withApplication:(NSString *)appName andDeactivate:(BOOL)flag;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//错误，不要使用"and"来连接参数</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>runModalForDirectory<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>path andFile<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name andTypes<span class="token punctuation">:</span><span class="token punctuation">(</span>NSArray <span class="token operator">*</span><span class="token punctuation">)</span>fileTypes<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//错误，不要使用"and"来阐明有多个参数</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>width andAge<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>height<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//正确，使用"and"来表示两个相对独立的操作</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>openFile<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>fullPath withApplication<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>appName andDeactivate<span class="token punctuation">:</span><span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>flag<span class="token punctuation">;</span>
 </code></pre>
 </li>
 <li><p>由于字符串值可能会改变，所以要把相关属性的“内存管理语义”声明为 copy 。(原因在下文有详细论述：<strong><em>用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？</em></strong>)</p>
@@ -515,66 +515,66 @@ float -> CGFloat
 <p>Objective-C 有 designated 和 secondary 初始化方法的观念。 designated 初始化方法是提供所有的参数，secondary 初始化方法是一个或多个，并且提供一个或者更多的默认参数来调用 designated 初始化方法的初始化方法。举例说明：</p>
 </li>
 </ol>
-<pre class=" language-Objective-C"><code class="language-Objective-C">
-    // .m文件
-    // http://weibo.com/luohanchenyilong/
-    // https://github.com/ChenYilong
-    //
+<pre class=" language-objectivec"><code class="language-objectivec">
+    <span class="token comment" spellcheck="true">// .m文件</span>
+    <span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+    <span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+    <span class="token comment" spellcheck="true">//</span>
 
-    @implementation CYLUser
+    <span class="token keyword">@implementation</span> CYLUser
 
-    - (instancetype)initWithName:(NSString *)name
-                             age:(NSUInteger)age
-                             sex:(CYLSex)sex {
-        if(self = [super init]) {
-            _name = [name copy];
-            _age = age;
-            _sex = sex;
-        }
-        return self;
-    }
+    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name
+                             age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age
+                             sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            _age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+            _sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    - (instancetype)initWithName:(NSString *)name
-                             age:(NSUInteger)age {
-        return [self initWithName:name age:age sex:nil];
-    }
+    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name
+                             age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token keyword">self</span> initWithName<span class="token punctuation">:</span>name age<span class="token punctuation">:</span>age sex<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @end
+    <span class="token keyword">@end</span>
 </code></pre>
 <p> 上面的代码中initWithName:age:sex: 就是 designated 初始化方法，另外的是 secondary 初始化方法。因为仅仅是调用类实现的 designated 初始化方法。</p>
 <p>  因为出题者没有给出 <code>.m</code> 文件，所以有两种猜测：1：本来打算只设计一个 designated 初始化方法，但漏掉了“性别”(sex）属性。那么最终的修改代码就是上文给出的第一种修改方法。2：不打算初始时初始化“性别”(sex）属性，打算后期再修改，如果是这种情况，那么应该把“性别”(sex）属性设为 readwrite 属性，最终给出的修改代码应该是：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">
+<pre class=" language-objectivec"><code class="language-objectivec">
 
-    // .h文件
-    // http://weibo.com/luohanchenyilong/
-    // https://github.com/ChenYilong
-    // 第二种修改方法（基于第一种修改方法的基础上）
+    <span class="token comment" spellcheck="true">// .h文件</span>
+    <span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+    <span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+    <span class="token comment" spellcheck="true">// 第二种修改方法（基于第一种修改方法的基础上）</span>
 
-    typedef NS_ENUM(NSInteger, CYLSex) {
-        CYLSexMan,
+    <span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> CYLSex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CYLSexMan<span class="token punctuation">,</span>
         CYLSexWoman
-    };
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-    @interface CYLUser : NSObject<NSCopying>
+    <span class="token keyword">@interface</span> CYLUser <span class="token punctuation">:</span> NSObject<span class="token operator">&lt;</span>NSCopying<span class="token operator">></span>
 
-    @property (nonatomic, readonly, copy) NSString *name;
-    @property (nonatomic, readonly, assign) NSUInteger age;
-    @property (nonatomic, readwrite, assign) CYLSex sex;
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> NSUInteger age<span class="token punctuation">;</span>
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readwrite<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> CYLSex sex<span class="token punctuation">;</span>
 
-    - (instancetype)initWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-    - (instancetype)initWithName:(NSString *)name age:(NSUInteger)age;
-    + (instancetype)userWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
+    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
+    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age<span class="token punctuation">;</span>
+    <span class="token operator">+</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>userWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
 
-    @end
+    <span class="token keyword">@end</span>
 </code></pre>
 <p>  <code>.h</code> 中暴露 designated 初始化方法，是为了方便子类化 （想了解更多，请戳–》 <a href="http://is.gd/OQ49zk" target="_blank" rel="external"><strong><em>《禅与 Objective-C 编程艺术 （Zen and the Art of the Objective-C Craftsmanship 中文翻译）》</em></strong></a>。）</p>
 <ul>
 <li>按照接口设计的惯例，如果设计了“初始化方法” (initializer)，也应当搭配一个快捷构造方法。而快捷构造方法的返回值，建议为 instancetype，为保持一致性，init 方法和快捷构造方法的返回类型最好都用 instancetype。</li>
 <li>如果基于第一种修改方法：既然该类中已经有一个“初始化方法” (initializer)，用于设置“姓名”(Name)、“年龄”(Age)和“性别”(Sex）的初始值:<br>那么在设计对应 <code>@property</code> 时就应该尽量使用不可变的对象：其三个属性都应该设为“只读”。用初始化方法设置好属性值之后，就不能再改变了。在本例中，仍需声明属性的“内存管理语义”。于是可以把属性的定义改成这样</li>
 </ul>
-<pre class=" language-Objective-C"><code class="language-Objective-C">        @property (nonatomic, readonly, copy) NSString *name;
-        @property (nonatomic, readonly, assign) NSUInteger age;
-        @property (nonatomic, readonly, assign) CYLSex sex;
+<pre class=" language-objectivec"><code class="language-objectivec">        <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
+        <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> NSUInteger age<span class="token punctuation">;</span>
+        <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> CYLSex sex<span class="token punctuation">;</span>
 </code></pre>
 <pre><code>  由于是只读属性，所以编译器不会为其创建对应的“设置方法”，即便如此，我们还是要写上这些属性的语义，以此表明初始化方法在设置这些属性值时所用的方式。要是不写明语义的话，该类的调用者就不知道初始化方法里会拷贝这些属性，他们有可能会在调用初始化方法之前自行拷贝属性值。这种操作多余而且低效。
 </code></pre><ol>
@@ -582,7 +582,7 @@ float -> CGFloat
 <li><code>UserModel</code> 如果改为 <code>User</code> 会更加简洁，而且足够清晰。</li>
 <li><code>UserSex</code>如果改为<code>Sex</code> 会更加简洁，而且足够清晰。</li>
 <li><p>第二个 <code>@property</code> 中 assign 和 nonatomic 调换位置。<br>推荐按照下面的格式来定义属性</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@property (nonatomic, readwrite, copy) NSString *name;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readwrite<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
 </code></pre>
 <p>属性的参数应该按照下面的顺序排列： 原子性，读写 和 内存管理。 这样做你的属性更容易修改正确，并且更好阅读。这在<a href="https://github.com/oa414/objc-zen-book-cn#属性定义" target="_blank" rel="external">《禅与Objective-C编程艺术 &gt;》</a>里有介绍。而且习惯上修改某个属性的修饰符时，一般从属性名从右向左搜索需要修动的修饰符。最可能从最右边开始修改这些属性的修饰符，根据经验这些修饰符被修改的可能性从高到底应为：内存管理 &gt; 读写权限 &gt;原子操作。</p>
 </li>
@@ -621,7 +621,7 @@ float -> CGFloat
 <li>NSString、NSArray、NSDictionary 等等经常使用copy关键字，是因为他们有对应的可变类型：NSMutableString、NSMutableArray、NSMutableDictionary；</li>
 <li><p>block 也经常使用 copy 关键字，具体原因见<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12" target="_blank" rel="external">官方文档：<strong><em>Objects Use Properties to Keep Track of Blocks</em></strong></a>：</p>
 <p>block 使用 copy 是从 MRC 遗留下来的“传统”,在 MRC 中,方法内部的 block 是在栈区的,使用 copy 可以把它放到堆区.在 ARC 中写不写都行：对于 block 使用 copy 还是 strong 效果是一样的，但写上 copy 也无伤大雅，还能时刻提醒我们：编译器自动对 block 进行了 copy 操作。如果不写 copy ，该类的调用者有可能会忘记或者根本不知道“编译器会自动对 block 进行了 copy 操作”，他们有可能会在调用之前自行拷贝属性值。这种操作多余而低效。你也许会感觉我这种做法有些怪异，不需要写依然写。如果你这样想，其实是你“日用而不知”，你平时开发中是经常在用我说的这种做法的，比如下面的属性不写copy也行，但是你会选择写还是不写呢？</p>
-<p>```Objective-C<br>@property (nonatomic, copy) NSString *userId;</p>
+<p>```objectivec<br>@property (nonatomic, copy) NSString *userId;</p>
 </li>
 </ol>
 <ul>
@@ -640,24 +640,24 @@ float -> CGFloat
 <h3 id="4-这个写法会出什么问题：-property-copy-NSMutableArray-array"><a href="#4-这个写法会出什么问题：-property-copy-NSMutableArray-array" class="headerlink" title="4. 这个写法会出什么问题： @property (copy) NSMutableArray *array;"></a>4. 这个写法会出什么问题： <code>@property (copy) NSMutableArray *array;</code></h3><p>两个问题：1、添加,删除,修改数组内的元素的时候,程序会因为找不到对应的方法而崩溃.因为 copy 就是复制一个不可变 NSArray 的对象；2、使用了 atomic 属性会严重影响性能 ； </p>
 <p>第1条的相关原因在下文中有论述<strong><em>《用@property声明的NSString（或NSArray，NSDictionary）经常使用 copy 关键字，为什么？如果改用strong关键字，可能造成什么问题？》</em></strong> 以及上文<strong><em>《怎么用 copy 关键字？》</em></strong>也有论述。</p>
 <p>比如下面的代码就会发生崩溃</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .h文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 下面的代码就会发生崩溃
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .h文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 下面的代码就会发生崩溃</span>
 
-@property (nonatomic, copy) NSMutableArray *mutableArray;
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSMutableArray <span class="token operator">*</span>mutableArray<span class="token punctuation">;</span>
 </code></pre>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .m文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 下面的代码就会发生崩溃
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .m文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 下面的代码就会发生崩溃</span>
 
-NSMutableArray *array = [NSMutableArray arrayWithObjects:@1,@2,nil];
-self.mutableArray = array;
-[self.mutableArray removeObjectAtIndex:0];
+NSMutableArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray arrayWithObjects<span class="token punctuation">:</span><span class="token operator">@</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">@</span><span class="token number">2</span><span class="token punctuation">,</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>mutableArray <span class="token operator">=</span> array<span class="token punctuation">;</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>mutableArray removeObjectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>接下来就会奔溃：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C"> -[__NSArrayI removeObjectAtIndex:]: unrecognized selector sent to instance 0x7fcd1bc30460
+<pre class=" language-objectivec"><code class="language-objectivec"> <span class="token operator">-</span><span class="token punctuation">[</span>__NSArrayI removeObjectAtIndex<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span> unrecognized selector sent to instance <span class="token number">0x7fcd1bc30460</span>
 </code></pre>
 <p>第2条原因，如下：</p>
 <blockquote>
@@ -674,120 +674,120 @@ self.mutableArray = array;
 <ol>
 <li>需声明该类遵从 NSCopying 协议</li>
 <li><p>实现 NSCopying 协议。该协议只有一个方法: </p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (id)copyWithZone:(NSZone *)zone;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>copyWithZone<span class="token punctuation">:</span><span class="token punctuation">(</span>NSZone <span class="token operator">*</span><span class="token punctuation">)</span>zone<span class="token punctuation">;</span>
 </code></pre>
 <p>注意：一提到让自己的类用 copy 修饰符，我们总是想覆写copy方法，其实真正需要实现的却是 “copyWithZone” 方法。</p>
 </li>
 </ol>
 <p>以第一题的代码为例：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    // .h文件
-    // http://weibo.com/luohanchenyilong/
-    // https://github.com/ChenYilong
-    // 修改完的代码
+<pre class=" language-objectivec"><code class="language-objectivec">    <span class="token comment" spellcheck="true">// .h文件</span>
+    <span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+    <span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+    <span class="token comment" spellcheck="true">// 修改完的代码</span>
 
-    typedef NS_ENUM(NSInteger, CYLSex) {
-        CYLSexMan,
+    <span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> CYLSex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CYLSexMan<span class="token punctuation">,</span>
         CYLSexWoman
-    };
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-    @interface CYLUser : NSObject<NSCopying>
+    <span class="token keyword">@interface</span> CYLUser <span class="token punctuation">:</span> NSObject<span class="token operator">&lt;</span>NSCopying<span class="token operator">></span>
 
-    @property (nonatomic, readonly, copy) NSString *name;
-    @property (nonatomic, readonly, assign) NSUInteger age;
-    @property (nonatomic, readonly, assign) CYLSex sex;
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> NSUInteger age<span class="token punctuation">;</span>
+    <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> CYLSex sex<span class="token punctuation">;</span>
 
-    - (instancetype)initWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-    + (instancetype)userWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
+    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
+    <span class="token operator">+</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>userWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
 
-    @end
+    <span class="token keyword">@end</span>
 </code></pre>
 <p>然后实现协议中规定的方法：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (id)copyWithZone:(NSZone *)zone {
-    CYLUser *copy = [[[self class] allocWithZone:zone] 
-                     initWithName:_name
-                                   age:_age
-                                  sex:_sex];
-    return copy;
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>copyWithZone<span class="token punctuation">:</span><span class="token punctuation">(</span>NSZone <span class="token operator">*</span><span class="token punctuation">)</span>zone <span class="token punctuation">{</span>
+    CYLUser <span class="token operator">*</span>copy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span> allocWithZone<span class="token punctuation">:</span>zone<span class="token punctuation">]</span> 
+                     initWithName<span class="token punctuation">:</span>_name
+                                   age<span class="token punctuation">:</span>_age
+                                  sex<span class="token punctuation">:</span>_sex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>但在实际的项目中，不可能这么简单，遇到更复杂一点，比如类对象中的数据结构可能并未在初始化方法中设置好，需要另行设置。举个例子，假如 CYLUser 中含有一个数组，与其他 CYLUser 对象建立或解除朋友关系的那些方法都需要操作这个数组。那么在这种情况下，你得把这个包含朋友对象的数组也一并拷贝过来。下面列出了实现此功能所需的全部代码:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .h文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 以第一题《风格纠错题》里的代码为例
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .h文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 以第一题《风格纠错题》里的代码为例</span>
 
-typedef NS_ENUM(NSInteger, CYLSex) {
-    CYLSexMan,
+<span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> CYLSex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    CYLSexMan<span class="token punctuation">,</span>
     CYLSexWoman
-};
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-@interface CYLUser : NSObject<NSCopying>
+<span class="token keyword">@interface</span> CYLUser <span class="token punctuation">:</span> NSObject<span class="token operator">&lt;</span>NSCopying<span class="token operator">></span>
 
-@property (nonatomic, readonly, copy) NSString *name;
-@property (nonatomic, readonly, assign) NSUInteger age;
-@property (nonatomic, readonly, assign) CYLSex sex;
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>name<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> NSUInteger age<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">,</span> assign<span class="token punctuation">)</span> CYLSex sex<span class="token punctuation">;</span>
 
-- (instancetype)initWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-+ (instancetype)userWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-- (void)addFriend:(CYLUser *)user;
-- (void)removeFriend:(CYLUser *)user;
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>userWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>addFriend<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLUser <span class="token operator">*</span><span class="token punctuation">)</span>user<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>removeFriend<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLUser <span class="token operator">*</span><span class="token punctuation">)</span>user<span class="token punctuation">;</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>// .m文件</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .m文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-//
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .m文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">//</span>
 
-@implementation CYLUser {
-    NSMutableSet *_friends;
-}
+<span class="token keyword">@implementation</span> CYLUser <span class="token punctuation">{</span>
+    NSMutableSet <span class="token operator">*</span>_friends<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)setName:(NSString *)name {
-    _name = [name copy];
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name <span class="token punctuation">{</span>
+    _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (instancetype)initWithName:(NSString *)name
-                         age:(NSUInteger)age
-                         sex:(CYLSex)sex {
-    if(self = [super init]) {
-        _name = [name copy];
-        _age = age;
-        _sex = sex;
-        _friends = [[NSMutableSet alloc] init];
-    }
-    return self;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name
+                         age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age
+                         sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        _age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+        _sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+        _friends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableSet alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)addFriend:(CYLUser *)user {
-    [_friends addObject:user];
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>addFriend<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLUser <span class="token operator">*</span><span class="token punctuation">)</span>user <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>_friends addObject<span class="token punctuation">:</span>user<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)removeFriend:(CYLUser *)user {
-    [_friends removeObject:user];
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>removeFriend<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLUser <span class="token operator">*</span><span class="token punctuation">)</span>user <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>_friends removeObject<span class="token punctuation">:</span>user<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (id)copyWithZone:(NSZone *)zone {
-    CYLUser *copy = [[[self class] allocWithZone:zone]
-                     initWithName:_name
-                     age:_age
-                     sex:_sex];
-    copy->_friends = [_friends mutableCopy];
-    return copy;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>copyWithZone<span class="token punctuation">:</span><span class="token punctuation">(</span>NSZone <span class="token operator">*</span><span class="token punctuation">)</span>zone <span class="token punctuation">{</span>
+    CYLUser <span class="token operator">*</span>copy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span> allocWithZone<span class="token punctuation">:</span>zone<span class="token punctuation">]</span>
+                     initWithName<span class="token punctuation">:</span>_name
+                     age<span class="token punctuation">:</span>_age
+                     sex<span class="token punctuation">:</span>_sex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    copy<span class="token operator">-></span>_friends <span class="token operator">=</span> <span class="token punctuation">[</span>_friends mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (id)deepCopy {
-    CYLUser *copy = [[[self class] alloc]
-                     initWithName:_name
-                     age:_age
-                     sex:_sex];
-    copy->_friends = [[NSMutableSet alloc] initWithSet:_friends
-                                             copyItems:YES];
-    return copy;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>deepCopy <span class="token punctuation">{</span>
+    CYLUser <span class="token operator">*</span>copy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span> alloc<span class="token punctuation">]</span>
+                     initWithName<span class="token punctuation">:</span>_name
+                     age<span class="token punctuation">:</span>_age
+                     sex<span class="token punctuation">:</span>_sex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    copy<span class="token operator">-></span>_friends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableSet alloc<span class="token punctuation">]</span> initWithSet<span class="token punctuation">:</span>_friends
+                                             copyItems<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>以上做法能满足基本的需求，但是也有缺陷：</p>
 <blockquote>
@@ -795,30 +795,30 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 </blockquote>
 <p>【注：深浅拷贝的概念，在下文中有介绍，详见下文的：<strong><em>用@property声明的 NSString（或NSArray，NSDictionary）经常使用 copy 关键字，为什么？如果改用 strong 关键字，可能造成什么问题？</em></strong>】</p>
 <p>在例子中，存放朋友对象的 set 是用 “copyWithZone:” 方法来拷贝的，这种浅拷贝方式不会逐个复制 set 中的元素。若需要深拷贝的话，则可像下面这样，编写一个专供深拷贝所用的方法:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (id)deepCopy {
-    CYLUser *copy = [[[self class] alloc]
-                     initWithName:_name
-                     age:_age
-                     sex:_sex];
-    copy->_friends = [[NSMutableSet alloc] initWithSet:_friends
-                                             copyItems:YES];
-    return copy;
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>deepCopy <span class="token punctuation">{</span>
+    CYLUser <span class="token operator">*</span>copy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span> alloc<span class="token punctuation">]</span>
+                     initWithName<span class="token punctuation">:</span>_name
+                     age<span class="token punctuation">:</span>_age
+                     sex<span class="token punctuation">:</span>_sex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    copy<span class="token operator">-></span>_friends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableSet alloc<span class="token punctuation">]</span> initWithSet<span class="token punctuation">:</span>_friends
+                                             copyItems<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>至于<strong><em>如何重写带 copy 关键字的 setter</em></strong>这个问题，</p>
 <p>如果抛开本例来回答的话，如下：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (void)setName:(NSString *)name {
-    //[_name release];
-    _name = [name copy];
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//[_name release];</span>
+    _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>不过也有争议，有人说“苹果如果像下面这样干，是不是效率会高一些？”</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (void)setName:(NSString *)name {
-    if (_name != name) {
-        //[_name release];//MRC
-        _name = [name copy];
-    }
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_name <span class="token operator">!=</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//[_name release];//MRC</span>
+        _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>这样真得高效吗？不见得！这种写法“看上去很美、很合理”，但在实际开发中，它更像下图里的做法：</p>
 <p><img src="http://i.imgur.com/UwV9oSn.jpeg" alt="enter image description here"></p>
@@ -835,35 +835,35 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 <p>你每次调用 <code>setX:</code> 都会做 if 判断，这会让 <code>setX:</code> 变慢，如果你在 <code>setX:</code>写了一串复杂的 <code>if+elseif+elseif+...</code> 判断，将会更慢。</p>
 </blockquote>
 <p>要回答“哪个效率会高一些？”这个问题，不能脱离实际开发，就算 copy 操作十分耗时，if 判断也不见得一定会更快，除非你把一个“ @property他当前的值 ”赋给了他自己，代码看起来就像：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">[a setX:x1];
-[a setX:x1];    //你确定你要这么干？与其在setter中判断，为什么不把代码写好？
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>a setX<span class="token punctuation">:</span>x1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>a setX<span class="token punctuation">:</span>x1<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//你确定你要这么干？与其在setter中判断，为什么不把代码写好？</span>
 </code></pre>
 <p>或者</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">[a setX:[a x]];   //队友咆哮道：你在干嘛？！！
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>a setX<span class="token punctuation">:</span><span class="token punctuation">[</span>a x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//队友咆哮道：你在干嘛？！！</span>
 </code></pre>
 <blockquote>
 <p>不要在 setter 里进行像 <code>if(_obj != newObj)</code> 这样的判断。（该观点参考链接：<a href="http://vgable.com/blog/tag/autorelease/" target="_blank" rel="external"> <strong><em>How To Write Cocoa Object Setters： Principle 3: Only Optimize After You Measure</em></strong> </a><br>）</p>
 </blockquote>
 <p>什么情况会在 copy setter 里做 if 判断？<br>例如，车速可能就有最高速的限制，车速也不可能出现负值，如果车子的最高速为300，则 setter 的方法就要改写成这样：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">-(void)setSpeed:(int)_speed{
-    if(_speed < 0) speed = 0;
-    if(_speed > 300) speed = 300;
-    _speed = speed;
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setSpeed<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>_speed<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>_speed <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> speed <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>_speed <span class="token operator">></span> <span class="token number">300</span><span class="token punctuation">)</span> speed <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span>
+    _speed <span class="token operator">=</span> speed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>回到这个题目，如果单单就上文的代码而言，我们不需要也不能重写 name 的 setter ：由于是 name 是只读属性，所以编译器不会为其创建对应的“设置方法”，用初始化方法设置好属性值之后，就不能再改变了。（ 在本例中，之所以还要声明属性的“内存管理语义”–copy，是因为：如果不写 copy，该类的调用者就不知道初始化方法里会拷贝这些属性，他们有可能会在调用初始化方法之前自行拷贝属性值。这种操作多余而低效）。</p>
 <p>那如何确保 name 被 copy？在初始化方法(initializer)中做：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    - (instancetype)initWithName:(NSString *)name 
-                                 age:(NSUInteger)age 
-                                 sex:(CYLSex)sex {
-         if(self = [super init]) {
-             _name = [name copy];
-             _age = age;
-             _sex = sex;
-             _friends = [[NSMutableSet alloc] init];
-         }
-         return self;
-    }
+<pre class=" language-objectivec"><code class="language-objectivec">    <span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name 
+                                 age<span class="token punctuation">:</span><span class="token punctuation">(</span>NSUInteger<span class="token punctuation">)</span>age 
+                                 sex<span class="token punctuation">:</span><span class="token punctuation">(</span>CYLSex<span class="token punctuation">)</span>sex <span class="token punctuation">{</span>
+         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             _name <span class="token operator">=</span> <span class="token punctuation">[</span>name copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+             _age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+             _sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+             _friends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableSet alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="6-property-的本质是什么？ivar、getter、setter-是如何生成并添加到这个类中的"><a href="#6-property-的本质是什么？ivar、getter、setter-是如何生成并添加到这个类中的" class="headerlink" title="6. @property 的本质是什么？ivar、getter、setter 是如何生成并添加到这个类中的"></a>6. @property 的本质是什么？ivar、getter、setter 是如何生成并添加到这个类中的</h3><p><strong>@property 的本质是什么？</strong></p>
 <blockquote>
@@ -879,35 +879,35 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 <p>@property = getter + setter;</p>
 </blockquote>
 <p>例如下面这个类：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@interface Person : NSObject
-@property NSString *firstName;
-@property NSString *lastName;
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@interface</span> Person <span class="token punctuation">:</span> NSObject
+<span class="token keyword">@property</span> NSString <span class="token operator">*</span>firstName<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> NSString <span class="token operator">*</span>lastName<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 </code></pre>
 <p>上述代码写出来的类与下面这种写法等效：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@interface Person : NSObject
-- (NSString *)firstName;
-- (void)setFirstName:(NSString *)firstName;
-- (NSString *)lastName;
-- (void)setLastName:(NSString *)lastName;
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@interface</span> Person <span class="token punctuation">:</span> NSObject
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>firstName<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setFirstName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>firstName<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>lastName<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setLastName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>lastName<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 </code></pre>
 <p><strong>更新</strong>：</p>
 <p>property在runtime中是<code>objc_property_t</code>定义如下:</p>
-<pre class=" language-objective-c"><code class="language-objective-c">typedef struct objc_property *objc_property_t;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> objc_property <span class="token operator">*</span>objc_property_t<span class="token punctuation">;</span>
 </code></pre>
 <p>而<code>objc_property</code>是一个结构体，包括name和attributes，定义如下：</p>
-<pre class=" language-objective-c"><code class="language-objective-c">struct property_t {
-    const char *name;
-    const char *attributes;
-};
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">struct</span> property_t <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>attributes<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>而attributes本质是<code>objc_property_attribute_t</code>，定义了property的一些属性，定义如下：</p>
-<pre class=" language-objective-c"><code class="language-objective-c">/// Defines a property attribute
-typedef struct {
-    const char *name;           /**< The name of the attribute */
-    const char *value;          /**< The value of the attribute (usually empty) */
-} objc_property_attribute_t;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/// Defines a property attribute</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">/**&lt; The name of the attribute */</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>value<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">/**&lt; The value of the attribute (usually empty) */</span>
+<span class="token punctuation">}</span> objc_property_attribute_t<span class="token punctuation">;</span>
 </code></pre>
 <p>而attributes的具体内容是什么呢？其实，包括：类型，原子性，内存语义和对应的实例变量。</p>
 <p>例如：我们定义一个string的property<code>@property (nonatomic, copy) NSString *string;</code>，通过 <code>property_getAttributes(property)</code>获取到attributes并打印出来之后的结果为<code>T@&quot;NSString&quot;,C,N,V_string</code></p>
@@ -917,10 +917,10 @@ typedef struct {
 <p>“自动合成”( autosynthesis)</p>
 </blockquote>
 <p>完成属性定义后，编译器会自动编写访问这些属性所需的方法，此过程叫做“自动合成”(autosynthesis)。需要强调的是，这个过程由编译<br>器在编译期执行，所以编辑器里看不到这些“合成方法”(synthesized method)的源代码。除了生成方法代码 getter、setter 之外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前面加下划线，以此作为实例变量的名字。在前例中，会生成两个实例变量，其名称分别为<br> <code>_firstName</code> 与 <code>_lastName</code>。也可以在类的实现代码里通过<br> <code>@synthesize</code> 语法来指定实例变量的名字.</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@implementation Person
-@synthesize firstName = _myFirstName;
-@synthesize lastName = _myLastName;
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> Person
+<span class="token keyword">@synthesize</span> firstName <span class="token operator">=</span> _myFirstName<span class="token punctuation">;</span>
+<span class="token keyword">@synthesize</span> lastName <span class="token operator">=</span> _myLastName<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 </code></pre>
 <p>我为了搞清属性是怎么实现的,曾经反编译过相关的代码,他大致生成了五个东西</p>
 <ol>
@@ -950,40 +950,40 @@ typedef struct {
 </blockquote>
 <p>（注：在下文的《使用runtime Associate方法关联的对象，需要在主对象dealloc的时候释放么？》里给出的“对象的内存销毁时间表”也提到<code>__weak</code>引用的解除时间。）</p>
 <p>先看下 runtime 里源码的实现：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">/**
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/**
  * The internal structure stored in the weak references table. 
  * It maintains and stores
  * a hash set of weak references pointing to an object.
  * If out_of_line==0, the set is instead a small inline array.
- */
-#define WEAK_INLINE_COUNT 4
-struct weak_entry_t {
-    DisguisedPtr<objc_object> referent;
-    union {
-        struct {
-            weak_referrer_t *referrers;
-            uintptr_t        out_of_line : 1;
-            uintptr_t        num_refs : PTR_MINUS_1;
-            uintptr_t        mask;
-            uintptr_t        max_hash_displacement;
-        };
-        struct {
-            // out_of_line=0 is LSB of one of these (don't care which)
-            weak_referrer_t  inline_referrers[WEAK_INLINE_COUNT];
-        };
-    };
-};
+ */</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> WEAK_INLINE_COUNT 4</span>
+<span class="token keyword">struct</span> weak_entry_t <span class="token punctuation">{</span>
+    DisguisedPtr<span class="token operator">&lt;</span>objc_object<span class="token operator">></span> referent<span class="token punctuation">;</span>
+    <span class="token keyword">union</span> <span class="token punctuation">{</span>
+        <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            weak_referrer_t <span class="token operator">*</span>referrers<span class="token punctuation">;</span>
+            uintptr_t        out_of_line <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            uintptr_t        num_refs <span class="token punctuation">:</span> PTR_MINUS_1<span class="token punctuation">;</span>
+            uintptr_t        mask<span class="token punctuation">;</span>
+            uintptr_t        max_hash_displacement<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// out_of_line=0 is LSB of one of these (don't care which)</span>
+            weak_referrer_t  inline_referrers<span class="token punctuation">[</span>WEAK_INLINE_COUNT<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-/**
+<span class="token comment" spellcheck="true">/**
  * The global weak references table. Stores object ids as keys,
  * and weak_entry_t structs as their values.
- */
-struct weak_table_t {
-    weak_entry_t *weak_entries;
-    size_t    num_entries;
-    uintptr_t mask;
-    uintptr_t max_hash_displacement;
-};
+ */</span>
+<span class="token keyword">struct</span> weak_table_t <span class="token punctuation">{</span>
+    weak_entry_t <span class="token operator">*</span>weak_entries<span class="token punctuation">;</span>
+    size_t    num_entries<span class="token punctuation">;</span>
+    uintptr_t mask<span class="token punctuation">;</span>
+    uintptr_t max_hash_displacement<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>具体完整实现参照 <a href="https://opensource.apple.com/source/objc4/objc4-646/runtime/objc-weak.h" target="_blank" rel="external">objc/objc-weak.h</a> 。</p>
 <p>我们可以设计一个函数（伪代码）来表示上述机制：</p>
@@ -993,21 +993,21 @@ struct weak_table_t {
 <p>在b非nil时，a和b指向同一个内存地址，在b变nil时，a变nil。此时向a发送消息不会崩溃：在Objective-C中向nil发送消息是安全的。</p>
 <p>而如果a是由 assign 修饰的，则：<br>在 b 非 nil 时，a 和 b 指向同一个内存地址，在 b 变 nil 时，a 还是指向该内存地址，变野指针。此时向 a 发送消息极易崩溃。</p>
 <p>下面我们将基于<code>objc_storeWeak(&amp;a, b)</code>函数，使用伪代码模拟“runtime如何实现weak属性”：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// 使用伪代码模拟：runtime如何实现weak属性
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 使用伪代码模拟：runtime如何实现weak属性</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
 
- id obj1;
- objc_initWeak(&obj1, obj);
-/*obj引用计数变为0，变量作用域结束*/
- objc_destroyWeak(&obj1);
+ id obj1<span class="token punctuation">;</span>
+ <span class="token function">objc_initWeak</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>obj1<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*obj引用计数变为0，变量作用域结束*/</span>
+ <span class="token function">objc_destroyWeak</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>obj1<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>下面对用到的两个方法<code>objc_initWeak</code>和<code>objc_destroyWeak</code>做下解释：</p>
 <p>总体说来，作用是：<br>通过<code>objc_initWeak</code>函数初始化“附有weak修饰符的变量（obj1）”，在变量作用域结束时通过<code>objc_destoryWeak</code>函数释放该变量（obj1）。</p>
 <p>下面分别介绍下方法的内部实现：</p>
 <p><code>objc_initWeak</code>函数的实现是这样的：在将“附有weak修饰符的变量（obj1）”初始化为0（nil）后，会将“赋值对象”（obj）作为参数，调用<code>objc_storeWeak</code>函数。</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">obj1 = 0；
-obj_storeWeak(&obj1, obj);
+<pre class=" language-objectivec"><code class="language-objectivec">obj1 <span class="token operator">=</span> <span class="token number">0</span>；
+<span class="token function">obj_storeWeak</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>obj1<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>也就是说：</p>
 <blockquote>
@@ -1016,15 +1016,15 @@ obj_storeWeak(&obj1, obj);
 <p>然后<code>obj_destroyWeak</code>函数将0（nil）作为参数，调用<code>objc_storeWeak</code>函数。</p>
 <p><code>objc_storeWeak(&amp;obj1, 0);</code></p>
 <p>前面的源代码与下列源代码相同。</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// 使用伪代码模拟：runtime如何实现weak属性
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 使用伪代码模拟：runtime如何实现weak属性</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
 
-id obj1;
-obj1 = 0;
-objc_storeWeak(&obj1, obj);
-/* ... obj的引用计数变为0，被置nil ... */
-objc_storeWeak(&obj1, 0);
+id obj1<span class="token punctuation">;</span>
+obj1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">objc_storeWeak</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>obj1<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* ... obj的引用计数变为0，被置nil ... */</span>
+<span class="token function">objc_storeWeak</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>obj1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><code>objc_storeWeak</code> 函数把第二个参数–赋值对象（obj）的内存地址作为键值，将第一个参数–weak修饰的属性变量（obj1）的内存地址注册到 weak 表中。如果第二个参数（obj）为0（nil），那么把变量（obj1）的地址从 weak 表中删除，在后面的相关一题会详解。</p>
 <p>使用伪代码是为了方便理解，下面我们“真枪实弹”地实现下：</p>
@@ -1033,130 +1033,130 @@ objc_storeWeak(&obj1, 0);
 </blockquote>
 <p>我们从setter方法入手：</p>
 <p>（注意以下的 <code>cyl_runAtDealloc</code> 方法实现仅仅用于模拟原理，如果想用于项目中，还需要考虑更复杂的场景，想在实际项目使用的话，可以使用我写的一个小库，可以使用 CocoaPods 在项目中使用： <a href="https://github.com/ChenYilong/CYLDeallocBlockExecutor" target="_blank" rel="external">CYLDeallocBlockExecutor</a> ）</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (void)setObject:(NSObject *)object
-{
-    objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
-    [object cyl_runAtDealloc:^{
-        _object = nil;
-    }];
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setObject<span class="token punctuation">:</span><span class="token punctuation">(</span>NSObject <span class="token operator">*</span><span class="token punctuation">)</span>object
+<span class="token punctuation">{</span>
+    <span class="token function">objc_setAssociatedObject</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token string">"object"</span><span class="token punctuation">,</span> object<span class="token punctuation">,</span> OBJC_ASSOCIATION_ASSIGN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>object cyl_runAtDealloc<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+        _object <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>也就是有两个步骤：</p>
 <ol>
 <li>在setter方法中做如下设置：</li>
 </ol>
-<pre class=" language-Objective-C"><code class="language-Objective-C">        objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
+<pre class=" language-objectivec"><code class="language-objectivec">        <span class="token function">objc_setAssociatedObject</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token string">"object"</span><span class="token punctuation">,</span> object<span class="token punctuation">,</span> OBJC_ASSOCIATION_ASSIGN<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ol>
 <li><p>在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。做到这点，同样要借助 runtime：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">//要销毁的目标对象
-id objectToBeDeallocated;
-//可以理解为一个“事件”：当上面的目标对象销毁时，同时要发生的“事件”。
-id objectWeWantToBeReleasedWhenThatHappens;
-objc_setAssociatedObject(objectToBeDeallocted,
-                     someUniqueKey,
-                     objectWeWantToBeReleasedWhenThatHappens,
-                     OBJC_ASSOCIATION_RETAIN);
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//要销毁的目标对象</span>
+id objectToBeDeallocated<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//可以理解为一个“事件”：当上面的目标对象销毁时，同时要发生的“事件”。</span>
+id objectWeWantToBeReleasedWhenThatHappens<span class="token punctuation">;</span>
+<span class="token function">objc_setAssociatedObject</span><span class="token punctuation">(</span>objectToBeDeallocted<span class="token punctuation">,</span>
+                     someUniqueKey<span class="token punctuation">,</span>
+                     objectWeWantToBeReleasedWhenThatHappens<span class="token punctuation">,</span>
+                     OBJC_ASSOCIATION_RETAIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </li>
 </ol>
 <p>知道了思路，我们就开始实现 <code>cyl_runAtDealloc</code> 方法，实现过程分两部分：</p>
 <p>第一部分：创建一个类，可以理解为一个“事件”：当目标对象销毁时，同时要发生的“事件”。借助 block 执行“事件”。</p>
 <p>// .h文件</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .h文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 这个类，可以理解为一个“事件”：当目标对象销毁时，同时要发生的“事件”。借助block执行“事件”。
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .h文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 这个类，可以理解为一个“事件”：当目标对象销毁时，同时要发生的“事件”。借助block执行“事件”。</span>
 
-typedef void (^voidBlock)(void);
+<span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">^</span>voidBlock<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-@interface CYLBlockExecutor : NSObject
+<span class="token keyword">@interface</span> CYLBlockExecutor <span class="token punctuation">:</span> NSObject
 
-- (id)initWithBlock:(voidBlock)block;
+<span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>initWithBlock<span class="token punctuation">:</span><span class="token punctuation">(</span>voidBlock<span class="token punctuation">)</span>block<span class="token punctuation">;</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>// .m文件</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// .m文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 这个类，可以理解为一个“事件”：当目标对象销毁时，同时要发生的“事件”。借助block执行“事件”。
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// .m文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 这个类，可以理解为一个“事件”：当目标对象销毁时，同时要发生的“事件”。借助block执行“事件”。</span>
 
-#import "CYLBlockExecutor.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "CYLBlockExecutor.h"</span>
 
-@interface CYLBlockExecutor() {
-    voidBlock _block;
-}
-@implementation CYLBlockExecutor
+<span class="token keyword">@interface</span> <span class="token function">CYLBlockExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    voidBlock _block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@implementation</span> CYLBlockExecutor
 
-- (id)initWithBlock:(voidBlock)aBlock
-{
-    self = [super init];
+<span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>initWithBlock<span class="token punctuation">:</span><span class="token punctuation">(</span>voidBlock<span class="token punctuation">)</span>aBlock
+<span class="token punctuation">{</span>
+    <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    if (self) {
-        _block = [aBlock copy];
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        _block <span class="token operator">=</span> <span class="token punctuation">[</span>aBlock copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return self;
-}
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)dealloc
-{
-    _block ? _block() : nil;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>dealloc
+<span class="token punctuation">{</span>
+    _block <span class="token operator">?</span> <span class="token function">_block</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> nil<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>第二部分：核心代码：利用runtime实现<code>cyl_runAtDealloc</code>方法</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// CYLNSObject+RunAtDealloc.h文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 利用runtime实现cyl_runAtDealloc方法
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// CYLNSObject+RunAtDealloc.h文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 利用runtime实现cyl_runAtDealloc方法</span>
 
-#import "CYLBlockExecutor.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "CYLBlockExecutor.h"</span>
 
-const void *runAtDeallocBlockKey = &runAtDeallocBlockKey;
+<span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>runAtDeallocBlockKey <span class="token operator">=</span> <span class="token operator">&amp;</span>runAtDeallocBlockKey<span class="token punctuation">;</span>
 
-@interface NSObject (CYLRunAtDealloc)
+<span class="token keyword">@interface</span> <span class="token function">NSObject</span> <span class="token punctuation">(</span>CYLRunAtDealloc<span class="token punctuation">)</span>
 
-- (void)cyl_runAtDealloc:(voidBlock)block;
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>cyl_runAtDealloc<span class="token punctuation">:</span><span class="token punctuation">(</span>voidBlock<span class="token punctuation">)</span>block<span class="token punctuation">;</span>
 
-@end
+<span class="token keyword">@end</span>
 
 
-// CYLNSObject+RunAtDealloc.m文件
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
-// 利用runtime实现cyl_runAtDealloc方法
+<span class="token comment" spellcheck="true">// CYLNSObject+RunAtDealloc.m文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 利用runtime实现cyl_runAtDealloc方法</span>
 
-#import "CYLNSObject+RunAtDealloc.h"
-#import "CYLBlockExecutor.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "CYLNSObject+RunAtDealloc.h"</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> "CYLBlockExecutor.h"</span>
 
-@implementation NSObject (CYLRunAtDealloc)
+<span class="token keyword">@implementation</span> <span class="token function">NSObject</span> <span class="token punctuation">(</span>CYLRunAtDealloc<span class="token punctuation">)</span>
 
-- (void)cyl_runAtDealloc:(voidBlock)block
-{
-    if (block) {
-        CYLBlockExecutor *executor = [[CYLBlockExecutor alloc] initWithBlock:block];
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>cyl_runAtDealloc<span class="token punctuation">:</span><span class="token punctuation">(</span>voidBlock<span class="token punctuation">)</span>block
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>block<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CYLBlockExecutor <span class="token operator">*</span>executor <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CYLBlockExecutor alloc<span class="token punctuation">]</span> initWithBlock<span class="token punctuation">:</span>block<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        objc_setAssociatedObject(self,
-                                 runAtDeallocBlockKey,
-                                 executor,
-                                 OBJC_ASSOCIATION_RETAIN);
-    }
-}
+        <span class="token function">objc_setAssociatedObject</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span>
+                                 runAtDeallocBlockKey<span class="token punctuation">,</span>
+                                 executor<span class="token punctuation">,</span>
+                                 OBJC_ASSOCIATION_RETAIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>使用方法：<br>导入</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    #import "CYLNSObject+RunAtDealloc.h"
+<pre class=" language-objectivec"><code class="language-objectivec">    <span class="token macro property">#<span class="token directive keyword">import</span> "CYLNSObject+RunAtDealloc.h"</span>
 </code></pre>
 <p>然后就可以使用了：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">NSObject *foo = [[NSObject alloc] init];
+<pre class=" language-objectivec"><code class="language-objectivec">NSObject <span class="token operator">*</span>foo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSObject alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-[foo cyl_runAtDealloc:^{
-    NSLog(@"正在释放foo!");
-}];
+<span class="token punctuation">[</span>foo cyl_runAtDealloc<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"正在释放foo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>如果对 <code>cyl_runAtDealloc</code> 的实现原理有兴趣，可以看下我写的一个小库，可以使用 CocoaPods 在项目中使用： <a href="https://github.com/ChenYilong/CYLDeallocBlockExecutor" target="_blank" rel="external">CYLDeallocBlockExecutor</a> </p>
 <p>参考博文： <a href="http://stackoverflow.com/a/31560217/3395008" target="_blank" rel="external"><strong><em>Fun With the Objective-C Runtime: Run Code at Deallocation of Any Object</em></strong></a></p>
@@ -1172,7 +1172,7 @@ const void *runAtDeallocBlockKey = &runAtDeallocBlockKey;
 <p><code>getter=&lt;name&gt;</code>的样式：</p>
 </li>
 </ol>
-<pre class=" language-Objective-C"><code class="language-Objective-C">        @property (nonatomic, getter=isOn) BOOL on;
+<pre class=" language-objectivec"><code class="language-objectivec">        <span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> getter<span class="token operator">=</span>isOn<span class="token punctuation">)</span> BOOL on<span class="token punctuation">;</span>
 </code></pre>
  <p><del>（ <code>setter=&lt;name&gt;</code>这种不常用，也不推荐使用。故不在这里给出写法。）<br></del></p>
 
@@ -1180,55 +1180,55 @@ const void *runAtDeallocBlockKey = &runAtDeallocBlockKey;
 <p> <code>setter=&lt;name&gt;</code>一般用在特殊的情境下，比如：</p>
 <p>在数据反序列化、转模型的过程中，服务器返回的字段如果以 <code>init</code> 开头，所以你需要定义一个 <code>init</code> 开头的属性，但默认生成的 <code>setter</code> 与 <code>getter</code> 方法也会以 <code>init</code> 开头，而编译器会把所有以 <code>init</code> 开头的方法当成初始化方法，而初始化方法只能返回 self 类型，因此编译器会报错。</p>
 <p>这时你就可以使用下面的方式来避免编译器报错：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@property(nonatomic, strong, getter=p_initBy, setter=setP_initBy:)NSString *initBy;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@property</span><span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> strong<span class="token punctuation">,</span> getter<span class="token operator">=</span>p_initBy<span class="token punctuation">,</span> setter<span class="token operator">=</span>setP_initBy<span class="token punctuation">:</span><span class="token punctuation">)</span>NSString <span class="token operator">*</span>initBy<span class="token punctuation">;</span>
 </code></pre>
 <p>另外也可以用关键字进行特殊说明，来避免编译器报错：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@property(nonatomic, readwrite, copy, null_resettable) NSString *initBy;
-- (NSString *)initBy __attribute__((objc_method_family(none)));
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@property</span><span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readwrite<span class="token punctuation">,</span> copy<span class="token punctuation">,</span> null_resettable<span class="token punctuation">)</span> NSString <span class="token operator">*</span>initBy<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>initBy <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">objc_method_family</span><span class="token punctuation">(</span>none<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ol>
 <li>不常用的：<code>nonnull</code>,<code>null_resettable</code>,<code>nullable</code></li>
 </ol>
 <p>注意：很多人会认为如果属性具备 nonatomic 特质，则不使用<br>“同步锁”。其实在属性设置方法中使用的是自旋锁，自旋锁相关代码如下：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">static inline void reallySetProperty(id self, SEL _cmd, id newValue, ptrdiff_t offset, bool atomic, bool copy, bool mutableCopy)
-{
-    if (offset == 0) {
-        object_setClass(self, newValue);
-        return;
-    }
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">reallySetProperty</span><span class="token punctuation">(</span>id <span class="token keyword">self</span><span class="token punctuation">,</span> SEL _cmd<span class="token punctuation">,</span> id newValue<span class="token punctuation">,</span> ptrdiff_t offset<span class="token punctuation">,</span> bool atomic<span class="token punctuation">,</span> bool copy<span class="token punctuation">,</span> bool mutableCopy<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>offset <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">object_setClass</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    id oldValue;
-    id *slot = (id*) ((char*)self + offset);
+    id oldValue<span class="token punctuation">;</span>
+    id <span class="token operator">*</span>slot <span class="token operator">=</span> <span class="token punctuation">(</span>id<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token keyword">self</span> <span class="token operator">+</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    if (copy) {
-        newValue = [newValue copyWithZone:nil];
-    } else if (mutableCopy) {
-        newValue = [newValue mutableCopyWithZone:nil];
-    } else {
-        if (*slot == newValue) return;
-        newValue = objc_retain(newValue);
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>copy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        newValue <span class="token operator">=</span> <span class="token punctuation">[</span>newValue copyWithZone<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mutableCopy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        newValue <span class="token operator">=</span> <span class="token punctuation">[</span>newValue mutableCopyWithZone<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>slot <span class="token operator">==</span> newValue<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+        newValue <span class="token operator">=</span> <span class="token function">objc_retain</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    if (!atomic) {
-        oldValue = *slot;
-        *slot = newValue;
-    } else {
-        spinlock_t& slotlock = PropertyLocks[slot];
-        slotlock.lock();
-        oldValue = *slot;
-        *slot = newValue;        
-        slotlock.unlock();
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>atomic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        oldValue <span class="token operator">=</span> <span class="token operator">*</span>slot<span class="token punctuation">;</span>
+        <span class="token operator">*</span>slot <span class="token operator">=</span> newValue<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        spinlock_t<span class="token operator">&amp;</span> slotlock <span class="token operator">=</span> PropertyLocks<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        slotlock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        oldValue <span class="token operator">=</span> <span class="token operator">*</span>slot<span class="token punctuation">;</span>
+        <span class="token operator">*</span>slot <span class="token operator">=</span> newValue<span class="token punctuation">;</span>        
+        slotlock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    objc_release(oldValue);
-}
+    <span class="token function">objc_release</span><span class="token punctuation">(</span>oldValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic, signed char shouldCopy) 
-{
-    bool copy = (shouldCopy && shouldCopy != MUTABLE_COPY);
-    bool mutableCopy = (shouldCopy == MUTABLE_COPY);
-    reallySetProperty(self, _cmd, newValue, offset, atomic, copy, mutableCopy);
-}
+<span class="token keyword">void</span> <span class="token function">objc_setProperty</span><span class="token punctuation">(</span>id <span class="token keyword">self</span><span class="token punctuation">,</span> SEL _cmd<span class="token punctuation">,</span> ptrdiff_t offset<span class="token punctuation">,</span> id newValue<span class="token punctuation">,</span> BOOL atomic<span class="token punctuation">,</span> <span class="token keyword">signed</span> <span class="token keyword">char</span> shouldCopy<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    bool copy <span class="token operator">=</span> <span class="token punctuation">(</span>shouldCopy <span class="token operator">&amp;&amp;</span> shouldCopy <span class="token operator">!=</span> MUTABLE_COPY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bool mutableCopy <span class="token operator">=</span> <span class="token punctuation">(</span>shouldCopy <span class="token operator">==</span> MUTABLE_COPY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">reallySetProperty</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> _cmd<span class="token punctuation">,</span> newValue<span class="token punctuation">,</span> offset<span class="token punctuation">,</span> atomic<span class="token punctuation">,</span> copy<span class="token punctuation">,</span> mutableCopy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="10-weak属性需要在dealloc中置nil么？"><a href="#10-weak属性需要在dealloc中置nil么？" class="headerlink" title="10. weak属性需要在dealloc中置nil么？"></a>10. weak属性需要在dealloc中置nil么？</h3><p>不需要。</p>
 <blockquote>
@@ -1237,13 +1237,13 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 <p>即便是编译器不帮我们做这些，weak也不需要在 dealloc 中置nil：</p>
 <p>正如上文的：<strong><em>runtime 如何实现 weak 属性</em></strong> 中提到的：</p>
 <p>我们模拟下 weak 的 setter 方法，应该如下：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (void)setObject:(NSObject *)object
-{
-    objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
-    [object cyl_runAtDealloc:^{
-        _object = nil;
-    }];
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setObject<span class="token punctuation">:</span><span class="token punctuation">(</span>NSObject <span class="token operator">*</span><span class="token punctuation">)</span>object
+<span class="token punctuation">{</span>
+    <span class="token function">objc_setAssociatedObject</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token string">"object"</span><span class="token punctuation">,</span> object<span class="token punctuation">,</span> OBJC_ASSOCIATION_ASSIGN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>object cyl_runAtDealloc<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+        _object <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>如果对 <code>cyl_runAtDealloc</code> 的实现原理有兴趣，可以看下我写的一个小库，可以使用 CocoaPods 在项目中使用： <a href="https://github.com/ChenYilong/CYLDeallocBlockExecutor" target="_blank" rel="external">CYLDeallocBlockExecutor</a> </p>
 <p>也即:</p>
@@ -1278,29 +1278,29 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 </ol>
 <p>举例说明：</p>
 <p>定义一个以 strong 修饰的 array：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@property (nonatomic ,readwrite, strong) NSArray *array;
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic <span class="token punctuation">,</span>readwrite<span class="token punctuation">,</span> strong<span class="token punctuation">)</span> NSArray <span class="token operator">*</span>array<span class="token punctuation">;</span>
 </code></pre>
 <p>然后进行下面的操作：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
-    NSArray *array = @[ @1, @2, @3, @4 ];
-    self.array = mutableArray;
-    [mutableArray removeAllObjects];;
-    NSLog(@"%@",self.array);
+<pre class=" language-objectivec"><code class="language-objectivec">    NSMutableArray <span class="token operator">*</span>mutableArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableArray alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span> <span class="token operator">@</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token number">4</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>array <span class="token operator">=</span> mutableArray<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>mutableArray removeAllObjects<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span><span class="token keyword">self</span><span class="token punctuation">.</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    [mutableArray addObjectsFromArray:array];
-    self.array = [mutableArray copy];
-    [mutableArray removeAllObjects];;
-    NSLog(@"%@",self.array);
+    <span class="token punctuation">[</span>mutableArray addObjectsFromArray<span class="token punctuation">:</span>array<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>array <span class="token operator">=</span> <span class="token punctuation">[</span>mutableArray copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>mutableArray removeAllObjects<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span><span class="token keyword">self</span><span class="token punctuation">.</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>打印结果如下所示：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">2015-09-27 19:10:32.523 CYLArrayCopyDmo[10681:713670] (
-)
-2015-09-27 19:10:32.524 CYLArrayCopyDmo[10681:713670] (
-    1,
-    2,
-    3,
-    4
-)
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token number">2015</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">27</span> <span class="token number">19</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">:</span><span class="token number">32.523</span> CYLArrayCopyDmo<span class="token punctuation">[</span><span class="token number">10681</span><span class="token punctuation">:</span><span class="token number">713670</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>
+<span class="token punctuation">)</span>
+<span class="token number">2015</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">27</span> <span class="token number">19</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">:</span><span class="token number">32.524</span> CYLArrayCopyDmo<span class="token punctuation">[</span><span class="token number">10681</span><span class="token punctuation">:</span><span class="token number">713670</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>
+    <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token number">4</span>
+<span class="token punctuation">)</span>
 </code></pre>
 <p>（详见仓库内附录的 Demo。）</p>
 <p>为了理解这种做法，首先要知道，两种情况：</p>
@@ -1316,32 +1316,32 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 <li>[mutableObject mutableCopy] //深复制</li>
 </ul>
 <p>比如以下代码：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">NSMutableString *string = [NSMutableString stringWithString:@"origin"];//copy
-NSString *stringCopy = [string copy];
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableString <span class="token operator">*</span>string <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span><span class="token string">@"origin"</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//copy</span>
+NSString <span class="token operator">*</span>stringCopy <span class="token operator">=</span> <span class="token punctuation">[</span>string copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>查看内存，会发现 string、stringCopy 内存地址都不一样，说明此时都是做内容拷贝、深拷贝。即使你进行如下操作：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">[string appendString:@"origion!"]
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>string appendString<span class="token punctuation">:</span><span class="token string">@"origion!"</span><span class="token punctuation">]</span>
 </code></pre>
 <p>stringCopy 的值也不会因此改变，但是如果不使用 copy，stringCopy 的值就会被改变。<br>  集合类对象以此类推。<br>所以，</p>
 <blockquote>
 <p>用 @property 声明 NSString、NSArray、NSDictionary 经常使用 copy 关键字，是因为他们有对应的可变类型：NSMutableString、NSMutableArray、NSMutableDictionary，他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。</p>
 </blockquote>
 <h4 id="2、集合类对象的copy与mutableCopy"><a href="#2、集合类对象的copy与mutableCopy" class="headerlink" title="2、集合类对象的copy与mutableCopy"></a>2、集合类对象的copy与mutableCopy</h4><p>集合类对象是指 NSArray、NSDictionary、NSSet … 之类的对象。下面先看集合类immutable对象使用 copy 和 mutableCopy 的一个例子：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">NSArray *array = @[@[@"a", @"b"], @[@"c", @"d"]];
-NSArray *copyArray = [array copy];
-NSMutableArray *mCopyArray = [array mutableCopy];
+<pre class=" language-objectivec"><code class="language-objectivec">NSArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"a"</span><span class="token punctuation">,</span> <span class="token string">@"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"c"</span><span class="token punctuation">,</span> <span class="token string">@"d"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>copyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSMutableArray <span class="token operator">*</span>mCopyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>查看内容，可以看到 copyArray 和 array 的地址是一样的，而 mCopyArray 和 array 的地址是不同的。说明 copy 操作进行了指针拷贝，mutableCopy 进行了内容拷贝。但需要强调的是：此处的内容拷贝，仅仅是拷贝 array 这个对象，array 集合内部的元素仍然是指针拷贝。这和上面的非集合 immutable 对象的拷贝还是挺相似的，那么mutable对象的拷贝会不会类似呢？我们继续往下，看 mutable 对象拷贝的例子：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">NSMutableArray *array = [NSMutableArray arrayWithObjects:[NSMutableString stringWithString:@"a"],@"b",@"c",nil];
-NSArray *copyArray = [array copy];
-NSMutableArray *mCopyArray = [array mutableCopy];
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray arrayWithObjects<span class="token punctuation">:</span><span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span><span class="token string">@"a"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">@"b"</span><span class="token punctuation">,</span><span class="token string">@"c"</span><span class="token punctuation">,</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>copyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSMutableArray <span class="token operator">*</span>mCopyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>查看内存，如我们所料，copyArray、mCopyArray和 array 的内存地址都不一样，说明 copyArray、mCopyArray 都对 array 进行了内容拷贝。同样，我们可以得出结论：</p>
 <p>在集合类对象中，对 immutable 对象进行 copy，是指针复制， mutableCopy 是内容复制；对 mutable 对象进行 copy 和 mutableCopy 都是内容复制。但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制。用代码简单表示如下：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">[immutableObject copy] // 浅复制
-[immutableObject mutableCopy] //单层深复制
-[mutableObject copy] //单层深复制
-[mutableObject mutableCopy] //单层深复制
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>immutableObject copy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">// 浅复制</span>
+<span class="token punctuation">[</span>immutableObject mutableCopy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
+<span class="token punctuation">[</span>mutableObject copy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
+<span class="token punctuation">[</span>mutableObject mutableCopy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
 </code></pre>
 <p>这个代码结论和非集合类的非常相似。</p>
 <p>参考链接：<a href="https://www.zybuluo.com/MicroCai/note/50592" target="_blank" rel="external">iOS 集合的深复制与浅复制</a></p>
@@ -1352,16 +1352,16 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 <p>这些说法，笔者下文中，可能都会用到，指的是一个东西。</p>
 <p>正如<br><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html#//apple_ref/doc/uid/TP40011210-CH5-SW6" target="_blank" rel="external">Apple官方文档 <strong><em>You Can Customize Synthesized Instance Variable Names</em></strong></a> 所说：<br><img src="http://i.imgur.com/D6d0zGJ.png" alt="enter image description here"></p>
 <p>如果使用了属性的话，那么编译器就会自动编写访问属性所需的方法，此过程叫做“自动合成”( auto synthesis)。需要强调的是，这个过程由编译器在编译期执行，所以编辑器里看不到这些“合成方法” (synthesized method)的源代码。除了生成方法代码之外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前面加下划线，以此作为实例变量的名字。</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@interface CYLPerson : NSObject 
-@property NSString *firstName; 
-@property NSString *lastName; 
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@interface</span> CYLPerson <span class="token punctuation">:</span> NSObject 
+<span class="token keyword">@property</span> NSString <span class="token operator">*</span>firstName<span class="token punctuation">;</span> 
+<span class="token keyword">@property</span> NSString <span class="token operator">*</span>lastName<span class="token punctuation">;</span> 
+<span class="token keyword">@end</span>
 </code></pre>
 <p>在上例中，会生成两个实例变量，其名称分别为<br> <code>_firstName</code> 与 <code>_lastName</code>。也可以在类的实现代码里通过 <code>@synthesize</code> 语法来指定实例变量的名字:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@implementation CYLPerson 
-@synthesize firstName = _myFirstName; 
-@synthesize lastName = _myLastName; 
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> CYLPerson 
+<span class="token keyword">@synthesize</span> firstName <span class="token operator">=</span> _myFirstName<span class="token punctuation">;</span> 
+<span class="token keyword">@synthesize</span> lastName <span class="token operator">=</span> _myLastName<span class="token punctuation">;</span> 
+<span class="token keyword">@end</span>
 </code></pre>
 <p>上述语法会将生成的实例变量命名为 <code>_myFirstName</code> 与 <code>_myLastName</code> ，而不再使用默认的名字。一般情况下无须修改默认的实例变量名，但是如果你不喜欢以下划线来命名实例变量，那么可以用这个办法将其改为自己想要的名字。笔者还是推荐使用默认的命名方案，因为如果所有人都坚持这套方案，那么写出来的代码大家都能看得懂。</p>
 <p>总结下 @synthesize 合成实例变量的规则，有以下几点：</p>
@@ -1396,50 +1396,50 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 <p>因为有了 autosynthesis（自动合成），大部分开发者已经习惯不去手动定义ivar，而是依赖于 autosynthesis（自动合成），但是一旦你需要使用ivar，而 autosynthesis（自动合成）又失效了，如果不去手动定义ivar，那么你就得借助 <code>@synthesize</code> 来手动合成 ivar。</p>
 <p>其实，<code>@synthesize</code> 语法还有一个应用场景，但是不太建议大家使用：</p>
 <p>可以在类的实现代码里通过 <code>@synthesize</code> 语法来指定实例变量的名字:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">@implementation CYLPerson 
-@synthesize firstName = _myFirstName; 
-@synthesize lastName = _myLastName; 
-@end
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> CYLPerson 
+<span class="token keyword">@synthesize</span> firstName <span class="token operator">=</span> _myFirstName<span class="token punctuation">;</span> 
+<span class="token keyword">@synthesize</span> lastName <span class="token operator">=</span> _myLastName<span class="token punctuation">;</span> 
+<span class="token keyword">@end</span>
 </code></pre>
 <p>上述语法会将生成的实例变量命名为 <code>_myFirstName</code> 与 <code>_myLastName</code>，而不再使用默认的名字。一般情况下无须修改默认的实例变量名，但是如果你不喜欢以下划线来命名实例变量，那么可以用这个办法将其改为自己想要的名字。笔者还是推荐使用默认的命名方案，因为如果所有人都坚持这套方案，那么写出来的代码大家都能看得懂。</p>
 <p>举例说明：应用场景：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">
-//
-// .m文件
-// http://weibo.com/luohanchenyilong/ (微博@iOS程序犭袁)
-// https://github.com/ChenYilong
-// 打开第14行和第17行中任意一行，就可编译成功
+<pre class=" language-objectivec"><code class="language-objectivec">
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// .m文件</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/ (微博@iOS程序犭袁)</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 打开第14行和第17行中任意一行，就可编译成功</span>
 
-@import Foundation;
+<span class="token operator">@</span>import Foundation<span class="token punctuation">;</span>
 
-@interface CYLObject : NSObject
-@property (nonatomic, copy) NSString *title;
-@end
+<span class="token keyword">@interface</span> CYLObject <span class="token punctuation">:</span> NSObject
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> copy<span class="token punctuation">)</span> NSString <span class="token operator">*</span>title<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 
-@implementation CYLObject {
-    //    NSString *_title;
-}
+<span class="token keyword">@implementation</span> CYLObject <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//    NSString *_title;</span>
+<span class="token punctuation">}</span>
 
-//@synthesize title = _title;
+<span class="token comment" spellcheck="true">//@synthesize title = _title;</span>
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _title = @"微博@iOS程序犭袁";
-    }
-    return self;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>init
+<span class="token punctuation">{</span>
+    <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        _title <span class="token operator">=</span> <span class="token string">@"微博@iOS程序犭袁"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (NSString *)title {
-    return _title;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>title <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> _title<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)setTitle:(NSString *)title {
-    _title = [title copy];
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setTitle<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>title <span class="token punctuation">{</span>
+    _title <span class="token operator">=</span> <span class="token punctuation">[</span>title copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>结果编译器报错：<br><img src="http://i.imgur.com/fAEGHIo.png" alt="enter image description here"></p>
 <p>当你同时重写了 setter 和 getter 时，系统就不会生成 ivar（实例变量/成员变量）。这时候有两种选择：</p>
@@ -1452,7 +1452,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 <ol>
 <li>如果一个方法返回值是一个对象，那么发送给nil的消息将返回0(nil)。例如：  </li>
 </ol>
-<pre class=" language-Objective-C"><code class="language-Objective-C">Person * motherInlaw = [[aPerson spouse] mother];
+<pre class=" language-objectivec"><code class="language-objectivec">Person <span class="token operator">*</span> motherInlaw <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>aPerson spouse<span class="token punctuation">]</span> mother<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p> 如果 spouse 对象为 nil，那么发送给 nil 的消息 mother 也将返回 nil。</p>
 <ol>
@@ -1465,54 +1465,54 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 <p>objc是动态语言，每个方法在运行时会被动态转为消息发送，即：objc_msgSend(receiver, selector)。</p>
 </blockquote>
 <p>那么，为了方便理解这个内容，还是贴一个objc的源代码：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// runtime.h（类在runtime中的定义）
-// http://weibo.com/luohanchenyilong/
-// https://github.com/ChenYilong
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// runtime.h（类在runtime中的定义）</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
 
-struct objc_class {
-  Class isa OBJC_ISA_AVAILABILITY; //isa指针指向Meta Class，因为Objc的类的本身也是一个Object，为了处理这个关系，runtime就创造了Meta Class，当给类发送[NSObject alloc]这样消息时，实际上是把这个消息发给了Class Object
-  #if !__OBJC2__
-  Class super_class OBJC2_UNAVAILABLE; // 父类
-  const char *name OBJC2_UNAVAILABLE; // 类名
-  long version OBJC2_UNAVAILABLE; // 类的版本信息，默认为0
-  long info OBJC2_UNAVAILABLE; // 类信息，供运行期使用的一些位标识
-  long instance_size OBJC2_UNAVAILABLE; // 该类的实例变量大小
-  struct objc_ivar_list *ivars OBJC2_UNAVAILABLE; // 该类的成员变量链表
-  struct objc_method_list **methodLists OBJC2_UNAVAILABLE; // 方法定义的链表
-  struct objc_cache *cache OBJC2_UNAVAILABLE; // 方法缓存，对象接到一个消息会根据isa指针查找消息对象，这时会在method Lists中遍历，如果cache了，常用的方法调用时就能够提高调用的效率。
-  struct objc_protocol_list *protocols OBJC2_UNAVAILABLE; // 协议链表
-  #endif
-  } OBJC2_UNAVAILABLE;
+<span class="token keyword">struct</span> objc_class <span class="token punctuation">{</span>
+  Class isa OBJC_ISA_AVAILABILITY<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//isa指针指向Meta Class，因为Objc的类的本身也是一个Object，为了处理这个关系，runtime就创造了Meta Class，当给类发送[NSObject alloc]这样消息时，实际上是把这个消息发给了Class Object</span>
+  <span class="token macro property">#<span class="token directive keyword">if</span> !__OBJC2__</span>
+  Class super_class OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 父类</span>
+  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 类名</span>
+  <span class="token keyword">long</span> version OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 类的版本信息，默认为0</span>
+  <span class="token keyword">long</span> info OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 类信息，供运行期使用的一些位标识</span>
+  <span class="token keyword">long</span> instance_size OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 该类的实例变量大小</span>
+  <span class="token keyword">struct</span> objc_ivar_list <span class="token operator">*</span>ivars OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 该类的成员变量链表</span>
+  <span class="token keyword">struct</span> objc_method_list <span class="token operator">*</span><span class="token operator">*</span>methodLists OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 方法定义的链表</span>
+  <span class="token keyword">struct</span> objc_cache <span class="token operator">*</span>cache OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 方法缓存，对象接到一个消息会根据isa指针查找消息对象，这时会在method Lists中遍历，如果cache了，常用的方法调用时就能够提高调用的效率。</span>
+  <span class="token keyword">struct</span> objc_protocol_list <span class="token operator">*</span>protocols OBJC2_UNAVAILABLE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 协议链表</span>
+  <span class="token macro property">#<span class="token directive keyword">endif</span></span>
+  <span class="token punctuation">}</span> OBJC2_UNAVAILABLE<span class="token punctuation">;</span>
 </code></pre>
 <p>objc在向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象实际所属的类，然后在该类中的方法列表以及其父类方法列表中寻找方法运行，然后在发送消息的时候，objc_msgSend方法不会返回值，所谓的返回内容都是具体调用时执行的。<br>那么，回到本题，如果向一个nil对象发送消息，首先在寻找对象的isa指针时就是0地址返回了，所以不会出现任何错误。</p>
 <h3 id="17-objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？"><a href="#17-objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？" class="headerlink" title="17. objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？"></a>17. objc中向一个对象发送消息[obj foo]和<code>objc_msgSend()</code>函数之间有什么关系？</h3><p>具体原因同上题：该方法编译之后就是<code>objc_msgSend()</code>函数调用.</p>
 <p>我们用 clang 分析下，clang 提供一个命令，可以将Objective-C的源码改写成C++语言，借此可以研究下[obj foo]和<code>objc_msgSend()</code>函数之间有什么关系。</p>
 <p>以下面的代码为例，由于 clang 后的代码达到了10万多行，为了便于区分，添加了一个叫 iOSinit 方法，</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">//
-//  main.m
-//  http://weibo.com/luohanchenyilong/
-//  https://github.com/ChenYilong
-//  Copyright (c) 2015年 微博@iOS程序犭袁. All rights reserved.
-//
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//  main.m</span>
+<span class="token comment" spellcheck="true">//  http://weibo.com/luohanchenyilong/</span>
+<span class="token comment" spellcheck="true">//  https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">//  Copyright (c) 2015年 微博@iOS程序犭袁. All rights reserved.</span>
+<span class="token comment" spellcheck="true">//</span>
 
 
-#import "CYLTest.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "CYLTest.h"</span>
 
-int main(int argc, char * argv[]) {
-    @autoreleasepool {
-        CYLTest *test = [[CYLTest alloc] init];
-        [test performSelector:(@selector(iOSinit))];
-        return 0;
-    }
-}
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">@</span>autoreleasepool <span class="token punctuation">{</span>
+        CYLTest <span class="token operator">*</span>test <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CYLTest alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>test performSelector<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>iOSinit<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>在终端中输入</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">clang -rewrite-objc main.m
+<pre class=" language-objectivec"><code class="language-objectivec">clang <span class="token operator">-</span>rewrite<span class="token operator">-</span>objc main<span class="token punctuation">.</span>m
 </code></pre>
 <p>就可以生成一个<code>main.cpp</code>的文件，在最低端（10万4千行左右）</p>
 <p><img src="http://i.imgur.com/eAH5YWn.png" alt="enter image description here"></p>
 <p>我们可以看到大概是这样的：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">((void ()(id, SEL))(void )objc_msgSend)((id)obj, sel_registerName("foo"));
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> SEL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">)</span>objc_msgSend<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>obj<span class="token punctuation">,</span> <span class="token function">sel_registerName</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>也就是说：</p>
 <blockquote>
@@ -1595,17 +1595,17 @@ int main(int argc, char * argv[]) {
 </ul>
 <p>如图:<br><img src="http://i.imgur.com/w6tzFxz.png" alt="enter image description here"></p>
 <h3 id="20-一个objc对象的isa的指针指向什么？有什么作用？"><a href="#20-一个objc对象的isa的指针指向什么？有什么作用？" class="headerlink" title="20. 一个objc对象的isa的指针指向什么？有什么作用？"></a>20. 一个objc对象的isa的指针指向什么？有什么作用？</h3><p>指向他的类对象,从而可以找到对象上的方法</p>
-<h3 id="21-下面的代码输出什么？"><a href="#21-下面的代码输出什么？" class="headerlink" title="21. 下面的代码输出什么？"></a>21. 下面的代码输出什么？</h3><pre class=" language-Objective-C"><code class="language-Objective-C">    @implementation Son : Father
-    - (id)init
-    {
-        self = [super init];
-        if (self) {
-            NSLog(@"%@", NSStringFromClass([self class]));
-            NSLog(@"%@", NSStringFromClass([super class]));
-        }
-        return self;
-    }
-    @end
+<h3 id="21-下面的代码输出什么？"><a href="#21-下面的代码输出什么？" class="headerlink" title="21. 下面的代码输出什么？"></a>21. 下面的代码输出什么？</h3><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token keyword">@implementation</span> Son <span class="token punctuation">:</span> Father
+    <span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span>init
+    <span class="token punctuation">{</span>
+        <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">super</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">@end</span>
 </code></pre>
 <p><strong>答案：</strong></p>
 <p>都输出 Son</p>
@@ -1618,114 +1618,114 @@ NSStringFromClass([super class]) = Son
 <p>当使用 self 调用方法时，会从当前类的方法列表中开始找，如果没有，就从父类中再找；而当使用 super 时，则从父类的方法列表中开始找。然后调用父类的这个方法。</p>
 <p>这也就是为什么说“不推荐在 init 方法中使用点语法”，如果想访问实例变量 iVar 应该使用下划线（ <code>_iVar</code> ），而非点语法（ <code>self.iVar</code> ）。</p>
 <p>点语法（ <code>self.iVar</code> ）的坏处就是子类有可能覆写 setter 。假设 Person 有一个子类叫 ChenPerson，这个子类专门表示那些姓“陈”的人。该子类可能会覆写 lastName 属性所对应的设置方法：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">//
-//  ChenPerson.m
-//  
-//
-//  Created by https://github.com/ChenYilong on 15/8/30.
-//  Copyright (c) 2015年 http://weibo.com/luohanchenyilong/ 微博@iOS程序犭袁. All rights reserved.
-//
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//  ChenPerson.m</span>
+<span class="token comment" spellcheck="true">//  </span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//  Created by https://github.com/ChenYilong on 15/8/30.</span>
+<span class="token comment" spellcheck="true">//  Copyright (c) 2015年 http://weibo.com/luohanchenyilong/ 微博@iOS程序犭袁. All rights reserved.</span>
+<span class="token comment" spellcheck="true">//</span>
 
-#import "ChenPerson.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "ChenPerson.h"</span>
 
-@implementation ChenPerson
+<span class="token keyword">@implementation</span> ChenPerson
 
-@synthesize lastName = _lastName;
+<span class="token keyword">@synthesize</span> lastName <span class="token operator">=</span> _lastName<span class="token punctuation">;</span>
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, NSStringFromClass([self class]));
-        NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, NSStringFromClass([super class]));
-    }
-    return self;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>init
+<span class="token punctuation">{</span>
+    <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"🔴类名与方法名：%s（在第%d行），描述：%@"</span><span class="token punctuation">,</span> __PRETTY_FUNCTION__<span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"🔴类名与方法名：%s（在第%d行），描述：%@"</span><span class="token punctuation">,</span> __PRETTY_FUNCTION__<span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">super</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)setLastName:(NSString*)lastName
-{
-    //设置方法一：如果setter采用是这种方式，就可能引起崩溃
-//    if (![lastName isEqualToString:@"陈"])
-//    {
-//        [NSException raise:NSInvalidArgumentException format:@"姓不是陈"];
-//    }
-//    _lastName = lastName;
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setLastName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString<span class="token operator">*</span><span class="token punctuation">)</span>lastName
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//设置方法一：如果setter采用是这种方式，就可能引起崩溃</span>
+<span class="token comment" spellcheck="true">//    if (![lastName isEqualToString:@"陈"])</span>
+<span class="token comment" spellcheck="true">//    {</span>
+<span class="token comment" spellcheck="true">//        [NSException raise:NSInvalidArgumentException format:@"姓不是陈"];</span>
+<span class="token comment" spellcheck="true">//    }</span>
+<span class="token comment" spellcheck="true">//    _lastName = lastName;</span>
 
-    //设置方法二：如果setter采用是这种方式，就可能引起崩溃
-    _lastName = @"陈";
-    NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, @"会调用这个方法,想一下为什么？");
+    <span class="token comment" spellcheck="true">//设置方法二：如果setter采用是这种方式，就可能引起崩溃</span>
+    _lastName <span class="token operator">=</span> <span class="token string">@"陈"</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"🔴类名与方法名：%s（在第%d行），描述：%@"</span><span class="token punctuation">,</span> __PRETTY_FUNCTION__<span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">,</span> <span class="token string">@"会调用这个方法,想一下为什么？"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>在基类 Person 的默认初始化方法中，可能会将姓氏设为空字符串。此时若使用点语法（ <code>self.lastName</code> ）也即 setter 设置方法，那么调用将会是子类的设置方法，如果在刚刚的 setter 代码中采用设置方法一，那么就会抛出异常，</p>
 <p>为了方便采用打印的方式展示，究竟发生了什么，我们使用设置方法二。</p>
 <p>如果基类的代码是这样的：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">//
-//  Person.m
-//  nil对象调用点语法
-//
-//  Created by https://github.com/ChenYilong on 15/8/29.
-//  Copyright (c) 2015年 http://weibo.com/luohanchenyilong/ 微博@iOS程序犭袁. All rights reserved.
-//  
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//  Person.m</span>
+<span class="token comment" spellcheck="true">//  nil对象调用点语法</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//  Created by https://github.com/ChenYilong on 15/8/29.</span>
+<span class="token comment" spellcheck="true">//  Copyright (c) 2015年 http://weibo.com/luohanchenyilong/ 微博@iOS程序犭袁. All rights reserved.</span>
+<span class="token comment" spellcheck="true">//  </span>
 
-#import "Person.h"
+<span class="token macro property">#<span class="token directive keyword">import</span> "Person.h"</span>
 
-@implementation Person
+<span class="token keyword">@implementation</span> Person
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.lastName = @"";
-        //NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, NSStringFromClass([self class]));
-        //NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, self.lastName);
-    }
-    return self;
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>init
+<span class="token punctuation">{</span>
+    <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>lastName <span class="token operator">=</span> <span class="token string">@""</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, NSStringFromClass([self class]));</span>
+        <span class="token comment" spellcheck="true">//NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, self.lastName);</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-- (void)setLastName:(NSString*)lastName
-{
-    NSLog(@"🔴类名与方法名：%s（在第%d行），描述：%@", __PRETTY_FUNCTION__, __LINE__, @"根本不会调用这个方法");
-    _lastName = @"炎黄";
-}
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setLastName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString<span class="token operator">*</span><span class="token punctuation">)</span>lastName
+<span class="token punctuation">{</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"🔴类名与方法名：%s（在第%d行），描述：%@"</span><span class="token punctuation">,</span> __PRETTY_FUNCTION__<span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">,</span> <span class="token string">@"根本不会调用这个方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    _lastName <span class="token operator">=</span> <span class="token string">@"炎黄"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-@end
+<span class="token keyword">@end</span>
 </code></pre>
 <p>那么打印结果将会是这样的：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C"> 🔴类名与方法名：-[ChenPerson setLastName:]（在第36行），描述：会调用这个方法,想一下为什么？
- 🔴类名与方法名：-[ChenPerson init]（在第19行），描述：ChenPerson
- 🔴类名与方法名：-[ChenPerson init]（在第20行），描述：ChenPerson
+<pre class=" language-objectivec"><code class="language-objectivec"> 🔴类名与方法名：<span class="token operator">-</span><span class="token punctuation">[</span>ChenPerson setLastName<span class="token punctuation">:</span><span class="token punctuation">]</span>（在第<span class="token number">36</span>行），描述：会调用这个方法<span class="token punctuation">,</span>想一下为什么？
+ 🔴类名与方法名：<span class="token operator">-</span><span class="token punctuation">[</span>ChenPerson init<span class="token punctuation">]</span>（在第<span class="token number">19</span>行），描述：ChenPerson
+ 🔴类名与方法名：<span class="token operator">-</span><span class="token punctuation">[</span>ChenPerson init<span class="token punctuation">]</span>（在第<span class="token number">20</span>行），描述：ChenPerson
 </code></pre>
 <p>我在仓库里也给出了一个相应的 Demo（名字叫：Demo<em>21题</em>下面的代码输出什么）。有兴趣可以跑起来看一下，主要看下他是怎么打印的，思考下为什么这么打印。</p>
 <p>接下来让我们利用 runtime 的相关知识来验证一下 super 关键字的本质，使用clang重写命令:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    $ clang -rewrite-objc test.m
+<pre class=" language-objectivec"><code class="language-objectivec">    $ clang <span class="token operator">-</span>rewrite<span class="token operator">-</span>objc test<span class="token punctuation">.</span>m
 </code></pre>
 <p>将这道题目中给出的代码被转化为:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    NSLog((NSString *)&__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_0, NSStringFromClass(((Class (*)(id, SEL))(void *)objc_msgSend)((id)self, sel_registerName("class"))));
+<pre class=" language-objectivec"><code class="language-objectivec">    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_0<span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">Class</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> SEL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>objc_msgSend<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token function">sel_registerName</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    NSLog((NSString *)&__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_1, NSStringFromClass(((Class (*)(__rw_objc_super *, SEL))(void *)objc_msgSendSuper)((__rw_objc_super){ (id)self, (id)class_getSuperclass(objc_getClass("Son")) }, sel_registerName("class"))));
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_1<span class="token punctuation">,</span> <span class="token function">NSStringFromClass</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">Class</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>__rw_objc_super <span class="token operator">*</span><span class="token punctuation">,</span> SEL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>objc_msgSendSuper<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>__rw_objc_super<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">class_getSuperclass</span><span class="token punctuation">(</span><span class="token function">objc_getClass</span><span class="token punctuation">(</span><span class="token string">"Son"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function">sel_registerName</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>从上面的代码中，我们可以发现在调用 [self class] 时，会转化成 <code>objc_msgSend</code>函数。看下函数定义：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    id objc_msgSend(id self, SEL op, ...)
+<pre class=" language-objectivec"><code class="language-objectivec">    id <span class="token function">objc_msgSend</span><span class="token punctuation">(</span>id <span class="token keyword">self</span><span class="token punctuation">,</span> SEL op<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
 </code></pre>
 <p>我们把 self 做为第一个参数传递进去。</p>
 <p>而在调用 [super class]时，会转化成 <code>objc_msgSendSuper</code>函数。看下函数定义:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">    id objc_msgSendSuper(struct objc_super *super, SEL op, ...)
+<pre class=" language-objectivec"><code class="language-objectivec">    id <span class="token function">objc_msgSendSuper</span><span class="token punctuation">(</span><span class="token keyword">struct</span> objc_super <span class="token operator">*</span><span class="token keyword">super</span><span class="token punctuation">,</span> SEL op<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
 </code></pre>
 <p>第一个参数是 <code>objc_super</code> 这样一个结构体，其定义如下:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">struct objc_super {
-       __unsafe_unretained id receiver;
-       __unsafe_unretained Class super_class;
-};
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">struct</span> objc_super <span class="token punctuation">{</span>
+       __unsafe_unretained id receiver<span class="token punctuation">;</span>
+       __unsafe_unretained Class super_class<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>结构体有两个成员，第一个成员是 receiver, 类似于上面的 <code>objc_msgSend</code>函数第一个参数self 。第二个成员是记录当前类的父类是什么。</p>
 <p>所以，当调用 ［self class] 时，实际先调用的是 <code>objc_msgSend</code>函数，第一个参数是 Son当前的这个实例，然后在 Son 这个类里面去找 - (Class)class这个方法，没有，去父类 Father里找，也没有，最后在 NSObject类中发现这个方法。而 - (Class)class的实现就是返回self的类别，故上述输出结果为 Son。</p>
 <p>objc Runtime开源代码对- (Class)class方法的实现:</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">- (Class)class {
-    return object_getClass(self);
-}
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>Class<span class="token punctuation">)</span>class <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">object_getClass</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>而当调用 <code>[super class]</code>时，会转换成<code>objc_msgSendSuper函数</code>。第一步先构造 <code>objc_super</code> 结构体，结构体第一个成员就是 <code>self</code> 。<br>第二个成员是 <code>(id)class_getSuperclass(objc_getClass(“Son”))</code> , 实际该函数输出结果为 Father。</p>
 <p>第二步是去 Father这个类里去找 <code>- (Class)class</code>，没有，然后去NSObject类去找，找到了。最后内部是使用 <code>objc_msgSend(objc_super-&gt;receiver, @selector(class))</code>去调用，</p>
@@ -1740,31 +1740,31 @@ NSStringFromClass([super class]) = Son
 <p>无论在MRC下还是ARC下均不需要。</p>
 </blockquote>
 <p><a href="https://web.archive.org/web/20120818164935/http://developer.apple.com/library/ios/#/web/20120820002100/http://developer.apple.com/library/ios/documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html" target="_blank" rel="external"> <strong><em>2011年版本的Apple API 官方文档 - Associative References</em></strong>  </a> 一节中有一个MRC环境下的例子：</p>
-<pre class=" language-Objective-C"><code class="language-Objective-C">// 在MRC下，使用runtime Associate方法关联的对象，不需要在主对象dealloc的时候释放
-// http://weibo.com/luohanchenyilong/ (微博@iOS程序犭袁)
-// https://github.com/ChenYilong
-// 摘自2011年版本的Apple API 官方文档 - Associative References 
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 在MRC下，使用runtime Associate方法关联的对象，不需要在主对象dealloc的时候释放</span>
+<span class="token comment" spellcheck="true">// http://weibo.com/luohanchenyilong/ (微博@iOS程序犭袁)</span>
+<span class="token comment" spellcheck="true">// https://github.com/ChenYilong</span>
+<span class="token comment" spellcheck="true">// 摘自2011年版本的Apple API 官方文档 - Associative References </span>
 
-static char overviewKey;
+<span class="token keyword">static</span> <span class="token keyword">char</span> overviewKey<span class="token punctuation">;</span>
 
-NSArray *array =
-    [[NSArray alloc] initWithObjects:@"One", @"Two", @"Three", nil];
-// For the purposes of illustration, use initWithFormat: to ensure
-// the string can be deallocated
-NSString *overview =
-    [[NSString alloc] initWithFormat:@"%@", @"First three numbers"];
+NSArray <span class="token operator">*</span>array <span class="token operator">=</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSArray alloc<span class="token punctuation">]</span> initWithObjects<span class="token punctuation">:</span><span class="token string">@"One"</span><span class="token punctuation">,</span> <span class="token string">@"Two"</span><span class="token punctuation">,</span> <span class="token string">@"Three"</span><span class="token punctuation">,</span> nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// For the purposes of illustration, use initWithFormat: to ensure</span>
+<span class="token comment" spellcheck="true">// the string can be deallocated</span>
+NSString <span class="token operator">*</span>overview <span class="token operator">=</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSString alloc<span class="token punctuation">]</span> initWithFormat<span class="token punctuation">:</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token string">@"First three numbers"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-objc_setAssociatedObject (
-    array,
-    &overviewKey,
-    overview,
+<span class="token function">objc_setAssociatedObject</span> <span class="token punctuation">(</span>
+    array<span class="token punctuation">,</span>
+    <span class="token operator">&amp;</span>overviewKey<span class="token punctuation">,</span>
+    overview<span class="token punctuation">,</span>
     OBJC_ASSOCIATION_RETAIN
-);
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-[overview release];
-// (1) overview valid
-[array release];
-// (2) overview invalid
+<span class="token punctuation">[</span>overview release<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// (1) overview valid</span>
+<span class="token punctuation">[</span>array release<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// (2) overview invalid</span>
 </code></pre>
 <p>文档指出 </p>
 <blockquote>

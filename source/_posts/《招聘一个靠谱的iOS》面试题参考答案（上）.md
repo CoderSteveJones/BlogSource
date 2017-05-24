@@ -45,7 +45,7 @@ tags:
  21.  [下面的代码输出什么？](https://github.com/ChenYilong/iOSInterviewQuestions/blob/master/01《招聘一个靠谱的iOS》面试题参考答案/《招聘一个靠谱的iOS》面试题参考答案（上）.md#21-下面的代码输出什么) 
 
 
- ```Objective-C
+ ```objectivec
 	@implementation Son : Father
 	- (id)init
 	{
@@ -68,7 +68,7 @@ tags:
 修改方法有很多种，现给出一种做示例：
 
 
- ```Objective-C
+ ```objectivec
 // .h文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
  1. enum 建议使用 `NS_ENUM` 和 `NS_OPTIONS` 宏来定义枚举类型，参见官方的 [Adopting Modern Objective-C](https://developer.apple.com/library/ios/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html) 一文：
 
 
- ```objective-c
+ ```objectivec
 //定义一个枚举
 	typedef NS_ENUM(NSInteger, CYLSex) {
 	    CYLSexMan,
@@ -114,7 +114,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
  
  2. age 属性的类型：应避免使用基本类型，建议使用 Foundation 数据类型，对应关系如下：
  
- ```Objective-C
+ ```objectivec
 	int -> NSInteger
 	unsigned -> NSUInteger
 	float -> CGFloat
@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
  6. `-(id)initUserModelWithUserName: (NSString*)name withAge:(int)age;`方法中不要用 `with` 来连接两个参数: `withAge:` 应当换为`age:`，`age:` 已经足以清晰说明参数的作用，也不建议用 `andAge:` ：通常情况下，即使有类似 `withA:withB:` 的命名需求，也通常是使用`withA:andB:` 这种命名，用来表示方法执行了两个相对独立的操作（*从设计上来说，这时候也可以拆分成两个独立的方法*），它不应该用作阐明有多个参数，比如下面的：
 
-  ```objective-c
+  ```objectivec
 //错误，不要使用"and"来连接参数
 - (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;
 //错误，不要使用"and"来阐明有多个参数
@@ -159,7 +159,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
  
 
  
- ```Objective-C
+ ```objectivec
 
     // .m文件
     // http://weibo.com/luohanchenyilong/
@@ -199,7 +199,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 
  
- ```Objective-C
+ ```objectivec
 
 
 	// .h文件
@@ -234,7 +234,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 那么在设计对应 `@property` 时就应该尽量使用不可变的对象：其三个属性都应该设为“只读”。用初始化方法设置好属性值之后，就不能再改变了。在本例中，仍需声明属性的“内存管理语义”。于是可以把属性的定义改成这样
 
 
- ```Objective-C
+ ```objectivec
         @property (nonatomic, readonly, copy) NSString *name;
         @property (nonatomic, readonly, assign) NSUInteger age;
         @property (nonatomic, readonly, assign) CYLSex sex;
@@ -248,7 +248,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
  12. 第二个 `@property` 中 assign 和 nonatomic 调换位置。
  推荐按照下面的格式来定义属性
 
- ```Objective-C
+ ```objectivec
 @property (nonatomic, readwrite, copy) NSString *name;
  ```
  属性的参数应该按照下面的顺序排列： 原子性，读写 和 内存管理。 这样做你的属性更容易修改正确，并且更好阅读。这在[《禅与Objective-C编程艺术 >》](https://github.com/oa414/objc-zen-book-cn#属性定义)里有介绍。而且习惯上修改某个属性的修饰符时，一般从属性名从右向左搜索需要修动的修饰符。最可能从最右边开始修改这些属性的修饰符，根据经验这些修饰符被修改的可能性从高到底应为：内存管理 > 读写权限 >原子操作。
@@ -293,7 +293,7 @@ NSlnteger 等)的简单赋值操作。
 
   block 使用 copy 是从 MRC 遗留下来的“传统”,在 MRC 中,方法内部的 block 是在栈区的,使用 copy 可以把它放到堆区.在 ARC 中写不写都行：对于 block 使用 copy 还是 strong 效果是一样的，但写上 copy 也无伤大雅，还能时刻提醒我们：编译器自动对 block 进行了 copy 操作。如果不写 copy ，该类的调用者有可能会忘记或者根本不知道“编译器会自动对 block 进行了 copy 操作”，他们有可能会在调用之前自行拷贝属性值。这种操作多余而低效。你也许会感觉我这种做法有些怪异，不需要写依然写。如果你这样想，其实是你“日用而不知”，你平时开发中是经常在用我说的这种做法的，比如下面的属性不写copy也行，但是你会选择写还是不写呢？
 
- ```Objective-C
+ ```objectivec
  @property (nonatomic, copy) NSString *userId;
 
  - (instancetype)initWithUserId:(NSString *)userId {
@@ -328,7 +328,7 @@ NSlnteger 等)的简单赋值操作。
 
  
  
-```Objective-C
+```objectivec
 // .h文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -338,7 +338,7 @@ NSlnteger 等)的简单赋值操作。
 ```
 
 
-```Objective-C
+```objectivec
 // .m文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -352,7 +352,7 @@ self.mutableArray = array;
 接下来就会奔溃：
 
  
-```Objective-C
+```objectivec
  -[__NSArrayI removeObjectAtIndex:]: unrecognized selector sent to instance 0x7fcd1bc30460
 ```
 
@@ -384,7 +384,7 @@ self.mutableArray = array;
  1. 需声明该类遵从 NSCopying 协议
  2. 实现 NSCopying 协议。该协议只有一个方法: 
 
- ```Objective-C
+ ```objectivec
 - (id)copyWithZone:(NSZone *)zone;
 ```
 注意：一提到让自己的类用 copy 修饰符，我们总是想覆写copy方法，其实真正需要实现的却是 “copyWithZone” 方法。
@@ -392,7 +392,7 @@ self.mutableArray = array;
 以第一题的代码为例：
    
 
- ```Objective-C
+ ```objectivec
 	// .h文件
 	// http://weibo.com/luohanchenyilong/
 	// https://github.com/ChenYilong
@@ -419,7 +419,7 @@ self.mutableArray = array;
 然后实现协议中规定的方法：
 
  
-```Objective-C
+```objectivec
 - (id)copyWithZone:(NSZone *)zone {
 	CYLUser *copy = [[[self class] allocWithZone:zone] 
 		             initWithName:_name
@@ -430,7 +430,7 @@ self.mutableArray = array;
 ```
 但在实际的项目中，不可能这么简单，遇到更复杂一点，比如类对象中的数据结构可能并未在初始化方法中设置好，需要另行设置。举个例子，假如 CYLUser 中含有一个数组，与其他 CYLUser 对象建立或解除朋友关系的那些方法都需要操作这个数组。那么在这种情况下，你得把这个包含朋友对象的数组也一并拷贝过来。下面列出了实现此功能所需的全部代码:
 
-```Objective-C
+```objectivec
 // .h文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -459,7 +459,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 
 
- ```Objective-C
+ ```objectivec
 // .m文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -525,7 +525,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 在例子中，存放朋友对象的 set 是用 “copyWithZone:” 方法来拷贝的，这种浅拷贝方式不会逐个复制 set 中的元素。若需要深拷贝的话，则可像下面这样，编写一个专供深拷贝所用的方法:
 	
 
- ```Objective-C
+ ```objectivec
 - (id)deepCopy {
     CYLUser *copy = [[[self class] alloc]
                      initWithName:_name
@@ -545,7 +545,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 
  
-```Objective-C
+```objectivec
 - (void)setName:(NSString *)name {
     //[_name release];
     _name = [name copy];
@@ -555,7 +555,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 不过也有争议，有人说“苹果如果像下面这样干，是不是效率会高一些？”
 
 
- ```Objective-C
+ ```objectivec
 - (void)setName:(NSString *)name {
     if (_name != name) {
         //[_name release];//MRC
@@ -596,7 +596,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 要回答“哪个效率会高一些？”这个问题，不能脱离实际开发，就算 copy 操作十分耗时，if 判断也不见得一定会更快，除非你把一个“ @property他当前的值 ”赋给了他自己，代码看起来就像：
 
-```Objective-C
+```objectivec
 [a setX:x1];
 [a setX:x1];    //你确定你要这么干？与其在setter中判断，为什么不把代码写好？
 ```
@@ -604,7 +604,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 或者
 
 
-```Objective-C
+```objectivec
 [a setX:[a x]];   //队友咆哮道：你在干嘛？！！
 ```
 
@@ -616,7 +616,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 例如，车速可能就有最高速的限制，车速也不可能出现负值，如果车子的最高速为300，则 setter 的方法就要改写成这样：
 
  
-```Objective-C
+```objectivec
 -(void)setSpeed:(int)_speed{
     if(_speed < 0) speed = 0;
     if(_speed > 300) speed = 300;
@@ -630,7 +630,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 那如何确保 name 被 copy？在初始化方法(initializer)中做：
 
- ```Objective-C
+ ```objectivec
 	- (instancetype)initWithName:(NSString *)name 
 								 age:(NSUInteger)age 
 								 sex:(CYLSex)sex {
@@ -670,7 +670,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 
 
- ```Objective-C
+ ```objectivec
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -682,7 +682,7 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 
 
- ```Objective-C
+ ```objectivec
 @interface Person : NSObject
 - (NSString *)firstName;
 - (void)setFirstName:(NSString *)firstName;
@@ -695,13 +695,13 @@ typedef NS_ENUM(NSInteger, CYLSex) {
 
 property在runtime中是`objc_property_t`定义如下:
 
-```objective-c
+```objectivec
 typedef struct objc_property *objc_property_t;
 ```
 
 而`objc_property`是一个结构体，包括name和attributes，定义如下：
 
-```objective-c
+```objectivec
 struct property_t {
     const char *name;
     const char *attributes;
@@ -710,7 +710,7 @@ struct property_t {
 
 而attributes本质是`objc_property_attribute_t`，定义了property的一些属性，定义如下：
 
-```objective-c
+```objectivec
 /// Defines a property attribute
 typedef struct {
     const char *name;           /**< The name of the attribute */
@@ -737,7 +737,7 @@ typedef struct {
 
 
 
- ```Objective-C
+ ```objectivec
 @implementation Person
 @synthesize firstName = _myFirstName;
 @synthesize lastName = _myLastName;
@@ -780,7 +780,7 @@ typedef struct {
 先看下 runtime 里源码的实现：
 
 
- ```Objective-C
+ ```objectivec
 /**
  * The internal structure stored in the weak references table. 
  * It maintains and stores
@@ -840,7 +840,7 @@ struct weak_table_t {
 
 
  
-```Objective-C
+```objectivec
 // 使用伪代码模拟：runtime如何实现weak属性
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -863,7 +863,7 @@ struct weak_table_t {
 
 
  
-```Objective-C
+```objectivec
 obj1 = 0；
 obj_storeWeak(&obj1, obj);
 ```
@@ -883,7 +883,7 @@ obj_storeWeak(&obj1, obj);
 
 
 
-```Objective-C
+```objectivec
 // 使用伪代码模拟：runtime如何实现weak属性
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -907,7 +907,7 @@ objc_storeWeak(&obj1, 0);
 
 （注意以下的 `cyl_runAtDealloc` 方法实现仅仅用于模拟原理，如果想用于项目中，还需要考虑更复杂的场景，想在实际项目使用的话，可以使用我写的一个小库，可以使用 CocoaPods 在项目中使用： [CYLDeallocBlockExecutor](https://github.com/ChenYilong/CYLDeallocBlockExecutor) ）
 
- ```Objective-C
+ ```objectivec
 - (void)setObject:(NSObject *)object
 {
     objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
@@ -922,13 +922,13 @@ objc_storeWeak(&obj1, 0);
  1. 在setter方法中做如下设置：
 
 
- ```Objective-C
+ ```objectivec
         objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
  ```
 
  2. 在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。做到这点，同样要借助 runtime：
  
- ```Objective-C
+ ```objectivec
 //要销毁的目标对象
 id objectToBeDeallocated;
 //可以理解为一个“事件”：当上面的目标对象销毁时，同时要发生的“事件”。
@@ -945,7 +945,7 @@ objc_setAssociatedObject(objectToBeDeallocted,
 
 // .h文件
 
- ```Objective-C
+ ```objectivec
 // .h文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -962,7 +962,7 @@ typedef void (^voidBlock)(void);
 
 // .m文件
 
- ```Objective-C
+ ```objectivec
 // .m文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -996,7 +996,7 @@ typedef void (^voidBlock)(void);
 
 第二部分：核心代码：利用runtime实现`cyl_runAtDealloc`方法
 
- ```Objective-C
+ ```objectivec
 // CYLNSObject+RunAtDealloc.h文件
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -1042,14 +1042,14 @@ const void *runAtDeallocBlockKey = &runAtDeallocBlockKey;
 导入
 
 
- ```Objective-C
+ ```objectivec
     #import "CYLNSObject+RunAtDealloc.h"
  ```
 
 然后就可以使用了：
 
 
- ```Objective-C
+ ```objectivec
 NSObject *foo = [[NSObject alloc] init];
 
 [foo cyl_runAtDealloc:^{
@@ -1077,7 +1077,7 @@ NSObject *foo = [[NSObject alloc] init];
   `getter=<name>`的样式：
 
 
- ```Objective-C
+ ```objectivec
         @property (nonatomic, getter=isOn) BOOL on;
  ```
  <p><del>（ `setter=<name>`这种不常用，也不推荐使用。故不在这里给出写法。）
@@ -1092,7 +1092,7 @@ NSObject *foo = [[NSObject alloc] init];
 这时你就可以使用下面的方式来避免编译器报错：
 
 
- ```Objective-C
+ ```objectivec
 @property(nonatomic, strong, getter=p_initBy, setter=setP_initBy:)NSString *initBy;
 
  ```
@@ -1100,7 +1100,7 @@ NSObject *foo = [[NSObject alloc] init];
 
 另外也可以用关键字进行特殊说明，来避免编译器报错：
 
- ```Objective-C
+ ```objectivec
 @property(nonatomic, readwrite, copy, null_resettable) NSString *initBy;
 - (NSString *)initBy __attribute__((objc_method_family(none)));
  ```
@@ -1112,7 +1112,7 @@ NSObject *foo = [[NSObject alloc] init];
 “同步锁”。其实在属性设置方法中使用的是自旋锁，自旋锁相关代码如下：
 
 
- ```Objective-C
+ ```objectivec
 static inline void reallySetProperty(id self, SEL _cmd, id newValue, ptrdiff_t offset, bool atomic, bool copy, bool mutableCopy)
 {
     if (offset == 0) {
@@ -1167,7 +1167,7 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 我们模拟下 weak 的 setter 方法，应该如下：
 
 
- ```Objective-C
+ ```objectivec
 - (void)setObject:(NSObject *)object
 {
     objc_setAssociatedObject(self, "object", object, OBJC_ASSOCIATION_ASSIGN);
@@ -1224,13 +1224,13 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 
 定义一个以 strong 修饰的 array：
 
- ```Objective-C
+ ```objectivec
 @property (nonatomic ,readwrite, strong) NSArray *array;
  ```
 
 然后进行下面的操作：
 
- ```Objective-C
+ ```objectivec
     NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
     NSArray *array = @[ @1, @2, @3, @4 ];
     self.array = mutableArray;
@@ -1245,7 +1245,7 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 
 打印结果如下所示：
 
- ```Objective-C
+ ```objectivec
 2015-09-27 19:10:32.523 CYLArrayCopyDmo[10681:713670] (
 )
 2015-09-27 19:10:32.524 CYLArrayCopyDmo[10681:713670] (
@@ -1277,7 +1277,7 @@ void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL ato
 比如以下代码：
 
 
- ```Objective-C
+ ```objectivec
 NSMutableString *string = [NSMutableString stringWithString:@"origin"];//copy
 NSString *stringCopy = [string copy];
  ```
@@ -1286,7 +1286,7 @@ NSString *stringCopy = [string copy];
 查看内存，会发现 string、stringCopy 内存地址都不一样，说明此时都是做内容拷贝、深拷贝。即使你进行如下操作：
 
 
- ```Objective-C
+ ```objectivec
 [string appendString:@"origion!"]
  ```
 
@@ -1300,7 +1300,7 @@ stringCopy 的值也不会因此改变，但是如果不使用 copy，stringCopy
 
 集合类对象是指 NSArray、NSDictionary、NSSet ... 之类的对象。下面先看集合类immutable对象使用 copy 和 mutableCopy 的一个例子：
 
- ```Objective-C
+ ```objectivec
 NSArray *array = @[@[@"a", @"b"], @[@"c", @"d"]];
 NSArray *copyArray = [array copy];
 NSMutableArray *mCopyArray = [array mutableCopy];
@@ -1309,7 +1309,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 查看内容，可以看到 copyArray 和 array 的地址是一样的，而 mCopyArray 和 array 的地址是不同的。说明 copy 操作进行了指针拷贝，mutableCopy 进行了内容拷贝。但需要强调的是：此处的内容拷贝，仅仅是拷贝 array 这个对象，array 集合内部的元素仍然是指针拷贝。这和上面的非集合 immutable 对象的拷贝还是挺相似的，那么mutable对象的拷贝会不会类似呢？我们继续往下，看 mutable 对象拷贝的例子：
 
 
- ```Objective-C
+ ```objectivec
 NSMutableArray *array = [NSMutableArray arrayWithObjects:[NSMutableString stringWithString:@"a"],@"b",@"c",nil];
 NSArray *copyArray = [array copy];
 NSMutableArray *mCopyArray = [array mutableCopy];
@@ -1321,7 +1321,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 在集合类对象中，对 immutable 对象进行 copy，是指针复制， mutableCopy 是内容复制；对 mutable 对象进行 copy 和 mutableCopy 都是内容复制。但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制。用代码简单表示如下：
 
 
- ```Objective-C
+ ```objectivec
 [immutableObject copy] // 浅复制
 [immutableObject mutableCopy] //单层深复制
 [mutableObject copy] //单层深复制
@@ -1348,7 +1348,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 如果使用了属性的话，那么编译器就会自动编写访问属性所需的方法，此过程叫做“自动合成”( auto synthesis)。需要强调的是，这个过程由编译器在编译期执行，所以编辑器里看不到这些“合成方法” (synthesized method)的源代码。除了生成方法代码之外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前面加下划线，以此作为实例变量的名字。
 
  
-```Objective-C
+```objectivec
 @interface CYLPerson : NSObject 
 @property NSString *firstName; 
 @property NSString *lastName; 
@@ -1359,7 +1359,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 在上例中，会生成两个实例变量，其名称分别为
  `_firstName` 与 `_lastName`。也可以在类的实现代码里通过 `@synthesize` 语法来指定实例变量的名字:
  
-```Objective-C
+```objectivec
 @implementation CYLPerson 
 @synthesize firstName = _myFirstName; 
 @synthesize lastName = _myLastName; 
@@ -1411,7 +1411,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 
 可以在类的实现代码里通过 `@synthesize` 语法来指定实例变量的名字:
  
-```Objective-C
+```objectivec
 @implementation CYLPerson 
 @synthesize firstName = _myFirstName; 
 @synthesize lastName = _myLastName; 
@@ -1427,7 +1427,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
 举例说明：应用场景：
 
 
- ```Objective-C
+ ```objectivec
 
 //
 // .m文件
@@ -1482,7 +1482,7 @@ NSMutableArray *mCopyArray = [array mutableCopy];
  1. 如果一个方法返回值是一个对象，那么发送给nil的消息将返回0(nil)。例如：  
 
  
- ```Objective-C
+ ```objectivec
 Person * motherInlaw = [[aPerson spouse] mother];
 ```
 
@@ -1502,7 +1502,7 @@ Person * motherInlaw = [[aPerson spouse] mother];
 
 
  
-```Objective-C
+```objectivec
 // runtime.h（类在runtime中的定义）
 // http://weibo.com/luohanchenyilong/
 // https://github.com/ChenYilong
@@ -1534,7 +1534,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 以下面的代码为例，由于 clang 后的代码达到了10万多行，为了便于区分，添加了一个叫 iOSinit 方法，
 
-```Objective-C
+```objectivec
 //
 //  main.m
 //  http://weibo.com/luohanchenyilong/
@@ -1556,7 +1556,7 @@ int main(int argc, char * argv[]) {
 
 在终端中输入
 
-```Objective-C
+```objectivec
 clang -rewrite-objc main.m
 ```
 就可以生成一个`main.cpp`的文件，在最低端（10万4千行左右）
@@ -1566,7 +1566,7 @@ clang -rewrite-objc main.m
 我们可以看到大概是这样的：
 
  
-```Objective-C
+```objectivec
 ((void ()(id, SEL))(void )objc_msgSend)((id)obj, sel_registerName("foo"));
 ```
 
@@ -1654,7 +1654,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 
 
- ```Objective-C
+ ```objectivec
 	@implementation Son : Father
 	- (id)init
 	{
@@ -1695,7 +1695,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 点语法（ `self.iVar` ）的坏处就是子类有可能覆写 setter 。假设 Person 有一个子类叫 ChenPerson，这个子类专门表示那些姓“陈”的人。该子类可能会覆写 lastName 属性所对应的设置方法：
 
- ```Objective-C
+ ```objectivec
 //
 //  ChenPerson.m
 //  
@@ -1747,7 +1747,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 如果基类的代码是这样的：
 
 
- ```Objective-C
+ ```objectivec
 //
 //  Person.m
 //  nil对象调用点语法
@@ -1782,7 +1782,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 那么打印结果将会是这样的：
 
- ```Objective-C
+ ```objectivec
  🔴类名与方法名：-[ChenPerson setLastName:]（在第36行），描述：会调用这个方法,想一下为什么？
  🔴类名与方法名：-[ChenPerson init]（在第19行），描述：ChenPerson
  🔴类名与方法名：-[ChenPerson init]（在第20行），描述：ChenPerson
@@ -1794,14 +1794,14 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 接下来让我们利用 runtime 的相关知识来验证一下 super 关键字的本质，使用clang重写命令:
 
 
- ```Objective-C
+ ```objectivec
 	$ clang -rewrite-objc test.m
  ```
 
 将这道题目中给出的代码被转化为:
 
 
- ```Objective-C
+ ```objectivec
     NSLog((NSString *)&__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_0, NSStringFromClass(((Class (*)(id, SEL))(void *)objc_msgSend)((id)self, sel_registerName("class"))));
 
     NSLog((NSString *)&__NSConstantStringImpl__var_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_a5cecc_mi_1, NSStringFromClass(((Class (*)(__rw_objc_super *, SEL))(void *)objc_msgSendSuper)((__rw_objc_super){ (id)self, (id)class_getSuperclass(objc_getClass("Son")) }, sel_registerName("class"))));
@@ -1810,7 +1810,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 从上面的代码中，我们可以发现在调用 [self class] 时，会转化成 `objc_msgSend`函数。看下函数定义：
 
 
- ```Objective-C
+ ```objectivec
 	id objc_msgSend(id self, SEL op, ...)
  ```
 我们把 self 做为第一个参数传递进去。
@@ -1818,14 +1818,14 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 而在调用 [super class]时，会转化成 `objc_msgSendSuper`函数。看下函数定义:
 
 
- ```Objective-C
+ ```objectivec
 	id objc_msgSendSuper(struct objc_super *super, SEL op, ...)
  ```
 
 第一个参数是 `objc_super` 这样一个结构体，其定义如下:
 
 
- ```Objective-C
+ ```objectivec
 struct objc_super {
 	   __unsafe_unretained id receiver;
 	   __unsafe_unretained Class super_class;
@@ -1839,7 +1839,7 @@ struct objc_super {
 objc Runtime开源代码对- (Class)class方法的实现:
 
 
- ```Objective-C
+ ```objectivec
 - (Class)class {
     return object_getClass(self);
 }
@@ -1872,7 +1872,7 @@ objc Runtime开源代码对- (Class)class方法的实现:
 
 
  
-```Objective-C
+```objectivec
 // 在MRC下，使用runtime Associate方法关联的对象，不需要在主对象dealloc的时候释放
 // http://weibo.com/luohanchenyilong/ (微博@iOS程序犭袁)
 // https://github.com/ChenYilong
