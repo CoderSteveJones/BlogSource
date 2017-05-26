@@ -22,21 +22,21 @@ openssl req -new -key private_key.pem -out rsaCerReq.csr
 openssl x509 -req -days 3650 -in rsaCerReq.csr -signkey private_key.pem -out rsaCert.crt
 ```
 
-#####4. 生成供iOS使用的公钥文件`public_key.der`
+##### 4. 生成供iOS使用的公钥文件`public_key.der`
 ```objectivec
 openssl x509 -outform der -in rsaCert.crt -out public_key.der
 ```
-#####5. 生成供iOS使用的私钥文件`private_key.p12`
+##### 5. 生成供iOS使用的私钥文件`private_key.p12`
 ```objectivec
 openssl pkcs12 -export -out private_key.p12 -inkey private_key.pem -in rsaCert.crt
 ```
 **注意：这一步会提示给私钥文件设置密码，直接输入想要设置密码即可，然后敲回车，然后再验证刚才设置的密码，再次输入密码，然后敲回车，完毕！
 在解密时，`private_key.p12`文件需要和这里设置的密码配合使用，因此需要牢记此密码.**
-#####6. 生成供Java使用的公钥`rsa_public_key.pem`
+##### 6. 生成供Java使用的公钥`rsa_public_key.pem`
 ```objectivec
 openssl rsa -in private_key.pem -out rsa_public_key.pem -pubout
 ```
-#####7. 生成供Java使用的私钥`pkcs8_private_key.pem`
+##### 7. 生成供Java使用的私钥`pkcs8_private_key.pem`
 ```objectivec
 openssl pkcs8 -topk8 -in private_key.pem -out pkcs8_private_key.pem -nocrypt
 ```
@@ -44,13 +44,13 @@ openssl pkcs8 -topk8 -in private_key.pem -out pkcs8_private_key.pem -nocrypt
 ![图1](http://upload-images.jianshu.io/upload_images/1803339-3ef995aa667e40f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-#二、将文件导入工程使用
-#####1.新建工程, 并导入`Security.framework`框架, 如下图:
+# 二、将文件导入工程使用
+##### 1.新建工程, 并导入`Security.framework`框架, 如下图:
 ![图2](http://upload-images.jianshu.io/upload_images/1803339-37dfec3dba887d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-####2.导入秘钥文件
+#### 2.导入秘钥文件
 导入`.der`和`.p12`格式的秘钥文件, 如下图:
 ![图2](http://upload-images.jianshu.io/upload_images/1803339-5e13a7e8dc3f7027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#####3.新建用于加密、解密的类RSAEncryptor, 并实现相关方法
+##### 3.新建用于加密、解密的类RSAEncryptor, 并实现相关方法
 
 新建`RSAEncryptor`类, 如下图:
 ![图3](http://upload-images.jianshu.io/upload_images/1803339-dba6f10fd9a54973.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -546,7 +546,7 @@ static NSData *base64_decode(NSString *str){
 
 @end
 ```
-#####4. 测试加密、解密
+##### 4. 测试加密、解密
 
 首先先测试使用`.der`和`.p12`秘钥文件进行加密、解密, 在`ViewController.m`中进行测试, 代码如下:
 
