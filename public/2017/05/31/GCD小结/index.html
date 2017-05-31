@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            GCD小结 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="GCD小结 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tip1-线程、任务和队列的概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">Tip1.线程、任务和队列的概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tip2-异步、同步-amp-并行、串行的特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">Tip2.异步、同步 & 并行、串行的特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结：一条重要的准则"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结：一条重要的准则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码："><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果："><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤图"><span class="post-toc-number">3.0.4.</span> <span class="post-toc-text">步骤图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#（二）异步执行-串行队列"><span class="post-toc-number">4.</span> <span class="post-toc-text">（二）异步执行 + 串行队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码：-1"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果：-1"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释-1"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">解释:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤图-1"><span class="post-toc-number">4.0.4.</span> <span class="post-toc-text">步骤图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#（三）同步执行-并行队列"><span class="post-toc-number">5.</span> <span class="post-toc-text">（三）同步执行 + 并行队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码：-2"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果：-2"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤图-2"><span class="post-toc-number">5.0.3.</span> <span class="post-toc-text">步骤图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#（四）同步执行-串行队列"><span class="post-toc-number">6.</span> <span class="post-toc-text">（四）同步执行+ 串行队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码：-3"><span class="post-toc-number">6.0.1.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果：-3"><span class="post-toc-number">6.0.2.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释-2"><span class="post-toc-number">6.0.3.</span> <span class="post-toc-text">解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码：-4"><span class="post-toc-number">6.0.4.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果：-4"><span class="post-toc-number">6.0.5.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释-3"><span class="post-toc-number">6.0.6.</span> <span class="post-toc-text">解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤图-3"><span class="post-toc-number">6.0.7.</span> <span class="post-toc-text">步骤图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码：-5"><span class="post-toc-number">6.0.8.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印结果：-5"><span class="post-toc-number">6.0.9.</span> <span class="post-toc-text">打印结果：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释-4"><span class="post-toc-number">6.0.10.</span> <span class="post-toc-text">解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤图-4"><span class="post-toc-number">6.0.11.</span> <span class="post-toc-text">步骤图</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#end"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">end.</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                GCD小结
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>5月 31, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GCD小结&url=http://yoursite.com//2017/05/31/GCD小结/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GCD小结&url=http://yoursite.com//2017/05/31/GCD小结/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/05/31/GCD小结/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/05/31/GCD小结/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Tip1-线程、任务和队列的概念"><a href="#Tip1-线程、任务和队列的概念" class="headerlink" title="Tip1.线程、任务和队列的概念"></a>Tip1.线程、任务和队列的概念</h2><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_1.png" alt="图一"></p>
+<h2 id="Tip2-异步、同步-amp-并行、串行的特点"><a href="#Tip2-异步、同步-amp-并行、串行的特点" class="headerlink" title="Tip2.异步、同步 &amp; 并行、串行的特点"></a>Tip2.异步、同步 &amp; 并行、串行的特点</h2><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_2.png" alt="图二"></p>
+<h2 id="小结：一条重要的准则"><a href="#小结：一条重要的准则" class="headerlink" title="小结：一条重要的准则"></a>小结：一条重要的准则</h2><p>一般来说，我们使用GCD的最大目的是在新的线程中同时执行多个任务，这意味着我们需要两项条件：</p>
+<ul>
+<li>能开启新的线程</li>
+<li>任务可以同时执行<blockquote>
+<p>结合以上两个条件，也就等价“开启新线程的能力 + 任务同步执行的权利”，只有在满足能力与权利这两个条件的前提下，我们才可以在同时执行多个任务。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_3.png" alt="图三"></p>
+<p>##（一）异步执行 + 并行队列</p>
+<h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//异步执行 + 并行队列</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>asyncConcurrent<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//创建一个并行队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token string">"标识符"</span><span class="token punctuation">,</span> DISPATCH_QUEUE_CONCURRENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//使用异步函数封装三个任务</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果："><a href="#打印结果：" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec"> <span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+  <span class="token operator">--</span><span class="token operator">-</span>end<span class="token operator">--</span><span class="token operator">-</span>
+  任务<span class="token number">3</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x600000070f00</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+  任务<span class="token number">2</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x600000070d80</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+  任务<span class="token number">1</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000074100</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+</code></pre>
+<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>异步执行意味着<ul>
+<li>可以开启新的线程</li>
+<li>任务可以先绕过不执行，回头再来执行</li>
+</ul>
+</li>
+<li>并行队列意味着<ul>
+<li>任务之间不需要排队，且具有同时被执行的“权利”</li>
+</ul>
+</li>
+<li>两者组合后的结果<ul>
+<li>开了三个新线程</li>
+<li>函数在执行时，先打印了start和end，再回头执行这三个任务</li>
+<li>这三个任务是同时执行的，没有先后，所以打印结果是“任务3–&gt;任务2–&gt;任务1”</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤图"><a href="#步骤图" class="headerlink" title="步骤图"></a>步骤图</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_4.png" alt="图四"></p>
+<h2 id="（二）异步执行-串行队列"><a href="#（二）异步执行-串行队列" class="headerlink" title="（二）异步执行 + 串行队列"></a>（二）异步执行 + 串行队列</h2><h4 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//异步执行 + 串行队列</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>asyncSerial<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//创建一个串行队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token string">"标识符"</span><span class="token punctuation">,</span> DISPATCH_QUEUE_SERIAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//使用异步函数封装三个任务</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果：-1"><a href="#打印结果：-1" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+ <span class="token operator">--</span><span class="token operator">-</span>end<span class="token operator">--</span><span class="token operator">-</span>
+任务<span class="token number">1</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000078480</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+任务<span class="token number">2</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000078480</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+任务<span class="token number">3</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000078480</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">}</span>
+</code></pre>
+<h4 id="解释-1"><a href="#解释-1" class="headerlink" title="解释:"></a>解释:</h4><ul>
+<li>异步执行意味着<ul>
+<li>可以开启新的线程</li>
+<li>任务可以先绕过不执行，回头再来执行</li>
+</ul>
+</li>
+<li>串行队列意味着<ul>
+<li>任务必须按添加进队列的顺序挨个执行</li>
+</ul>
+</li>
+<li>两者组合后的结果<ul>
+<li>开了一个新的子线程</li>
+<li>函数在执行时，先打印了start和end，再回头执行这三个任务</li>
+<li>这三个任务是按顺序执行的，所以打印结果是“任务1–&gt;任务2–&gt;任务3”</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤图-1"><a href="#步骤图-1" class="headerlink" title="步骤图"></a>步骤图</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_5.png" alt="图五"></p>
+<h2 id="（三）同步执行-并行队列"><a href="#（三）同步执行-并行队列" class="headerlink" title="（三）同步执行 + 并行队列"></a>（三）同步执行 + 并行队列</h2><h4 id="实现代码：-2"><a href="#实现代码：-2" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//同步执行 + 并行队列</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>syncConcurrent<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//创建一个并行队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token string">"标识符"</span><span class="token punctuation">,</span> DISPATCH_QUEUE_CONCURRENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//使用同步函数封装三个任务</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果：-2"><a href="#打印结果：-2" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec">  <span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+  任务<span class="token number">1</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+  任务<span class="token number">2</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+  任务<span class="token number">3</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+  <span class="token operator">--</span><span class="token operator">-</span>end<span class="token operator">--</span><span class="token operator">-</span>
+</code></pre>
+<ul>
+<li>同步执行执行意味着<ul>
+<li>不能开启新的线程</li>
+<li>任务创建后必须执行完才能往下走</li>
+</ul>
+</li>
+<li>并行队列意味着<ul>
+<li>任务之间不需要排队，且具有同时被执行的“”</li>
+</ul>
+</li>
+<li>两者组合后的结果<ul>
+<li>所有任务都只能在主线程中执行</li>
+<li>函数在执行时，必须按照代码的书写顺序一行一行地执行完才能继续</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li>在这里即便是并行队列，任务可以同时执行，但是由于只存在一个主线程，所以没法把任务分发到不同的线程去同步处理，其结果就是只能在主线程里按顺序挨个挨个执行了</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤图-2"><a href="#步骤图-2" class="headerlink" title="步骤图"></a>步骤图</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_6.png" alt="图六"></p>
+<h2 id="（四）同步执行-串行队列"><a href="#（四）同步执行-串行队列" class="headerlink" title="（四）同步执行+ 串行队列"></a>（四）同步执行+ 串行队列</h2><h4 id="实现代码：-3"><a href="#实现代码：-3" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>syncSerial<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//创建一个串行队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token string">"标识符"</span><span class="token punctuation">,</span> DISPATCH_QUEUE_SERIAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//使用异步函数封装三个任务</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果：-3"><a href="#打印结果：-3" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+任务<span class="token number">1</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+任务<span class="token number">2</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+任务<span class="token number">3</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x608000065400</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+<span class="token operator">--</span><span class="token operator">-</span>end<span class="token operator">--</span><span class="token operator">-</span>
+</code></pre>
+<h4 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>这里的执行原理和步骤图跟“同步执行+并发队列”是一样的，只要是同步执行就没法开启新的线程，所以多个任务之间也一样只能按顺序来执行</li>
+</ul>
+<p>##（五）异步执行+主队列</p>
+<h4 id="实现代码：-4"><a href="#实现代码：-4" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>asyncMain<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取主队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//使用异步函数封装三个任务</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果：-4"><a href="#打印结果：-4" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec">  <span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+  <span class="token operator">--</span><span class="token operator">-</span>end<span class="token operator">--</span><span class="token operator">-</span>
+  任务<span class="token number">1</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x60800006ff40</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+  任务<span class="token number">2</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x60800006ff40</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+  任务<span class="token number">3</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&lt;</span>NSThread<span class="token punctuation">:</span> <span class="token number">0x60800006ff40</span><span class="token operator">></span><span class="token punctuation">{</span>number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> main<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>异步执行意味着<ul>
+<li>可以开启新的线程</li>
+<li>任务可以先绕过不执行，回头再来执行</li>
+</ul>
+</li>
+<li>主队列跟串行队列的区别<ul>
+<li>队列中的任务一样要按顺序执行</li>
+<li>主队列中的任务必须在主线程中执行，不允许在子线程中执行</li>
+</ul>
+</li>
+<li>以上条件组合后得出结果：<ul>
+<li>所有任务都可以先跳过，之后再来“按顺序”执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤图-3"><a href="#步骤图-3" class="headerlink" title="步骤图"></a>步骤图</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_7.png" alt="图七"></p>
+<p>##（六）同步执行+主队列（死锁）</p>
+<h4 id="实现代码：-5"><a href="#实现代码：-5" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>syncMain<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取主队列</span>
+    dispatch_queue_t queue <span class="token operator">=</span> <span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---start---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//使用同步函数封装三个任务</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务1---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务2---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dispatch_sync</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"任务3---%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSThread currentThread<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"---end---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="打印结果：-5"><a href="#打印结果：-5" class="headerlink" title="打印结果："></a>打印结果：</h4><pre class=" language-objectivec"><code class="language-objectivec">  <span class="token operator">--</span><span class="token operator">-</span>start<span class="token operator">--</span><span class="token operator">-</span>
+</code></pre>
+<h4 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>主队列中的任务必须按顺序挨个执行</li>
+<li>任务1要等主线程有空的时候（即主队列中的所有任务执行完）才能执行</li>
+<li>主线程要执行完“打印end”的任务后才有空</li>
+<li>“任务1”和“打印end”两个任务互相等待，造成死锁</li>
+</ul>
+<h4 id="步骤图-4"><a href="#步骤图-4" class="headerlink" title="步骤图"></a>步骤图</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_8.png" alt="图八"></p>
+<h3 id="end"><a href="#end" class="headerlink" title="end."></a>end.</h3>
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/26/RSA加密小结/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                首頁
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    過往
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分類
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主題 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
