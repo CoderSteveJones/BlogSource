@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            iOS常用工具方法 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="iOS常用工具方法 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-获取磁盘总空间大小"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 获取磁盘总空间大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-获取磁盘可用空间大小"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 获取磁盘可用空间大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-获取指定路径下某个文件的大小"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 获取指定路径下某个文件的大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-获取文件夹下所有文件的大小"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 获取文件夹下所有文件的大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-获取字符串-或汉字-首字母"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 获取字符串(或汉字)首字母</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-获取字符串-或汉字-首字母-1"><span class="post-toc-number">6.</span> <span class="post-toc-text">5. 获取字符串(或汉字)首字母</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-将字符串数组按照元素首字母顺序进行排序分组"><span class="post-toc-number">7.</span> <span class="post-toc-text">6. 将字符串数组按照元素首字母顺序进行排序分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用如下"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">使用如下:</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-获取当前时间"><span class="post-toc-number">8.</span> <span class="post-toc-text">7. 获取当前时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-计算上次日期距离现在多久-如-xx-小时前、xx-分钟前等"><span class="post-toc-number">9.</span> <span class="post-toc-text">8. 计算上次日期距离现在多久, 如 xx 小时前、xx 分钟前等</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用如下-1"><span class="post-toc-number">10.</span> <span class="post-toc-text">使用如下:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-判断手机号码格式是否正确"><span class="post-toc-number">11.</span> <span class="post-toc-text">9. 判断手机号码格式是否正确</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-判断邮箱格式是否正确"><span class="post-toc-number">12.</span> <span class="post-toc-text">10. 判断邮箱格式是否正确</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-将十六进制颜色转换为-UIColor-对象"><span class="post-toc-number">13.</span> <span class="post-toc-text">11. 将十六进制颜色转换为 UIColor 对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-对图片进行滤镜处理"><span class="post-toc-number">14.</span> <span class="post-toc-text">12. 对图片进行滤镜处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-对图片进行模糊处理"><span class="post-toc-number">15.</span> <span class="post-toc-text">13. 对图片进行模糊处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-调整图片饱和度、亮度、对比度"><span class="post-toc-number">16.</span> <span class="post-toc-text">14. 调整图片饱和度、亮度、对比度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-创建一张实时模糊效果-View-毛玻璃效果"><span class="post-toc-number">17.</span> <span class="post-toc-text">15. 创建一张实时模糊效果 View (毛玻璃效果)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16-全屏截图"><span class="post-toc-number">18.</span> <span class="post-toc-text">16. 全屏截图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17-截取一张-view-生成图片"><span class="post-toc-number">19.</span> <span class="post-toc-text">17. 截取一张 view 生成图片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#18-截取view中某个区域生成一张图片"><span class="post-toc-number">20.</span> <span class="post-toc-text">18. 截取view中某个区域生成一张图片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#19-压缩图片到指定尺寸大小"><span class="post-toc-number">21.</span> <span class="post-toc-text">19. 压缩图片到指定尺寸大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#20-压缩图片到指定文件大小"><span class="post-toc-number">22.</span> <span class="post-toc-text">20. 压缩图片到指定文件大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#21-获取设备-IP-地址"><span class="post-toc-number">23.</span> <span class="post-toc-text">21. 获取设备 IP 地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#22-判断字符串中是否含有空格"><span class="post-toc-number">24.</span> <span class="post-toc-text">22. 判断字符串中是否含有空格</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#23-判断字符串中是否含有某个字符串"><span class="post-toc-number">25.</span> <span class="post-toc-text">23. 判断字符串中是否含有某个字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#24-判断字符串中是否含有中文"><span class="post-toc-number">26.</span> <span class="post-toc-text">24. 判断字符串中是否含有中文</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#25-判断字符串是否全部为数字"><span class="post-toc-number">27.</span> <span class="post-toc-text">25. 判断字符串是否全部为数字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#26-绘制虚线"><span class="post-toc-number">28.</span> <span class="post-toc-text">26. 绘制虚线</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#27-将字典对象转换为-JSON-字符串"><span class="post-toc-number">29.</span> <span class="post-toc-text">27. 将字典对象转换为 JSON 字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#28-将数组对象转换为-JSON-字符串"><span class="post-toc-number">30.</span> <span class="post-toc-text">28.将数组对象转换为 JSON 字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#29-获取-WiFi-信息"><span class="post-toc-number">31.</span> <span class="post-toc-text">29. 获取 WiFi 信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#30-获取广播地址、本机地址、子网掩码、端口信息"><span class="post-toc-number">32.</span> <span class="post-toc-text">30. 获取广播地址、本机地址、子网掩码、端口信息</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                iOS常用工具方法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 03, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS常用工具方法&url=http://yoursite.com//2017/06/03/iOS常用工具方法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS常用工具方法&url=http://yoursite.com//2017/06/03/iOS常用工具方法/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/03/iOS常用工具方法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/03/iOS常用工具方法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="1-获取磁盘总空间大小"><a href="#1-获取磁盘总空间大小" class="headerlink" title="1. 获取磁盘总空间大小"></a>1. 获取磁盘总空间大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//磁盘总空间</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>diskOfAllSizeMBytes<span class="token punctuation">{</span>
+    CGFloat size <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+    NSDictionary <span class="token operator">*</span>dic <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> attributesOfFileSystemForPath<span class="token punctuation">:</span><span class="token function">NSHomeDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token macro property">#<span class="token directive keyword">ifdef</span> DEBUG</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"error: %@"</span><span class="token punctuation">,</span> error<span class="token punctuation">.</span>localizedDescription<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        NSNumber <span class="token operator">*</span>number <span class="token operator">=</span> <span class="token punctuation">[</span>dic objectForKey<span class="token punctuation">:</span>NSFileSystemSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        size <span class="token operator">=</span> <span class="token punctuation">[</span>number floatValue<span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">1024</span><span class="token operator">/</span><span class="token number">1024</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="2-获取磁盘可用空间大小"><a href="#2-获取磁盘可用空间大小" class="headerlink" title="2. 获取磁盘可用空间大小"></a>2. 获取磁盘可用空间大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//磁盘可用空间</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>diskOfFreeSizeMBytes<span class="token punctuation">{</span>
+    CGFloat size <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+    NSDictionary <span class="token operator">*</span>dic <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> attributesOfFileSystemForPath<span class="token punctuation">:</span><span class="token function">NSHomeDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token macro property">#<span class="token directive keyword">ifdef</span> DEBUG</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"error: %@"</span><span class="token punctuation">,</span> error<span class="token punctuation">.</span>localizedDescription<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        NSNumber <span class="token operator">*</span>number <span class="token operator">=</span> <span class="token punctuation">[</span>dic objectForKey<span class="token punctuation">:</span>NSFileSystemFreeSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        size <span class="token operator">=</span> <span class="token punctuation">[</span>number floatValue<span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">1024</span><span class="token operator">/</span><span class="token number">1024</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="3-获取指定路径下某个文件的大小"><a href="#3-获取指定路径下某个文件的大小" class="headerlink" title="3. 获取指定路径下某个文件的大小"></a>3. 获取指定路径下某个文件的大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取文件大小</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span>fileSizeAtPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>filePath<span class="token punctuation">{</span>
+    NSFileManager <span class="token operator">*</span>fileManager <span class="token operator">=</span> <span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span>fileManager fileExistsAtPath<span class="token punctuation">:</span>filePath<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>fileManager attributesOfItemAtPath<span class="token punctuation">:</span>filePath error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span> fileSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="4-获取文件夹下所有文件的大小"><a href="#4-获取文件夹下所有文件的大小" class="headerlink" title="4. 获取文件夹下所有文件的大小"></a>4. 获取文件夹下所有文件的大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取文件夹下所有文件的大小</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span>folderSizeAtPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>folderPath<span class="token punctuation">{</span>
+    NSFileManager <span class="token operator">*</span>fileManager <span class="token operator">=</span> <span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span>fileManager fileExistsAtPath<span class="token punctuation">:</span>folderPath<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    NSEnumerator <span class="token operator">*</span>filesEnumerator <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>fileManager subpathsAtPath<span class="token punctuation">:</span>folderPath<span class="token punctuation">]</span> objectEnumerator<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>fileName<span class="token punctuation">;</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> folerSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fileName <span class="token operator">=</span> <span class="token punctuation">[</span>filesEnumerator nextObject<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">!=</span> nil<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSString <span class="token operator">*</span>filePath <span class="token operator">=</span> <span class="token punctuation">[</span>folderPath stringByAppendingPathComponent<span class="token punctuation">:</span>fileName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        folerSize <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> fileSizeAtPath<span class="token punctuation">:</span>filePath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> folerSize<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="5-获取字符串-或汉字-首字母"><a href="#5-获取字符串-或汉字-首字母" class="headerlink" title="5. 获取字符串(或汉字)首字母"></a>5. 获取字符串(或汉字)首字母</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取字符串(或汉字)首字母</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>firstCharacterWithString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    NSMutableString <span class="token operator">*</span>str <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span>string<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformMandarinLatin<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformStripDiacritics<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>pingyin <span class="token operator">=</span> <span class="token punctuation">[</span>str capitalizedString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>pingyin substringToIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="5-获取字符串-或汉字-首字母-1"><a href="#5-获取字符串-或汉字-首字母-1" class="headerlink" title="5. 获取字符串(或汉字)首字母"></a>5. 获取字符串(或汉字)首字母</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取字符串(或汉字)首字母</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>firstCharacterWithString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    NSMutableString <span class="token operator">*</span>str <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span>string<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformMandarinLatin<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformStripDiacritics<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>pingyin <span class="token operator">=</span> <span class="token punctuation">[</span>str capitalizedString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>pingyin substringToIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="6-将字符串数组按照元素首字母顺序进行排序分组"><a href="#6-将字符串数组按照元素首字母顺序进行排序分组" class="headerlink" title="6. 将字符串数组按照元素首字母顺序进行排序分组"></a>6. 将字符串数组按照元素首字母顺序进行排序分组</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//将字符串数组按照元素首字母顺序进行排序分组</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>dictionaryOrderByCharacterWithOriginalArray<span class="token punctuation">:</span><span class="token punctuation">(</span>NSArray <span class="token operator">*</span><span class="token punctuation">)</span>array<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>id obj <span class="token keyword">in</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span>obj isKindOfClass<span class="token punctuation">:</span><span class="token punctuation">[</span>NSString class<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    UILocalizedIndexedCollation <span class="token operator">*</span>indexedCollation <span class="token operator">=</span> <span class="token punctuation">[</span>UILocalizedIndexedCollation currentCollation<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSMutableArray <span class="token operator">*</span>objects <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray arrayWithCapacity<span class="token punctuation">:</span>indexedCollation<span class="token punctuation">.</span>sectionTitles<span class="token punctuation">.</span>count<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//创建27个分组数组</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> indexedCollation<span class="token punctuation">.</span>sectionTitles<span class="token punctuation">.</span>count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSMutableArray <span class="token operator">*</span>obj <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray array<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>objects addObject<span class="token punctuation">:</span>obj<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    NSMutableArray <span class="token operator">*</span>keys <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray arrayWithCapacity<span class="token punctuation">:</span>objects<span class="token punctuation">.</span>count<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//按字母顺序进行分组</span>
+    NSInteger lastIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSInteger index <span class="token operator">=</span> <span class="token punctuation">[</span>indexedCollation sectionForObject<span class="token punctuation">:</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> collationStringSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>uppercaseString<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token punctuation">[</span>objects objectAtIndex<span class="token punctuation">:</span>index<span class="token punctuation">]</span> addObject<span class="token punctuation">:</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        lastIndex <span class="token operator">=</span> index<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//去掉空数组</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> objects<span class="token punctuation">.</span>count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSMutableArray <span class="token operator">*</span>obj <span class="token operator">=</span> objects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">[</span>objects removeObject<span class="token punctuation">:</span>obj<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//获取索引字母</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>NSMutableArray <span class="token operator">*</span>obj <span class="token keyword">in</span> objects<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSString <span class="token operator">*</span>str <span class="token operator">=</span> obj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        NSString <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> firstCharacterWithString<span class="token punctuation">:</span>str<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>keys addObject<span class="token punctuation">:</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    NSMutableDictionary <span class="token operator">*</span>dic <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>dic setObject<span class="token punctuation">:</span>objects forKey<span class="token punctuation">:</span>keys<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> dic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//获取字符串(或汉字)首字母</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>firstCharacterWithString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    NSMutableString <span class="token operator">*</span>str <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span>string<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformMandarinLatin<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CFStringTransform</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFMutableStringRef<span class="token punctuation">)</span>str<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> kCFStringTransformStripDiacritics<span class="token punctuation">,</span> NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>pingyin <span class="token operator">=</span> <span class="token punctuation">[</span>str capitalizedString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>pingyin substringToIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="使用如下"><a href="#使用如下" class="headerlink" title="使用如下:"></a>使用如下:</h5><pre class=" language-objectivec"><code class="language-objectivec">NSArray <span class="token operator">*</span>arr <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"guangzhou"</span><span class="token punctuation">,</span> <span class="token string">@"shanghai"</span><span class="token punctuation">,</span> <span class="token string">@"北京"</span><span class="token punctuation">,</span> <span class="token string">@"henan"</span><span class="token punctuation">,</span> <span class="token string">@"hainan"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSDictionary <span class="token operator">*</span>dic <span class="token operator">=</span> <span class="token punctuation">[</span>Utilities dictionaryOrderByCharacterWithOriginalArray<span class="token punctuation">:</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"\n\ndic: %@"</span><span class="token punctuation">,</span> dic<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/1803339-a63d16ad6cccc312.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"></p>
+<h4 id="7-获取当前时间"><a href="#7-获取当前时间" class="headerlink" title="7. 获取当前时间"></a>7. 获取当前时间</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取当前时间</span>
+<span class="token comment" spellcheck="true">//format: @"yyyy-MM-dd HH:mm:ss"、@"yyyy年MM月dd日 HH时mm分ss秒"</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>currentDateWithFormat<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>format<span class="token punctuation">{</span>
+    NSDateFormatter <span class="token operator">*</span>dateFormatter <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>dateFormatter setDateFormat<span class="token punctuation">:</span>format<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>dateFormatter stringFromDate<span class="token punctuation">:</span><span class="token punctuation">[</span>NSDate date<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="8-计算上次日期距离现在多久-如-xx-小时前、xx-分钟前等"><a href="#8-计算上次日期距离现在多久-如-xx-小时前、xx-分钟前等" class="headerlink" title="8. 计算上次日期距离现在多久, 如 xx 小时前、xx 分钟前等"></a>8. 计算上次日期距离现在多久, 如 xx 小时前、xx 分钟前等</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/**
+ *  计算上次日期距离现在多久
+ *
+ *  @param lastTime    上次日期(需要和格式对应)
+ *  @param format1     上次日期格式
+ *  @param currentTime 最近日期(需要和格式对应)
+ *  @param format2     最近日期格式
+ *
+ *  @return xx分钟前、xx小时前、xx天前
+ */</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>timeIntervalFromLastTime<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>lastTime
+                        lastTimeFormat<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>format1
+                         ToCurrentTime<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>currentTime
+                     currentTimeFormat<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>format2<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//上次时间</span>
+    NSDateFormatter <span class="token operator">*</span>dateFormatter1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span>init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    dateFormatter1<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> format1<span class="token punctuation">;</span>
+    NSDate <span class="token operator">*</span>lastDate <span class="token operator">=</span> <span class="token punctuation">[</span>dateFormatter1 dateFromString<span class="token punctuation">:</span>lastTime<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//当前时间</span>
+    NSDateFormatter <span class="token operator">*</span>dateFormatter2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span>init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    dateFormatter2<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> format2<span class="token punctuation">;</span>
+    NSDate <span class="token operator">*</span>currentDate <span class="token operator">=</span> <span class="token punctuation">[</span>dateFormatter2 dateFromString<span class="token punctuation">:</span>currentTime<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>Utilities timeIntervalFromLastTime<span class="token punctuation">:</span>lastDate ToCurrentTime<span class="token punctuation">:</span>currentDate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>timeIntervalFromLastTime<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDate <span class="token operator">*</span><span class="token punctuation">)</span>lastTime ToCurrentTime<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDate <span class="token operator">*</span><span class="token punctuation">)</span>currentTime<span class="token punctuation">{</span>
+    NSTimeZone <span class="token operator">*</span>timeZone <span class="token operator">=</span> <span class="token punctuation">[</span>NSTimeZone systemTimeZone<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//上次时间</span>
+    NSDate <span class="token operator">*</span>lastDate <span class="token operator">=</span> <span class="token punctuation">[</span>lastTime dateByAddingTimeInterval<span class="token punctuation">:</span><span class="token punctuation">[</span>timeZone secondsFromGMTForDate<span class="token punctuation">:</span>lastTime<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//当前时间</span>
+    NSDate <span class="token operator">*</span>currentDate <span class="token operator">=</span> <span class="token punctuation">[</span>currentTime dateByAddingTimeInterval<span class="token punctuation">:</span><span class="token punctuation">[</span>timeZone secondsFromGMTForDate<span class="token punctuation">:</span>currentTime<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//时间间隔</span>
+    NSInteger intevalTime <span class="token operator">=</span> <span class="token punctuation">[</span>currentDate timeIntervalSinceReferenceDate<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token punctuation">[</span>lastDate timeIntervalSinceReferenceDate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//秒、分、小时、天、月、年</span>
+    NSInteger minutes <span class="token operator">=</span> intevalTime <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">;</span>
+    NSInteger hours <span class="token operator">=</span> intevalTime <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">;</span>
+    NSInteger day <span class="token operator">=</span> intevalTime <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">24</span><span class="token punctuation">;</span>
+    NSInteger month <span class="token operator">=</span> intevalTime <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">24</span> <span class="token operator">/</span> <span class="token number">30</span><span class="token punctuation">;</span>
+    NSInteger yers <span class="token operator">=</span> intevalTime <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">60</span> <span class="token operator">/</span> <span class="token number">24</span> <span class="token operator">/</span> <span class="token number">365</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>minutes <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span>  <span class="token string">@"刚刚"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>minutes <span class="token operator">&lt;</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span> <span class="token string">@"%ld分钟前"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span>minutes<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>hours <span class="token operator">&lt;</span> <span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span> <span class="token string">@"%ld小时前"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span>hours<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>day <span class="token operator">&lt;</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span> <span class="token string">@"%ld天前"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span>day<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>month <span class="token operator">&lt;</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        NSDateFormatter <span class="token operator">*</span> df <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span>init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        df<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> <span class="token string">@"M月d日"</span><span class="token punctuation">;</span>
+        NSString <span class="token operator">*</span> time <span class="token operator">=</span> <span class="token punctuation">[</span>df stringFromDate<span class="token punctuation">:</span>lastDate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> time<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>yers <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        NSDateFormatter <span class="token operator">*</span> df <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span>init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        df<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> <span class="token string">@"yyyy年M月d日"</span><span class="token punctuation">;</span>
+        NSString <span class="token operator">*</span> time <span class="token operator">=</span> <span class="token punctuation">[</span>df stringFromDate<span class="token punctuation">:</span>lastDate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> time<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token string">@""</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="使用如下-1"><a href="#使用如下-1" class="headerlink" title="使用如下:"></a>使用如下:</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"\n\nresult: %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Utilities timeIntervalFromLastTime<span class="token punctuation">:</span><span class="token string">@"2015年12月8日 15:50"</span>
+                                           lastTimeFormat<span class="token punctuation">:</span><span class="token string">@"yyyy年MM月dd日 HH:mm"</span>
+                                            ToCurrentTime<span class="token punctuation">:</span><span class="token string">@"2015/12/08 16:12"</span>
+                                        currentTimeFormat<span class="token punctuation">:</span><span class="token string">@"yyyy/MM/dd HH:mm"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>输出结果如下:<br><img src="http://upload-images.jianshu.io/upload_images/1803339-591e3b7e5982b1b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"></p>
+<h4 id="9-判断手机号码格式是否正确"><a href="#9-判断手机号码格式是否正确" class="headerlink" title="9. 判断手机号码格式是否正确"></a>9. 判断手机号码格式是否正确</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//判断手机号码格式是否正确</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>valiMobile<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>mobile<span class="token punctuation">{</span>
+    mobile <span class="token operator">=</span> <span class="token punctuation">[</span>mobile stringByReplacingOccurrencesOfString<span class="token punctuation">:</span><span class="token string">@" "</span> withString<span class="token punctuation">:</span><span class="token string">@""</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mobile<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">11</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/**
+         * 移动号段正则表达式
+         */</span>
+        NSString <span class="token operator">*</span>CM_NUM <span class="token operator">=</span> <span class="token string">@"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         * 联通号段正则表达式
+         */</span>
+        NSString <span class="token operator">*</span>CU_NUM <span class="token operator">=</span> <span class="token string">@"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         * 电信号段正则表达式
+         */</span>
+        NSString <span class="token operator">*</span>CT_NUM <span class="token operator">=</span> <span class="token string">@"^((133)|(153)|(177)|(18[0,1,9]))\\d{8}$"</span><span class="token punctuation">;</span>
+        NSPredicate <span class="token operator">*</span>pred1 <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"SELF MATCHES %@"</span><span class="token punctuation">,</span> CM_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        BOOL isMatch1 <span class="token operator">=</span> <span class="token punctuation">[</span>pred1 evaluateWithObject<span class="token punctuation">:</span>mobile<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        NSPredicate <span class="token operator">*</span>pred2 <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"SELF MATCHES %@"</span><span class="token punctuation">,</span> CU_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        BOOL isMatch2 <span class="token operator">=</span> <span class="token punctuation">[</span>pred2 evaluateWithObject<span class="token punctuation">:</span>mobile<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        NSPredicate <span class="token operator">*</span>pred3 <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"SELF MATCHES %@"</span><span class="token punctuation">,</span> CT_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        BOOL isMatch3 <span class="token operator">=</span> <span class="token punctuation">[</span>pred3 evaluateWithObject<span class="token punctuation">:</span>mobile<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isMatch1 <span class="token operator">||</span> isMatch2 <span class="token operator">||</span> isMatch3<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="10-判断邮箱格式是否正确"><a href="#10-判断邮箱格式是否正确" class="headerlink" title="10. 判断邮箱格式是否正确"></a>10. 判断邮箱格式是否正确</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//利用正则表达式验证</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isAvailableEmail<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>email <span class="token punctuation">{</span>
+    NSString <span class="token operator">*</span>emailRegex <span class="token operator">=</span> <span class="token string">@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"</span><span class="token punctuation">;</span>
+    NSPredicate <span class="token operator">*</span>emailTest <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"SELF MATCHES %@"</span><span class="token punctuation">,</span> emailRegex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>emailTest evaluateWithObject<span class="token punctuation">:</span>email<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="11-将十六进制颜色转换为-UIColor-对象"><a href="#11-将十六进制颜色转换为-UIColor-对象" class="headerlink" title="11. 将十六进制颜色转换为 UIColor 对象"></a>11. 将十六进制颜色转换为 UIColor 对象</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//将十六进制颜色转换为 UIColor 对象</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>colorWithHexString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>color<span class="token punctuation">{</span>
+    NSString <span class="token operator">*</span>cString <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>color stringByTrimmingCharactersInSet<span class="token punctuation">:</span><span class="token punctuation">[</span>NSCharacterSet whitespaceAndNewlineCharacterSet<span class="token punctuation">]</span><span class="token punctuation">]</span> uppercaseString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// String should be 6 or 8 characters</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>cString length<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>UIColor clearColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// strip "0X" or "#" if it appears</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>cString hasPrefix<span class="token punctuation">:</span><span class="token string">@"0X"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        cString <span class="token operator">=</span> <span class="token punctuation">[</span>cString substringFromIndex<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>cString hasPrefix<span class="token punctuation">:</span><span class="token string">@"#"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        cString <span class="token operator">=</span> <span class="token punctuation">[</span>cString substringFromIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>cString length<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>UIColor clearColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Separate into r, g, b substrings</span>
+    NSRange range<span class="token punctuation">;</span>
+    range<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    range<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//r</span>
+    NSString <span class="token operator">*</span>rString <span class="token operator">=</span> <span class="token punctuation">[</span>cString substringWithRange<span class="token punctuation">:</span>range<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//g</span>
+    range<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>gString <span class="token operator">=</span> <span class="token punctuation">[</span>cString substringWithRange<span class="token punctuation">:</span>range<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//b</span>
+    range<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>bString <span class="token operator">=</span> <span class="token punctuation">[</span>cString substringWithRange<span class="token punctuation">:</span>range<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Scan values</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSScanner scannerWithString<span class="token punctuation">:</span>rString<span class="token punctuation">]</span> scanHexInt<span class="token punctuation">:</span><span class="token operator">&amp;</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSScanner scannerWithString<span class="token punctuation">:</span>gString<span class="token punctuation">]</span> scanHexInt<span class="token punctuation">:</span><span class="token operator">&amp;</span>g<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSScanner scannerWithString<span class="token punctuation">:</span>bString<span class="token punctuation">]</span> scanHexInt<span class="token punctuation">:</span><span class="token operator">&amp;</span>b<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>UIColor colorWithRed<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> r <span class="token operator">/</span> <span class="token number">255.0f</span><span class="token punctuation">)</span> green<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> g <span class="token operator">/</span> <span class="token number">255.0f</span><span class="token punctuation">)</span> blue<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> b <span class="token operator">/</span> <span class="token number">255.0f</span><span class="token punctuation">)</span> alpha<span class="token punctuation">:</span><span class="token number">1.0f</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="12-对图片进行滤镜处理"><a href="#12-对图片进行滤镜处理" class="headerlink" title="12. 对图片进行滤镜处理"></a>12. 对图片进行滤镜处理</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">pragma</span> mark - 对图片进行滤镜处理</span>
+<span class="token comment" spellcheck="true">// 怀旧 --> CIPhotoEffectInstant                         单色 --> CIPhotoEffectMono</span>
+<span class="token comment" spellcheck="true">// 黑白 --> CIPhotoEffectNoir                            褪色 --> CIPhotoEffectFade</span>
+<span class="token comment" spellcheck="true">// 色调 --> CIPhotoEffectTonal                           冲印 --> CIPhotoEffectProcess</span>
+<span class="token comment" spellcheck="true">// 岁月 --> CIPhotoEffectTransfer                        铬黄 --> CIPhotoEffectChrome</span>
+<span class="token comment" spellcheck="true">// CILinearToSRGBToneCurve, CISRGBToneCurveToLinear, CIGaussianBlur, CIBoxBlur, CIDiscBlur, CISepiaTone, CIDepthOfField</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>filterWithOriginalImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image filterName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name<span class="token punctuation">{</span>
+    CIContext <span class="token operator">*</span>context <span class="token operator">=</span> <span class="token punctuation">[</span>CIContext contextWithOptions<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIImage <span class="token operator">*</span>inputImage <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CIImage alloc<span class="token punctuation">]</span> initWithImage<span class="token punctuation">:</span>image<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIFilter <span class="token operator">*</span>filter <span class="token operator">=</span> <span class="token punctuation">[</span>CIFilter filterWithName<span class="token punctuation">:</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span>inputImage forKey<span class="token punctuation">:</span>kCIInputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIImage <span class="token operator">*</span>result <span class="token operator">=</span> <span class="token punctuation">[</span>filter valueForKey<span class="token punctuation">:</span>kCIOutputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CGImageRef cgImage <span class="token operator">=</span> <span class="token punctuation">[</span>context createCGImage<span class="token punctuation">:</span>result fromRect<span class="token punctuation">:</span><span class="token punctuation">[</span>result extent<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>resultImage <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageWithCGImage<span class="token punctuation">:</span>cgImage<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>cgImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> resultImage<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="13-对图片进行模糊处理"><a href="#13-对图片进行模糊处理" class="headerlink" title="13. 对图片进行模糊处理"></a>13. 对图片进行模糊处理</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">pragma</span> mark - 对图片进行模糊处理</span>
+<span class="token comment" spellcheck="true">// CIGaussianBlur ---> 高斯模糊</span>
+<span class="token comment" spellcheck="true">// CIBoxBlur      ---> 均值模糊(Available in iOS 9.0 and later)</span>
+<span class="token comment" spellcheck="true">// CIDiscBlur     ---> 环形卷积模糊(Available in iOS 9.0 and later)</span>
+<span class="token comment" spellcheck="true">// CIMedianFilter ---> 中值模糊, 用于消除图像噪点, 无需设置radius(Available in iOS 9.0 and later)</span>
+<span class="token comment" spellcheck="true">// CIMotionBlur   ---> 运动模糊, 用于模拟相机移动拍摄时的扫尾效果(Available in iOS 9.0 and later)</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>blurWithOriginalImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image blurName<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>name radius<span class="token punctuation">:</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">)</span>radius<span class="token punctuation">{</span>
+    CIContext <span class="token operator">*</span>context <span class="token operator">=</span> <span class="token punctuation">[</span>CIContext contextWithOptions<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIImage <span class="token operator">*</span>inputImage <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CIImage alloc<span class="token punctuation">]</span> initWithImage<span class="token punctuation">:</span>image<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIFilter <span class="token operator">*</span>filter<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>name<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        filter <span class="token operator">=</span> <span class="token punctuation">[</span>CIFilter filterWithName<span class="token punctuation">:</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span>inputImage forKey<span class="token punctuation">:</span>kCIInputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span>name isEqualToString<span class="token punctuation">:</span><span class="token string">@"CIMedianFilter"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">(</span>radius<span class="token punctuation">)</span> forKey<span class="token punctuation">:</span><span class="token string">@"inputRadius"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        CIImage <span class="token operator">*</span>result <span class="token operator">=</span> <span class="token punctuation">[</span>filter valueForKey<span class="token punctuation">:</span>kCIOutputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        CGImageRef cgImage <span class="token operator">=</span> <span class="token punctuation">[</span>context createCGImage<span class="token punctuation">:</span>result fromRect<span class="token punctuation">:</span><span class="token punctuation">[</span>result extent<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        UIImage <span class="token operator">*</span>resultImage <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageWithCGImage<span class="token punctuation">:</span>cgImage<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>cgImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> resultImage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="14-调整图片饱和度、亮度、对比度"><a href="#14-调整图片饱和度、亮度、对比度" class="headerlink" title="14. 调整图片饱和度、亮度、对比度"></a>14. 调整图片饱和度、亮度、对比度</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/**
+ *  调整图片饱和度, 亮度, 对比度
+ *
+ *  @param image      目标图片
+ *  @param saturation 饱和度
+ *  @param brightness 亮度: -1.0 ~ 1.0
+ *  @param contrast   对比度
+ *
+ */</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>colorControlsWithOriginalImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image
+                                 saturation<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>saturation
+                                 brightness<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>brightness
+                                   contrast<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>contrast<span class="token punctuation">{</span>
+    CIContext <span class="token operator">*</span>context <span class="token operator">=</span> <span class="token punctuation">[</span>CIContext contextWithOptions<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIImage <span class="token operator">*</span>inputImage <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CIImage alloc<span class="token punctuation">]</span> initWithImage<span class="token punctuation">:</span>image<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CIFilter <span class="token operator">*</span>filter <span class="token operator">=</span> <span class="token punctuation">[</span>CIFilter filterWithName<span class="token punctuation">:</span><span class="token string">@"CIColorControls"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span>inputImage forKey<span class="token punctuation">:</span>kCIInputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">(</span>saturation<span class="token punctuation">)</span> forKey<span class="token punctuation">:</span><span class="token string">@"inputSaturation"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">(</span>brightness<span class="token punctuation">)</span> forKey<span class="token punctuation">:</span><span class="token string">@"inputBrightness"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>filter setValue<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">(</span>contrast<span class="token punctuation">)</span> forKey<span class="token punctuation">:</span><span class="token string">@"inputContrast"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    CIImage <span class="token operator">*</span>result <span class="token operator">=</span> <span class="token punctuation">[</span>filter valueForKey<span class="token punctuation">:</span>kCIOutputImageKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CGImageRef cgImage <span class="token operator">=</span> <span class="token punctuation">[</span>context createCGImage<span class="token punctuation">:</span>result fromRect<span class="token punctuation">:</span><span class="token punctuation">[</span>result extent<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>resultImage <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageWithCGImage<span class="token punctuation">:</span>cgImage<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>cgImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> resultImage<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="15-创建一张实时模糊效果-View-毛玻璃效果"><a href="#15-创建一张实时模糊效果-View-毛玻璃效果" class="headerlink" title="15. 创建一张实时模糊效果 View (毛玻璃效果)"></a>15. 创建一张实时模糊效果 View (毛玻璃效果)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//Avilable in iOS 8.0 and later</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIVisualEffectView <span class="token operator">*</span><span class="token punctuation">)</span>effectViewWithFrame<span class="token punctuation">:</span><span class="token punctuation">(</span>CGRect<span class="token punctuation">)</span>frame<span class="token punctuation">{</span>
+    UIBlurEffect <span class="token operator">*</span>effect <span class="token operator">=</span> <span class="token punctuation">[</span>UIBlurEffect effectWithStyle<span class="token punctuation">:</span>UIBlurEffectStyleLight<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIVisualEffectView <span class="token operator">*</span>effectView <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIVisualEffectView alloc<span class="token punctuation">]</span> initWithEffect<span class="token punctuation">:</span>effect<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    effectView<span class="token punctuation">.</span>frame <span class="token operator">=</span> frame<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> effectView<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="16-全屏截图"><a href="#16-全屏截图" class="headerlink" title="16. 全屏截图"></a>16. 全屏截图</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//全屏截图</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>shotScreen<span class="token punctuation">{</span>
+    UIWindow <span class="token operator">*</span>window <span class="token operator">=</span> <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">.</span>keyWindow<span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>window<span class="token punctuation">.</span>layer renderInContext<span class="token punctuation">:</span><span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="17-截取一张-view-生成图片"><a href="#17-截取一张-view-生成图片" class="headerlink" title="17. 截取一张 view 生成图片"></a>17. 截取一张 view 生成图片</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//截取view生成一张图片</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>shotWithView<span class="token punctuation">:</span><span class="token punctuation">(</span>UIView <span class="token operator">*</span><span class="token punctuation">)</span>view<span class="token punctuation">{</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>view<span class="token punctuation">.</span>layer renderInContext<span class="token punctuation">:</span><span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="18-截取view中某个区域生成一张图片"><a href="#18-截取view中某个区域生成一张图片" class="headerlink" title="18. 截取view中某个区域生成一张图片"></a>18. 截取view中某个区域生成一张图片</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//截取view中某个区域生成一张图片</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>shotWithView<span class="token punctuation">:</span><span class="token punctuation">(</span>UIView <span class="token operator">*</span><span class="token punctuation">)</span>view scope<span class="token punctuation">:</span><span class="token punctuation">(</span>CGRect<span class="token punctuation">)</span>scope<span class="token punctuation">{</span>
+    CGImageRef imageRef <span class="token operator">=</span> <span class="token function">CGImageCreateWithImageInRect</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> shotWithView<span class="token punctuation">:</span>view<span class="token punctuation">]</span><span class="token punctuation">.</span>CGImage<span class="token punctuation">,</span> scope<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>scope<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CGContextRef context <span class="token operator">=</span> <span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> scope<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> scope<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGContextTranslateCTM</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//下移</span>
+    <span class="token function">CGContextScaleCTM</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上翻</span>
+    <span class="token function">CGContextDrawImage</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> rect<span class="token punctuation">,</span> imageRef<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>imageRef<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGContextRelease</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="19-压缩图片到指定尺寸大小"><a href="#19-压缩图片到指定尺寸大小" class="headerlink" title="19. 压缩图片到指定尺寸大小"></a>19. 压缩图片到指定尺寸大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//压缩图片到指定尺寸大小</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>compressOriginalImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image toSize<span class="token punctuation">:</span><span class="token punctuation">(</span>CGSize<span class="token punctuation">)</span>size<span class="token punctuation">{</span>
+    UIImage <span class="token operator">*</span>resultImage <span class="token operator">=</span> image<span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>resultImage drawInRect<span class="token punctuation">:</span><span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> resultImage<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="20-压缩图片到指定文件大小"><a href="#20-压缩图片到指定文件大小" class="headerlink" title="20. 压缩图片到指定文件大小"></a>20. 压缩图片到指定文件大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//压缩图片到指定文件大小</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSData <span class="token operator">*</span><span class="token punctuation">)</span>compressOriginalImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image toMaxDataSizeKBytes<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>size<span class="token punctuation">{</span>
+    NSData <span class="token operator">*</span>data <span class="token operator">=</span> <span class="token function">UIImageJPEGRepresentation</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CGFloat dataKBytes <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">1000.0</span><span class="token punctuation">;</span>
+    CGFloat maxQuality <span class="token operator">=</span> <span class="token number">0.9f</span><span class="token punctuation">;</span>
+    CGFloat lastData <span class="token operator">=</span> dataKBytes<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>dataKBytes <span class="token operator">></span> size <span class="token operator">&amp;&amp;</span> maxQuality <span class="token operator">></span> <span class="token number">0.01f</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        maxQuality <span class="token operator">=</span> maxQuality <span class="token operator">-</span> <span class="token number">0.01f</span><span class="token punctuation">;</span>
+        data <span class="token operator">=</span> <span class="token function">UIImageJPEGRepresentation</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> maxQuality<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataKBytes <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">1000.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>lastData <span class="token operator">==</span> dataKBytes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            lastData <span class="token operator">=</span> dataKBytes<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="21-获取设备-IP-地址"><a href="#21-获取设备-IP-地址" class="headerlink" title="21. 获取设备 IP 地址"></a>21. 获取设备 IP 地址</h4><p>需要先引入下头文件:</p>
+<p><code>#import &lt;ifaddrs.h&gt;</code><br><code>#import &lt;arpa/inet.h&gt;</code></p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取设备 IP 地址</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>getIPAddress <span class="token punctuation">{</span>
+    NSString <span class="token operator">*</span>address <span class="token operator">=</span> <span class="token string">@"error"</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> ifaddrs <span class="token operator">*</span>interfaces <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> ifaddrs <span class="token operator">*</span>temp_addr <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> success <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    success <span class="token operator">=</span> <span class="token function">getifaddrs</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>interfaces<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>success <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        temp_addr <span class="token operator">=</span> interfaces<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>temp_addr <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>temp_addr<span class="token operator">-></span>ifa_addr<span class="token operator">-></span>sa_family <span class="token operator">==</span> AF_INET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span>temp_addr<span class="token operator">-></span>ifa_name<span class="token punctuation">]</span> isEqualToString<span class="token punctuation">:</span><span class="token string">@"en0"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    address <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">inet_ntoa</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr_in <span class="token operator">*</span><span class="token punctuation">)</span>temp_addr<span class="token operator">-></span>ifa_addr<span class="token punctuation">)</span><span class="token operator">-></span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            temp_addr <span class="token operator">=</span> temp_addr<span class="token operator">-></span>ifa_next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">freeifaddrs</span><span class="token punctuation">(</span>interfaces<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> address<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="22-判断字符串中是否含有空格"><a href="#22-判断字符串中是否含有空格" class="headerlink" title="22. 判断字符串中是否含有空格"></a>22. 判断字符串中是否含有空格</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isHaveSpaceInString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    NSRange _range <span class="token operator">=</span> <span class="token punctuation">[</span>string rangeOfString<span class="token punctuation">:</span><span class="token string">@" "</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_range<span class="token punctuation">.</span>location <span class="token operator">!=</span> NSNotFound<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="23-判断字符串中是否含有某个字符串"><a href="#23-判断字符串中是否含有某个字符串" class="headerlink" title="23. 判断字符串中是否含有某个字符串"></a>23. 判断字符串中是否含有某个字符串</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isHaveString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string1 InString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string2<span class="token punctuation">{</span>
+    NSRange _range <span class="token operator">=</span> <span class="token punctuation">[</span>string2 rangeOfString<span class="token punctuation">:</span>string1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_range<span class="token punctuation">.</span>location <span class="token operator">!=</span> NSNotFound<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="24-判断字符串中是否含有中文"><a href="#24-判断字符串中是否含有中文" class="headerlink" title="24. 判断字符串中是否含有中文"></a>24. 判断字符串中是否含有中文</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isHaveChineseInString<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>NSInteger i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">[</span>string length<span class="token punctuation">]</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token punctuation">[</span>string characterAtIndex<span class="token punctuation">:</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">></span> <span class="token number">0x4e00</span> <span class="token operator">&amp;&amp;</span> a <span class="token operator">&lt;</span> <span class="token number">0x9fff</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="25-判断字符串是否全部为数字"><a href="#25-判断字符串是否全部为数字" class="headerlink" title="25. 判断字符串是否全部为数字"></a>25. 判断字符串是否全部为数字</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isAllNum<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>string<span class="token punctuation">{</span>
+    unichar c<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>string<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        c<span class="token operator">=</span><span class="token punctuation">[</span>string characterAtIndex<span class="token punctuation">:</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isdigit</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="26-绘制虚线"><a href="#26-绘制虚线" class="headerlink" title="26. 绘制虚线"></a>26. 绘制虚线</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/*
+  ** lineFrame:     虚线的 frame
+  ** length:        虚线中短线的宽度
+  ** spacing:       虚线中短线之间的间距
+  ** color:         虚线中短线的颜色
+*/</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>UIView <span class="token operator">*</span><span class="token punctuation">)</span>createDashedLineWithFrame<span class="token punctuation">:</span><span class="token punctuation">(</span>CGRect<span class="token punctuation">)</span>lineFrame
+                           lineLength<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>length
+                          lineSpacing<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>spacing
+                            lineColor<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color<span class="token punctuation">{</span>
+    UIView <span class="token operator">*</span>dashedLine <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIView alloc<span class="token punctuation">]</span> initWithFrame<span class="token punctuation">:</span>lineFrame<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    dashedLine<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor clearColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CAShapeLayer <span class="token operator">*</span>shapeLayer <span class="token operator">=</span> <span class="token punctuation">[</span>CAShapeLayer layer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setBounds<span class="token punctuation">:</span>dashedLine<span class="token punctuation">.</span>bounds<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setPosition<span class="token punctuation">:</span><span class="token function">CGPointMake</span><span class="token punctuation">(</span><span class="token function">CGRectGetWidth</span><span class="token punctuation">(</span>dashedLine<span class="token punctuation">.</span>frame<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token function">CGRectGetHeight</span><span class="token punctuation">(</span>dashedLine<span class="token punctuation">.</span>frame<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setFillColor<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor clearColor<span class="token punctuation">]</span><span class="token punctuation">.</span>CGColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setStrokeColor<span class="token punctuation">:</span>color<span class="token punctuation">.</span>CGColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setLineWidth<span class="token punctuation">:</span><span class="token function">CGRectGetHeight</span><span class="token punctuation">(</span>dashedLine<span class="token punctuation">.</span>frame<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setLineJoin<span class="token punctuation">:</span>kCALineJoinRound<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setLineDashPattern<span class="token punctuation">:</span><span class="token punctuation">[</span>NSArray arrayWithObjects<span class="token punctuation">:</span><span class="token punctuation">[</span>NSNumber numberWithInt<span class="token punctuation">:</span>length<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSNumber numberWithInt<span class="token punctuation">:</span>spacing<span class="token punctuation">]</span><span class="token punctuation">,</span> nil<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CGMutablePathRef path <span class="token operator">=</span> <span class="token function">CGPathCreateMutable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGPathMoveToPoint</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGPathAddLineToPoint</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token function">CGRectGetWidth</span><span class="token punctuation">(</span>dashedLine<span class="token punctuation">.</span>frame<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>shapeLayer setPath<span class="token punctuation">:</span>path<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">CGPathRelease</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>dashedLine<span class="token punctuation">.</span>layer addSublayer<span class="token punctuation">:</span>shapeLayer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> dashedLine<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="27-将字典对象转换为-JSON-字符串"><a href="#27-将字典对象转换为-JSON-字符串" class="headerlink" title="27. 将字典对象转换为 JSON 字符串"></a>27. 将字典对象转换为 JSON 字符串</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>jsonPrettyStringEncoded<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>dictionary<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>NSJSONSerialization isValidJSONObject<span class="token punctuation">:</span>dictionary <span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+        NSData <span class="token operator">*</span>jsonData <span class="token operator">=</span> <span class="token punctuation">[</span>NSJSONSerialization dataWithJSONObject<span class="token punctuation">:</span>dictionary options<span class="token punctuation">:</span>NSJSONWritingPrettyPrinted error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            NSString <span class="token operator">*</span>json <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSString alloc<span class="token punctuation">]</span> initWithData<span class="token punctuation">:</span>jsonData encoding<span class="token punctuation">:</span>NSUTF8StringEncoding<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> json<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="28-将数组对象转换为-JSON-字符串"><a href="#28-将数组对象转换为-JSON-字符串" class="headerlink" title="28.将数组对象转换为 JSON 字符串"></a>28.将数组对象转换为 JSON 字符串</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>jsonPrettyStringEncoded<span class="token punctuation">:</span><span class="token punctuation">(</span>NSArray <span class="token operator">*</span><span class="token punctuation">)</span>array<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>NSJSONSerialization isValidJSONObject<span class="token punctuation">:</span>array<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+        NSData <span class="token operator">*</span>jsonData <span class="token operator">=</span> <span class="token punctuation">[</span>NSJSONSerialization dataWithJSONObject<span class="token punctuation">:</span>array options<span class="token punctuation">:</span>NSJSONWritingPrettyPrinted error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            NSString <span class="token operator">*</span>json <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSString alloc<span class="token punctuation">]</span> initWithData<span class="token punctuation">:</span>jsonData encoding<span class="token punctuation">:</span>NSUTF8StringEncoding<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> json<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="29-获取-WiFi-信息"><a href="#29-获取-WiFi-信息" class="headerlink" title="29. 获取 WiFi 信息"></a>29. 获取 WiFi 信息</h4><p>需要引入头文件:</p>
+<p><code>#import &lt;SystemConfiguration/CaptiveNetwork.h&gt;</code></p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取 WiFi 信息</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>fetchSSIDInfo <span class="token punctuation">{</span>
+    NSArray <span class="token operator">*</span>ifs <span class="token operator">=</span> <span class="token punctuation">(</span>__bridge_transfer NSArray <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">CNCopySupportedInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>ifs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    NSDictionary <span class="token operator">*</span>info <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span>ifnam <span class="token keyword">in</span> ifs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        info <span class="token operator">=</span> <span class="token punctuation">(</span>__bridge_transfer NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">CNCopyCurrentNetworkInfo</span><span class="token punctuation">(</span><span class="token punctuation">(</span>__bridge CFStringRef<span class="token punctuation">)</span>ifnam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>info <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span>info count<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> info<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="30-获取广播地址、本机地址、子网掩码、端口信息"><a href="#30-获取广播地址、本机地址、子网掩码、端口信息" class="headerlink" title="30. 获取广播地址、本机地址、子网掩码、端口信息"></a>30. 获取广播地址、本机地址、子网掩码、端口信息</h4><p>需要引入头文件:</p>
+<p><code>#import &lt;ifaddrs.h&gt;</code><br><code>#import &lt;arpa/inet.h&gt;</code></p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//获取广播地址、本机地址、子网掩码、端口信息</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSMutableDictionary <span class="token operator">*</span><span class="token punctuation">)</span>getLocalInfoForCurrentWiFi <span class="token punctuation">{</span>
+    NSMutableDictionary <span class="token operator">*</span>dict <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> ifaddrs <span class="token operator">*</span>interfaces <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> ifaddrs <span class="token operator">*</span>temp_addr <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> success <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// retrieve the current interfaces - returns 0 on success</span>
+    success <span class="token operator">=</span> <span class="token function">getifaddrs</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>interfaces<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>success <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Loop through linked list of interfaces</span>
+        temp_addr <span class="token operator">=</span> interfaces<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//*/</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>temp_addr <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>temp_addr<span class="token operator">-></span>ifa_addr<span class="token operator">-></span>sa_family <span class="token operator">==</span> AF_INET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Check if interface is en0 which is the wifi connection on the iPhone</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span>temp_addr<span class="token operator">-></span>ifa_name<span class="token punctuation">]</span> isEqualToString<span class="token punctuation">:</span><span class="token string">@"en0"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//广播地址</span>
+                    NSString <span class="token operator">*</span>broadcast <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">inet_ntoa</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr_in <span class="token operator">*</span><span class="token punctuation">)</span>temp_addr<span class="token operator">-></span>ifa_dstaddr<span class="token punctuation">)</span><span class="token operator">-></span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>broadcast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token punctuation">[</span>dict setObject<span class="token punctuation">:</span>broadcast forKey<span class="token punctuation">:</span><span class="token string">@"broadcast"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//                    NSLog(@"broadcast address--%@",broadcast);</span>
+                    <span class="token comment" spellcheck="true">//本机地址</span>
+                    NSString <span class="token operator">*</span>localIp <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">inet_ntoa</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr_in <span class="token operator">*</span><span class="token punctuation">)</span>temp_addr<span class="token operator">-></span>ifa_addr<span class="token punctuation">)</span><span class="token operator">-></span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>localIp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token punctuation">[</span>dict setObject<span class="token punctuation">:</span>localIp forKey<span class="token punctuation">:</span><span class="token string">@"localIp"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//                    NSLog(@"local device ip--%@",localIp);</span>
+                    <span class="token comment" spellcheck="true">//子网掩码地址</span>
+                    NSString <span class="token operator">*</span>netmask <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">inet_ntoa</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr_in <span class="token operator">*</span><span class="token punctuation">)</span>temp_addr<span class="token operator">-></span>ifa_netmask<span class="token punctuation">)</span><span class="token operator">-></span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>netmask<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token punctuation">[</span>dict setObject<span class="token punctuation">:</span>netmask forKey<span class="token punctuation">:</span><span class="token string">@"netmask"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//                    NSLog(@"netmask--%@",netmask);</span>
+                    <span class="token comment" spellcheck="true">//--en0 端口地址</span>
+                    NSString <span class="token operator">*</span>interface <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span>temp_addr<span class="token operator">-></span>ifa_name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>interface<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token punctuation">[</span>dict setObject<span class="token punctuation">:</span>interface forKey<span class="token punctuation">:</span><span class="token string">@"interface"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//                    NSLog(@"interface--%@",interface);</span>
+                    <span class="token keyword">return</span> dict<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            temp_addr <span class="token operator">=</span> temp_addr<span class="token operator">-></span>ifa_next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Free memory</span>
+    <span class="token function">freeifaddrs</span><span class="token punctuation">(</span>interfaces<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> dict<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/01/OC中的load和initialize方法/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                首頁
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    過往
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分類
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主題 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
