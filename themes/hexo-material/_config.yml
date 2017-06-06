@@ -135,7 +135,7 @@ sidebar:
             divider: false
     article_num:
         use: false
-        divider: false
+        divider: true
     footer:
         divider: true
         theme: true
