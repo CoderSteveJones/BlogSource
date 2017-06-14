@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            2017 WWDC | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="2017 WWDC | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#机器学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">机器学习</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关链接："><span class="post-toc-number">3.</span> <span class="post-toc-text">相关链接：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#虚拟现实和增强现实"><span class="post-toc-number">4.</span> <span class="post-toc-text">虚拟现实和增强现实</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关链接：-1"><span class="post-toc-number">5.</span> <span class="post-toc-text">相关链接：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Swift-和-Xcode-9"><span class="post-toc-number">6.</span> <span class="post-toc-text">Swift 和 Xcode 9</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关链接"><span class="post-toc-number">7.</span> <span class="post-toc-text">相关链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#iOS-11"><span class="post-toc-number">8.</span> <span class="post-toc-text">iOS 11</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#App"><span class="post-toc-number">9.</span> <span class="post-toc-text">App</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新功能"><span class="post-toc-number">10.</span> <span class="post-toc-text">新功能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关-Session"><span class="post-toc-number">11.</span> <span class="post-toc-text">相关 Session</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tvOS-watchOS-4-MacOS"><span class="post-toc-number">12.</span> <span class="post-toc-text">tvOS, watchOS 4, MacOS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关链接-1"><span class="post-toc-number">13.</span> <span class="post-toc-text">相关链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">14.</span> <span class="post-toc-text">总结</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                2017 WWDC
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 14, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=2017 WWDC&url=http://yoursite.com//2017/06/14/2017-WWDC/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=2017 WWDC&url=http://yoursite.com//2017/06/14/2017-WWDC/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/14/2017-WWDC/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/14/2017-WWDC/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><img src="http://oqepgj2jp.bkt.clouddn.com/wwdc.jpg" alt=""></p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>每年的 WWDC 都是 iOS 开发者集体高潮的时刻。第一天的 WWDC 带来了全新的 iOS 11、MacOS、tvOS 和 watchOS，革命性的 AR 和 ML 应用，以及更强的 iPad、“硬件神兽” iMac Pro 和智能音箱 HomePod。我想从开发者的角度，聊聊这次大会给我的印象和感受。欢迎大家在评论中谈谈自己的看法。</p>
+<h4 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h4><p>恐怕没有哪个词的频率高过 Machine Learning，它也是贯穿各个平台的关键词汇：watchOS 的表盘，macOS 上照片流的分类，Siri 的上下文理解、翻译、预测，手写笔记的直接识别和搜索支持，甚至 Mac 系列芯片和 Metal 的更新都表示支持机器学习。iPhone 上人脸识别甚至比 Google Pixel 快出6倍。可以看出机器学习已经完完全全得融入到了 Apple 的全平台、全应用、全硬件。</p>
+<p>而作为开发者，最令我激动的是 MLKit 的发布。苹果带来了自己的模型，你只要不停的运用数据喂养它即可。这意味着我们今后的 App 将变得更加动态化 – 随着用户使用的增多，App 将越来越智能和强大。</p>
+<p>原来的路线是 App 发布 -&gt; 用户反馈 -&gt; 线下产品经理分析 -&gt; 程序员优化 -&gt; App 更新；今后的路线可能是 App 发布 -&gt; 用户反馈 -&gt; 机器学习 -&gt; App 更新。这次 Apple 还推出了急速审核（40分钟过审，摩拜单车团队已验证）和灰度发布的两大功能，也许就是为了给机器学习能自主的更新 App 铺路。目前苹果公布的 API 主要支持视觉识别、自然语言以及游戏 AI。</p>
+<h4 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h4><ul>
+<li><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="external">Build more intelligent apps with machine learning</a></li>
+<li><a href="https://developer.apple.com/documentation/coreml" target="_blank" rel="external">Machine Learning API (Core ML)</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/703/" target="_blank" rel="external">Introducing Core ML</a></li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/wwdc1.png" alt=""></p>
+<h4 id="虚拟现实和增强现实"><a href="#虚拟现实和增强现实" class="headerlink" title="虚拟现实和增强现实"></a>虚拟现实和增强现实</h4><p>这些年虚拟现实遭遇了过山车式的变化。先是遭到资本疯狂追逐，大厂如三星、HTC 重金投入，索尼也趁势推出了 PlayStation VR；然后是 Pokemon Go 的大火，仿佛虚拟现实和增强现实的元年已经到来；突然，Facebook 的 Oculus 线下200家体验店关门；乐视的虚拟现实部门倒闭走人；直到上个月的 Google IO，Day Dream 的更新也表现平平。大家都认为，VR/AR 只是个概念炒作，充其量在游戏上起到锦上添花的效果。<br>直到今天。如同当年普鲁士一统德意志，苹果姗姗来迟，却在一出场就技惊四座。<br>Metal 2 十倍于当前性能的图像处理技术，芯片的升级和“硬件神兽” iMac Pro 的出现，让苹果在 AR/VR 上的雄心彰显无遗。现场的星球大战 VR 以及 iOS 11 即时战场 AR 展示完全颠覆了我对 AR 的认知 – 要知道，这可是无需沉重的头套、专用的手机，直接用 iPad 即可完成的事情。<br>同样， 推出了全新的 ARKit 来供开发者使用。配合 iPhone 和 iPad 上强大的传感器以及全新的 GPU、CPU，我们开发者可以使用 ARSession 这个共享单例来在摄像头上实现 2D 和 3D 的宏大场景构建。</p>
+<h4 id="相关链接：-1"><a href="#相关链接：-1" class="headerlink" title="相关链接："></a>相关链接：</h4><ul>
+<li><a href="https://developer.apple.com/metal/" target="_blank" rel="external">Metal 2</a></li>
+<li><a href="https://developer.apple.com/arkit/" target="_blank" rel="external">Introducing ARKit</a></li>
+<li><a href="https://developer.apple.com/documentation/arkit" target="_blank" rel="external">Augmented Reality API (ARKit)</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/603/" target="_blank" rel="external">VR with Metal 2</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/602/" target="_blank" rel="external">Introducing ARKit: Augmented Reality for iOS</a></li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/wwdc2.png" alt=""></p>
+<h4 id="Swift-和-Xcode-9"><a href="#Swift-和-Xcode-9" class="headerlink" title="Swift 和 Xcode 9"></a>Swift 和 Xcode 9</h4><p>Swift 毫无疑问是开发者关心的头等大事。作为苹果的野心，Swift 引入了很多非常先进的思路。然而令我有点失望的是，这次 Keynote 却对 Swift 和 Xcode 9 只字未提。<br>不过从现场看来，Swift 这次的更新主要是 API 的优化上，对现有的标准库进行了11项更新和1处新增，主要集中在基本数据类型和文件系统上。<br>Xcode 上，目前发现的更新主要是多个模拟器同时运行（鸡肋，估计会卡），本地化，runtime debug 工具，持续集成，和源码管理。<br>我们只能期待秋季的苹果发布会上 Swift 4 进一步的更新了。有意思的是，之前 Swift 之父 Christ Lattner 写了篇总结文：<a href="https://segmentfault.com/a/1190000006909760" target="_blank" rel="external">Chris Lattner 对 Swift 3 的总结与对 Swift 4 的展望</a>。另外大家如果关心 <a href="https://github.com/apple/swift-evolution" target="_blank" rel="external">swift-evolution</a> 这个开源库，Swift 4 的新功能应该可见一斑。</p>
+<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><ul>
+<li><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Introducing Swift 4</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/401/" target="_blank" rel="external">Localizing with Xcode 9</a></li>
+<li><a href="https://developer.apple.com/wwdc17/403" target="_blank" rel="external">What’s New in Signing for Xcode and Xcode Server</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/404/" target="_blank" rel="external">Debugging with Xcode 9</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/406/" target="_blank" rel="external">Finding Bugs Using Xcode Runtime Tools</a></li>
+</ul>
+<h4 id="iOS-11"><a href="#iOS-11" class="headerlink" title="iOS 11"></a>iOS 11</h4><p>这次 iOS 11 更新可以说是全面彻底。从基本的功能升级到 App 新功能添加，再到 iPad 平台 UI 重构。主要集中在这几个方面。<br>iPad<br>为 iPad 全新打造的 iOS 系统，多任务、分屏 UI，Docker 工具栏。虚拟现实和增强现实的引入，以及对机器学习的支持。总体来说，消费者很开心，开发者又有新的东西可玩了。同时我觉得 iPad 越来越向 Macbook 看齐了。</p>
+<h4 id="App"><a href="#App" class="headerlink" title="App"></a>App</h4><p>App Store 全新设计<br>Files 文件管理软件放出<br>开放  Music<br> Pay 新的转账功能，注意 NFC API 接口开放，是不是为了  Pay 更方便接入其它 App？<br> 地图继续追赶 Google 地图<br>iMessage 花里胡哨扩展中<br>HomeKit 追加音响（HomePod）支持</p>
+<h4 id="新功能"><a href="#新功能" class="headerlink" title="新功能"></a>新功能</h4><p>Drag and Drop (梦想成真！)<br>拍照和截屏（扫描文件这个功能真是又重创了一大波 App）<br>中国特殊加成：二维码和上海话识别</p>
+<h4 id="相关-Session"><a href="#相关-Session" class="headerlink" title="相关 Session"></a>相关 Session</h4><ul>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/204/" target="_blank" rel="external">Updating Your App for iOS 11</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/229/" target="_blank" rel="external">Building Great Document-based Apps in iOS 11</a></li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/wwdc3.png" alt=""></p>
+<h4 id="tvOS-watchOS-4-MacOS"><a href="#tvOS-watchOS-4-MacOS" class="headerlink" title="tvOS, watchOS 4, MacOS"></a>tvOS, watchOS 4, MacOS</h4><p>这三个平台的更新可以说是泛善可陈（除了 Machine Learning 和 AR）。基本上就是，更多的内容（Amazon 的加入）、更炫更方便的 UI（运动界面和音乐界面）、以及更拽的名字（对，新 MacOS 叫 High）。<br>值得一提的是  File System。其实这个文件系统去年就宣布了，不过并不在 Keynote 之中。今年苹果用它全面替代了古老的 HFS+，取而代之的是更高的性能、更好的安全性、更多的空间。这主要是 copy-on-write 和空间共享技术的运用。<br> 同时开放了 <a href="https://developer.apple.com/documentation/fileprovider" target="_blank" rel="external">FileProvider API</a>，开发者可以用它在新的  File System 基础上实现对文件各种基本操作，还能通过它对应的 extension 实现诸如 drag and drop 这样跨 App 的功能。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/wwdc4.png" alt=""></p>
+<h4 id="相关链接-1"><a href="#相关链接-1" class="headerlink" title="相关链接"></a>相关链接</h4><ul>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/715/" target="_blank" rel="external">What’s new in  File System</a></li>
+<li><a href="https://developer.apple.com/videos/play/wwdc2017/243/" target="_blank" rel="external">File Provider Enhancements</a></li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这次的 WWDC，苹果可以说是打了一个漂亮的翻身仗：在人工智能方面挑战 Google，在虚拟、增强现实方面加入战局震慑 Facebook，并重夺工业界顶峰的宝座。 watchOS 和 tvOS 的丰富，虽然进步并不明显，但好歹补足了短板。iOS 11 让 iPad 这个日趋边缘的产品逐渐焕发出了生机。后面的几天，应该会有更多精彩的 Session，给开发上带来更多的启示。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/13/GIF的秘密/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                首頁
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    過往
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分類
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主題 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
