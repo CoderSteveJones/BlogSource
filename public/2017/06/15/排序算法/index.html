@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            排序算法 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="排序算法 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-、-选择排序算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 、 选择排序算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图解："><span class="post-toc-number">2.</span> <span class="post-toc-text">图解：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#声明："><span class="post-toc-number">3.</span> <span class="post-toc-text">声明：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现："><span class="post-toc-number">4.</span> <span class="post-toc-text">实现：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调用："><span class="post-toc-number">5.</span> <span class="post-toc-text">调用：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出过程："><span class="post-toc-number">6.</span> <span class="post-toc-text">输出过程：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、插入排序"><span class="post-toc-number">7.</span> <span class="post-toc-text">2、插入排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图解：-1"><span class="post-toc-number">8.</span> <span class="post-toc-text">图解：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#声明：-1"><span class="post-toc-number">9.</span> <span class="post-toc-text">声明：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现：-1"><span class="post-toc-number">10.</span> <span class="post-toc-text">实现：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调用：-1"><span class="post-toc-number">11.</span> <span class="post-toc-text">调用：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出过程：-1"><span class="post-toc-number">12.</span> <span class="post-toc-text">输出过程：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、希尔排序"><span class="post-toc-number">13.</span> <span class="post-toc-text">3、希尔排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图解：-2"><span class="post-toc-number">14.</span> <span class="post-toc-text">图解：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#声明：-2"><span class="post-toc-number">15.</span> <span class="post-toc-text">声明：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调用"><span class="post-toc-number">16.</span> <span class="post-toc-text">调用:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出过程：-2"><span class="post-toc-number">17.</span> <span class="post-toc-text">输出过程：</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                排序算法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 15, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=排序算法&url=http://yoursite.com//2017/06/15/排序算法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=排序算法&url=http://yoursite.com//2017/06/15/排序算法/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/15/排序算法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/15/排序算法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="1-、-选择排序算法"><a href="#1-、-选择排序算法" class="headerlink" title="1 、 选择排序算法"></a>1 、 选择排序算法</h4><p>插入排序的理解： 首先,找到数组中最小的那个元素 ,其次,将它和数组的第一个元素位置 (如果第一个元 就是最小元 那么它就和自己 )。再次,在剩下的元素中找到最小的元素, 将它与数组的第二个元素交换位置。如此反复, 到将整个数组排序。这种方法叫做做选择排序,因为它在不断地选择剩余元素之中的最小者。<br>解析：对于长度为 N 的数组,选择排序需要大约 N^2/2 次比较和 N 次交换。</p>
+<h4 id="图解："><a href="#图解：" class="headerlink" title="图解："></a>图解：</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%951.png" alt="图一"></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><pre class=" language-objectivec"><code class="language-objectivec"> NSMutableArray <span class="token operator">*</span><span class="token function">selectSort</span><span class="token punctuation">(</span>NSMutableArray <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span><span class="token function">selectSort</span><span class="token punctuation">(</span>NSMutableArray <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">==</span> array<span class="token punctuation">.</span>count <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> array<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> minNum <span class="token operator">=</span> <span class="token punctuation">[</span>array<span class="token punctuation">[</span>start<span class="token punctuation">]</span> intValue<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> minIndex <span class="token operator">=</span> start<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> start <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>count<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>minNum <span class="token operator">></span> <span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> intValue<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            minNum <span class="token operator">=</span> <span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> intValue<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            minIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">[</span>array exchangeObjectAtIndex<span class="token punctuation">:</span>start withObjectAtIndex<span class="token punctuation">:</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array <span class="token operator">=</span> <span class="token function">selectSort</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> array<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="调用："><a href="#调用：" class="headerlink" title="调用："></a>调用：</h4><pre class=" language-objectivec"><code class="language-objectivec">    NSArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array <span class="token operator">=</span> <span class="token function">selectSort</span><span class="token punctuation">(</span><span class="token punctuation">[</span>array mutableCopy<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="输出过程："><a href="#输出过程：" class="headerlink" title="输出过程："></a>输出过程：</h4><pre class=" language-objectivec"><code class="language-objectivec">第一次：<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span>
+第二次：<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span>
+第三次：<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span>
+第四次：<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span>
+第五次：<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span>
+最后输出： <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span>
+</code></pre>
+<ul>
+<li><p>选择排序优势：稳定，它的比较次数基本上不会改变，数据移动比较少。</p>
+</li>
+<li><p>选择排序劣势：操作级别了指数级，不会因是否有序数组而改变排序时间，时间只会与数组长度有关系。</p>
+</li>
+</ul>
+<h4 id="2、插入排序"><a href="#2、插入排序" class="headerlink" title="2、插入排序"></a>2、插入排序</h4><p>插入排序的理解：由数组的第2个位置开始比较，若果前方位置的元素比较大，则交换位置，若自己元素较大，而继续下一个元素，如此排列，那么被操作的那个元素前方位置的所有元素皆为有序。<br>解析：对于随机排列的长度为 N 且主键不重复的数组,平均情况下插入排序需要~ N^2/4 次比较以及~ N^2/4 次交换。最坏情况下需要~ N^2/2 次比较和~ N^2/2 次交换,最好情况下需要 N-1次比较和 0 次交换。<br>插入排序需要的交换操作和数组中倒置的数量相同,需要的比较次数大于等于倒置的数量,小于等于倒置的数量加上数组的大小再减一。</p>
+<h4 id="图解：-1"><a href="#图解：-1" class="headerlink" title="图解："></a>图解：</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%952.png" alt="图二"></p>
+<h4 id="声明：-1"><a href="#声明：-1" class="headerlink" title="声明："></a>声明：</h4><pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span><span class="token function">InsetSort</span><span class="token punctuation">(</span>NSMutableArray <span class="token operator">*</span>mArray<span class="token punctuation">,</span> NSInteger start<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="实现：-1"><a href="#实现：-1" class="headerlink" title="实现："></a>实现：</h4><pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span><span class="token function">InsetSort</span><span class="token punctuation">(</span>NSMutableArray <span class="token operator">*</span>mArray<span class="token punctuation">,</span> NSInteger start<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">==</span> mArray<span class="token punctuation">.</span>count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mArray<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>NSInteger i <span class="token operator">=</span> start<span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> mArray<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token punctuation">[</span>mArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> intValue<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> k <span class="token operator">=</span>  <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span>mArray<span class="token punctuation">[</span>k<span class="token punctuation">]</span> intValue<span class="token punctuation">]</span> <span class="token operator">></span> temp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mArray<span class="token punctuation">[</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> mArray<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                k <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            mArray<span class="token punctuation">[</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">InsetSort</span><span class="token punctuation">(</span>mArray<span class="token punctuation">,</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> mArray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="调用：-1"><a href="#调用：-1" class="headerlink" title="调用："></a>调用：</h4><pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span>mArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">49</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">38</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">97</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">27</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">49</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">55</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">]</span> mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+mArray <span class="token operator">=</span> <span class="token function">InsetSort</span><span class="token punctuation">(</span>mArray<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="输出过程：-1"><a href="#输出过程：-1" class="headerlink" title="输出过程："></a>输出过程：</h4><pre class=" language-objectivec"><code class="language-objectivec">第一次：<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">26</span>，<span class="token number">13</span>，<span class="token number">27</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第二次：<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">26</span>，<span class="token number">13</span>，<span class="token number">27</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第三次：<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">26</span>，<span class="token number">13</span>，<span class="token number">27</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第四次：<span class="token number">26</span>，<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">13</span>，<span class="token number">27</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第五次：<span class="token number">13</span>，<span class="token number">26</span>，<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">27</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第六次：<span class="token number">13</span>，<span class="token number">26</span>，<span class="token number">27</span>，<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第七次：<span class="token number">13</span>，<span class="token number">26</span>，<span class="token number">27</span>，<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">49</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">55</span>，<span class="token number">4</span>
+第八次：<span class="token number">13</span>，<span class="token number">26</span>，<span class="token number">27</span>，<span class="token number">38</span>，<span class="token number">49</span>，<span class="token number">49</span>，<span class="token number">55</span>，<span class="token number">65</span>，<span class="token number">97</span>，<span class="token number">4</span>
+最后输出：<span class="token number">4</span>， <span class="token number">13</span>， <span class="token number">26</span>， <span class="token number">27</span>， <span class="token number">38</span>， <span class="token number">49</span>，<span class="token number">49</span>， <span class="token number">55</span>， <span class="token number">65</span>， <span class="token number">97</span>
+</code></pre>
+<ul>
+<li><p>插入排序优势：对于有序数组或部分有序数组，此排序方法是十分高效的，很适合小规模的数组，很多高级的排序算法都会利用到插入排序。</p>
+</li>
+<li><p>插入排序劣势：若果最少的元素都在最后部分的位置，那么该排序方法就会变得非常费劲了，最后的元素都要比较改元素位置减一次。</p>
+</li>
+</ul>
+<h4 id="3、希尔排序"><a href="#3、希尔排序" class="headerlink" title="3、希尔排序"></a>3、希尔排序</h4><p>希尔排序为什么产生：希尔排序是以插入排序为基础的一种快速的排序算法。因为在大规模乱序数组中使用插入排序很慢，因为它只会交换相邻的两个元素，因此，如果越小的元素越是靠后，那么操作的复杂度将会大大提升，所以，人们把插入排序进行了改良，变成了希尔排序。<br>希尔排序的思想：希尔排序的思想是使数组中任意间隔为 h 的元素都是有序的。这样的数组为 h 有序数组。换句话说,一个 h 有序数组就是 h 个互相独 的有序数组编织在一起 成的一个数组。在进行排序时,如果 h 很大,我们就能将元素动到很远的地方,为实现更小的 h 有序创造方便。用这种方式,对于任意以 1 结尾的 h 序列,我们都能够将数组排序。这就是希尔排序。</p>
+<h4 id="图解：-2"><a href="#图解：-2" class="headerlink" title="图解："></a>图解：</h4><p><img src="http://oqepgj2jp.bkt.clouddn.com/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%953.png" alt="图三"></p>
+<p>最后一个算法，用的C语言。</p>
+<h4 id="声明：-2"><a href="#声明：-2" class="headerlink" title="声明："></a>声明：</h4><pre class=" language-objectivec"><code class="language-objectivec">
+    <span class="token keyword">void</span> <span class="token function">ShellSort</span><span class="token punctuation">(</span>Array array<span class="token punctuation">)</span>
+<span class="token keyword">void</span> <span class="token function">exchange</span><span class="token punctuation">(</span>Array array<span class="token punctuation">,</span> <span class="token keyword">int</span> N<span class="token punctuation">,</span> <span class="token keyword">int</span> M<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> temp <span class="token operator">=</span> array<span class="token operator">-></span>a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token operator">-></span>a<span class="token punctuation">[</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token operator">-></span>a<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token operator">-></span>a<span class="token punctuation">[</span>M<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">struct</span> ArrayNode <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">[</span>kMaxLimit<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">pushNumInArray</span><span class="token punctuation">(</span>Array array<span class="token punctuation">,</span> <span class="token keyword">int</span> Num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token operator">-></span>count <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"数组越界了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    array<span class="token operator">-></span>a<span class="token punctuation">[</span>array<span class="token operator">-></span>count<span class="token punctuation">]</span> <span class="token operator">=</span> Num<span class="token punctuation">;</span>
+    array<span class="token operator">-></span>count <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">ShellSort</span><span class="token punctuation">(</span>Array array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> gap <span class="token operator">=</span> array<span class="token operator">-></span>count <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> gap <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> gap<span class="token operator">/</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> gap<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token operator">-></span>a<span class="token punctuation">[</span>i <span class="token operator">+</span> gap<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token operator">-></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> gap<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> array<span class="token operator">-></span>count<span class="token punctuation">;</span> j <span class="token operator">+</span><span class="token operator">=</span> gap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token operator">-></span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token operator">-></span>a<span class="token punctuation">[</span>j <span class="token operator">-</span> gap<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">// 交换</span>
+                        <span class="token function">exchange</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j<span class="token operator">-</span>gap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用:"></a>调用:</h4><pre class=" language-objectivec"><code class="language-objectivec">   Array array <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> ArrayNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   array<span class="token operator">-></span>count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pushNumInArray</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token function">arc4random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// 希尔排序</span>
+  <span class="token function">ShellSort</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token operator">-></span>count<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>array<span class="token operator">-></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="输出过程：-2"><a href="#输出过程：-2" class="headerlink" title="输出过程："></a>输出过程：</h4><pre class=" language-objectivec"><code class="language-objectivec">原数组<span class="token punctuation">:</span> <span class="token number">49</span>   <span class="token number">38</span>   <span class="token number">65</span>   <span class="token number">97</span>   <span class="token number">26</span>   <span class="token number">13</span>   <span class="token number">27</span>   <span class="token number">49</span>   <span class="token number">55</span>   <span class="token number">4</span>
+第一次输出：gap <span class="token operator">=</span> <span class="token number">5</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">=</span> <span class="token number">2</span>，数组为： <span class="token number">13</span>   <span class="token number">27</span>   <span class="token number">49</span>   <span class="token number">55</span>   <span class="token number">4</span>    <span class="token number">49</span>   <span class="token number">38</span>   <span class="token number">65</span>   <span class="token number">97</span>   <span class="token number">26</span>
+第二次输出：gap <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">=</span> <span class="token number">1</span>，数组为：<span class="token number">4</span>   <span class="token number">26</span>   <span class="token number">13</span>   <span class="token number">27</span>   <span class="token number">38</span>    <span class="token number">49</span>   <span class="token number">49</span>   <span class="token number">55</span>   <span class="token number">97</span>   <span class="token number">65</span>
+第三次输出：gap <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">=</span> <span class="token number">0</span>，数组为：<span class="token number">4</span>   <span class="token number">13</span>   <span class="token number">26</span>   <span class="token number">27</span>   <span class="token number">38</span>    <span class="token number">49</span>   <span class="token number">49</span>   <span class="token number">55</span>   <span class="token number">65</span>   <span class="token number">97</span>
+</code></pre>
+<ul>
+<li><p>希尔排序优势：希尔排序优化了插入排序，在性能上比选择排序和插入排序快得多，而这种优势会随着数组越大变得越为明显。而且算法代码短简单，非常容易实现，所以我们基本上所有排序工作一开始都是用希尔排序，若在实际中不够快，我们再改成快速排序等更为高级的算法。</p>
+</li>
+<li><p>希尔排序劣势： 排序时间复杂度的下界是n*log2n。希尔排序没有快速排序算法快 O(n(logn))，因此中等大小规模表现良好，对规模非常大的数据排序不是最优选择。</p>
+</li>
+</ul>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/14/2017-WWDC/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                首頁
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    過往
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分類
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主題 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
