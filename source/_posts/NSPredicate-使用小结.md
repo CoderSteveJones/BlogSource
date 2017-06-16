@@ -1,7 +1,8 @@
 ---
 title: NSPredicate 使用小结
 date: 2017-06-05 22:37:04
-tags:
+categories: 
+	- iOS合集
 ---
 > NSPredicate是一个Foundation类，它指定数据被获取或者过滤的方式。它的查询语言就像SQL的WHERE和正则表达式的交叉一样，提供了具有表现力的，自然语言界面来定义一个集合被搜寻的逻辑条件。
 

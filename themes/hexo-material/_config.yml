@@ -4,9 +4,9 @@
 
 # Head info
 head:
-    favicon: "/img/favicon.png"
-    high_res_favicon: "/img/favicon.png"
-    apple_touch_icon: "/img/favicon.png"
+    favicon: "/img/icon.png"
+    high_res_favicon: "/img/icon.png"
+    apple_touch_icon: "/img/icon.png"
     keywords:
 
 # Jump Links Settings
@@ -32,7 +32,7 @@ uiux:
     hyperlink_color: "#00838F"
     button_color: "#757575"
     android_chrome_color: "#0097A7"
-    nprogress_color: "#29d"
+    nprogress_color: "#FFFAFA"
     nprogress_buffer: "800"
 
 # JS Effect Switches
@@ -114,7 +114,7 @@ sns_share:
 sidebar:
     dropdown:
         Email Me:
-            link: "#"
+            link: "mailto: benkong_ah@foxmail.com"
             icon: email
     homepage:
         use: true
@@ -129,7 +129,7 @@ sidebar:
         icon: chrome_reader_mode
         divider: false
     pages:
-        About:
+        关于我:
             link: "/about"
             icon: person
             divider: false
@@ -138,7 +138,7 @@ sidebar:
         divider: true
     footer:
         divider: true
-        theme: true
+        theme: false
         support: false
         feedback: false
         material: false

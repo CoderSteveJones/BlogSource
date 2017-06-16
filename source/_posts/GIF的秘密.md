@@ -1,7 +1,8 @@
 ---
 title: GIF的秘密
 date: 2017-06-13 22:10:27
-tags:
+categories: 
+	- 知识簿
 ---
 #### GIF
 

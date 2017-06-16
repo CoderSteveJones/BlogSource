@@ -1,7 +1,8 @@
 ---
 title: GCD小结
 date: 2017-05-31 16:21:06
-tags:
+categories: 
+	- iOS合集
 ---
 ## Tip1.线程、任务和队列的概念
 ![图一](http://oqepgj2jp.bkt.clouddn.com/gcd%E5%B0%8F%E7%BB%93_1.png)

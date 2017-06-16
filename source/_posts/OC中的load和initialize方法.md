@@ -1,7 +1,8 @@
 ---
 title: OC中的load和initialize方法
 date: 2017-06-01 13:58:22
-tags:
+categories: 
+	- iOS合集
 ---
 ## 1.load
 顾名思义，`load`方法在这个文件被程序装载时调用。只要是在`Compile Sources`中出现的文件总是会被装载，这与这个类是否被用到无关，因此`load`方法总是在`main`函数之前调用。

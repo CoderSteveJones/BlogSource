@@ -1,7 +1,8 @@
 ---
 title: 《招聘一个靠谱的iOS》面试题参考答案（下）
 date: 2017-05-24 14:59:00
-tags:
+categories: 
+	- 面试经
 ---
 
 [《招聘一个靠谱的 iOS》](http://blog.sunnyxx.com/2015/07/04/ios-interview/)—参考答案（下）
