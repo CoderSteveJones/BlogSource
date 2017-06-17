@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            HTTPS小解析 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="HTTPS小解析 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一、HTTPS介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、HTTPS介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二、HTTPS流程步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、HTTPS流程步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-客户端发起HTTPS请求"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">1. 客户端发起HTTPS请求</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-服务端的配置"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">2. 服务端的配置</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#3-传送证书"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">3. 传送证书</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#4-客户端解析证书"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">4. 客户端解析证书</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#5-传送加密信息"><span class="post-toc-number">2.0.5.</span> <span class="post-toc-text">5. 传送加密信息</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#6-服务端解密信息"><span class="post-toc-number">2.0.6.</span> <span class="post-toc-text">6. 服务端解密信息</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#7-传输加密后的信息"><span class="post-toc-number">2.0.7.</span> <span class="post-toc-text">7. 传输加密后的信息</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#8-客户端解密信息"><span class="post-toc-number">2.0.8.</span> <span class="post-toc-text">8. 客户端解密信息</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三、SSL-TLS概念"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、SSL/TLS概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#四、两个问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、两个问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#五、加密算法"><span class="post-toc-number">5.</span> <span class="post-toc-text">五、加密算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#六、关于CA及数字证书"><span class="post-toc-number">6.</span> <span class="post-toc-text">六、关于CA及数字证书</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#七、编码格式"><span class="post-toc-number">7.</span> <span class="post-toc-text">七、编码格式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#八、相关的文件扩展名"><span class="post-toc-number">8.</span> <span class="post-toc-text">八、相关的文件扩展名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#九、证书编码的转换"><span class="post-toc-number">9.</span> <span class="post-toc-text">九、证书编码的转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十、生成自签名证书的步骤"><span class="post-toc-number">10.</span> <span class="post-toc-text">十、生成自签名证书的步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#建立CA"><span class="post-toc-number">10.0.1.</span> <span class="post-toc-text">建立CA</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#生成server端证书"><span class="post-toc-number">10.0.2.</span> <span class="post-toc-text">生成server端证书</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#测试"><span class="post-toc-number">10.0.3.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#脚本"><span class="post-toc-number">10.0.4.</span> <span class="post-toc-text">脚本</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十一、信任自签名证书"><span class="post-toc-number">11.</span> <span class="post-toc-text">十一、信任自签名证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#查看证书链"><span class="post-toc-number">11.0.1.</span> <span class="post-toc-text">查看证书链</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#信任证书"><span class="post-toc-number">11.0.2.</span> <span class="post-toc-text">信任证书</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十二、Chrome信任根证书后提示链接不安全"><span class="post-toc-number">12.</span> <span class="post-toc-text">十二、Chrome信任根证书后提示链接不安全</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十三、获取证书小技巧"><span class="post-toc-number">13.</span> <span class="post-toc-text">十三、获取证书小技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1、使用openssl能直接得到这个证书"><span class="post-toc-number">13.0.1.</span> <span class="post-toc-text">1、使用openssl能直接得到这个证书:</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。"><span class="post-toc-number">13.0.2.</span> <span class="post-toc-text">2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十四、iOS中使用自签名证书"><span class="post-toc-number">14.</span> <span class="post-toc-text">十四、iOS中使用自签名证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#AFNetworking使用自签名证书"><span class="post-toc-number">14.0.1.</span> <span class="post-toc-text">AFNetworking使用自签名证书</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#证书需要满足的条件"><span class="post-toc-number">14.0.2.</span> <span class="post-toc-text">证书需要满足的条件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#十五、中间人攻击"><span class="post-toc-number">15.</span> <span class="post-toc-text">十五、中间人攻击</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#概念"><span class="post-toc-number">15.0.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#对HTTPS进行中间人攻击"><span class="post-toc-number">15.0.2.</span> <span class="post-toc-text">对HTTPS进行中间人攻击</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Charles实现HTTPS抓包"><span class="post-toc-number">15.0.3.</span> <span class="post-toc-text">Charles实现HTTPS抓包</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考"><span class="post-toc-number">16.</span> <span class="post-toc-text">参考</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                HTTPS小解析
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 17, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HTTPS小解析&url=http://yoursite.com//2017/06/17/HTTPS小解析/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=HTTPS小解析&url=http://yoursite.com//2017/06/17/HTTPS小解析/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/17/HTTPS小解析/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/17/HTTPS小解析/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="一、HTTPS介绍"><a href="#一、HTTPS介绍" class="headerlink" title="一、HTTPS介绍"></a>一、HTTPS介绍</h4><p>超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种网络安全传输协议。在计算机网络上，HTTPS经由超文本传输协议进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网络服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。</p>
+<p>HTTPS连接经常用于万维网上的交易支付和企业信息系统中敏感信息的传输。</p>
+<p>http协议直接放置在TCP协议之上，而HTTPS提出在http和TCP中间加上一层加密层。从发送端看，这一层负责把http的内容加密后送到下层的TCP，从接收方看，这一层负责将TCP送来的数据解密还原成http的内容。所以严格地讲，HTTPS并不是一个单独的协议，而是对工作在一加密连接（TLS或SSL）上的常规HTTP协议的称呼。</p>
+<p>下面是一个简单的HTTPS协议栈的图：<br><img src="http://oqepgj2jp.bkt.clouddn.com/https1.png" alt=""></p>
+<hr>
+<h4 id="二、HTTPS流程步骤"><a href="#二、HTTPS流程步骤" class="headerlink" title="二、HTTPS流程步骤"></a>二、HTTPS流程步骤</h4><p>上面已经说过HTTPS主要是加了一层SSL/TLS加密，那么具体是如何进行加密，解密，验证的，且看下图：<br><img src="http://oqepgj2jp.bkt.clouddn.com/https2.png" alt=""></p>
+<h6 id="1-客户端发起HTTPS请求"><a href="#1-客户端发起HTTPS请求" class="headerlink" title="1. 客户端发起HTTPS请求"></a>1. 客户端发起HTTPS请求</h6><p>这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。</p>
+<h6 id="2-服务端的配置"><a href="#2-服务端的配置" class="headerlink" title="2. 服务端的配置"></a>2. 服务端的配置</h6><p>采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。</p>
+<h6 id="3-传送证书"><a href="#3-传送证书" class="headerlink" title="3. 传送证书"></a>3. 传送证书</h6><p>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。</p>
+<h6 id="4-客户端解析证书"><a href="#4-客户端解析证书" class="headerlink" title="4. 客户端解析证书"></a>4. 客户端解析证书</h6><p>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。</p>
+<h6 id="5-传送加密信息"><a href="#5-传送加密信息" class="headerlink" title="5. 传送加密信息"></a>5. 传送加密信息</h6><p>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。</p>
+<h6 id="6-服务端解密信息"><a href="#6-服务端解密信息" class="headerlink" title="6. 服务端解密信息"></a>6. 服务端解密信息</h6><p>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。</p>
+<h6 id="7-传输加密后的信息"><a href="#7-传输加密后的信息" class="headerlink" title="7. 传输加密后的信息"></a>7. 传输加密后的信息</h6><p>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原</p>
+<h6 id="8-客户端解密信息"><a href="#8-客户端解密信息" class="headerlink" title="8. 客户端解密信息"></a>8. 客户端解密信息</h6><p>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
+<hr>
+<h4 id="三、SSL-TLS概念"><a href="#三、SSL-TLS概念" class="headerlink" title="三、SSL/TLS概念"></a>三、SSL/TLS概念</h4><p>SSL/TLS是加密通信协议，SSL由NetScape在1994年设计，1999年互联网标准化组织ISOC接替NetScape公司，发布了SSL的升级版TLS 1.0版。现在主流的浏览器等都支持TLS1.2版本，如iOS9中新增App Transport Security（简称ATS）特性，强制http转向https，其中加密通信协议就需要TLS1.2及以上版本。</p>
+<p>SSL/TLS协议的基本思路是采用公钥加密法，也就是说，客户端先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密。</p>
+<p>SSL/TLS协议的基本过程是这样的：</p>
+<pre><code>（1） 客户端向服务器端索要并验证公钥。
+（2） 双方协商生成&quot;对话密钥&quot;。
+（3） 双方采用&quot;对话密钥&quot;进行加密通信。
+</code></pre><p>所以说SSL/TLS协议主要是包含非对称加密（公钥加密）和对称加密，用非对称加密来得到对称加密的”对话秘钥”，然后用对称加密来进行加密通信。</p>
+<h4 id="四、两个问题"><a href="#四、两个问题" class="headerlink" title="四、两个问题"></a>四、两个问题</h4><ul>
+<li>如何保证公钥不被篡改？</li>
+</ul>
+<blockquote>
+<p>解决方法：将公钥放在数字证书中。只要证书是可信的，公钥就是可信的。那如何保证证书是可信的呢？证书由CA机构进行颁发，而游览器内置了这些CA机构的根证书，只要由这些CA机构办法的数字证书即是可信的。</p>
+</blockquote>
+<ul>
+<li>为什么不直接使用公钥加密，还要加上个对称加密？</li>
+</ul>
+<blockquote>
+<p>公钥加密是非对称加密，加密计算量大，而对称加密运算速度非常快。所以这里只有第一次握手时进行公钥加密来得到对称加密的”对话密钥”，之后的通信就使用对称加密来进行通信了。</p>
+</blockquote>
+<h4 id="五、加密算法"><a href="#五、加密算法" class="headerlink" title="五、加密算法"></a>五、加密算法</h4><ul>
+<li>对称密码算法</li>
+</ul>
+<blockquote>
+<p>是指加密和解密使用相同的密钥，典型的有DES、RC5、IDEA（分组加密），RC4（序列加密）；</p>
+</blockquote>
+<ul>
+<li>非对称密码算法</li>
+</ul>
+<blockquote>
+<p>又称为公钥加密算法，是指加密和解密使用不同的密钥（公开的公钥用于加密，私有的私钥用于解密）。比如A发送，B接收，A想确保消息只有B看到，需要B生成一对公私钥，并拿到B的公钥。于是A用这个公钥加密消息，B收到密文后用自己的与之匹配的私钥解密即可。反过来也可以用私钥加密公钥解密。也就是说对于给定的公钥有且只有与之匹配的私钥可以解密，对于给定的私钥，有且只有与之匹配的公钥可以解密。典型的算法有RSA，DSA，DH；</p>
+</blockquote>
+<ul>
+<li>散列算法</li>
+</ul>
+<blockquote>
+<p>散列变换是指把文件内容通过某种公开的算法，变成固定长度的值（散列值），这个过程可以使用密钥也可以不使用。这种散列变换是不可逆的，也就是说不能从散列值变成原文。因此，散列变换通常用于验证原文是否被篡改。典型的算法有：MD5，SHA，Base64，CRC等。</p>
+</blockquote>
+<hr>
+<h4 id="六、关于CA及数字证书"><a href="#六、关于CA及数字证书" class="headerlink" title="六、关于CA及数字证书"></a>六、关于CA及数字证书</h4><ul>
+<li>什么是CA</li>
+</ul>
+<p>CA(Certificate Authority)是数字证书认证中心的简称，是指发放、管理、废除数字证书的机构。</p>
+<p>CA的作用是检查证书持有者身份的合法性，并签发证书（在证书上签字），以防证书被伪造或篡改，以及对证书和密钥进行管理。</p>
+<p>CA 也拥有一个证书（内含公钥）和私钥。网上的公众用户通过验证 CA 的签字从而信任 CA ，任何人都可以得到 CA 的证书（含公钥），用以验证它所签发的证书。<br>如果用户想得到一份属于自己的证书，他应先向 CA 提出申请。在 CA 判明申请者的身份后，便为他分配一个公钥，并且 CA 将该公钥与申请者的身份信息绑在一起，并为之签字后，便形成证书发给申请者。</p>
+<p>如果一个用户想鉴别另一个证书的真伪，他就用 CA 的公钥对那个证书上的签字进行验证，一旦验证通过，该证书就被认为是有效的。</p>
+<ul>
+<li>证书的内容</li>
+</ul>
+<p>数字证书的格式遵循X.509标准，X.509是由国际电信联盟（ITU-T）制定的数字证书标准，规范了公开密钥认证、证书吊销列表、授权证书、证书路径验证算法等。</p>
+<p>证书的内容包括：电子签证机关的信息、公钥用户信息、公钥、权威机构的签字和有效期等等。</p>
+<p>下图就表示一个数字证书包含的内容：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https3.png" alt=""></p>
+<blockquote>
+<p>我们这里能看到颁发机构签名是由申请者信息经过哈希算法得到hash值，然后再用机构的私钥进行加密。所以这个签名只有办法机构的公钥才能解密，而一般权威CA机构的根证书（含公钥）都内置在浏览器中，所以客户端接收到这个数字证书后，先把申请者信息用同样的哈希算法得到hash值h1，然后用公钥进行办法机构签名解密得到hash值h2，如果h1==h2，则表示证书是有效的。</p>
+</blockquote>
+<p>下图就是Charles的根证书例子：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https4.png" alt=""></p>
+<h4 id="七、编码格式"><a href="#七、编码格式" class="headerlink" title="七、编码格式"></a>七、编码格式</h4><p>同样的X.509证书,可能有不同的编码格式,目前有以下两种编码格式。</p>
+<p><strong>PEM</strong> - Privacy Enhanced Mail,打开看文本格式,以”—–BEGIN…”开头, “—–END…”结尾,内容是BASE64编码.<br>查看PEM格式证书的信息:openssl x509 -in certificate.pem -text -noout<br>Apache和*NIX服务器偏向于使用这种编码格式.</p>
+<p><strong>DER</strong> - Distinguished Encoding Rules,打开看是二进制格式,不可读.<br>查看DER格式证书的信息:openssl x509 -in certificate.der -inform der -text -noout<br>Java和Windows服务器偏向于使用这种编码格式.</p>
+<h4 id="八、相关的文件扩展名"><a href="#八、相关的文件扩展名" class="headerlink" title="八、相关的文件扩展名"></a>八、相关的文件扩展名</h4><p>这是比较误导人的地方,虽然我们已经知道有PEM和DER这两种编码格式,但文件扩展名并不一定就叫”PEM”或者”DER”,常见的扩展名除了PEM和DER还有以下这些,它们除了编码格式可能不同之外,内容也有差别,但大多数都能相互转换编码格式。</p>
+<p><strong>CRT</strong> - CRT应该是certificate的三个字母,其实还是证书的意思,常见于*NIX系统,有可能是PEM编码,也有可能是DER编码,大多数应该是PEM编码,相信你已经知道怎么辨别.</p>
+<p><strong>CER</strong> - 还是certificate,还是证书,常见于Windows系统,同样的,可能是PEM编码,也可能是DER编码,大多数应该是DER编码.</p>
+<p><strong>KEY</strong> - 通常用来存放一个公钥或者私钥,并非X.509证书,编码同样的,可能是PEM,也可能是DER。<br>查看KEY的办法:<code>openssl rsa -in mykey.key -text -noout</code><br>如果是DER格式的话:<code>openssl rsa -in mykey.key -text -noout -inform der</code></p>
+<p><strong>CSR</strong> - Certificate Signing Request,即证书签名请求,这个并不是证书,而是向权威证书颁发机构获得签名证书的申请,其核心内容是一个公钥(当然还附带了一些别的信息),在生成这个申请的时候,同时也会生成一个私钥,私钥要自己保管好。<br>查看的办法:<code>openssl req -noout -text -in my.csr</code><br>如果是DER格式的话:<code>openssl req -noout -text -in my.csr -inform der</code></p>
+<p><strong>PFX/P12</strong> - predecessor of PKCS#12,对*nix服务器来说,一般CRT和KEY是分开存放在不同文件中的,但Windows的IIS则将它们存在一个PFX文件中,(因此这个文件包含了证书及私钥)这样会不会不安全？应该不会,PFX通常会有一个”提取密码”,你想把里面的东西读取出来的话,它就要求你提供提取密码,PFX使用的时DER编码,如何把PFX转换为PEM编码？<br><code>openssl pkcs12 -in for-iis.pfx -out for-iis.pem -nodes</code><br>这个时候会提示你输入提取代码. for-iis.pem就是可读的文本。<br>生成pfx的命令类似这样:<code>openssl pkcs12 -export -in certificate.crt -inkey privateKey.key -out</code> <code>certificate.pfx -certfile CACert.crt</code></p>
+<p>其中CACert.crt是CA(权威证书颁发机构)的根证书,有的话也通过-certfile参数一起带进去.这么看来,PFX其实是个证书密钥库.</p>
+<p><strong>JKS</strong> - 即Java Key Storage,这是Java的专利,跟OpenSSL关系不大,利用Java的一个叫”keytool”的工具,可以将PFX转为JKS,当然了,keytool也能直接生成JKS,不过在此就不多表了。</p>
+<h4 id="九、证书编码的转换"><a href="#九、证书编码的转换" class="headerlink" title="九、证书编码的转换"></a>九、证书编码的转换</h4><ul>
+<li>.crt转.der方法</li>
+</ul>
+<p><code>openssl x509 -in cert.crt -out cert.der -outform DER</code></p>
+<ul>
+<li>.crt转.cer方法</li>
+</ul>
+<p><code>openssl x509 -in cert.crt -out cert.cer -outform DER</code></p>
+<ul>
+<li>.crt转.pem方法</li>
+</ul>
+<p><code>openssl x509 -in cert.crt -out cert.pem -outform PEM</code></p>
+<h4 id="十、生成自签名证书的步骤"><a href="#十、生成自签名证书的步骤" class="headerlink" title="十、生成自签名证书的步骤"></a>十、生成自签名证书的步骤</h4><h6 id="建立CA"><a href="#建立CA" class="headerlink" title="建立CA"></a>建立CA</h6><ul>
+<li>在任意目录建立文件夹，文件夹名称任意</li>
+</ul>
+<pre><code>mkdir ca
+</code></pre><ul>
+<li>进入到新建立的文件夹ca</li>
+</ul>
+<pre><code>d ca
+</code></pre><ul>
+<li>生成CA私钥</li>
+</ul>
+<pre><code>openssl genrsa -out ca.key 2048
+</code></pre><ul>
+<li>用CA私钥生成CA的证书</li>
+</ul>
+<pre><code>openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj 
+&quot;/C=CN/ST=Hangzhou/L=Hangzhou/O=Teamsun/OU=Dasheng&quot;
+</code></pre><ul>
+<li>建立CA相应目录</li>
+</ul>
+<pre><code>mkdir demoCA
+cd demoCA/
+
+mkdir newcerts
+
+touch index.txt
+
+echo &#39;01&#39; &gt; serial
+</code></pre><h6 id="生成server端证书"><a href="#生成server端证书" class="headerlink" title="生成server端证书"></a>生成server端证书</h6><ul>
+<li>进入ca文件夹</li>
+</ul>
+<pre><code>cd ca
+</code></pre><ul>
+<li>生成server私钥</li>
+</ul>
+<pre><code>openssl genrsa -out server.key 2048
+</code></pre><ul>
+<li>使用server私钥生成server端证书请求文件</li>
+</ul>
+<pre><code>openssl req -new -key server.key -out server.csr -subj &quot;/C=CN/ST=Hangzhou/L=Hangzhou/O=Teamsun/OU=dasheng/CN=dasheng&quot;
+</code></pre><ul>
+<li>使用server证书请求文件通过CA生成自签名证书</li>
+</ul>
+<pre><code>openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key
+</code></pre><ul>
+<li>验证server证书</li>
+</ul>
+<pre><code>openssl verify -CAfile ca.crt server.crt
+</code></pre><h6 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h6><ul>
+<li><p>使用server证书测试单向认证</p>
+</li>
+<li><p>打开窗口1启动server</p>
+</li>
+</ul>
+<pre><code>openssl s_server -accept 10001 -key server.key -cert server.crt
+</code></pre><ul>
+<li>打开窗口2启动客户端</li>
+</ul>
+<pre><code>openssl s_client -connect localhost:10001
+</code></pre><ul>
+<li>连接成功后在任意一个窗口输入字符串会传输到另外一个窗口回显。</li>
+</ul>
+<h6 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h6><p><a href="http://ofcckdrlc.bkt.clouddn.com/generate_certificate.sh" target="_blank" rel="external">快速创建证书的脚本</a><br>使用（host表示证书用于的域名，cerFile表示证书保存的目录）：</p>
+<pre><code>sh ./generate_certificate.sh host cerFile
+</code></pre><h4 id="十一、信任自签名证书"><a href="#十一、信任自签名证书" class="headerlink" title="十一、信任自签名证书"></a>十一、信任自签名证书</h4><h6 id="查看证书链"><a href="#查看证书链" class="headerlink" title="查看证书链"></a>查看证书链</h6><p>Chrome57及后续版本Chrome浏览器用户如要查看SSL证书信息只能通过开发者工具（右键-&gt;检查），选择安全标签（Security）进行查看了。然后点击View certificate查看证书链，如下图为查看www.google.com的证书链：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https5.png" alt=""></p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https6.png" alt=""></p>
+<h6 id="信任证书"><a href="#信任证书" class="headerlink" title="信任证书"></a>信任证书</h6><p>在MAC上直接双击证书，然后在钥匙串里就能看到这个证书了，我们能看到证书上会显示此证书是由不被信任的签发者签发的或此根证书不被信任。然后我们再在钥匙串中双击证书-&gt;信任-&gt;使用此证书时：始终信任。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https7.png" alt=""></p>
+<p>这里我们可以信任两种证书：CA根证书和CA签名过的数字证书。两种证书在钥匙串中显示的颜色是不一样的。</p>
+<p>下图就是自己创建的两种证书：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https8.png" alt=""></p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https9.png" alt=""></p>
+<p>我们信任两种证书都可以使请求变成安全的请求，在浏览器中输入的时候就不会有不安全的提示了。这里说一下为什么两种证书都可以。</p>
+<p>首先说CA根证书，这种就是我们正常的流程，CA根证书用公钥解密数字证书的签名得到hash值，然后根据hash值相等判断证书有效。<br>而不信任根证书只信任数字证书，就很容易理解了，他们本来就是同一张证书，也不用通过加密解密什么的来判断了。</p>
+<h4 id="十二、Chrome信任根证书后提示链接不安全"><a href="#十二、Chrome信任根证书后提示链接不安全" class="headerlink" title="十二、Chrome信任根证书后提示链接不安全"></a>十二、Chrome信任根证书后提示链接不安全</h4><p>这里我信任根证书之后还是提示链接不安全：<code>ERR_CERT_WEAK_SIGNATURE_ALGORITHM</code>。而信任数字证书则没问题。发生这种情况的原因是<code>Chrome 57</code>版本以后是不支持SHA-1算出的hash值的证书签名的，而我们上面生成的证书默认为SHA-1，这里只要改为SHA-256就可以了。</p>
+<pre><code>//用CA私钥生成CA的证书
+openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj &quot;/C=CN/ST=Hangzhou/L=Hangzhou/O=Teamsun/OU=Dasheng&quot; -sha256
+
+//使用server证书请求文件通过CA生成自签名证书
+openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key -sha256
+</code></pre><h4 id="十三、获取证书小技巧"><a href="#十三、获取证书小技巧" class="headerlink" title="十三、获取证书小技巧"></a>十三、获取证书小技巧</h4><p>有时候我们没有这个网站的证书，那要如何得到呢？</p>
+<h6 id="1、使用openssl能直接得到这个证书"><a href="#1、使用openssl能直接得到这个证书" class="headerlink" title="1、使用openssl能直接得到这个证书:"></a>1、使用openssl能直接得到这个证书:</h6><pre><code>openssl s_client -connect 172.16.10.244:8000 &lt;/dev/null 2&gt;/dev/null | openssl x509 -outform DER &gt; https.cer
+</code></pre><h6 id="2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。"><a href="#2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。" class="headerlink" title="2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。"></a>2、直接Safari输入网站，如果是不安全的，会显示下图，然后点击显示证书，勾选连接时始终信任，点击继续证书就添加到钥匙串中了。</h6><p><img src="http://oqepgj2jp.bkt.clouddn.com/https10.png" alt=""></p>
+<hr>
+<h4 id="十四、iOS中使用自签名证书"><a href="#十四、iOS中使用自签名证书" class="headerlink" title="十四、iOS中使用自签名证书"></a>十四、iOS中使用自签名证书</h4><p>iOS9中新增App Transport Security（简称ATS）特性, 主要使到原来请求的时候用到的HTTP，都转向TLS1.2协议进行传输。这也意味着所有的HTTP协议都强制使用了HTTPS协议进行传输。一般如果我们HTTPS服务使用的证书是CA权威机构颁发的话，客户端不用修改任何代码，因为iOS系统已经内置了这些权威机构的根证书。但是如果是自签名的证书的话就需要修改代码来内部信任这部分证书了。</p>
+<h6 id="AFNetworking使用自签名证书"><a href="#AFNetworking使用自签名证书" class="headerlink" title="AFNetworking使用自签名证书"></a>AFNetworking使用自签名证书</h6><p>AFNetWorking封装了如何使用自签名证书，简单的使用方式如下。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//先导入证书，找到证书的路径</span>
+NSString <span class="token operator">*</span>cerPath <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundle mainBundle<span class="token punctuation">]</span> pathForResource<span class="token punctuation">:</span><span class="token string">@"cert"</span> ofType<span class="token punctuation">:</span><span class="token string">@"der"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSData <span class="token operator">*</span>certData <span class="token operator">=</span> <span class="token punctuation">[</span>NSData dataWithContentsOfFile<span class="token punctuation">:</span>cerPath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSSet <span class="token operator">*</span> certSet <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSSet alloc<span class="token punctuation">]</span> initWithObjects<span class="token punctuation">:</span>certData<span class="token punctuation">,</span> nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//AFSSLPinningModeNone 这个模式表示不做 SSL pinning，只跟浏览器一样在系统的信任机构列表里验证服务端返回的证书。若证书是信任机构签发的就会通过，若是自己服务器生成的证书，这里是不会通过的。</span>
+
+<span class="token comment" spellcheck="true">//AFSSLPinningModeCertificate 这个模式表示用证书绑定方式验证证书，需要客户端保存有服务端的证书拷贝，这里验证分两步，第一步验证证书的域名/有效期等信息，第二步是对比服务端返回的证书跟客户端返回的是否一致。</span>
+
+<span class="token comment" spellcheck="true">//AFSSLPinningModePublicKey 这个模式同样是用证书绑定方式验证，客户端要有服务端的证书拷贝，只是验证时只验证证书里的公钥，不验证证书的有效期等信息。只要公钥是正确的，就能保证通信不会被窃听，因为中间人没有私钥，无法解开通过公钥加密的数据。</span>
+
+AFSecurityPolicy <span class="token operator">*</span>securityPolicy <span class="token operator">=</span> <span class="token punctuation">[</span>AFSecurityPolicy policyWithPinningMode<span class="token punctuation">:</span>AFSSLPinningModeNone<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 是否允许,NO-- 不允许无效的证书</span>
+<span class="token punctuation">[</span>securityPolicy setAllowInvalidCertificates<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 设置证书</span>
+<span class="token punctuation">[</span>securityPolicy setPinnedCertificates<span class="token punctuation">:</span>certSet<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//是否验证域名信息</span>
+securityPolicy<span class="token punctuation">.</span>validatesDomainName <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+
+
+AFHTTPSessionManager <span class="token operator">*</span>manager <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AFHTTPSessionManager manager<span class="token punctuation">]</span> initWithBaseURL<span class="token punctuation">:</span><span class="token punctuation">[</span>NSURL URLWithString<span class="token punctuation">:</span><span class="token string">@"https://192.168.3.13:8000"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+manager<span class="token punctuation">.</span>securityPolicy <span class="token operator">=</span> securityPolicy<span class="token punctuation">;</span>
+manager<span class="token punctuation">.</span>responseSerializer <span class="token operator">=</span> <span class="token punctuation">[</span>AFHTTPResponseSerializer serializer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>manager GET<span class="token punctuation">:</span><span class="token string">@"/getInfo"</span> parameters<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span><span class="token string">@"t"</span><span class="token punctuation">:</span><span class="token string">@"1490927497.569"</span><span class="token punctuation">}</span> progress<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>NSProgress <span class="token operator">*</span> progress<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token punctuation">}</span> success<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>NSURLSessionDataTask <span class="token operator">*</span>task<span class="token punctuation">,</span> id responseObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NSArray <span class="token operator">*</span> array <span class="token operator">=</span> <span class="token punctuation">[</span>NSJSONSerialization JSONObjectWithData<span class="token punctuation">:</span>responseObject options<span class="token punctuation">:</span>NSJSONReadingMutableLeaves error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"OK === %@"</span><span class="token punctuation">,</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> failure<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>NSURLSessionDataTask <span class="token operator">*</span>task<span class="token punctuation">,</span> NSError <span class="token operator">*</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"error ==%@"</span><span class="token punctuation">,</span>error<span class="token punctuation">.</span>description<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h6 id="证书需要满足的条件"><a href="#证书需要满足的条件" class="headerlink" title="证书需要满足的条件"></a>证书需要满足的条件</h6><p>这里的证书使用CA根证书或CA签名的数字证书都可以。</p>
+<p>密钥交换算法有<code>RSA</code>和<code>ECDHE</code>，RSA 历史悠久，支持度好，但不支持 PFS（Perfect Forward Secrecy）；而 ECDHE 是使用了 ECC（椭圆曲线）的 DH（Diffie-Hellman）算法，计算速度快，支持 PFS。</p>
+<p>iOS支持的秘钥交换算法为：至少<strong>2048位的 RSA 密钥或至少256位的 ECC 密钥</strong></p>
+<p>服务器证书的哈希算法必须为 SHA-2，其摘要长度至少位256位。</p>
+<p>证书格式为.der，很多网上的教程都写的是.cer，应该是使用的旧版AFNetWorking，最新版的不支持.cer，需要使用.der格式。</p>
+<hr>
+<h4 id="十五、中间人攻击"><a href="#十五、中间人攻击" class="headerlink" title="十五、中间人攻击"></a>十五、中间人攻击</h4><h6 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h6><p>关于Https最常讲到的就是中间人攻击，即所谓的Man-in-the-middle attack(MITM)。也就是攻击者插入原先攻击的双方，让双方以为还在直接跟对方通讯，但实际上双方的通信对方已变成了中间人，信息已经是被中间人获取或篡改。</p>
+<p>其实http的中间人攻击是最简单的，因为http都是通过明文传输，而且没有任何认证之类的东西。我们常常用的Charles抓包就是一个最简单的中间人攻击。</p>
+<h6 id="对HTTPS进行中间人攻击"><a href="#对HTTPS进行中间人攻击" class="headerlink" title="对HTTPS进行中间人攻击"></a>对HTTPS进行中间人攻击</h6><p>我们用Charles进行HTTPS的抓包的时候会发现抓到的包都是加过密的无法查看，那是不是就意味着无法抓取HTTPS的包了呢？其实也是可以的，通过伪造证书，并且客户端又安装了Charles根证书，就可以抓取到HTTPS的包并解密了。</p>
+<p>具体的步骤是这样的，手机安装Charles根证书，手机使用Charles的代理，所有请求都经过Charles中间人。Charles劫持到请求，替换服务端的证书为自己的伪证书，然后发送给客户端，客户端使用Charles根证书来验证这个伪证书，验证通过得到公钥，然后用公钥加密对话秘钥发送回Charles中间人，Charles中间人私用私钥解密得到对话秘钥并保存，然后再把对话秘钥用服务端的公钥加密返回给服务端，这样就表示两端握手成功，可以进行通信了。而且中间人也获得了之后的对话秘钥，可以解密之后的对话信息。</p>
+<h6 id="Charles实现HTTPS抓包"><a href="#Charles实现HTTPS抓包" class="headerlink" title="Charles实现HTTPS抓包"></a>Charles实现HTTPS抓包</h6><p>这里基本的HTTP抓包的设置就不讲了，下面是基于实现基本的HTTP抓包的基础上来实现HTTPS的抓包解密。</p>
+<ul>
+<li>安装Charles CA根证书<br>点击<code>Help-&gt;SSL Proxying-&gt;Install Charles Root Certification ...</code>，会弹出如下提示，链接代理，手机浏览器输入<code>chls.pro/ssl</code>，就可以安装根证书了。</li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https11.png" alt=""></p>
+<ul>
+<li>设置SSL代理<br>点击<code>Proxy-&gt;SSL Proxying Setting</code>，勾选<code>Enable SSL Proxying</code>，然后点击Add输入要SSL代理的请求Host和Port，可以使用通配符来表示某一类请求。</li>
+</ul>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https12.png" alt=""></p>
+<p>或者在对应的请求上右键选择<code>Enable SSL Proxying</code>，就会把这一个请求加入到上面的SSL代理列表中（类似于点击Add的效果）。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/https13.png" alt=""></p>
+<p>做完上述步骤后重新请求就能得到解密后的信息了。抓取PC端的HTTPS包也类似，在<code>Help-&gt;SSL Proxying</code>中下载证书，双击安装证书，并选择始终信任即可。</p>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE" target="_blank" rel="external">超文本传输安全协议</a><br><a href="http://www.cnblogs.com/zhuqil/archive/2012/07/23/2604572.html" target="_blank" rel="external">图解HTTPS</a><br><a href="http://www.jianshu.com/p/e767a4e9252e" target="_blank" rel="external">HTTPS从原理到应用</a><br><a href="http://www.cnblogs.com/guogangj/p/4118605.html" target="_blank" rel="external">那些证书相关的玩意儿</a><br><a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="external">SSL/TLS协议运行机制的概述</a><br><a href="http://www.jianshu.com/p/da65e5cd552e" target="_blank" rel="external">SSL/TLS协议及Openssl工具的实现</a><br><a href="http://blog.csdn.net/gx_1983/article/details/47866537" target="_blank" rel="external">openssl自签名证书生成与单双向验证</a><br><a href="http://www.jianshu.com/p/36ddc5b009a7" target="_blank" rel="external">iOS 10 适配 ATS</a><br><a href="http://oncenote.com/2014/10/21/Security-1-HTTPS/" target="_blank" rel="external">iOS安全系列之一：HTTPS</a><br><a href="http://oncenote.com/2015/09/16/Security-2-HTTPS2/#mitm" target="_blank" rel="external">iOS安全系列之二：HTTPS进阶</a></p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/15/排序算法/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
