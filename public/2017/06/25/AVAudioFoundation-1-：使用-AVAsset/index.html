@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            AVAudioFoundation(1)：使用 AVAsset | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="AVAudioFoundation(1)：使用 AVAsset | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建-Asset"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建 Asset</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置-Asset-选项"><span class="post-toc-number">2.</span> <span class="post-toc-text">设置 Asset 选项</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问用户的-Asset"><span class="post-toc-number">3.</span> <span class="post-toc-text">访问用户的 Asset</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加载-Asset-来使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">加载 Asset 来使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取一张图片"><span class="post-toc-number">5.</span> <span class="post-toc-text">获取一张图片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取一组截图"><span class="post-toc-number">6.</span> <span class="post-toc-text">获取一组截图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对视频进行裁剪和转码"><span class="post-toc-number">7.</span> <span class="post-toc-text">对视频进行裁剪和转码</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                AVAudioFoundation(1)：使用 AVAsset
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 25, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AVAudioFoundation(1)：使用 AVAsset&url=http://yoursite.com//2017/06/25/AVAudioFoundation-1-：使用-AVAsset/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AVAudioFoundation(1)：使用 AVAsset&url=http://yoursite.com//2017/06/25/AVAudioFoundation-1-：使用-AVAsset/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/25/AVAudioFoundation-1-：使用-AVAsset/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/25/AVAudioFoundation-1-：使用-AVAsset/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>要了解 iOS 上的音视频相关的内容，首先需要了解的就是 <code>AVFoundation</code> 这个框架。</p>
+<p>下图是 <code>AVFoundation</code> 框架大的层级结构：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/AVF1.png" alt="图一"></p>
+<p>在 <code>AVFoundation</code> 框架中，最主要的表示媒体的类就是 <code>AVAsset</code>，甚至可以认为 <code>AVFoundation</code> 框架的大部分能力都是围绕着 <code>AVAsset</code> 展开的。</p>
+<p>一个 <code>AVAsset</code> 实例表示的是一份或多份音视频数据（audio and video tracks）的集合，它描述的是这个集合作为一个整体对象的一些属性，比如：标题、时长、大小等，而不与具体的数据格式绑定。通常，在实际使用时我们可能会基于某个 URL 创建对应的媒体资源对象（AVURLAsset），或者直接创建 compositions（AVComposition），这些类都是 <code>AVAsset</code> 的子类。</p>
+<p>一个 <code>AVAsset</code> 中的每一份音频或视频数据都称为一个<strong>轨道（track）</strong>。在最简单的情况下，一个媒体文件中可能只有两个轨道，一个音频轨道，一个视频轨道。而复杂的组合中，可能包含多个重叠的音频轨道和视频轨道。此外  <code>AVAsset</code> 也可能包含元数据<strong>（metadata）</strong>。</p>
+<p>在 <code>AVFoundation</code> 中另一个非常重要的概念是，初始化一个 <code>AVAsset</code> 或者一个 <code>AVAssetTrack</code> 时并不一定意味着它已经可以立即使用，因为这需要一段时间来做计算，而这个计算可能会阻塞当前线程，所以通常你可以选用异步的方式来初始化，并通过回调来得到异步返回。</p>
+<p>我们可以从一个文件或者用户的相册中来创建 asset。获得一个视频 asset 时，我们可以从中提出静态图，对其进行转码，裁剪器内容。</p>
+<h4 id="创建-Asset"><a href="#创建-Asset" class="headerlink" title="创建 Asset"></a>创建 Asset</h4><p>当使用一个 URL 来创建 asset 时，可以用 <code>AVURLAsset</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token operator">&lt;</span>#A URL that identifies an audiovisual asset such as a movie file#<span class="token operator">></span><span class="token punctuation">;</span>
+AVURLAsset <span class="token operator">*</span>anAsset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVURLAsset alloc<span class="token punctuation">]</span> initWithURL<span class="token punctuation">:</span>url options<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="设置-Asset-选项"><a href="#设置-Asset-选项" class="headerlink" title="设置 Asset 选项"></a>设置 Asset 选项</h4><p>可以看到当我们创建一个 <code>AVURLAsset</code> 时，是可以设置一个对象的 options 的，这里可选的设置项包括：</p>
+<p><code>AVURLAssetPreferPreciseDurationAndTimingKey</code>，这个选项对应的值是布尔值，默认为 <code>@(NO)</code>，当设为 <code>@(YES)</code> 时表示 asset 应该提供精确的时长，并能根据时间准确地随机访问，提供这样的能力是需要开销更大的计算的。当你只是想播放视频时，你可以不设置这个选项，但是如果你想把这个 asset 添加到一个 composition（AVMutableComposition）中去做进一步编辑，你通常需要精确的随机访问，这时你最好设置这个选项为 YES。<br><code>AVURLAssetReferenceRestrictionsKey</code>，这个选项对应的值是 AVAssetReferenceRestrictions enum。有一些 asset 可以保护一些指向外部数据的引用，这个选项用来表示对外部数据访问的限制。具体含义参见 AVAssetReferenceRestrictions。<br><code>AVURLAssetHTTPCookiesKey</code>，这个选项用来设置 asset 通过 HTTP 请求发送的 HTTP cookies，当然 cookies 只能发给同站。具体参见文档。<br><code>AVURLAssetAllowsCellularAccessKey</code>，这个选项对应的值是布尔值，默认为 @(YES)。表示 asset 是否能使用移动网络资源。<br>不过要注意这几个选项适用的 iOS 版本。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token operator">&lt;</span>#A URL that identifies an audiovisual asset such as a movie file#<span class="token operator">></span><span class="token punctuation">;</span>
+NSDictionary <span class="token operator">*</span>options <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span> AVURLAssetPreferPreciseDurationAndTimingKey <span class="token punctuation">:</span> <span class="token operator">@</span>YES <span class="token punctuation">}</span><span class="token punctuation">;</span>
+AVURLAsset <span class="token operator">*</span>anAssetToUseInAComposition <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVURLAsset alloc<span class="token punctuation">]</span> initWithURL<span class="token punctuation">:</span>url options<span class="token punctuation">:</span>options<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="访问用户的-Asset"><a href="#访问用户的-Asset" class="headerlink" title="访问用户的 Asset"></a>访问用户的 Asset</h4><p>获取用户相册的资源时，你需要借用 <code>ALAssetsLibrary</code> 的相关接口：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">ALAssetsLibrary <span class="token operator">*</span>library <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>ALAssetsLibrary alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.</span>
+<span class="token punctuation">[</span>library enumerateGroupsWithTypes<span class="token punctuation">:</span>ALAssetsGroupSavedPhotos usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>ALAssetsGroup <span class="token operator">*</span>group<span class="token punctuation">,</span> BOOL <span class="token operator">*</span>stop<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token comment" spellcheck="true">// Within the group enumeration block, filter to enumerate just videos.</span>
+<span class="token punctuation">[</span>group setAssetsFilter<span class="token punctuation">:</span><span class="token punctuation">[</span>ALAssetsFilter allVideos<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// For this example, we're only interested in the first item.</span>
+<span class="token punctuation">[</span>group enumerateAssetsAtIndexes<span class="token punctuation">:</span><span class="token punctuation">[</span>NSIndexSet indexSetWithIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span>
+                        options<span class="token punctuation">:</span><span class="token number">0</span>
+                     usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>ALAsset <span class="token operator">*</span>alAsset<span class="token punctuation">,</span> NSUInteger index<span class="token punctuation">,</span> BOOL <span class="token operator">*</span>innerStop<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                         <span class="token comment" spellcheck="true">// The end of the enumeration is signaled by asset == nil.</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>alAsset<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                             ALAssetRepresentation <span class="token operator">*</span>representation <span class="token operator">=</span> <span class="token punctuation">[</span>alAsset defaultRepresentation<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                             NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token punctuation">[</span>representation url<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                             AVAsset <span class="token operator">*</span>avAsset <span class="token operator">=</span> <span class="token punctuation">[</span>AVURLAsset URLAssetWithURL<span class="token punctuation">:</span>url options<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                             <span class="token comment" spellcheck="true">// Do something interesting with the AV asset.</span>
+                         <span class="token punctuation">}</span>
+                     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">}</span>
+                 failureBlock<span class="token punctuation">:</span> <span class="token operator">^</span><span class="token punctuation">(</span>NSError <span class="token operator">*</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                     <span class="token comment" spellcheck="true">// Typically you should handle an error more gracefully than this.</span>
+                     <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"No groups"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="加载-Asset-来使用"><a href="#加载-Asset-来使用" class="headerlink" title="加载 Asset 来使用"></a>加载 Asset 来使用</h4><p>初始化一个 <code>AVAsset</code> 或者一个 <code>AVAssetTrack</code> 时并不一定意味着它已经可以立即使用，因为这需要一段时间来做计算，而这个计算可能会阻塞当前线程，所以通常你可以选用异步的方式来初始化，并通过回调来得到异步返回。</p>
+<p>这时你可以使用 <code>AVAsynchronousKeyValueLoading</code> protocol 来获取加载 asset 的状态，并在对应的 completion handler 中做对应的处理。<code>AVAsset</code> 和 <code>AVAssetTrack</code> 都是遵循 <code>AVAsynchronousKeyValueLoading</code> protocol 的。下面是一个示例：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token operator">&lt;</span>#A URL that identifies an audiovisual asset such as a movie file#<span class="token operator">></span><span class="token punctuation">;</span>
+AVURLAsset <span class="token operator">*</span>anAsset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVURLAsset alloc<span class="token punctuation">]</span> initWithURL<span class="token punctuation">:</span>url options<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>keys <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"duration"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>asset loadValuesAsynchronouslyForKeys<span class="token punctuation">:</span>keys completionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    NSError <span class="token operator">*</span>error <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+    AVKeyValueStatus tracksStatus <span class="token operator">=</span> <span class="token punctuation">[</span>asset statusOfValueForKey<span class="token punctuation">:</span><span class="token string">@"duration"</span> error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>tracksStatus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> AVKeyValueStatusLoaded<span class="token punctuation">:</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> updateUserInterfaceForDuration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> AVKeyValueStatusFailed<span class="token punctuation">:</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> reportError<span class="token punctuation">:</span>error forAsset<span class="token punctuation">:</span>asset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> AVKeyValueStatusCancelled<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true">// Do whatever is appropriate for cancelation.</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>需要注意的是：当你需要加载一个 asset 来点播，你应该加载它的 <code>tracks</code> 属性。</p>
+<h4 id="获取一张图片"><a href="#获取一张图片" class="headerlink" title="获取一张图片"></a>获取一张图片</h4><p>我们可以用 <code>copyCGImageAtTime:actualTime:error:</code> 来获得指定时间的截图。<code>AVFoundation</code> 也许无法精确地获得你指定时间的截图，所以你需要传入一个 actualTime 参数来获得截图所对应的实际时间。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAsset <span class="token operator">*</span>myAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#An asset#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetImageGenerator <span class="token operator">*</span>imageGenerator <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVAssetImageGenerator alloc<span class="token punctuation">]</span> initWithAsset<span class="token punctuation">:</span>myAsset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+Float64 durationSeconds <span class="token operator">=</span> <span class="token function">CMTimeGetSeconds</span><span class="token punctuation">(</span><span class="token punctuation">[</span>myAsset duration<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime midpoint <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token operator">/</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+CMTime actualTime<span class="token punctuation">;</span>
+
+CGImageRef halfWayImage <span class="token operator">=</span> <span class="token punctuation">[</span>imageGenerator copyCGImageAtTime<span class="token punctuation">:</span>midpoint actualTime<span class="token punctuation">:</span><span class="token operator">&amp;</span>actualTime error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>halfWayImage <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    NSString <span class="token operator">*</span>actualTimeString <span class="token operator">=</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">CMTimeCopyDescription</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> actualTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>requestedTimeString <span class="token operator">=</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">CMTimeCopyDescription</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> midpoint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Got halfWayImage: Asked for %@, got %@"</span><span class="token punctuation">,</span> requestedTimeString<span class="token punctuation">,</span> actualTimeString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Do something interesting with the image.</span>
+    <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>halfWayImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="获取一组截图"><a href="#获取一组截图" class="headerlink" title="获取一组截图"></a>获取一组截图</h4><p>我们可以用 <code>generateCGImagesAsynchronouslyForTimes:completionHandler:</code> 接口来传入一组时间来获取相应的一组截图。同样的，必须保证在生成图片时对 <code>AVAssetImageGenerator</code> 实例的强引用。示例代码如下：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAsset <span class="token operator">*</span>myAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#An asset#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Assume: @property (strong) AVAssetImageGenerator *imageGenerator;</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>imageGenerator <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetImageGenerator assetImageGeneratorWithAsset<span class="token punctuation">:</span>myAsset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+Float64 durationSeconds <span class="token operator">=</span> <span class="token function">CMTimeGetSeconds</span><span class="token punctuation">(</span><span class="token punctuation">[</span>myAsset duration<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime firstThird <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token operator">/</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime secondThird <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token operator">*</span><span class="token number">2.0</span><span class="token operator">/</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime end <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>times <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>firstThird<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>secondThird<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>end<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>imageGenerator generateCGImagesAsynchronouslyForTimes<span class="token punctuation">:</span>times
+                completionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>CMTime requestedTime<span class="token punctuation">,</span> CGImageRef image<span class="token punctuation">,</span> CMTime actualTime<span class="token punctuation">,</span> AVAssetImageGeneratorResult result<span class="token punctuation">,</span> NSError <span class="token operator">*</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                NSString <span class="token operator">*</span>requestedTimeString <span class="token operator">=</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>
+                    <span class="token function">CFBridgingRelease</span><span class="token punctuation">(</span><span class="token function">CMTimeCopyDescription</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> requestedTime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                NSString <span class="token operator">*</span>actualTimeString <span class="token operator">=</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>
+                    <span class="token function">CFBridgingRelease</span><span class="token punctuation">(</span><span class="token function">CMTimeCopyDescription</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> actualTime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Requested: %@; actual %@"</span><span class="token punctuation">,</span> requestedTimeString<span class="token punctuation">,</span> actualTimeString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> AVAssetImageGeneratorSucceeded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// Do something interesting with the image.</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> AVAssetImageGeneratorFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Failed with error: %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>error localizedDescription<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> AVAssetImageGeneratorCancelled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Canceled"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>我们还能使用 <code>cancelAllCGImageGeneration</code> 接口来中断截图。</p>
+<h4 id="对视频进行裁剪和转码"><a href="#对视频进行裁剪和转码" class="headerlink" title="对视频进行裁剪和转码"></a>对视频进行裁剪和转码</h4><p>我们可以使用一个 <code>AVAssetExportSession</code> 实例来对视频进行裁剪或格式转换。流程如下图所示：<br><img src="http://oqepgj2jp.bkt.clouddn.com/AVF2.png" alt="图二"></p>
+<p><code>AVAssetExportSession</code> 实例用来控制异步的导出 asset。使用 export session 时，首先我们需要传入要导出的 asset 和对应的 preset 配置，我们可以用 <code>allExportPresets</code> 接口来查看所有可用的 preset 配置。接着，你需要设置导出的 URL 和文件类型。此外，我们还能设置导出视频文件的 metadata 以及导出的是否应该针对网络访问优化。</p>
+<p>在下面的示例代码中，我们用 <code>exportPresetsCompatibleWithAsset:</code> 接口检查可用的 preset，用 <code>outputURL</code> 和 <code>outputFileType</code> 接口设置导出 URL 和导出文件类型，通过 timeRange 设置导出时间段。此外，我们还能用 <code>shouldOptimizeForNetworkUse</code> 接口设置是否针对网络使用优化以方便秒开，用 <code>maxDuration</code>、<code>fileLengthLimit</code> 设置导入限制等等。</p>
+<p>我们用 <code>exportAsynchronouslyWithCompletionHandler:</code> 接口来开始导出。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAsset <span class="token operator">*</span>anAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#Get an asset#<span class="token operator">></span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>compatiblePresets <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetExportSession exportPresetsCompatibleWithAsset<span class="token punctuation">:</span>anAsset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>compatiblePresets containsObject<span class="token punctuation">:</span>AVAssetExportPresetLowQuality<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    AVAssetExportSession <span class="token operator">*</span>exportSession <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVAssetExportSession alloc<span class="token punctuation">]</span> initWithAsset<span class="token punctuation">:</span>anAsset presetName<span class="token punctuation">:</span>AVAssetExportPresetLowQuality<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    exportSession<span class="token punctuation">.</span>outputURL <span class="token operator">=</span> <span class="token operator">&lt;</span>#A file URL#<span class="token operator">></span><span class="token punctuation">;</span>
+    exportSession<span class="token punctuation">.</span>outputFileType <span class="token operator">=</span> AVFileTypeQuickTimeMovie<span class="token punctuation">;</span>
+
+    CMTime start <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CMTime duration <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CMTimeRange range <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> duration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    exportSession<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> range<span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span>exportSession exportAsynchronouslyWithCompletionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>exportSession status<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> AVAssetExportSessionStatusFailed<span class="token punctuation">:</span>
+                <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Export failed: %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>exportSession error<span class="token punctuation">]</span> localizedDescription<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> AVAssetExportSessionStatusCancelled<span class="token punctuation">:</span>
+                <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Export canceled"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>此外，我们还可以用 <code>cancelExport</code> 接口来取消导出。</p>
+<p>当我们想要覆盖已有的文件，或者向应用沙盒外写文件时，导出会失败。此外，在导出时突然来了电话、导出时应用在后台状态并且其他应用开始播放时导出也可能会失败。在这些情况下，你需要提示用户导出失败，并允许用户重新导出。</p>
+<p>参考： <a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html" target="_blank" rel="external">AVFoundation Programming Guide</a>。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/23/指针与数组/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
