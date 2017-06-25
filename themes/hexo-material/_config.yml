@@ -133,6 +133,10 @@ sidebar:
             link: "/about"
             icon: person
             divider: false
+        剪影:
+            link: "/gallery"
+            icon: 
+            divider: false
     article_num:
         use: false
         divider: true
