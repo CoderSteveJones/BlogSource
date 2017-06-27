@@ -135,7 +135,7 @@ sidebar:
             divider: false
         剪影:
             link: "/gallery"
-            icon: 
+            icon: camera
             divider: false
     article_num:
         use: false
