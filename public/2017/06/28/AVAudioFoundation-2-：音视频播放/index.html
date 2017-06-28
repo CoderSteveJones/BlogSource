@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            AVAudioFoundation(2)：音视频播放 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="AVAudioFoundation(2)：音视频播放 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#播放-Asset"><span class="post-toc-number">1.</span> <span class="post-toc-text">播放 Asset</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理不同类型的-Asset"><span class="post-toc-number">2.</span> <span class="post-toc-text">处理不同类型的 Asset</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#播放一个-AVPlayerItem"><span class="post-toc-number">3.</span> <span class="post-toc-text">播放一个 AVPlayerItem</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#播放多个-AVPlayerItem"><span class="post-toc-number">4.</span> <span class="post-toc-text">播放多个 AVPlayerItem</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#监测播放状态"><span class="post-toc-number">5.</span> <span class="post-toc-text">监测播放状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#响应-status-属性的变化"><span class="post-toc-number">6.</span> <span class="post-toc-text">响应 status 属性的变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跟踪视觉内容就绪状态"><span class="post-toc-number">7.</span> <span class="post-toc-text">跟踪视觉内容就绪状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#追踪播放时间变化"><span class="post-toc-number">8.</span> <span class="post-toc-text">追踪播放时间变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#播放结束"><span class="post-toc-number">9.</span> <span class="post-toc-text">播放结束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个完整示例"><span class="post-toc-number">10.</span> <span class="post-toc-text">一个完整示例</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                AVAudioFoundation(2)：音视频播放
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>6月 28, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AVAudioFoundation(2)：音视频播放&url=http://yoursite.com//2017/06/28/AVAudioFoundation-2-：音视频播放/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AVAudioFoundation(2)：音视频播放&url=http://yoursite.com//2017/06/28/AVAudioFoundation-2-：音视频播放/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/28/AVAudioFoundation-2-：音视频播放/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/28/AVAudioFoundation-2-：音视频播放/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>要播放  <code>AVAsset</code> 可以使用 <code>AVPlayer</code>。在播放期间，可以使用一个 <code>AVPlayerItem</code> 实例来管理 <code>asset</code> 的整体的播放状态，使用 <code>AVPlayerItemTrack</code> 来管理各个 <code>track</code> 的播放状态。对于视频的渲染，使用 <code>AVPlayerLayer</code> 来处理。</p>
+<h4 id="播放-Asset"><a href="#播放-Asset" class="headerlink" title="播放 Asset"></a>播放 Asset</h4><p><code>AVPlayer</code> 是一个控制 <code>asset</code> 播放的控制器，它的功能包括：开始播放、停止播放、<code>seek</code> 等等。你可以使用 <code>AVPlayer</code> 来播放单个 <code>asset</code>。如果你想播放一组 <code>asset</code>，你可以使用 <code>AVQueuePlayer</code>，<code>AVQueuePlayer</code> 是 <code>AVPlayer</code> 的子类。</p>
+<p><code>AVPlayer</code> 也会提供当前的播放状态，这样我们就可以根据当前的播放状态调整交互。我们需要将 <code>AVPlayer</code> 的画面输出到一个特定的 <code>Core Animation Layer</code> 上，通常是一个 <code>AVPlayerLayer</code> 或 <code>AVSynchronizedLayer</code> 实例。</p>
+<p>需要注意的是，你可以从一个 <code>AVPlayer</code> 实例创建多个 <code>AVPlayerLayer</code> 对象，但是只有最新创建的那个才会渲染画面到屏幕。</p>
+<p>对于 <code>AVPlayer</code> 来说，虽然最终播放的是 <code>asset</code>，但是我们并不直接提供一个 <code>AVAsset</code> 给它，而是提供一个 <code>AVPlayerItem</code> 实例。<code>AVPlayerItem</code> 是用来管理与之关联的 <code>asset</code> 的播放状态的，一个 <code>AVPlayerItem</code> 包含了一组 <code>AVPlayerItemTrack</code> 实例，对应着 <code>asset</code> 中的音视频轨道。它们直接的关系大致如下图所示：</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE1.png" alt="图一"></p>
+<p>注意：该图的原图是苹果官方文档上的，但是原图是有错的，把 <code>AVPlayerItemTrack</code> 所属的框标成了 <code>AVAsset</code>，这里做了修正。</p>
+<p>这种实现方式就意味着，我们可以用多个播放器同时播放一个 <code>asset</code>，并且各个播放器可以使用不同的模式来渲染。下图就展示了一种用两个不同的 <code>AVPlayer</code> 采用不同的设置播放同一个 <code>AVAsset</code> 的场景。在播放中，还可以禁掉某些 <code>track</code> 的播放。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE2.png" alt="图二"><br>我们可以通过网络来加载 <code>asset</code>，通常简单的初始化 <code>AVPlayerItem</code> 后并不意味着它就直接能播放，所以我们可以 <code>KVO AVPlayerItem</code> 的 <code>status</code> 属性来监听它是否已经可播再决定后续的行为。</p>
+<h4 id="处理不同类型的-Asset"><a href="#处理不同类型的-Asset" class="headerlink" title="处理不同类型的 Asset"></a>处理不同类型的 Asset</h4><p>我们配置 <code>asset</code> 来播放的方式多多少少会依赖 <code>asset</code> 的类型，一般我们有两种不同类型的 <code>asset</code>：</p>
+<ul>
+<li>1）基于文件的 asset，一般可以来源于本地视频文件、相册资源库等等。</li>
+<li>2）流式 <code>asset</code>，比如 <code>HLS</code> 格式的视频。</li>
+</ul>
+<p>加载基于文件的 <code>asset</code> 一般分为如下几步：</p>
+<ul>
+<li>基于文件路径的 <code>URL</code> 创建 <code>AVURLAsset</code> 实例。</li>
+<li>基于 <code>AVURLAsset</code> 实例创建 <code>AVPlayerItem</code> 实例。</li>
+<li>将 <code>AVPlayerItem</code> 实例与一个 <code>AVPlayer</code> 实例关联。</li>
+<li><code>KVO</code> 监测 <code>AVPlayerItem</code> 的 <code>status</code> 属性来等待其已经可播，即加载完成。</li>
+</ul>
+<p>创建并加载一个 <code>HTTP Live Stream</code>（HLS）格式的资源来播放时，可以按照下面几步来做：</p>
+<ul>
+<li>基于资源的 <code>URL</code> 初始化一个 <code>AVPlayerItem</code> 实例，因为你无法直接创建一个 <code>AVAsset</code> 来表示 <code>HLS</code> 资源。</li>
+<li>当你将 <code>AVPlayerItem</code> 和 <code>AVPlayer</code> 实例关联起来后，他就开始为播放做准备，当一切就绪时 <code>AVPlayerItem</code> 会创建出  <code>AVAsset</code> 和 <code>AVAssetTrack</code> 实例以用来对接 <code>HLS</code> 视频流的音视频内容。</li>
+<li>要获取视频流的时长，你需要 <code>KVO</code> 监测 <code>AVPlayerItem</code> 的 <code>duration</code> 属性，当资源可以播放时，它会被更新为正确的值。</li>
+</ul>
+<pre class=" language-objectivec"><code class="language-objectivec">NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token punctuation">[</span>NSURL URLWithString<span class="token punctuation">:</span><span class="token operator">@</span>"<span class="token operator">&lt;</span>#Live stream URL#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// You may find a test stream at &lt;http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8>.</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>playerItem <span class="token operator">=</span> <span class="token punctuation">[</span>AVPlayerItem playerItemWithURL<span class="token punctuation">:</span>url<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>playerItem addObserver<span class="token punctuation">:</span><span class="token keyword">self</span> forKeyPath<span class="token punctuation">:</span><span class="token string">@"status"</span> options<span class="token punctuation">:</span><span class="token number">0</span> context<span class="token punctuation">:</span><span class="token operator">&amp;</span>ItemStatusContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>player <span class="token operator">=</span> <span class="token punctuation">[</span>AVPlayer playerWithPlayerItem<span class="token punctuation">:</span>playerItem<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>当你不知道一个 <code>URL</code> 对应的是什么类型的 <code>asset</code> 时，你可以这样做：</p>
+<ul>
+<li>尝试基于 <code>URL</code> 来初始化一个 <code>AVURLAsset</code>，并加载它的 <code>tracks</code> 属性。如果 <code>tracks</code> 属性加载成功，就基于 <code>asset</code> 来创建一个 <code>AVPlayerItem</code> 实例。</li>
+<li>如果 <code>tracks</code> 属性加载失败，那么就直接基于 <code>URL</code> 创建一个 <code>AVPlayerItem</code> 实例，并 <code>KVO</code> 监测 <code>AVPlayer</code> 的 <code>status</code> 属性来看它何时可以播放。</li>
+<li>如果上述尝试都失败，那就清理掉 <code>AVPlayerItem</code>。</li>
+</ul>
+<h4 id="播放一个-AVPlayerItem"><a href="#播放一个-AVPlayerItem" class="headerlink" title="播放一个 AVPlayerItem"></a>播放一个 AVPlayerItem</h4><p>调用 <code>AVPlayer</code> 的 <code>play</code> 接口即可开始播放。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span>play<span class="token punctuation">:</span>sender <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>player play<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>除了简单的播放，还可以通过设置 rate 属性设置播放速率。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">player<span class="token punctuation">.</span>rate <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+player<span class="token punctuation">.</span>rate <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
+</code></pre>
+<p>播放速率设置为 1.0 表示正常播放，设置为 0.0 表示暂停（等同调用 pause 效果）。</p>
+<p>除了正向播放，有的音视频还能支持倒播，不过需要需要检查几个属性：</p>
+<ul>
+<li><code>canPlayReverse</code>：支持设置播放速率为 -1.0。</li>
+<li><code>canPlaySlowReverse</code>：支持设置播放速率为 -1.0 到 0.0。</li>
+<li><code>canPlayFastReverse</code>：支持设置播放速率为小于 -1.0 的值。<br>可以通过 <code>seekToTime</code>: 接口来调整播放位置。但是这个接口主要是为性能考虑，不保证精确。</li>
+</ul>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTime fiveSecondsIn <span class="token operator">=</span> <span class="token function">CMTimeMake</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>player seekToTime<span class="token punctuation">:</span>fiveSecondsIn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果要精确调整，可以用 <code>seekToTime:toleranceBefore:toleranceAfter:</code> 接口。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTime fiveSecondsIn <span class="token operator">=</span> <span class="token function">CMTimeMake</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>player seekToTime<span class="token punctuation">:</span>fiveSecondsIn toleranceBefore<span class="token punctuation">:</span>kCMTimeZero toleranceAfter<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>需要注意的是，设置 <code>tolerance</code> 为 <code>zero</code> 会耗费较大的计算性能，所以一般只在编写复杂的音视频编辑功能是这样设置。</p>
+<p>我们可以通过监听 <code>AVPlayerItemDidPlayToEndTimeNotification</code> 来获得播放结束事件，在播放结束后可以用 <code>seekToTime:</code> 调整播放位置到 <code>zero</code>，否则调用 <code>play</code> 会无效。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Register with the notification center after creating the player item.</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>NSNotificationCenter defaultCenter<span class="token punctuation">]</span> 
+    addObserver<span class="token punctuation">:</span><span class="token keyword">self</span> 
+       selector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>playerItemDidReachEnd<span class="token punctuation">:</span><span class="token punctuation">)</span>
+           name<span class="token punctuation">:</span>AVPlayerItemDidPlayToEndTimeNotification
+         object<span class="token punctuation">:</span><span class="token operator">&lt;</span>#The player item#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>playerItemDidReachEnd<span class="token punctuation">:</span><span class="token punctuation">(</span>NSNotification <span class="token operator">*</span><span class="token punctuation">)</span>notification <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>player seekToTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>此外，我们还能设置播放器的 <code>actionAtItemEnd</code> 属性来设置其在播放结束后的行为，比如 <code>AVPlayerActionAtItemEndPause</code> 表示播放结束后会暂停。</p>
+<h4 id="播放多个-AVPlayerItem"><a href="#播放多个-AVPlayerItem" class="headerlink" title="播放多个 AVPlayerItem"></a>播放多个 AVPlayerItem</h4><p>我们可以用 <code>AVQueuePlayer</code> 来顺序播放多个 <code>AVPlayerItem</code>。<code>AVQueuePlayer</code> 是 <code>AVPlayer</code> 的子类。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSArray <span class="token operator">*</span>items <span class="token operator">=</span> <span class="token operator">&lt;</span>#An array of player items#<span class="token operator">></span><span class="token punctuation">;</span>
+AVQueuePlayer <span class="token operator">*</span>queuePlayer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVQueuePlayer alloc<span class="token punctuation">]</span> initWithItems<span class="token punctuation">:</span>items<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>通过调用 <code>play</code> 即可顺序播放，也可以调用 <code>advanceToNextItem</code> 跳到下个 <code>item</code>。除此之外，我们还可以用 <code>insertItem:afterItem:</code>、<code>removeItem:</code>、<code>removeAllItems</code> 来控制播放资源。</p>
+<p>当插入一个 <code>item</code> 的时候，可以需要用 <code>canInsertItem:afterItem:</code> 检查下是否可以插入， 对 <code>afterItem</code> 传入 <code>nil</code>，则检查是否可以插入到队尾。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVPlayerItem <span class="token operator">*</span>anItem <span class="token operator">=</span> <span class="token operator">&lt;</span>#Get a player item#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>queuePlayer canInsertItem<span class="token punctuation">:</span>anItem afterItem<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>queuePlayer insertItem<span class="token punctuation">:</span>anItem afterItem<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="监测播放状态"><a href="#监测播放状态" class="headerlink" title="监测播放状态"></a>监测播放状态</h4><p>我们可以监测一些 <code>AVPlayer</code> 的状态和正在播放的 <code>AVPlayerItem</code> 的状态，这对于处理那些不在你直接控制下的 <code>state</code> 是很有用的，比如：</p>
+<ul>
+<li>如果用户使用多任务处理切换到另一个应用程序，播放器的 <code>rate</code> 属性将下降到 0.0。</li>
+<li>当播放远程媒体资源（比如网络视频）时，监测 <code>AVPlayerItem</code> 的 <code>loadedTimeRanges</code> 和 <code>seekableTimeRanges</code> 可以知道可以播放和 <code>seek</code> 的资源时长。</li>
+<li>当播放 <code>HTTP Live Stream</code> 时，播放器的 <code>currentItem</code> 可能发生变化。</li>
+<li>当播放 <code>HTTP Live Stream</code> 时，<code>AVPlayerItem</code> 的 <code>tracks</code> 可能发生变化。这种情况可能发生在播放流切换了编码。</li>
+<li>当播放失败时，<code>AVPlayer</code> 或 <code>AVPlayerItem</code> 的 <code>status</code> 可能发生变化。</li>
+</ul>
+<h4 id="响应-status-属性的变化"><a href="#响应-status-属性的变化" class="headerlink" title="响应 status 属性的变化"></a>响应 status 属性的变化</h4><p>通过 <code>KVO</code> 监测 <code>AVPlayer</code> 和正在播放的 <code>AVPlayerItem</code> 的 <code>status</code> 属性，可以获得对应的通知，比如当播放出现错误时，你可能会收到 <code>AVPlayerStatusFailed</code> 或 <code>AVPlayerItemStatusFailed</code> 通知，这时你就可以做相应的处理。</p>
+<p>需要注意的是，由于 <code>AVFoundation</code> 不会指定在哪个线程发送通知，所以如果你需要在收到通知后更新用户界面的话，你需要切到主线程。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>observeValueForKeyPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>keyPath ofObject<span class="token punctuation">:</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>object change<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>change context<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>context <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>context <span class="token operator">==</span> <span class="token operator">&lt;</span>#Player status context#<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AVPlayer <span class="token operator">*</span>thePlayer <span class="token operator">=</span> <span class="token punctuation">(</span>AVPlayer <span class="token operator">*</span><span class="token punctuation">)</span> object<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>thePlayer status<span class="token punctuation">]</span> <span class="token operator">==</span> AVPlayerStatusFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            NSError <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>#The AVPlayer object#<span class="token operator">></span> error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Respond to error: for example, display an alert sheet.</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// Deal with other status change if appropriate.</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Deal with other change notifications if appropriate.</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> observeValueForKeyPath<span class="token punctuation">:</span>keyPath ofObject<span class="token punctuation">:</span>object change<span class="token punctuation">:</span>change context<span class="token punctuation">:</span>context<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="跟踪视觉内容就绪状态"><a href="#跟踪视觉内容就绪状态" class="headerlink" title="跟踪视觉内容就绪状态"></a>跟踪视觉内容就绪状态</h4><p>我们可以监测 <code>AVPlayerLayer</code> 实例的 <code>readyForDisplay</code> 属性来获得播放器已经可以开始渲染视觉内容的通知。</p>
+<p>基于这个能力，我们就能实现在播放器的视觉内容就绪时才将 <code>player layer</code> 插入到 <code>layer</code> 树中去展示给用户。</p>
+<h4 id="追踪播放时间变化"><a href="#追踪播放时间变化" class="headerlink" title="追踪播放时间变化"></a>追踪播放时间变化</h4><p>我们可以使用 <code>AVPlayer</code> 的 <code>addPeriodicTimeObserverForInterval:queue:usingBlock:</code> 和 <code>addBoundaryTimeObserverForTimes:queue:usingBlock:</code> 这两个接口来追踪当前播放位置的变化，这样我们就可以在用户界面上做出更新，反馈给用户当前的播放时间和剩余的播放时间等等。</p>
+<ul>
+<li><code>addPeriodicTimeObserverForInterval:queue:usingBlock:</code>，这个接口将会在播放时间发生变化时在回调 block 中通知我们当前播放时间。</li>
+<li><code>addBoundaryTimeObserverForTimes:queue:usingBlock:</code>，这个接口允许我们传入一组时间（CMTime 数组）当播放器播到这些时间时会在回调 <code>block</code> 中通知我们。<br>这两个接口都会返回一个 <code>observer</code> 角色的对象给我们，我们需要在监测时间的这个过程中强引用这个对象，同时在不需要使用它时调用 r<code>emoveTimeObserver:</code> 接口来移除它。</li>
+</ul>
+<p>此外，AVFoundation 也不保证在每次时间变化或设置时间到达时都回调 block 来通知你。比如当上一次回调 block 还没完成的情况时，又到了此次回调 block 的时机，AVFoundation 这次就不会调用 block。所以我们需要确保不要在 block 回调里做开销太大、耗时太长的任务。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Assume a property: @property (strong) id playerObserver;</span>
+
+Float64 durationSeconds <span class="token operator">=</span> <span class="token function">CMTimeGetSeconds</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">&lt;</span>#An asset#<span class="token operator">></span> duration<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime firstThird <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token operator">/</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CMTime secondThird <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>durationSeconds<span class="token operator">*</span><span class="token number">2.0</span><span class="token operator">/</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>times <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>firstThird<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>NSValue valueWithCMTime<span class="token punctuation">:</span>secondThird<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">self</span><span class="token punctuation">.</span>playerObserver <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>#A player#<span class="token operator">></span> addBoundaryTimeObserverForTimes<span class="token punctuation">:</span>times queue<span class="token punctuation">:</span><span class="token constant">NULL</span> usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+
+    NSString <span class="token operator">*</span>timeDescription <span class="token operator">=</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>
+        <span class="token function">CFBridgingRelease</span><span class="token punctuation">(</span><span class="token function">CMTimeCopyDescription</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>player currentTime<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Passed a boundary at %@"</span><span class="token punctuation">,</span> timeDescription<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="播放结束"><a href="#播放结束" class="headerlink" title="播放结束"></a>播放结束</h4><p>监听 <code>AVPlayerItemDidPlayToEndTimeNotification</code> 这个通知即可。上文有提到，这里不再重复。</p>
+<h4 id="一个完整示例"><a href="#一个完整示例" class="headerlink" title="一个完整示例"></a>一个完整示例</h4><p>这里的示例将展示如果使用 <code>AVPlayer</code> 来播放一个视频文件，主要包括下面几个步骤：</p>
+<ul>
+<li>配置一个使用 <code>AVPlayerLayer layer</code> 的 <code>UIView</code>。</li>
+<li>创建一个 <code>AVPlayer</code> 实例。</li>
+<li>基于文件类型的 <code>asset</code> 创建一个 <code>AVPlayerItem</code> 实例，并用 <code>KVO</code> 监测其 <code>status</code> 属性。</li>
+<li>响应 <code>AVPlayerItem</code> 实例可以播放的通知，显示出一个按钮。</li>
+<li>播放 <code>AVPlayerItem</code> 并播放完成后将其播放位置调整到开始位置。<br>首先是 <code>PlayerView</code>：</li>
+</ul>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">import</span> &lt;UIKit/UIKit.h></span>
+<span class="token macro property">#<span class="token directive keyword">import</span> &lt;AVFoundation/AVFoundation.h></span>
+
+<span class="token keyword">@interface</span> PlayerView <span class="token punctuation">:</span> UIView
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">)</span> AVPlayer <span class="token operator">*</span>player<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
+
+<span class="token keyword">@implementation</span> PlayerView
+<span class="token operator">+</span> <span class="token punctuation">(</span>Class<span class="token punctuation">)</span>layerClass <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>AVPlayerLayer class<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>AVPlayer<span class="token operator">*</span><span class="token punctuation">)</span>player <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>AVPlayerLayer <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token keyword">self</span> layer<span class="token punctuation">]</span> player<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setPlayer<span class="token punctuation">:</span><span class="token punctuation">(</span>AVPlayer <span class="token operator">*</span><span class="token punctuation">)</span>player <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token punctuation">(</span>AVPlayerLayer <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token keyword">self</span> layer<span class="token punctuation">]</span> setPlayer<span class="token punctuation">:</span>player<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@end</span>
+</code></pre>
+<p>一个简单的 <code>PlayerViewController</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">@class</span> PlayerView<span class="token punctuation">;</span>
+<span class="token keyword">@interface</span> PlayerViewController <span class="token punctuation">:</span> UIViewController
+
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">)</span> AVPlayer <span class="token operator">*</span>player<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">)</span> AVPlayerItem <span class="token operator">*</span>playerItem<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> weak<span class="token punctuation">)</span> IBOutlet PlayerView <span class="token operator">*</span>playerView<span class="token punctuation">;</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> weak<span class="token punctuation">)</span> IBOutlet UIButton <span class="token operator">*</span>playButton<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span>loadAssetFromFile<span class="token punctuation">:</span>sender<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span>play<span class="token punctuation">:</span>sender<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>syncUI<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
+</code></pre>
+<p>同步 <code>UI</code> 的方法：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>syncUI <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>player<span class="token punctuation">.</span>currentItem <span class="token operator">!=</span> nil<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>player<span class="token punctuation">.</span>currentItem status<span class="token punctuation">]</span> <span class="token operator">==</span> AVPlayerItemStatusReadyToPlay<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>playButton<span class="token punctuation">.</span>enabled <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>playButton<span class="token punctuation">.</span>enabled <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在 <code>viewDidLoad</code> 时先调用一下 <code>syncUI</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>viewDidLoad <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> viewDidLoad<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> syncUI<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>创建并加载 <code>AVURLAsset</code>，在加载成功时，创建 <code>item</code>、初始化播放器以及添加各种监听：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">static</span> <span class="token keyword">const</span> NSString <span class="token operator">*</span>ItemStatusContext<span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span>loadAssetFromFile<span class="token punctuation">:</span>sender <span class="token punctuation">{</span>
+
+    NSURL <span class="token operator">*</span>fileURL <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundle mainBundle<span class="token punctuation">]</span> URLForResource<span class="token punctuation">:</span><span class="token operator">&lt;</span>#<span class="token string">@"VideoFileName"</span>#<span class="token operator">></span> withExtension<span class="token punctuation">:</span><span class="token operator">&lt;</span>#<span class="token string">@"extension"</span>#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    AVURLAsset <span class="token operator">*</span>asset <span class="token operator">=</span> <span class="token punctuation">[</span>AVURLAsset URLAssetWithURL<span class="token punctuation">:</span>fileURL options<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>tracksKey <span class="token operator">=</span> <span class="token string">@"tracks"</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span>asset loadValuesAsynchronouslyForKeys<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">[</span>tracksKey<span class="token punctuation">]</span> completionHandler<span class="token punctuation">:</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// The completion block goes here.</span>
+        <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+            NSError <span class="token operator">*</span>error<span class="token punctuation">;</span>
+            AVKeyValueStatus status <span class="token operator">=</span> <span class="token punctuation">[</span>asset statusOfValueForKey<span class="token punctuation">:</span>tracksKey error<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> AVKeyValueStatusLoaded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">self</span><span class="token punctuation">.</span>playerItem <span class="token operator">=</span> <span class="token punctuation">[</span>AVPlayerItem playerItemWithAsset<span class="token punctuation">:</span>asset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                 <span class="token comment" spellcheck="true">// ensure that this is done before the playerItem is associated with the player</span>
+                <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>playerItem addObserver<span class="token punctuation">:</span><span class="token keyword">self</span> forKeyPath<span class="token punctuation">:</span><span class="token string">@"status"</span> options<span class="token punctuation">:</span>NSKeyValueObservingOptionInitial context<span class="token punctuation">:</span><span class="token operator">&amp;</span>ItemStatusContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">[</span><span class="token punctuation">[</span>NSNotificationCenter defaultCenter<span class="token punctuation">]</span> addObserver<span class="token punctuation">:</span><span class="token keyword">self</span> selector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>playerItemDidReachEnd<span class="token punctuation">:</span><span class="token punctuation">)</span> name<span class="token punctuation">:</span>AVPlayerItemDidPlayToEndTimeNotification object<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>playerItem<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">self</span><span class="token punctuation">.</span>player <span class="token operator">=</span> <span class="token punctuation">[</span>AVPlayer playerWithPlayerItem<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>playerItem<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>playerView setPlayer<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>player<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// You should deal with the error appropriately.</span>
+                <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"The asset's tracks were not loaded:\n%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>error localizedDescription<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>响应 <code>status</code> 的监听通知：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>observeValueForKeyPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>keyPath ofObject<span class="token punctuation">:</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>object change<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>change context<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>context <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>context <span class="token operator">==</span> <span class="token operator">&amp;</span>ItemStatusContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> syncUI<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> observeValueForKeyPath<span class="token punctuation">:</span>keyPath ofObject<span class="token punctuation">:</span>object change<span class="token punctuation">:</span>change context<span class="token punctuation">:</span>context<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>播放，以及播放完成时的处理：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span>play<span class="token punctuation">:</span>sender <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>player play<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>playerItemDidReachEnd<span class="token punctuation">:</span><span class="token punctuation">(</span>NSNotification <span class="token operator">*</span><span class="token punctuation">)</span>notification <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>player seekToTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/25/AVAudioFoundation-1-：使用-AVAsset/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
