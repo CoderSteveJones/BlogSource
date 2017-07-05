@@ -10,7 +10,7 @@
     
     <title>
         
-            给你 | 
+            深浅拷贝 | 
         
         Aben
     </title>
@@ -58,7 +58,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="给你 | Aben">
+    <meta property="og:title" content="深浅拷贝 | Aben">
     <meta property="og:description" content="null">
     
 
@@ -242,7 +242,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-对非集合类对象的copy操作："><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 对非集合类对象的copy操作：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、集合类对象的copy与mutableCopy"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、集合类对象的copy与mutableCopy</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -279,7 +279,7 @@
         
     
             <p class="article-headline-p">
-                给你
+                深浅拷贝
             </p>
         </div>
 
@@ -298,7 +298,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Aben</strong>
-        <span>6月 22, 2017</span>
+        <span>4月 01, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -338,7 +338,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=给你&url=http://yoursite.com//2017/06/22/给你/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=深浅拷贝&url=http://yoursite.com//2017/04/01/深浅拷贝/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -347,7 +347,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=给你&url=http://yoursite.com//2017/06/22/给你/index.html&via=Aben" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=深浅拷贝&url=http://yoursite.com//2017/04/01/深浅拷贝/index.html&via=Aben" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -356,7 +356,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/22/给你/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/04/01/深浅拷贝/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/22/给你/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/04/01/深浅拷贝/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -389,30 +389,36 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><img src="http://oqepgj2jp.bkt.clouddn.com/girlFriend.png" alt="你"></p>
-<p>我躲在幽深的夏夜里﻿</p>
-<p>摘一朵芙蕖﻿</p>
-<p>携清风一缕﻿</p>
-<p>送给你﻿﻿</p>
-<hr>
-<p>我把月光揉成诗句﻿</p>
-<p>带着鲜花和故事﻿</p>
-<p>带着清酒和嫩绿﻿</p>
-<p>送给你﻿</p>
-<hr>
-<p>我用彩虹吃面的勺子﻿</p>
-<p>深入西瓜的腹地﻿</p>
-<p>掏出第一口果汁﻿</p>
-<p>送给你﻿</p>
-<hr>
-<p>我把蛙鸣哼进歌声里﻿</p>
-<p>把芬芳卷到涟漪里﻿</p>
-<p>你不必客气﻿</p>
-<p>更不要推辞﻿</p>
-<p>请在酣然入睡时﻿</p>
-<p>把冷饮灌进我的梦里﻿</p>
-<p>灌醉所有炙热的因子﻿</p>
-<p>直到太阳升起﻿</p>
+        <h4 id="1-对非集合类对象的copy操作："><a href="#1-对非集合类对象的copy操作：" class="headerlink" title="1. 对非集合类对象的copy操作："></a>1. 对非集合类对象的copy操作：</h4><p>在非集合类对象中：对 <code>immutable</code> 对象进行 <code>copy</code> 操作，是指针复制，<code>mutableCopy</code> 操作时内容复制；对 <code>mutable</code> 对象进行 <code>copy</code> 和 <code>mutableCopy</code> 都是内容复制。用代码简单表示如下：<br>    •    [immutableObject copy] // 浅复制<br>    •    [immutableObject mutableCopy] //深复制<br>    •    [mutableObject copy] //深复制<br>    •    [mutableObject mutableCopy] //深复制</p>
+<p>比如以下代码：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableString <span class="token operator">*</span>string <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span><span class="token string">@"origin"</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//copy</span>
+NSString <span class="token operator">*</span>stringCopy <span class="token operator">=</span> <span class="token punctuation">[</span>string copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>查看内存，会发现 <code>string</code>、<code>stringCopy</code> 内存地址都不一样，说明此时都是做内容拷贝、深拷贝。即使你进行如下操作：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>string appendString<span class="token punctuation">:</span><span class="token string">@"origion!"</span><span class="token punctuation">]</span>
+</code></pre>
+<p><code>stringCopy</code> 的值也不会因此改变，但是如果不使用 <code>copy</code>，<code>stringCopy</code> 的值就会被改变。 集合类对象以此类推。 所以，</p>
+<blockquote>
+<p>用 @property 声明 NSString、NSArray、NSDictionary 经常使用 copy 关键字，是因为他们有对应的可变类型：NSMutableString、NSMutableArray、NSMutableDictionary，他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。</p>
+</blockquote>
+<h4 id="2、集合类对象的copy与mutableCopy"><a href="#2、集合类对象的copy与mutableCopy" class="headerlink" title="2、集合类对象的copy与mutableCopy"></a>2、集合类对象的copy与mutableCopy</h4><p>集合类对象是指 <code>NSArray</code>、<code>NSDictionary</code>、<code>NSSet</code> … 之类的对象。下面先看集合类<code>immutable</code>对象使用 <code>copy</code> 和 <code>mutableCopy</code> 的一个例子：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"a"</span><span class="token punctuation">,</span> <span class="token string">@"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"c"</span><span class="token punctuation">,</span> <span class="token string">@"d"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>copyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSMutableArray <span class="token operator">*</span>mCopyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>查看内容，可以看到 <code>copyArray</code> 和 <code>array</code> 的地址是一样的，而 <code>mCopyArray</code> 和 <code>array</code> 的地址是不同的。说明 <code>copy</code> 操作进行了指针拷贝，<code>mutableCopy</code> 进行了内容拷贝。但需要强调的是：此处的内容拷贝，仅仅是拷贝 <code>array</code> 这个对象，<code>array</code> 集合内部的元素仍然是指针拷贝。这和上面的非集合 <code>immutable</code> 对象的拷贝还是挺相似的，那么<code>mutable</code>对象的拷贝会不会类似呢？我们继续往下，看 <code>mutable</code> 对象拷贝的例子：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSMutableArray <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray arrayWithObjects<span class="token punctuation">:</span><span class="token punctuation">[</span>NSMutableString stringWithString<span class="token punctuation">:</span><span class="token string">@"a"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">@"b"</span><span class="token punctuation">,</span><span class="token string">@"c"</span><span class="token punctuation">,</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSArray <span class="token operator">*</span>copyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array copy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSMutableArray <span class="token operator">*</span>mCopyArray <span class="token operator">=</span> <span class="token punctuation">[</span>array mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>查看内存，如我们所料，<code>copyArray</code>、<code>mCopyArray</code>和 <code>array</code> 的内存地址都不一样，说明 <code>copyArray</code>、<code>mCopyArray</code> 都对 <code>array</code> 进行了内容拷贝。同样，我们可以得出结论：</p>
+<p>在集合类对象中，对 <code>immutable</code> 对象进行 <code>copy</code>，是指针复制， <code>mutableCopy</code> 是内容复制；对 <code>mutable</code> 对象进行 <code>copy</code> 和 <code>mutableCopy</code> 都是内容复制。但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制。用代码简单表示如下：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>immutableObject copy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">// 浅复制</span>
+<span class="token punctuation">[</span>immutableObject mutableCopy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
+<span class="token punctuation">[</span>mutableObject copy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
+<span class="token punctuation">[</span>mutableObject mutableCopy<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//单层深复制</span>
+</code></pre>
+<p>这个代码结论和非集合类的非常相似。</p>
 
     
 
@@ -439,7 +445,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/23/指针与数组/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/05/23/玩转iOS中UITextField的placeholder颜色/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -453,7 +459,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/17/HTTPS小解析/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/10/Github上的代码添加Cocoapods支持/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
