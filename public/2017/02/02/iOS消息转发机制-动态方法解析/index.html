@@ -10,7 +10,7 @@
     
     <title>
         
-            OC中的load和initialize方法 | 
+            iOS消息转发机制-- 动态方法解析实现@dynamic | 
         
         Aben
     </title>
@@ -58,7 +58,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="OC中的load和initialize方法 | Aben">
+    <meta property="og:title" content="iOS消息转发机制-- 动态方法解析实现@dynamic | Aben">
     <meta property="og:description" content="null">
     
 
@@ -242,7 +242,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-load"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.load</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-调用规则"><span class="post-toc-number">2.</span> <span class="post-toc-text">(一) 调用规则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-执行顺序"><span class="post-toc-number">3.</span> <span class="post-toc-text">(二)执行顺序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三-使用场景"><span class="post-toc-number">4.</span> <span class="post-toc-text">(三) 使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-initialize"><span class="post-toc-number">5.</span> <span class="post-toc-text">2.initialize</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-调用规则-1"><span class="post-toc-number">6.</span> <span class="post-toc-text">(一) 调用规则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-使用场景"><span class="post-toc-number">7.</span> <span class="post-toc-text">(二) 使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">8.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码："><span class="post-toc-number">1.</span> <span class="post-toc-text">实现代码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调用："><span class="post-toc-number">2.</span> <span class="post-toc-text">调用：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出："><span class="post-toc-number">3.</span> <span class="post-toc-text">输出：</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -279,7 +279,7 @@
         
     
             <p class="article-headline-p">
-                OC中的load和initialize方法
+                iOS消息转发机制-- 动态方法解析实现@dynamic
             </p>
         </div>
 
@@ -298,7 +298,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Aben</strong>
-        <span>6月 01, 2017</span>
+        <span>2月 02, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -338,7 +338,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=OC中的load和initialize方法&url=http://yoursite.com//2017/06/01/OC中的load和initialize方法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS消息转发机制-- 动态方法解析实现@dynamic&url=http://yoursite.com//2017/02/02/iOS消息转发机制-动态方法解析/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -347,7 +347,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=OC中的load和initialize方法&url=http://yoursite.com//2017/06/01/OC中的load和initialize方法/index.html&via=Aben" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS消息转发机制-- 动态方法解析实现@dynamic&url=http://yoursite.com//2017/02/02/iOS消息转发机制-动态方法解析/index.html&via=Aben" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -356,7 +356,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/01/OC中的load和initialize方法/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/02/02/iOS消息转发机制-动态方法解析/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/01/OC中的load和initialize方法/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/02/02/iOS消息转发机制-动态方法解析/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -389,98 +389,109 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="1-load"><a href="#1-load" class="headerlink" title="1.load"></a>1.load</h2><p>顾名思义，<code>load</code>方法在这个文件被程序装载时调用。只要是在<code>Compile Sources</code>中出现的文件总是会被装载，这与这个类是否被用到无关，因此<code>load</code>方法总是在<code>main</code>函数之前调用。</p>
-<h2 id="一-调用规则"><a href="#一-调用规则" class="headerlink" title="(一) 调用规则"></a>(一) 调用规则</h2><p>如果一个类实现了load方法，在调用这个方法前会首先调用父类的load方法。而且这个过程是自动完成的，并不需要我们手动实现：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Parent.m</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load <span class="token punctuation">{</span>
-    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Load Class Parent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+        <blockquote>
+<p>假设要编写一个类似于“字典”的对象，它里面可以容纳其他对象，只不过开发者要通过属性来存取其中的数据，这个类的设计思路：由开发者来添加属性定义，并将其申明为@dynamic,而类则会自动处理相关属性值的存放和获取操作。</p>
+</blockquote>
+<h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><p><code>.h文件</code></p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">import</span> &lt;Foundation/Foundation.h></span>
 
-<span class="token comment" spellcheck="true">// In Child.m，继承自Parent</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load <span class="token punctuation">{</span>
-    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Load Class Child"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// In Child+load.m，Child类的分类</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load <span class="token punctuation">{</span>
-    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Load Class Child+load"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// 运行结果：</span>
-<span class="token comment" spellcheck="true">/*
-    2016-02-01 21:28:14.379 load[11789:1435378] Load Class Parent
-    2016-02-01 21:28:14.380 load[11789:1435378] Load Class Child
-    2016-02-01 22:28:14.381 load[11789:1435378] Load Class Child+load
-*/</span>
+<span class="token keyword">@interface</span> MyDictionary <span class="token punctuation">:</span> NSObject
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> strong<span class="token punctuation">)</span> NSDate <span class="token operator">*</span>date<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 </code></pre>
-<p>如果一个类没有实现<code>load</code>方法，那么就不会调用它父类的<code>load</code>方法，这一点与正常的类继承和方法调用不一样，需要额外注意一下。</p>
-<h2 id="二-执行顺序"><a href="#二-执行顺序" class="headerlink" title="(二)执行顺序"></a>(二)执行顺序</h2><p><code>load</code>方法调用时，系统处于脆弱状态，如果调用别的类的方法，且该方法依赖于那个类的<code>load</code>方法进行初始化设置，那么必须确保那个类的<code>load</code>方法已经调用了，比如这段代码，打印出的字符串就为<code>null</code>：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Child.m</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load <span class="token punctuation">{</span>
-    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Load Class Child"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<blockquote>
+<p>本例中，属性具体设置什么无关紧要，只是掩饰此功能。在类的内部，每个属性的值还会存放在字典中，所以先在类中编写如下代码，并将属性申明为@dynamic,这样编译器就不会为其自动生成实例变量的存取方法了。</p>
+</blockquote>
+<p><code>.m文件</code></p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">import</span> "MyDictionary.h"</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> &lt;objc/runtime.h></span>
 
-    Other <span class="token operator">*</span>other <span class="token operator">=</span> <span class="token punctuation">[</span>Other new<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">[</span>other originalFunc<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">@interface</span> <span class="token function">MyDictionary</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> strong<span class="token punctuation">)</span> NSMutableDictionary <span class="token operator">*</span>storeDictionary<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">// 如果不先调用other的load，下面这行代码就无效，打印出null</span>
-    <span class="token punctuation">[</span>Other printName<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p><code>load</code>方法的调用顺序其实有迹可循，我们看到demo的项目设置如下：<br><img src="http://oqepgj2jp.bkt.clouddn.com/load%E5%92%8Cinitialize1.jpg" alt="执行顺序"></p>
-<p>在<code>Compile Sources</code>中，文件的排放顺序就是其装载顺序，自然也就是<code>load</code>方法调用的顺序。这一点也证明了load方法中会自动调用父类的方法，因为在demo的输出结果中，<code>Parent</code>的<code>load</code>方法先于<code>Child</code>调用，而它的装载顺序其实在<code>Child</code>之后。</p>
-<p>虽然在这种简单情况下我们可以辨别出各个类的load方法调用的顺序，但永远不要依赖这个顺序完成你的代码逻辑。一方面，这在后期的开发中极容易导致错误，另一方面，你实际上并不需要这么做。</p>
-<h2 id="三-使用场景"><a href="#三-使用场景" class="headerlink" title="(三) 使用场景"></a>(三) 使用场景</h2><p>由于调用<code>load</code>方法时的环境很不安全，我们应该尽量减少<code>load</code>方法的逻辑。另一个原因是<code>load</code>方法是线程安全的，它内部使用了锁，所以我们应该避免线程阻塞在<code>load</code>方法中。</p>
-<p>一个常见的使用场景是在<code>load</code>方法中实现Method Swizzle：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Other.m</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load <span class="token punctuation">{</span>
-    Method originalFunc <span class="token operator">=</span> <span class="token function">class_getInstanceMethod</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">@selector</span><span class="token punctuation">(</span>originalFunc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Method swizzledFunc <span class="token operator">=</span> <span class="token function">class_getInstanceMethod</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">@selector</span><span class="token punctuation">(</span>swizzledFunc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
 
-    <span class="token function">method_exchangeImplementations</span><span class="token punctuation">(</span>originalFunc<span class="token punctuation">,</span> swizzledFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>在<code>Child</code>类的<code>load</code>方法中，由于还没调用<code>Other</code>的<code>load</code>方法，所以输出结果是”Original Output”，而在main函数中，输出结果自然就变成了”Swizzled Output”。</p>
-<p>一般来说，除了Method Swizzle，别的逻辑都不应该放在<code>load</code>方法中实现。</p>
-<h2 id="2-initialize"><a href="#2-initialize" class="headerlink" title="2.initialize"></a>2.initialize</h2><p>这个方法在第一次给某个类发送消息时调用（比如实例化一个对象），并且只会调用一次。<code>initialize</code>方法实际上是一种惰性调用，也就是说如果一个类一直没被用到，那它的 <code>initialize</code>方法也不会被调用，这一点有利于节约资源。</p>
-<h2 id="一-调用规则-1"><a href="#一-调用规则-1" class="headerlink" title="(一) 调用规则"></a>(一) 调用规则</h2><p>与<code>load</code>方法类似的是，在<code>initialize</code>方法内部也会调用父类的方法，而且不需要我们显示的写出来。与<code>load</code>方法不同之处在于，即使子类没有实现<code>initialize</code>方法，也会调用父类的方法，这会导致一个很严重的问题：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Parent.m</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize <span class="token punctuation">{</span>
-    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Initialize Parent, caller Class %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">@implementation</span> MyDictionary
 
-<span class="token comment" spellcheck="true">// In Child.m</span>
-<span class="token comment" spellcheck="true">// 注释掉initialize方法</span>
+<span class="token keyword">@dynamic</span> date<span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// In main.m</span>
-Child <span class="token operator">*</span>child <span class="token operator">=</span> <span class="token punctuation">[</span>Child new<span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre>
-<p>运行后发现父类的initialize方法竟然调用了两次：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token number">2016</span><span class="token operator">-</span><span class="token number">02</span><span class="token operator">-</span><span class="token number">01</span> <span class="token number">22</span><span class="token punctuation">:</span><span class="token number">57</span><span class="token punctuation">:</span><span class="token number">02.985</span> load<span class="token punctuation">[</span><span class="token number">12772</span><span class="token punctuation">:</span><span class="token number">1509345</span><span class="token punctuation">]</span> Initialize Parent<span class="token punctuation">,</span> caller Class Parent
-<span class="token number">2016</span><span class="token operator">-</span><span class="token number">02</span><span class="token operator">-</span><span class="token number">01</span> <span class="token number">22</span><span class="token punctuation">:</span><span class="token number">57</span><span class="token punctuation">:</span><span class="token number">02.985</span> load<span class="token punctuation">[</span><span class="token number">12772</span><span class="token punctuation">:</span><span class="token number">1509345</span><span class="token punctuation">]</span> Initialize Parent<span class="token punctuation">,</span> caller Class Child
-</code></pre>
-<p>这是因为在创建子类对象时，首先要创建父类对象，所以会调用一次父类的<code>initialize</code>方法，然后创建子类时，尽管自己没有实现<code>initialize</code>方法，但还是会调用到父类的方法。</p>
-<p>虽然<code>initialize</code>方法对一个类而言只会调用一次，但这里由于出现了两个类，所以调用两次符合规则，但不符合我们的需求。正确使用<code>initialize</code>方法的姿势如下：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Parent.m</span>
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">==</span> <span class="token punctuation">[</span>Parent class<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"Initialize Parent, caller Class %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>init
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        _storeDictionary <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>加上判断后，就不会因为子类而调用到自己的<code>initialize</code>方法了。</p>
-<h2 id="二-使用场景"><a href="#二-使用场景" class="headerlink" title="(二) 使用场景"></a>(二) 使用场景</h2><p><code>initialize</code>方法主要用来对一些不方便在编译期初始化的对象进行赋值。比如<code>NSMutableArray</code>这种类型的实例化依赖于<code>runtime</code>的消息发送，所以显然无法在编译器初始化：</p>
-<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// In Parent.m</span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> someNumber <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// int类型可以在编译期赋值</span>
-<span class="token keyword">static</span> NSMutableArray <span class="token operator">*</span>someObjects<span class="token punctuation">;</span>
 
-<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">==</span> <span class="token punctuation">[</span>Parent class<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 不方便编译期复制的对象在这里赋值</span>
-        someObjects <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableArray alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 通过消息转移实现运行时动态添加get 和 set 方法</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>resolveInstanceMethod<span class="token punctuation">:</span><span class="token punctuation">(</span>SEL<span class="token punctuation">)</span>sel
+<span class="token punctuation">{</span>
+    NSString <span class="token operator">*</span>selectorStr <span class="token operator">=</span> <span class="token function">NSStringFromSelector</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>selectorStr hasPrefix<span class="token punctuation">:</span><span class="token string">@"set"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">class_addMethod</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> sel<span class="token punctuation">,</span> <span class="token punctuation">(</span>IMP<span class="token punctuation">)</span>autoDictionarySetter<span class="token punctuation">,</span> <span class="token string">"v@:@"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+
+        <span class="token function">class_addMethod</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> sel<span class="token punctuation">,</span> <span class="token punctuation">(</span>IMP<span class="token punctuation">)</span>autoDictionaryGetter<span class="token punctuation">,</span> <span class="token string">"@@:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// get 方法的实现</span>
+id <span class="token function">autoDictionaryGetter</span><span class="token punctuation">(</span>id <span class="token keyword">self</span><span class="token punctuation">,</span> SEL _cmd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    MyDictionary <span class="token operator">*</span>typeSelf <span class="token operator">=</span> <span class="token punctuation">(</span>MyDictionary <span class="token operator">*</span><span class="token punctuation">)</span><span class="token keyword">self</span><span class="token punctuation">;</span>
+    NSMutableDictionary <span class="token operator">*</span>backingStore <span class="token operator">=</span> typeSelf<span class="token punctuation">.</span>storeDictionary<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// the key is simply the selector name</span>
+    NSString <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token function">NSStringFromSelector</span><span class="token punctuation">(</span>_cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// return the value</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>backingStore objectForKey<span class="token punctuation">:</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// set 方法的实现</span>
+<span class="token keyword">void</span> <span class="token function">autoDictionarySetter</span><span class="token punctuation">(</span>id <span class="token keyword">self</span><span class="token punctuation">,</span> SEL _cmd<span class="token punctuation">,</span> id value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// get the backstore from the object</span>
+    MyDictionary <span class="token operator">*</span>typeSelf <span class="token operator">=</span> <span class="token punctuation">(</span>MyDictionary <span class="token operator">*</span><span class="token punctuation">)</span><span class="token keyword">self</span><span class="token punctuation">;</span>
+    NSMutableDictionary <span class="token operator">*</span>backingStore <span class="token operator">=</span> typeSelf<span class="token punctuation">.</span>storeDictionary<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// get method name from _cmd</span>
+    NSString <span class="token operator">*</span>selectorString <span class="token operator">=</span> <span class="token function">NSStringFromSelector</span><span class="token punctuation">(</span>_cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSMutableString <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token punctuation">[</span>selectorString mutableCopy<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// remove ":" at the end</span>
+    <span class="token punctuation">[</span>key deleteCharactersInRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// remove "set" at the prefix</span>
+    <span class="token punctuation">[</span>key deleteCharactersInRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// lowercase the first charactor</span>
+    NSString <span class="token operator">*</span>firstLowercaseString <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>key substringToIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span> lowercaseString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>key replaceCharactersInRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> withString<span class="token punctuation">:</span>firstLowercaseString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// set value</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">[</span>backingStore setObject<span class="token punctuation">:</span>value forKey<span class="token punctuation">:</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>backingStore removeObjectForKey<span class="token punctuation">:</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+<span class="token punctuation">}</span>
+<span class="token keyword">@end</span>
+</code></pre>
+<h4 id="调用："><a href="#调用：" class="headerlink" title="调用："></a>调用：</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>viewDidLoad <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> viewDidLoad<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Do any additional setup after loading the view, typically from a nib.</span>
+    MyDictionary <span class="token operator">*</span>dic <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>MyDictionary alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    dic<span class="token punctuation">.</span>date <span class="token operator">=</span> <span class="token punctuation">[</span>NSDate date<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"date = %@"</span><span class="token punctuation">,</span>dic<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>load</code>和<code>initialize</code>方法都会在实例化对象之前调用，以<code>main</code>函数为分水岭，前者在<code>main</code>函数之前调用，后者在之后调用。这两个方法会被自动调用，不能手动调用它们。<br><code>load</code>和<code>initialize</code>方法都不用显示的调用父类的方法而是自动调用，即使子类没有initialize方法也会调用父类的方法，而load方法则不会调用父类。<br><code>load</code>方法通常用来进行Method Swizzle，initialize方法一般用于初始化全局变量或静态变量。<br><code>load</code>和<code>initialize</code>方法内部使用了锁，因此它们是线程安全的。实现时要尽可能保持简单，避免阻塞线程，不要再使用锁。</p>
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><pre class=" language-objectivec"><code class="language-objectivec">date <span class="token operator">=</span> <span class="token number">2017</span><span class="token operator">-</span><span class="token number">07</span><span class="token operator">-</span><span class="token number">02</span> <span class="token number">03</span><span class="token punctuation">:</span><span class="token number">26</span><span class="token punctuation">:</span><span class="token number">08</span> <span class="token operator">+</span><span class="token number">0000</span>
+</code></pre>
 
     
 
@@ -507,7 +518,7 @@ Child <span class="token operator">*</span>child <span class="token operator">=<
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/03/iOS常用工具方法/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/05/23/玩转iOS中UITextField的placeholder颜色/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -520,14 +531,6 @@ Child <span class="token operator">*</span>child <span class="token operator">=<
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2017/05/31/GCD小结/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
