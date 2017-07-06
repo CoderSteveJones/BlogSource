@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            AVAudioFoundation(3)：音视频编辑 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="AVAudioFoundation(3)：音视频编辑 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#音视频编辑"><span class="post-toc-number">1.</span> <span class="post-toc-text">音视频编辑</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建-Composition"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建 Composition</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#向-Composition-添加视听数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">向 Composition 添加视听数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检索兼容的-Composition-Tracks"><span class="post-toc-number">4.</span> <span class="post-toc-text">检索兼容的 Composition Tracks</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置音量渐变"><span class="post-toc-number">5.</span> <span class="post-toc-text">设置音量渐变</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义视频处理"><span class="post-toc-number">6.</span> <span class="post-toc-text">自定义视频处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置视频背景色"><span class="post-toc-number">7.</span> <span class="post-toc-text">设置视频背景色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置透明度渐变"><span class="post-toc-number">8.</span> <span class="post-toc-text">设置透明度渐变</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动画效果"><span class="post-toc-number">9.</span> <span class="post-toc-text">动画效果</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个完整示例"><span class="post-toc-number">10.</span> <span class="post-toc-text">一个完整示例</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                AVAudioFoundation(3)：音视频编辑
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>7月 03, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AVAudioFoundation(3)：音视频编辑&url=http://yoursite.com//2017/07/03/AVAudioFoundation-3-：音视频编辑/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AVAudioFoundation(3)：音视频编辑&url=http://yoursite.com//2017/07/03/AVAudioFoundation-3-：音视频编辑/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/07/03/AVAudioFoundation-3-：音视频编辑/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/07/03/AVAudioFoundation-3-：音视频编辑/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本文转自：<a href="http://www.samirchen.com/ios-av-edit" target="_blank" rel="external">AVAudioFoundation(3)：音视频编辑 | www.samirchen.com</a><br>本文主要内容来自 <a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html" target="_blank" rel="external">AVFoundation Programming Guide</a>。</p>
+<h4 id="音视频编辑"><a href="#音视频编辑" class="headerlink" title="音视频编辑"></a>音视频编辑</h4><p>上面简单了解了下   <code>AVFoundation</code> 框架后，我们来看看跟音视频编辑相关的接口。</p>
+<p>一个 <code>composition</code> 可以简单的认为是一组轨道（<code>tracks</code>）的集合，这些轨道可以是来自不同媒体资源（<code>asset</code>）。<code>AVMutableComposition</code> 提供了接口来插入或者删除轨道，也可以调整这些轨道的顺序。</p>
+<p>下面这张图反映了一个新的 <code>composition</code> 是怎么从已有的 <code>asset</code> 中获取对应的 <code>track</code> 并进行拼接形成新的 <code>asset</code>。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%911.png" alt="图一"></p>
+<p>在处理音频时，你可以在使用 <code>AVMutableAudioMix</code> 类的接口来做一些自定义的操作，如下图所示。现在，你可以做到指定一个最大音量或设置一个音频轨道的音量渐变。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%912.png" alt="图二"></p>
+<p>如下图所示，我们还可以使用 <code>AVMutableVideoComposition</code> 来直接处理 <code>composition</code> 中的视频轨道。处理一个单独的 <code>video composition</code> 时，你可以指定它的渲染尺寸、缩放比例、帧率等参数并输出最终的视频文件。通过一些针对 <code>video composition</code> 的指令（<code>AVMutableVideoCompositionInstruction</code> 等），我们可以修改视频的背景颜色、应用 <code>layer instructions</code>。这些 <code>layer instructions</code>（<code>AVMutableVideoCompositionLayerInstruction</code> 等）可以用来对 <code>composition</code> 中的视频轨道实施图形变换、添加图形渐变、透明度变换、增加透明度渐变。此外，你还能通过设置 <code>video composition</code> 的 <code>animationTool</code> 属性来应用 <code>Core Animation Framework</code> 框架中的动画效果。<br><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%913.png" alt="图三"></p>
+<p>如下图所示，你可以使用 <code>AVAssetExportSession</code> 相关的接口来合并你的 <code>composition</code> 中的 <code>audio mix</code> 和 <code>video composition</code>。你只需要初始化一个 <code>AVAssetExportSession</code> 对象，然后将其 <code>audioMix</code> 和 <code>videoComposition</code> 属性分别设置为你的 <code>audio mix</code> 和 <code>video composition</code> 即可。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%914.png" alt="图四"></p>
+<h4 id="创建-Composition"><a href="#创建-Composition" class="headerlink" title="创建 Composition"></a>创建 Composition</h4><p>上面简单介绍了集中音视频编辑的场景，现在我们来详细介绍具体的接口。从 <code>AVMutableComposition</code> 开始。</p>
+<p>当使用 <code>AVMutableComposition</code> 创建自己的 <code>composition</code> 时，最典型的，我们可以使用 <code>AVMutableCompositionTrack</code> 来向 <code>composition</code> 中添加一个或多个 <code>composition tracks</code>，比如下面这个简单的例子便是向一个 <code>composition</code> 中添加一个音频轨道和一个视频轨道：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVMutableComposition <span class="token operator">*</span>mutableComposition <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableComposition composition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the video composition track.</span>
+AVMutableCompositionTrack <span class="token operator">*</span>mutableCompositionVideoTrack <span class="token operator">=</span> <span class="token punctuation">[</span>mutableComposition addMutableTrackWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo preferredTrackID<span class="token punctuation">:</span>kCMPersistentTrackID_Invalid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the audio composition track.</span>
+AVMutableCompositionTrack <span class="token operator">*</span>mutableCompositionAudioTrack <span class="token operator">=</span> <span class="token punctuation">[</span>mutableComposition addMutableTrackWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio preferredTrackID<span class="token punctuation">:</span>kCMPersistentTrackID_Invalid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>当为 <code>composition</code> 添加一个新的 <code>track</code> 的时候，需要设置其媒体类型（<code>media type</code>）和 <code>track ID</code>，主要的媒体类型包括：音频、视频、字幕、文本等等。</p>
+<p>这里需要注意的是，每个 <code>track</code> 都需要一个唯一的 <code>track ID</code>，比较方便的做法是：设置 <code>track ID</code> 为 <code>kCMPersistentTrackID_Invalid</code> 来为对应的 <code>track</code> 获得一个自动生成的唯一 <code>ID</code>。</p>
+<h4 id="向-Composition-添加视听数据"><a href="#向-Composition-添加视听数据" class="headerlink" title="向 Composition 添加视听数据"></a>向 Composition 添加视听数据</h4><p>要将媒体数据添加到一个 <code>composition track</code> 中需要访问媒体数据所在的 <code>AVAsset</code>，可以使用 <code>AVMutableCompositionTrack</code> 的接口将具有相同媒体类型的多个 <code>track</code> 添加到同一个 <code>composition track</code> 中。下面的例子便是从两个 <code>AVAsset</code> 中各取出一份 <code>video asset track</code>，再添加到一个新的 <code>composition track</code> 中去：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// You can retrieve AVAssets from a number of places, like the camera roll for example.</span>
+AVAsset <span class="token operator">*</span>videoAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAsset with at least one video track#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAsset <span class="token operator">*</span>anotherVideoAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#another AVAsset with at least one video track#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Get the first video track from each asset.</span>
+AVAssetTrack <span class="token operator">*</span>videoAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>videoAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetTrack <span class="token operator">*</span>anotherVideoAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>anotherVideoAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Add them both to the composition.</span>
+<span class="token punctuation">[</span>mutableCompositionVideoTrack insertTimeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span>videoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span> ofTrack<span class="token punctuation">:</span>videoAssetTrack atTime<span class="token punctuation">:</span>kCMTimeZero error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>mutableCompositionVideoTrack insertTimeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span>anotherVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span> ofTrack<span class="token punctuation">:</span>anotherVideoAssetTrack atTime<span class="token punctuation">:</span>videoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="检索兼容的-Composition-Tracks"><a href="#检索兼容的-Composition-Tracks" class="headerlink" title="检索兼容的 Composition Tracks"></a>检索兼容的 Composition Tracks</h4><p>如果可能，每一种媒体类型最好只使用一个 <code>composition track</code>，这样能够优化资源的使用。当你连续播放媒体数据时，应该将相同类型的媒体数据放到同一个 <code>composition track</code> 中，你可以通过类似下面的代码来从 <code>composition</code> 中查找是否有与当前的 <code>asset track</code> 兼容的 <code>composition track</code>，然后拿来使用：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVMutableCompositionTrack <span class="token operator">*</span>compatibleCompositionTrack <span class="token operator">=</span> <span class="token punctuation">[</span>mutableComposition mutableTrackCompatibleWithTrack<span class="token punctuation">:</span><span class="token operator">&lt;</span>#the AVAssetTrack you want to insert#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>compatibleCompositionTrack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Implementation continues.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>需要注意的是，在同一个 <code>composition track</code> 中添加多个视频段时，当视频段之间切换时可能会丢帧，尤其在嵌入式设备上。基于这个问题，应该合理选择一个 <code>composition track</code> 里的视频段数量。</p>
+<h4 id="设置音量渐变"><a href="#设置音量渐变" class="headerlink" title="设置音量渐变"></a>设置音量渐变</h4><p>只使用一个 <code>AVMutableAudioMix</code> 对象就能够为 <code>composition</code> 中的每一个 <code>audio track</code> 单独做音频处理。</p>
+<p>下面代码展示了如果使用 <code>AVMutableAudioMix</code> 给一个 <code>audio track</code> 设置音量渐变给声音增加一个淡出效果。使用 <code>audioMix</code> 类方法获取 <code>AVMutableAudioMix</code> 实例；然后使用 <code>AVMutableAudioMixInputParameters</code> 类的 <code>audioMixInputParametersWithTrack:</code> 接口将 <code>AVMutableAudioMix</code> 实例与 <code>composition</code> 中的某一个 <code>audio track</code> 关联起来；之后便可以通过 <code>AVMutableAudioMix</code> 实例来处理音量了。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVMutableAudioMix <span class="token operator">*</span>mutableAudioMix <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableAudioMix audioMix<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the audio mix input parameters object.</span>
+AVMutableAudioMixInputParameters <span class="token operator">*</span>mixParameters <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableAudioMixInputParameters audioMixInputParametersWithTrack<span class="token punctuation">:</span>mutableCompositionAudioTrack<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the volume ramp to slowly fade the audio out over the duration of the composition.</span>
+<span class="token punctuation">[</span>mixParameters setVolumeRampFromStartVolume<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">.</span>f toEndVolume<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">.</span>f timeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> mutableComposition<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Attach the input parameters to the audio mix.</span>
+mutableAudioMix<span class="token punctuation">.</span>inputParameters <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>mixParameters<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="自定义视频处理"><a href="#自定义视频处理" class="headerlink" title="自定义视频处理"></a>自定义视频处理</h4><p>处理音频是我们使用 <code>AVMutableAudioMix</code>，那么处理视频时，我们就使用 <code>AVMutableVideoComposition</code>，只需要一个 <code>AVMutableVideoComposition</code> 实例就可以为 <code>composition</code> 中所有的 <code>video track</code> 做处理，比如设置渲染尺寸、缩放、播放帧率等等。</p>
+<p>下面我们依次来看一些场景。</p>
+<h4 id="设置视频背景色"><a href="#设置视频背景色" class="headerlink" title="设置视频背景色"></a>设置视频背景色</h4><p>所有的 <code>video composition</code> 也必然对应一组 <code>AVVideoCompositionInstruction</code> 实例，每个 <code>AVVideoCompositionInstruction</code> 中至少包含一条 <code>video composition instruction</code>。我们可以使用 <code>AVMutableVideoCompositionInstruction</code> 来创建我们自己的 <code>video composition instruction</code>，通过这些指令，我们可以修改 <code>composition</code> 的背景颜色、后处理、<code>layer instruction</code> 等等。</p>
+<p>下面的实例代码展示了如何创建 <code>video composition instruction</code> 并将一个 <code>composition</code> 的整个时长都设置为红色背景色：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVMutableVideoCompositionInstruction <span class="token operator">*</span>mutableVideoCompositionInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionInstruction videoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+mutableVideoCompositionInstruction<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> mutableComposition<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+mutableVideoCompositionInstruction<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span> CGColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="设置透明度渐变"><a href="#设置透明度渐变" class="headerlink" title="设置透明度渐变"></a>设置透明度渐变</h4><p>我们也可以用 <code>video composition instructions</code> 来应用 <code>video composition layer instructions</code>。<code>AVMutableVideoCompositionLayerInstruction</code> 可以用来设置 <code>video track</code> 的图形变换、图形渐变、透明度、透明度渐变等等。一个 <code>video composition instruction</code> 的 <code>layerInstructions</code> 属性中所存储的 <code>layer instructions</code> 的顺序决定了 <code>tracks</code> 中的视频帧是如何被放置和组合的。</p>
+<p>下面的示例代码展示了如何在从一个视频切换到第二个视频时添加一个透明度渐变的效果：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAsset <span class="token operator">*</span>firstVideoAssetTrack <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAssetTrack representing the first video segment played <span class="token keyword">in</span> the composition#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAsset <span class="token operator">*</span>secondVideoAssetTrack <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAssetTrack representing the second video segment played <span class="token keyword">in</span> the composition#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the first video composition instruction.</span>
+AVMutableVideoCompositionInstruction <span class="token operator">*</span>firstVideoCompositionInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionInstruction videoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set its time range to span the duration of the first video track.</span>
+firstVideoCompositionInstruction<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the layer instruction and associate it with the composition video track.</span>
+AVMutableVideoCompositionLayerInstruction <span class="token operator">*</span>firstVideoLayerInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack<span class="token punctuation">:</span>mutableCompositionVideoTrack<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the opacity ramp to fade out the first video track over its entire duration.</span>
+<span class="token punctuation">[</span>firstVideoLayerInstruction setOpacityRampFromStartOpacity<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">.</span>f toEndOpacity<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">.</span>f timeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the second video composition instruction so that the second video track isn't transparent.</span>
+AVMutableVideoCompositionInstruction <span class="token operator">*</span>secondVideoCompositionInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionInstruction videoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set its time range to span the duration of the second video track.</span>
+secondVideoCompositionInstruction<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> <span class="token function">CMTimeAdd</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> secondVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the second layer instruction and associate it with the composition video track.</span>
+AVMutableVideoCompositionLayerInstruction <span class="token operator">*</span>secondVideoLayerInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack<span class="token punctuation">:</span>mutableCompositionVideoTrack<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Attach the first layer instruction to the first video composition instruction.</span>
+firstVideoCompositionInstruction<span class="token punctuation">.</span>layerInstructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>firstVideoLayerInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Attach the second layer instruction to the second video composition instruction.</span>
+secondVideoCompositionInstruction<span class="token punctuation">.</span>layerInstructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>secondVideoLayerInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Attach both of the video composition instructions to the video composition.</span>
+AVMutableVideoComposition <span class="token operator">*</span>mutableVideoComposition <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoComposition videoComposition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+mutableVideoComposition<span class="token punctuation">.</span>instructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>firstVideoCompositionInstruction<span class="token punctuation">,</span> secondVideoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h4><p>我们还能通过设置 <code>video composition</code> 的 <code>animationTool</code> 属性来使用 <code>Core Animation Framework</code> 框架的强大能力。比如：设置视频水印、视频标题、动画浮层等。</p>
+<p>在 <code>video composition</code> 中使用 <code>Core Animation</code> 有两种不同的方式：</p>
+<p>添加一个 <code>Core Animation Layer</code> 作为独立的 <code>composition track</code><br>直接使用 <code>Core Animation Layer</code> 在视频帧中渲染动画效果<br>下面的代码展示了后面一种使用方式，在视频区域的中心添加水印：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CALayer <span class="token operator">*</span>watermarkLayer <span class="token operator">=</span> <span class="token operator">&lt;</span>#CALayer representing your desired watermark image#<span class="token operator">></span><span class="token punctuation">;</span>
+CALayer <span class="token operator">*</span>parentLayer <span class="token operator">=</span> <span class="token punctuation">[</span>CALayer layer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+CALayer <span class="token operator">*</span>videoLayer <span class="token operator">=</span> <span class="token punctuation">[</span>CALayer layer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+parentLayer<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>width<span class="token punctuation">,</span> mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+videoLayer<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>width<span class="token punctuation">,</span> mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>parentLayer addSublayer<span class="token punctuation">:</span>videoLayer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+watermarkLayer<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token function">CGPointMake</span><span class="token punctuation">(</span>mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>width<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> mutableVideoComposition<span class="token punctuation">.</span>renderSize<span class="token punctuation">.</span>height<span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>parentLayer addSublayer<span class="token punctuation">:</span>watermarkLayer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+mutableVideoComposition<span class="token punctuation">.</span>animationTool <span class="token operator">=</span> <span class="token punctuation">[</span>AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer<span class="token punctuation">:</span>videoLayer inLayer<span class="token punctuation">:</span>parentLayer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="一个完整示例"><a href="#一个完整示例" class="headerlink" title="一个完整示例"></a>一个完整示例</h4><p>这里的示例将展示如何合并两个 <code>video asset tracks</code> 和一个 <code>audio asset track</code> 到一个视频文件，其中大体步骤如下：</p>
+<ul>
+<li>创建一个 <code>AVMutableComposition</code> 对象，添加多个 <code>AVMutableCompositionTrack</code> 对象</li>
+<li>在各个 <code>composition tracks</code> 中添加 <code>AVAssetTrack</code> 对应的时间范围</li>
+<li>检查 <code>video asset track</code> 的 <code>preferredTransform</code> 属性决定视频方向</li>
+<li>使用 <code>AVMutableVideoCompositionLayerInstruction</code> 对象对视频进行图形变换</li>
+<li>设置 <code>video composition</code> 的 <code>renderSize</code> 和 <code>frameDuration</code> 属性</li>
+<li>导出视频文件</li>
+<li>保存视频文件到相册<br>下面的示例代码省略了一些内存管理和通知移除相关的代码。</li>
+</ul>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 1、创建 composition。创建一个 composition，并添加一个 audio track 和一个 video track。</span>
+AVMutableComposition <span class="token operator">*</span>mutableComposition <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableComposition composition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVMutableCompositionTrack <span class="token operator">*</span>videoCompositionTrack <span class="token operator">=</span> <span class="token punctuation">[</span>mutableComposition addMutableTrackWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo preferredTrackID<span class="token punctuation">:</span>kCMPersistentTrackID_Invalid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVMutableCompositionTrack <span class="token operator">*</span>audioCompositionTrack <span class="token operator">=</span> <span class="token punctuation">[</span>mutableComposition addMutableTrackWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio preferredTrackID<span class="token punctuation">:</span>kCMPersistentTrackID_Invalid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2、添加 asset。从源 assets 中取得两个 video track 和一个 audio track，在上面的 video composition track 中依次添加两个 video track，在 audio composition track 中添加一个 video track。</span>
+AVAsset <span class="token operator">*</span>firstVideoAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#First AVAsset with at least one video track#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAsset <span class="token operator">*</span>secondVideoAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#Second AVAsset with at least one video track#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAsset <span class="token operator">*</span>audioAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAsset with at least one audio track#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAssetTrack <span class="token operator">*</span>firstVideoAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>firstVideoAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetTrack <span class="token operator">*</span>secondVideoAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>secondVideoAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetTrack <span class="token operator">*</span>audioAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>audioAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>videoCompositionTrack insertTimeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span> ofTrack<span class="token punctuation">:</span>firstVideoAssetTrack atTime<span class="token punctuation">:</span>kCMTimeZero error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>videoCompositionTrack insertTimeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> secondVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span> ofTrack<span class="token punctuation">:</span>secondVideoAssetTrack atTime<span class="token punctuation">:</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>audioCompositionTrack insertTimeRange<span class="token punctuation">:</span><span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> <span class="token function">CMTimeAdd</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> secondVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">)</span> ofTrack<span class="token punctuation">:</span>audioAssetTrack atTime<span class="token punctuation">:</span>kCMTimeZero error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3、检查 composition 方向。在 composition 中添加了 audio track 和 video track 后，还必须确保其中所有的 video track 的视频方向都是一致的。在默认情况下 video track 默认为横屏模式，如果这时添加进来的 video track 是在竖屏模式下采集的，那么导出的视频会出现方向错误。同理，将一个横向的视频和一个纵向的视频进行合并导出，export session 会报错。</span>
+BOOL isFirstVideoPortrait <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+CGAffineTransform firstTransform <span class="token operator">=</span> firstVideoAssetTrack<span class="token punctuation">.</span>preferredTransform<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Check the first video track's preferred transform to determine if it was recorded in portrait mode.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>firstTransform<span class="token punctuation">.</span>a <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> firstTransform<span class="token punctuation">.</span>d <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>firstTransform<span class="token punctuation">.</span>b <span class="token operator">==</span> <span class="token number">1.0</span> <span class="token operator">||</span> firstTransform<span class="token punctuation">.</span>b <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>firstTransform<span class="token punctuation">.</span>c <span class="token operator">==</span> <span class="token number">1.0</span> <span class="token operator">||</span> firstTransform<span class="token punctuation">.</span>c <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    isFirstVideoPortrait <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+BOOL isSecondVideoPortrait <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+CGAffineTransform secondTransform <span class="token operator">=</span> secondVideoAssetTrack<span class="token punctuation">.</span>preferredTransform<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Check the second video track's preferred transform to determine if it was recorded in portrait mode.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>secondTransform<span class="token punctuation">.</span>a <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> secondTransform<span class="token punctuation">.</span>d <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>secondTransform<span class="token punctuation">.</span>b <span class="token operator">==</span> <span class="token number">1.0</span> <span class="token operator">||</span> secondTransform<span class="token punctuation">.</span>b <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>secondTransform<span class="token punctuation">.</span>c <span class="token operator">==</span> <span class="token number">1.0</span> <span class="token operator">||</span> secondTransform<span class="token punctuation">.</span>c <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    isSecondVideoPortrait <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>isFirstVideoAssetPortrait <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>isSecondVideoAssetPortrait<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token operator">!</span>isFirstVideoAssetPortrait <span class="token operator">&amp;&amp;</span> isSecondVideoAssetPortrait<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    UIAlertView <span class="token operator">*</span>incompatibleVideoOrientationAlert <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIAlertView alloc<span class="token punctuation">]</span> initWithTitle<span class="token punctuation">:</span><span class="token string">@"Error!"</span> message<span class="token punctuation">:</span><span class="token string">@"Cannot combine a video shot in portrait mode with a video shot in landscape mode."</span> delegate<span class="token punctuation">:</span><span class="token keyword">self</span> cancelButtonTitle<span class="token punctuation">:</span><span class="token string">@"Dismiss"</span> otherButtonTitles<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>incompatibleVideoOrientationAlert show<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 4、应用 Video Composition Layer Instructions。一旦你知道你要合并的视频片段的方向是兼容的，那么你接下来就可以为每个片段应用必要的 layer instructions，并将这些 layer instructions 添加到 video composition 中。</span>
+<span class="token comment" spellcheck="true">// 所有的 `AVAssetTrack` 对象都有一个 `preferredTransform` 属性，包含了 asset track 的方向信息。这个 transform 会在 asset track 在屏幕上展示时被应用。在下面的代码中，layer instruction 的 transform 被设置为 asset track 的 transform，便于在你修改了视频尺寸时，新的 composition 中的视频也能正确的进行展示。</span>
+AVMutableVideoCompositionInstruction <span class="token operator">*</span>firstVideoCompositionInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionInstruction videoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the time range of the first instruction to span the duration of the first video track.</span>
+firstVideoCompositionInstruction<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>kCMTimeZero<span class="token punctuation">,</span> firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+AVMutableVideoCompositionInstruction <span class="token operator">*</span>secondVideoCompositionInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionInstruction videoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the time range of the second instruction to span the duration of the second video track.</span>
+secondVideoCompositionInstruction<span class="token punctuation">.</span>timeRange <span class="token operator">=</span> <span class="token function">CMTimeRangeMake</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> <span class="token function">CMTimeAdd</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> secondVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 创建两个 video layer instruction，关联对应的 video composition track，并设置 transform 为 preferredTransform。</span>
+AVMutableVideoCompositionLayerInstruction <span class="token operator">*</span>firstVideoLayerInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack<span class="token punctuation">:</span>videoCompositionTrack<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the transform of the first layer instruction to the preferred transform of the first video track.</span>
+<span class="token punctuation">[</span>firstVideoLayerInstruction setTransform<span class="token punctuation">:</span>firstTransform atTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVMutableVideoCompositionLayerInstruction <span class="token operator">*</span>secondVideoLayerInstruction <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack<span class="token punctuation">:</span>videoCompositionTrack<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the transform of the second layer instruction to the preferred transform of the second video track.</span>
+<span class="token punctuation">[</span>secondVideoLayerInstruction setTransform<span class="token punctuation">:</span>secondTransform atTime<span class="token punctuation">:</span>firstVideoAssetTrack<span class="token punctuation">.</span>timeRange<span class="token punctuation">.</span>duration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+firstVideoCompositionInstruction<span class="token punctuation">.</span>layerInstructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>firstVideoLayerInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+secondVideoCompositionInstruction<span class="token punctuation">.</span>layerInstructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>secondVideoLayerInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVMutableVideoComposition <span class="token operator">*</span>mutableVideoComposition <span class="token operator">=</span> <span class="token punctuation">[</span>AVMutableVideoComposition videoComposition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+mutableVideoComposition<span class="token punctuation">.</span>instructions <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span>firstVideoCompositionInstruction<span class="token punctuation">,</span> secondVideoCompositionInstruction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 5、设置渲染尺寸和帧率。要完全解决视频方向问题，你还需要调整 video composition 的 `renderSize` 属性，同时也需要设置一个合适的 `frameDuration`，比如 1/30 表示 30 帧每秒。此外，`renderScale` 默认值为 1.0。</span>
+CGSize naturalSizeFirst<span class="token punctuation">,</span> naturalSizeSecond<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// If the first video asset was shot in portrait mode, then so was the second one if we made it here.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isFirstVideoAssetPortrait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Invert the width and height for the video tracks to ensure that they display properly.</span>
+    naturalSizeFirst <span class="token operator">=</span> <span class="token function">CGSizeMake</span><span class="token punctuation">(</span>firstVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">.</span>height<span class="token punctuation">,</span> firstVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">.</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    naturalSizeSecond <span class="token operator">=</span> <span class="token function">CGSizeMake</span><span class="token punctuation">(</span>secondVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">.</span>height<span class="token punctuation">,</span> secondVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">.</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// If the videos weren't shot in portrait mode, we can just use their natural sizes.</span>
+    naturalSizeFirst <span class="token operator">=</span> firstVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">;</span>
+    naturalSizeSecond <span class="token operator">=</span> secondVideoAssetTrack<span class="token punctuation">.</span>naturalSize<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">float</span> renderWidth<span class="token punctuation">,</span> renderHeight<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the renderWidth and renderHeight to the max of the two videos widths and heights.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>naturalSizeFirst<span class="token punctuation">.</span>width <span class="token operator">></span> naturalSizeSecond<span class="token punctuation">.</span>width<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    renderWidth <span class="token operator">=</span> naturalSizeFirst<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    renderWidth <span class="token operator">=</span> naturalSizeSecond<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>naturalSizeFirst<span class="token punctuation">.</span>height <span class="token operator">></span> naturalSizeSecond<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    renderHeight <span class="token operator">=</span> naturalSizeFirst<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    renderHeight <span class="token operator">=</span> naturalSizeSecond<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+mutableVideoComposition<span class="token punctuation">.</span>renderSize <span class="token operator">=</span> <span class="token function">CGSizeMake</span><span class="token punctuation">(</span>renderWidth<span class="token punctuation">,</span> renderHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the frame duration to an appropriate value (i.e. 30 frames per second for video).</span>
+mutableVideoComposition<span class="token punctuation">.</span>frameDuration <span class="token operator">=</span> <span class="token function">CMTimeMake</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">// 6、导出 composition 并保持到相册。创建一个 `AVAssetExportSession` 对象，设置对应的 `outputURL` 来将视频导出到指定的文件。同时，我们还可以用 `ALAssetsLibrary` 接口来将导出的视频文件存储到相册中去。</span>
+<span class="token comment" spellcheck="true">// Create a static date formatter so we only have to initialize it once.</span>
+<span class="token keyword">static</span> NSDateFormatter <span class="token operator">*</span>kDateFormatter<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>kDateFormatter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    kDateFormatter <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSDateFormatter alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    kDateFormatter<span class="token punctuation">.</span>dateStyle <span class="token operator">=</span> NSDateFormatterMediumStyle<span class="token punctuation">;</span>
+    kDateFormatter<span class="token punctuation">.</span>timeStyle <span class="token operator">=</span> NSDateFormatterShortStyle<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// Create the export session with the composition and set the preset to the highest quality.</span>
+AVAssetExportSession <span class="token operator">*</span>exporter <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVAssetExportSession alloc<span class="token punctuation">]</span> initWithAsset<span class="token punctuation">:</span>mutableComposition presetName<span class="token punctuation">:</span>AVAssetExportPresetHighestQuality<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the desired output URL for the file created by the export process.</span>
+exporter<span class="token punctuation">.</span>outputURL <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> URLForDirectory<span class="token punctuation">:</span>NSDocumentDirectory inDomain<span class="token punctuation">:</span>NSUserDomainMask appropriateForURL<span class="token punctuation">:</span>nil create<span class="token punctuation">:</span><span class="token operator">@</span>YES error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span> URLByAppendingPathComponent<span class="token punctuation">:</span><span class="token punctuation">[</span>kDateFormatter stringFromDate<span class="token punctuation">:</span><span class="token punctuation">[</span>NSDate date<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> URLByAppendingPathExtension<span class="token punctuation">:</span><span class="token function">CFBridgingRelease</span><span class="token punctuation">(</span><span class="token function">UTTypeCopyPreferredTagWithClass</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CFStringRef<span class="token punctuation">)</span>AVFileTypeQuickTimeMovie<span class="token punctuation">,</span> kUTTagClassFilenameExtension<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Set the output file type to be a QuickTime movie.</span>
+exporter<span class="token punctuation">.</span>outputFileType <span class="token operator">=</span> AVFileTypeQuickTimeMovie<span class="token punctuation">;</span>
+exporter<span class="token punctuation">.</span>shouldOptimizeForNetworkUse <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+exporter<span class="token punctuation">.</span>videoComposition <span class="token operator">=</span> mutableVideoComposition<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Asynchronously export the composition to a video file and save this file to the camera roll once export completes.</span>
+<span class="token punctuation">[</span>exporter exportAsynchronouslyWithCompletionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exporter<span class="token punctuation">.</span>status <span class="token operator">==</span> AVAssetExportSessionStatusCompleted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ALAssetsLibrary <span class="token operator">*</span>assetsLibrary <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>ALAssetsLibrary alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>assetsLibrary videoAtPathIsCompatibleWithSavedPhotosAlbum<span class="token punctuation">:</span>exporter<span class="token punctuation">.</span>outputURL<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">[</span>assetsLibrary writeVideoAtPathToSavedPhotosAlbum<span class="token punctuation">:</span>exporter<span class="token punctuation">.</span>outputURL completionBlock<span class="token punctuation">:</span><span class="token constant">NULL</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/04/AVAudioFoundation-4-：音视频录制/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/28/AVAudioFoundation-2-：音视频播放/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
