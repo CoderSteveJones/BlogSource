@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            AVAudioFoundation(5)：音视频导出 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="AVAudioFoundation(5)：音视频导出 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读取-Asset"><span class="post-toc-number">1.</span> <span class="post-toc-text">读取 Asset</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建-Asset-Reader"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建 Asset Reader</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建-Asset-Reader-Outputs"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">创建 Asset Reader Outputs</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#读取-Asset-的媒体数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">读取 Asset 的媒体数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写入-Asset"><span class="post-toc-number">2.</span> <span class="post-toc-text">写入 Asset</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建-Asset-Writer"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建 Asset Writer</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建-Asset-Writer-Inputs"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">创建 Asset Writer Inputs</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#写媒体数据"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">写媒体数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重编码-Asset"><span class="post-toc-number">3.</span> <span class="post-toc-text">重编码 Asset</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个完整示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">一个完整示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Asset-Output-设置助手"><span class="post-toc-number">5.</span> <span class="post-toc-text">Asset Output 设置助手</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                AVAudioFoundation(5)：音视频导出
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>7月 05, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AVAudioFoundation(5)：音视频导出&url=http://yoursite.com//2017/07/05/AVAudioFoundation-5-：音视频导出/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AVAudioFoundation(5)：音视频导出&url=http://yoursite.com//2017/07/05/AVAudioFoundation-5-：音视频导出/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/07/05/AVAudioFoundation-5-：音视频导出/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/07/05/AVAudioFoundation-5-：音视频导出/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本文转自：<a href="http://www.samirchen.com/ios-av-asset" target="_blank" rel="external">AVAudioFoundation(5)：音视频导出 | www.samirchen.com</a><br>本文主要内容来自 <a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html" target="_blank" rel="external">AVFoundation Programming Guide</a>。</p>
+<p>要读写音视频数据资源 <code>asset</code>，我们需要用到 <code>AVFoundation</code> 提供的文件导出 <code>API</code>。<code>AVAssetExportSession</code> 提供了比较简单的 API 来满足基本的导出需求，比如修改文件类型、剪辑资源长度。如果要满足更加深度的导出需求，我们则需要用到 <code>AVAssetReader</code> 和 <code>AVAssetWriter</code>。</p>
+<p>当我们需要去操作 <code>asset</code> 的内容时，我们可以用 <code>AVAssetReader</code>，比如读取 <code>asset</code> 中的音频轨道来展示波形等等。当我们想用一些音频采样或静态图片去生成 <code>asset</code> 时，我们可以使用 <code>AVAssetWriter</code>。</p>
+<p>需要注意的是 <code>AVAssetReader</code> 不适用于做实时处理。<code>AVAssetReader</code> 没法用来处理 HLS 之类的实时数据流。但是 <code>AVAssetWriter</code> 是可以用来处理实时数据源的，比如 <code>AVCaptureOutput</code>，当需要处理实时数据源时，需要设置 <code>expectsMediaDataInRealTime</code> 属性为 <code>YES</code>。如果对非实时数据源设置该属性为 <code>YES</code>，那么可能会造成你导出的文件有问题。</p>
+<h4 id="读取-Asset"><a href="#读取-Asset" class="headerlink" title="读取 Asset"></a>读取 Asset</h4><p>每一个 <code>AVAssetReader</code> 一次只能与一个 <code>asset</code> 关联，但是这个 <code>asset</code> 可以包含多个轨道。由于这个原因通常我们需要为 <code>AVAssetReader</code> 指定一个 <code>AVAssetReaderOutput</code> 的具体子类来具体操作 <code>asset</code> 的读取，比如：</p>
+<ul>
+<li><code>AVAssetReaderTrackOutput</code></li>
+<li><code>AVAssetReaderAudioMixOutput</code></li>
+<li><code>AVAssetReaderVideoCompositionOutput</code></li>
+</ul>
+<h5 id="创建-Asset-Reader"><a href="#创建-Asset-Reader" class="headerlink" title="创建 Asset Reader"></a>创建 Asset Reader</h5><p>初始化 <code>AVAssetReader</code> 时需要传入相应读取的 <code>asset</code>。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSError <span class="token operator">*</span>outError<span class="token punctuation">;</span>
+AVAsset <span class="token operator">*</span>someAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAsset that you want to read#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAssetReader <span class="token operator">*</span>assetReader <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetReader assetReaderWithAsset<span class="token punctuation">:</span>someAsset error<span class="token punctuation">:</span><span class="token operator">&amp;</span>outError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+BOOL success <span class="token operator">=</span> <span class="token punctuation">(</span>assetReader <span class="token operator">!=</span> nil<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>需要注意的是要检查创建的 <code>asset reader</code> 是否为空。初始化失败时，可以查看具体的 <code>error</code> 信息。</p>
+<h5 id="创建-Asset-Reader-Outputs"><a href="#创建-Asset-Reader-Outputs" class="headerlink" title="创建 Asset Reader Outputs"></a>创建 Asset Reader Outputs</h5><p>在完成创建 <code>asset reader</code> 后，创建至少一个 <code>output</code> 对象来接收读取的媒体数据。当创建 <code>output</code> 对象时，要记得设置 <code>alwaysCopiesSampleData</code> 属性为 <code>NO</code>，这样你会获得性能上的提升。在本章中的示例代码中，这个属性都应该被设置为 NO。</p>
+<p>如果我们想从媒体资源中读取一个或多个轨道，并且可能会转换数据的格式，那么可以使用 <code>AVAssetReaderTrackOutput</code> 类，为每个 <code>AVAssetTrack</code> 轨道使用一个 <code>track output</code> 对象。</p>
+<p>下面的示例展示了使用 <code>asset reader</code> 来把一个 <code>audio track</code> 压缩为线性的 <code>PCM</code>：</p>
+<pre class=" language-objecivec"><code class="language-objecivec">AVAsset *localAsset = assetReader.asset;
+// Get the audio track to read.
+AVAssetTrack *audioTrack = [[localAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+// Decompression settings for Linear PCM.
+NSDictionary *decompressionAudioSettings = @{AVFormatIDKey: [NSNumber numberWithUnsignedInt:kAudioFormatLinearPCM]};
+// Create the output with the audio track and decompression settings.
+AVAssetReaderOutput *trackOutput = [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:audioTrack outputSettings:decompressionAudioSettings];
+// Add the output to the reader if possible.
+if ([assetReader canAddOutput:trackOutput]) {
+    [assetReader addOutput:trackOutput];
+}
+</code></pre>
+<p>如果想从一个指定的 <code>asset track</code> 按它原本存储的格式读取媒体数据，设置 <code>outputSettings</code> 为 <code>nil</code> 即可。</p>
+<p>当想要读取用 <code>AVAudioMix</code> 或 <code>AVVideoComposition</code> 混音或编辑过的媒体数据时，需要对应的使用 <code>AVAssetReaderAudioMixOutput</code> 和 <code>AVAssetReaderVideoCompositionOutput</code>。一般，当我们从一个 <code>AVComposition</code> 读取媒体资源时，我们需要用到这些 <code>output</code> 类。</p>
+<p>使用一个单独的 <code>audio mix output</code> 我们就可以读取 <code>AVAudioMix</code> 混合过的 <code>asset</code> 中的多个音频轨道。为了指明这些音频轨道是如何混合的，我们需要在 <code>AVAssetReaderAudioMixOutput</code> 对象初始化完成后将对应的 <code>AVAudioMix</code> 对象设置给它的 <code>audioMix</code> 属性。</p>
+<p>下面的代码展示了如何基于一个 <code>asset</code> 来创建我们的 <code>audio mix output</code> 对象去处理所有的音频轨道，然后压缩这些音频轨道为线性 <code>PCM</code> 数据，并为 <code>output</code> 对象设置 <code>audioMix</code> 属性。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAudioMix <span class="token operator">*</span>audioMix <span class="token operator">=</span> <span class="token operator">&lt;</span>#An AVAudioMix that specifies how the audio tracks from the AVAsset are mixed#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Assumes that assetReader was initialized with an AVComposition object.</span>
+AVComposition <span class="token operator">*</span>composition <span class="token operator">=</span> <span class="token punctuation">(</span>AVComposition <span class="token operator">*</span><span class="token punctuation">)</span> assetReader<span class="token punctuation">.</span>asset<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Get the audio tracks to read.</span>
+NSArray <span class="token operator">*</span>audioTracks <span class="token operator">=</span> <span class="token punctuation">[</span>composition tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Get the decompression settings for Linear PCM.</span>
+NSDictionary <span class="token operator">*</span>decompressionAudioSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>AVFormatIDKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kAudioFormatLinearPCM<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the audio mix output with the audio tracks and decompression setttings.</span>
+AVAssetReaderOutput <span class="token operator">*</span>audioMixOutput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetReaderAudioMixOutput assetReaderAudioMixOutputWithAudioTracks<span class="token punctuation">:</span>audioTracks audioSettings<span class="token punctuation">:</span>decompressionAudioSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Associate the audio mix used to mix the audio tracks being read with the output.</span>
+audioMixOutput<span class="token punctuation">.</span>audioMix <span class="token operator">=</span> audioMix<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Add the output to the reader if possible.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>assetReader canAddOutput<span class="token punctuation">:</span>audioMixOutput<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>assetReader addOutput<span class="token punctuation">:</span>audioMixOutput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果想要 <code>asset reader</code> 返回无压缩格式，那么就把 <code>audioSettings</code> 参数传为 <code>nil</code>。对于使用 <code>AVAssetReaderVideoCompositionOutput</code> 时，也是同样的道理。</p>
+<p>我们使用 <code>video composition output</code> 的方式跟上面类似。下面的代码展示了，如果读取多个视频轨道的媒体数据并将他们压缩为 <code>ARGB</code> 格式。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVVideoComposition <span class="token operator">*</span>videoComposition <span class="token operator">=</span> <span class="token operator">&lt;</span>#An AVVideoComposition that specifies how the video tracks from the AVAsset are composited#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Assumes assetReader was initialized with an AVComposition.</span>
+AVComposition <span class="token operator">*</span>composition <span class="token operator">=</span> <span class="token punctuation">(</span>AVComposition <span class="token operator">*</span><span class="token punctuation">)</span> assetReader<span class="token punctuation">.</span>asset<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Get the video tracks to read.</span>
+NSArray <span class="token operator">*</span>videoTracks <span class="token operator">=</span> <span class="token punctuation">[</span>composition tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Decompression settings for ARGB.</span>
+NSDictionary <span class="token operator">*</span>decompressionVideoSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> kCVPixelBufferPixelFormatTypeKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kCVPixelFormatType_32ARGB<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> kCVPixelBufferIOSurfacePropertiesKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Create the video composition output with the video tracks and decompression setttings.</span>
+AVAssetReaderOutput <span class="token operator">*</span>videoCompositionOutput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetReaderVideoCompositionOutput assetReaderVideoCompositionOutputWithVideoTracks<span class="token punctuation">:</span>videoTracks videoSettings<span class="token punctuation">:</span>decompressionVideoSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Associate the video composition used to composite the video tracks being read with the output.</span>
+videoCompositionOutput<span class="token punctuation">.</span>videoComposition <span class="token operator">=</span> videoComposition<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Add the output to the reader if possible.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>assetReader canAddOutput<span class="token punctuation">:</span>videoCompositionOutput<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>assetReader addOutput<span class="token punctuation">:</span>videoCompositionOutput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="读取-Asset-的媒体数据"><a href="#读取-Asset-的媒体数据" class="headerlink" title="读取 Asset 的媒体数据"></a>读取 Asset 的媒体数据</h5><p>To start reading after setting up all of the outputs you need, call the startReading method on your asset reader. Next, retrieve the media data individually from each output using the copyNextSampleBuffer method. To start up an asset reader with a single output and read all of its media samples, do the following:</p>
+<p>在 <code>output</code> 对象创建完成后，接着就要开始读取数据了，这时候我们需要调用 <code>asset reader</code> 的 <code>startReading</code> 接口。接着，使用 <code>copyNextSampleBuffer</code> 接口来从各个 <code>output</code> 来获取媒体数据。</p>
+<p>下面的代码展示了 <code>asset reader</code> 如何用一个 <code>output</code> 对象从 <code>asset</code> 中读取所有的媒体数据：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Start the asset reader up.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader startReading<span class="token punctuation">]</span><span class="token punctuation">;</span>
+BOOL done <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>done<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Copy the next sample buffer from the reader output.</span>
+    CMSampleBufferRef sampleBuffer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderOutput copyNextSampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Do something with sampleBuffer here.</span>
+        <span class="token function">CFRelease</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sampleBuffer <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Find out why the asset reader output couldn't copy another sample buffer.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader<span class="token punctuation">.</span>status <span class="token operator">==</span> AVAssetReaderStatusFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            NSError <span class="token operator">*</span>failureError <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>assetReader<span class="token punctuation">.</span>error<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Handle the error here.</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// The asset reader output has read all of its samples.</span>
+            done <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="写入-Asset"><a href="#写入-Asset" class="headerlink" title="写入 Asset"></a>写入 Asset</h4><p><code>AVAssetWriter</code> 类可以将媒体数据从多个源写入指定文件格式的单个文件。我们也不需要将 <code>asset writer</code> 对象与特定 <code>asset</code> 相关联，但必须为要创建的每个输出文件使用单独的 <code>asset writer</code>。由于 <code>asset writer</code> 可以从多个来源写出媒体数据，因此我们必须为每个要被写入到输出文件的轨道创建一个 <code>AVAssetWriterInput</code> 对象。每个 <code>AVAssetWriterInput</code> 对象都期望以 <code>CMSampleBufferRef</code> 对象的形式接收数据，但是如果要将 <code>CVPixelBufferRef</code> 对象附加到 <code>asset writer</code>，可以使用 <code>AVAssetWriterInputPixelBufferAdaptor</code> 类。</p>
+<h5 id="创建-Asset-Writer"><a href="#创建-Asset-Writer" class="headerlink" title="创建 Asset Writer"></a>创建 Asset Writer</h5><p>为了创建 <code>asset writer</code>，我们需要指定输出文件的 URL 和所需的文件类型。以下代码展示了如何初始化 <code>asset writer</code> 来创建 <code>QuickTime</code> 格式的视频：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSError <span class="token operator">*</span>outError<span class="token punctuation">;</span>
+NSURL <span class="token operator">*</span>outputURL <span class="token operator">=</span> <span class="token operator">&lt;</span>#NSURL object representing the URL where you want to save the video#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAssetWriter <span class="token operator">*</span>assetWriter <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriter assetWriterWithURL<span class="token punctuation">:</span>outputURL fileType<span class="token punctuation">:</span>AVFileTypeQuickTimeMovie error<span class="token punctuation">:</span><span class="token operator">&amp;</span>outError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+BOOL success <span class="token operator">=</span> <span class="token punctuation">(</span>assetWriter <span class="token operator">!=</span> nil<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="创建-Asset-Writer-Inputs"><a href="#创建-Asset-Writer-Inputs" class="headerlink" title="创建 Asset Writer Inputs"></a>创建 Asset Writer Inputs</h5><p>想要用 <code>asset writer</code> 来写媒体数据，必须至少设置一个 <code>asset writer input</code>。例如，如果数据源已经使用 <code>CMSampleBufferRef</code> 类来表示，那么使用 <code>AVAssetWriterInput</code> 类即可。</p>
+<p>下面的代码展示了如何设置将音频媒体数据压缩为 <code>128 kbps AAC</code> 并将其连接到 <code>asset writer</code> 的 <code>input</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Configure the channel layout as stereo.</span>
+AudioChannelLayout stereoChannelLayout <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span>mChannelLayoutTag <span class="token operator">=</span> kAudioChannelLayoutTag_Stereo<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>mChannelBitmap <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>mNumberChannelDescriptions <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Convert the channel layout object to an NSData object.</span>
+NSData <span class="token operator">*</span>channelLayoutAsData <span class="token operator">=</span> <span class="token punctuation">[</span>NSData dataWithBytes<span class="token punctuation">:</span><span class="token operator">&amp;</span>stereoChannelLayout length<span class="token punctuation">:</span><span class="token function">offsetof</span><span class="token punctuation">(</span>AudioChannelLayout<span class="token punctuation">,</span> mChannelDescriptions<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Get the compression settings for 128 kbps AAC.</span>
+NSDictionary <span class="token operator">*</span>compressionAudioSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+    AVFormatIDKey         <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kAudioFormatMPEG4AAC<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    AVEncoderBitRateKey   <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithInteger<span class="token punctuation">:</span><span class="token number">128000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    AVSampleRateKey       <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithInteger<span class="token punctuation">:</span><span class="token number">44100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    AVChannelLayoutKey    <span class="token punctuation">:</span> channelLayoutAsData<span class="token punctuation">,</span>
+    AVNumberOfChannelsKey <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInteger<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Create the asset writer input with the compression settings and specify the media type as audio.</span>
+AVAssetWriterInput <span class="token operator">*</span>assetWriterInput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInput assetWriterInputWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio outputSettings<span class="token punctuation">:</span>compressionAudioSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Add the input to the writer if possible.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>assetWriter canAddInput<span class="token punctuation">:</span>assetWriterInput<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>assetWriter addInput<span class="token punctuation">:</span>assetWriterInput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>需要注意的是，如果要以原本存储的格式来写入媒体数据，可以在 <code>outputSettings</code> 参数中传 <code>nil</code>。只有<code>asset writer</code> 使用 <code>AVFileTypeQuickTimeMovie</code> 的 <code>fileType</code> 进行初始化时，才能传 <code>nil</code>。</p>
+<p>您的 <code>asset writer input</code> 可以通过设置 <code>metadata</code> 和 <code>transform</code> 属性来包含一些元数据或为特定的轨道指定不同的变换。对于数据源是视频轨道的 <code>asset writer input</code>，您可以通过执行以下操作来将视频的原始变换保存在输出文件中：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVAsset <span class="token operator">*</span>videoAsset <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAsset with at least one video track#<span class="token operator">></span><span class="token punctuation">;</span>
+AVAssetTrack <span class="token operator">*</span>videoAssetTrack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>videoAsset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+assetWriterInput<span class="token punctuation">.</span>transform <span class="token operator">=</span> videoAssetTrack<span class="token punctuation">.</span>preferredTransform<span class="token punctuation">;</span>
+</code></pre>
+<p>需要注意的是 <code>metadata</code> 和 <code>transform</code> 这两个属性需要在开始写之前设定才会生效。</p>
+<p>将媒体数据写入输出文件时，有时我们可能需要分配像素数据缓冲区。这时可以使用 <code>AVAssetWriterInputPixelBufferAdaptor</code> 类。为了最大的效率，不要使用单独的池分配的像素缓冲区，而是使用像素缓冲适配器提供的像素缓冲池。以下代码创建一个在 <code>RGB</code> 域中工作的像素缓冲区对象，它将使用 <code>CGImage</code> 对象来创建其像素缓冲区：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSDictionary <span class="token operator">*</span>pixelBufferAttributes <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+     kCVPixelBufferCGImageCompatibilityKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithBool<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">,</span>
+     kCVPixelBufferCGBitmapContextCompatibilityKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithBool<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">,</span>
+     kCVPixelBufferPixelFormatTypeKey<span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithInt<span class="token punctuation">:</span>kCVPixelFormatType_32ARGB<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+AVAssetWriterInputPixelBufferAdaptor <span class="token operator">*</span>inputPixelBufferAdaptor <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput sourcePixelBufferAttributes<span class="token punctuation">:</span>pixelBufferAttributes<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>需要注意的是，所有 <code>AVAssetWriterInputPixelBufferAdaptor</code> 对象必须连接到单个 <code>asset writer input</code>。<code>Asset writer input</code> 必须接受 <code>AVMediaTypeVideo</code> 类型的媒体数据。</p>
+<h5 id="写媒体数据"><a href="#写媒体数据" class="headerlink" title="写媒体数据"></a>写媒体数据</h5><p>配置 <code>asset writer</code> 所需的所有输入后，即可开始写媒体数据。与 <code>asset reader</code> 一样，通过调用 <code>startWriting</code> 方法启动写入过程。然后，需要通过调用 <code>startSessionAtSourceTime:</code> 方法启动写入会话。<code>Asset writer</code> 完成的所有写入都必须在这些会话之一内进行，每个会话的时间范围不超出源中包含的媒体数据的时间范围。</p>
+<p>下面的代码展示了当我们的数据源是一个 <code>asset reader</code>，它提供从 <code>AVAsset</code> 对象读取的媒体数据，并且不希望包含资产前半部分的媒体数据：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTime halfAssetDuration <span class="token operator">=</span> <span class="token function">CMTimeMultiplyByFloat64</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset<span class="token punctuation">.</span>duration<span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter startSessionAtSourceTime<span class="token punctuation">:</span>halfAssetDuration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//Implementation continues.</span>
+</code></pre>
+<p>通常，要结束写入会话，您必须调用 <code>endSessionAtSourceTime:</code> 方法。但是，如果写入会话直到文件的末尾，则可以通过调用 <code>finishWriting</code> 方法来结束。</p>
+<p>下面代码展示了使用单个 <code>input</code> 启动 <code>asset writer</code> 并写入其所有媒体数据：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Prepare the asset writer for writing.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter startWriting<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Start a sample-writing session.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter startSessionAtSourceTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Specify the block to execute when the asset writer is ready for media data and the queue to call it on.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput requestMediaDataWhenReadyOnQueue<span class="token punctuation">:</span>myInputSerialQueue usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput isReadyForMoreMediaData<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Get the next sample buffer.</span>
+        CMSampleBufferRef nextSampleBuffer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> copyNextSampleBufferToWrite<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nextSampleBuffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// If it exists, append the next sample buffer to the output file.</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput appendSampleBuffer<span class="token punctuation">:</span>nextSampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">CFRelease</span><span class="token punctuation">(</span>nextSampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            nextSampleBuffer <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Assume that lack of a next sample buffer means the sample buffer source is out of samples and mark the input as finished.</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>上面代码中的 <code>copyNextSampleBufferToWrite</code> 方法只是一个占位方法。在这个方法里需要实现一些逻辑来返回将要写入的媒体数据，用 <code>CMSampleBufferRef</code> 对象表示，这里的 <code>sample buffer</code> 就可以用 <code>asset reader input</code> 作为数据来源。</p>
+<h4 id="重编码-Asset"><a href="#重编码-Asset" class="headerlink" title="重编码 Asset"></a>重编码 Asset</h4><p>您可以一起使用 <code>asset reader</code> 和 <code>asset writer</code> 对象将 <code>asset</code> 从一种格式转换为另一种。使用这些对象，我们对转换的控制比 <code>AVAssetExportSession</code> 要多得多。比如，我们可以选择哪些轨道要写入到输出文件中；指定输出格式；在转换过程中修改 <code>asset</code>。此过程的第一步只是根据需要设置 <code>asset reader outputs</code> 和 <code>asset writer inputs</code>。在 <code>asset reader</code> 完全配置后，可以分别调用 <code>startReading</code> 和 <code>startWriting</code> 方法来启动。</p>
+<p>以下代码展示了如何使用单个 <code>asset writer input</code> 来写入由单个 <code>asset reader output</code> 提供的媒体数据：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">NSString <span class="token operator">*</span>serializationQueueDescription <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%@ serialization queue"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Create a serialization queue for reading and writing.</span>
+dispatch_queue_t serializationQueue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token punctuation">[</span>serializationQueueDescription UTF8String<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Specify the block to execute when the asset writer is ready for media data and the queue to call it on.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput requestMediaDataWhenReadyOnQueue<span class="token punctuation">:</span>serializationQueue usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput isReadyForMoreMediaData<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Get the asset reader output's next sample buffer.</span>
+        CMSampleBufferRef sampleBuffer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderOutput copyNextSampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sampleBuffer <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// If it exists, append this sample buffer to the output file.</span>
+            BOOL success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput appendSampleBuffer<span class="token punctuation">:</span>sampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">CFRelease</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sampleBuffer <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Check for errors that may have occurred when appending the new sample buffer.</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>success <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter<span class="token punctuation">.</span>status <span class="token operator">==</span> AVAssetWriterStatusFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                NSError <span class="token operator">*</span>failureError <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter<span class="token punctuation">.</span>error<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//Handle the error.</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// If the next sample buffer doesn't exist, find out why the asset reader output couldn't vend another one.</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader<span class="token punctuation">.</span>status <span class="token operator">==</span> AVAssetReaderStatusFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                NSError <span class="token operator">*</span>failureError <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>assetReader<span class="token punctuation">.</span>error<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//Handle the error here.</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// The asset reader output must have vended all of its samples. Mark the input as finished.</span>
+                <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="一个完整示例"><a href="#一个完整示例" class="headerlink" title="一个完整示例"></a>一个完整示例</h4><p>下面的代码展示了如何使用 <code>asset reader</code> 和 <code>asset writer</code> 将资产的第一个视频轨道和音频轨重新编码到新的文件中。其中主要包括下面这些步骤：</p>
+<ul>
+<li>使用序列化队列来处理读和写视听数据。</li>
+<li>初始化 <code>asset reader</code> 并配置两个 <code>output</code>，一个用于音频，另一个用于视频。</li>
+<li>初始化 <code>asset writer</code> 并配置两个 <code>input</code>，一个用于音频，另一个用于视频。</li>
+<li>使用 <code>asset reader</code> 通过两种不同的输出/输入组合异步地向 <code>asset writer</code> 提供媒体数据。</li>
+<li>使用 <code>dispatch group</code> 来完成重编码的异步调度。</li>
+<li>允许用户在编码开始后取消该操作。<br>下面是初始化的代码：</li>
+</ul>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 初始化过程：</span>
+NSString <span class="token operator">*</span>serializationQueueDescription <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%@ serialization queue"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Create the main serialization queue.</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>mainSerializationQueue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token punctuation">[</span>serializationQueueDescription UTF8String<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+NSString <span class="token operator">*</span>rwAudioSerializationQueueDescription <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%@ rw audio serialization queue"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Create the serialization queue to use for reading and writing the audio data.</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>rwAudioSerializationQueue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token punctuation">[</span>rwAudioSerializationQueueDescription UTF8String<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+NSString <span class="token operator">*</span>rwVideoSerializationQueueDescription <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%@ rw video serialization queue"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Create the serialization queue to use for reading and writing the video data.</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>rwVideoSerializationQueue <span class="token operator">=</span> <span class="token function">dispatch_queue_create</span><span class="token punctuation">(</span><span class="token punctuation">[</span>rwVideoSerializationQueueDescription UTF8String<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">// 加载资源：</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>asset <span class="token operator">=</span> <span class="token operator">&lt;</span>#AVAsset that you want to reencode#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>cancelled <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span>outputURL <span class="token operator">=</span> <span class="token operator">&lt;</span>#NSURL representing desired output URL <span class="token keyword">for</span> file generated by asset writer#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Asynchronously load the tracks of the asset you want to read.</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset loadValuesAsynchronouslyForKeys<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">@"tracks"</span><span class="token punctuation">]</span> completionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Once the tracks have finished loading, dispatch the work to the main serialization queue.</span>
+    <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>mainSerializationQueue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Due to asynchronous nature, check to see if user has already cancelled.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>cancelled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        BOOL success <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+        NSError <span class="token operator">*</span>localError <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// Check for success of loading the assets tracks.</span>
+        success <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset statusOfValueForKey<span class="token punctuation">:</span><span class="token string">@"tracks"</span> error<span class="token punctuation">:</span><span class="token operator">&amp;</span>localError<span class="token punctuation">]</span> <span class="token operator">==</span> AVKeyValueStatusLoaded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// If the tracks loaded successfully, make sure that no file exists at the output path for the asset writer.</span>
+            NSFileManager <span class="token operator">*</span>fm <span class="token operator">=</span> <span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            NSString <span class="token operator">*</span>localOutputPath <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>outputURL path<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>fm fileExistsAtPath<span class="token punctuation">:</span>localOutputPath<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                success <span class="token operator">=</span> <span class="token punctuation">[</span>fm removeItemAtPath<span class="token punctuation">:</span>localOutputPath error<span class="token punctuation">:</span><span class="token operator">&amp;</span>localError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> setupAssetReaderAndAssetWriter<span class="token punctuation">:</span><span class="token operator">&amp;</span>localError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> startAssetReaderAndWriter<span class="token punctuation">:</span><span class="token operator">&amp;</span>localError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> readingAndWritingDidFinishSuccessfully<span class="token punctuation">:</span>success withError<span class="token punctuation">:</span>localError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>下面是初始化 asset reader 和 writer 的代码：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>setupAssetReaderAndAssetWriter<span class="token punctuation">:</span><span class="token punctuation">(</span>NSError <span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span>outError <span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// Create and initialize the asset reader.</span>
+     <span class="token keyword">self</span><span class="token punctuation">.</span>assetReader <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVAssetReader alloc<span class="token punctuation">]</span> initWithAsset<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset error<span class="token punctuation">:</span>outError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+     BOOL success <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader <span class="token operator">!=</span> nil<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If the asset reader was successfully initialized, do the same for the asset writer.</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>AVAssetWriter alloc<span class="token punctuation">]</span> initWithURL<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>outputURL fileType<span class="token punctuation">:</span>AVFileTypeQuickTimeMovie error<span class="token punctuation">:</span>outError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          success <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter <span class="token operator">!=</span> nil<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If the reader and writer were successfully initialized, grab the audio and video asset tracks that will be used.</span>
+          AVAssetTrack <span class="token operator">*</span>assetAudioTrack <span class="token operator">=</span> nil<span class="token punctuation">,</span> <span class="token operator">*</span>assetVideoTrack <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+          NSArray <span class="token operator">*</span>audioTracks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>audioTracks count<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               assetAudioTrack <span class="token operator">=</span> <span class="token punctuation">[</span>audioTracks objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          NSArray <span class="token operator">*</span>videoTracks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>asset tracksWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>videoTracks count<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               assetVideoTrack <span class="token operator">=</span> <span class="token punctuation">[</span>videoTracks objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>assetAudioTrack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// If there is an audio track to read, set the decompression settings to Linear PCM and create the asset reader output.</span>
+               NSDictionary <span class="token operator">*</span>decompressionAudioSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span> AVFormatIDKey <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kAudioFormatLinearPCM<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               <span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderAudioOutput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack<span class="token punctuation">:</span>assetAudioTrack outputSettings<span class="token punctuation">:</span>decompressionAudioSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader addOutput<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderAudioOutput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Then, set the compression settings to 128kbps AAC and create the asset writer input.</span>
+               AudioChannelLayout stereoChannelLayout <span class="token operator">=</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">.</span>mChannelLayoutTag <span class="token operator">=</span> kAudioChannelLayoutTag_Stereo<span class="token punctuation">,</span>
+                    <span class="token punctuation">.</span>mChannelBitmap <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">.</span>mNumberChannelDescriptions <span class="token operator">=</span> <span class="token number">0</span>
+               <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               NSData <span class="token operator">*</span>channelLayoutAsData <span class="token operator">=</span> <span class="token punctuation">[</span>NSData dataWithBytes<span class="token punctuation">:</span><span class="token operator">&amp;</span>stereoChannelLayout length<span class="token punctuation">:</span><span class="token function">offsetof</span><span class="token punctuation">(</span>AudioChannelLayout<span class="token punctuation">,</span> mChannelDescriptions<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+               NSDictionary <span class="token operator">*</span>compressionAudioSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+                    AVFormatIDKey         <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kAudioFormatMPEG4AAC<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    AVEncoderBitRateKey   <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithInteger<span class="token punctuation">:</span><span class="token number">128000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    AVSampleRateKey       <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithInteger<span class="token punctuation">:</span><span class="token number">44100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    AVChannelLayoutKey    <span class="token punctuation">:</span> channelLayoutAsData<span class="token punctuation">,</span>
+                    AVNumberOfChannelsKey <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInteger<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+               <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               <span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInput assetWriterInputWithMediaType<span class="token punctuation">:</span><span class="token punctuation">[</span>assetAudioTrack mediaType<span class="token punctuation">]</span> outputSettings<span class="token punctuation">:</span>compressionAudioSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter addInput<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>assetVideoTrack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// If there is a video track to read, set the decompression settings for YUV and create the asset reader output.</span>
+               NSDictionary <span class="token operator">*</span>decompressionVideoSettings <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+                    <span class="token punctuation">(</span>id<span class="token punctuation">)</span>kCVPixelBufferPixelFormatTypeKey     <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithUnsignedInt<span class="token punctuation">:</span>kCVPixelFormatType_422YpCbCr8<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">(</span>id<span class="token punctuation">)</span>kCVPixelBufferIOSurfacePropertiesKey <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSDictionary dictionary<span class="token punctuation">]</span>
+               <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               <span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderVideoOutput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack<span class="token punctuation">:</span>assetVideoTrack outputSettings<span class="token punctuation">:</span>decompressionVideoSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader addOutput<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderVideoOutput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               CMFormatDescriptionRef formatDescription <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Grab the video format descriptions from the video track and grab the first one if it exists.</span>
+               NSArray <span class="token operator">*</span>videoFormatDescriptions <span class="token operator">=</span> <span class="token punctuation">[</span>assetVideoTrack formatDescriptions<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>videoFormatDescriptions count<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    formatDescription <span class="token operator">=</span> <span class="token punctuation">(</span>__bridge CMFormatDescriptionRef<span class="token punctuation">)</span><span class="token punctuation">[</span>formatDescriptions objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span>
+               CGSize trackDimensions <span class="token operator">=</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+               <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// If the video track had a format description, grab the track dimensions from there. Otherwise, grab them direcly from the track itself.</span>
+               <span class="token keyword">if</span> <span class="token punctuation">(</span>formatDescription<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    trackDimensions <span class="token operator">=</span> <span class="token function">CMVideoFormatDescriptionGetPresentationDimensions</span><span class="token punctuation">(</span>formatDescription<span class="token punctuation">,</span> false<span class="token punctuation">,</span> false<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    trackDimensions <span class="token operator">=</span> <span class="token punctuation">[</span>assetVideoTrack naturalSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span>
+               NSDictionary <span class="token operator">*</span>compressionSettings <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// If the video track had a format description, attempt to grab the clean aperture settings and pixel aspect ratio used by the video.</span>
+               <span class="token keyword">if</span> <span class="token punctuation">(</span>formatDescription<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    NSDictionary <span class="token operator">*</span>cleanAperture <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+                    NSDictionary <span class="token operator">*</span>pixelAspectRatio <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+                    CFDictionaryRef cleanApertureFromCMFormatDescription <span class="token operator">=</span> <span class="token function">CMFormatDescriptionGetExtension</span><span class="token punctuation">(</span>formatDescription<span class="token punctuation">,</span> kCMFormatDescriptionExtension_CleanAperture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>cleanApertureFromCMFormatDescription<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         cleanAperture <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+                              AVVideoCleanApertureWidthKey            <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>cleanApertureFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_CleanApertureWidth<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                              AVVideoCleanApertureHeightKey           <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>cleanApertureFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_CleanApertureHeight<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                              AVVideoCleanApertureHorizontalOffsetKey <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>cleanApertureFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_CleanApertureHorizontalOffset<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                              AVVideoCleanApertureVerticalOffsetKey   <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>cleanApertureFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_CleanApertureVerticalOffset<span class="token punctuation">)</span>
+                         <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    CFDictionaryRef pixelAspectRatioFromCMFormatDescription <span class="token operator">=</span> <span class="token function">CMFormatDescriptionGetExtension</span><span class="token punctuation">(</span>formatDescription<span class="token punctuation">,</span> kCMFormatDescriptionExtension_PixelAspectRatio<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>pixelAspectRatioFromCMFormatDescription<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         pixelAspectRatio <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+                              AVVideoPixelAspectRatioHorizontalSpacingKey <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>pixelAspectRatioFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_PixelAspectRatioHorizontalSpacing<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                              AVVideoPixelAspectRatioVerticalSpacingKey   <span class="token punctuation">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token function">CFDictionaryGetValue</span><span class="token punctuation">(</span>pixelAspectRatioFromCMFormatDescription<span class="token punctuation">,</span> kCMFormatDescriptionKey_PixelAspectRatioVerticalSpacing<span class="token punctuation">)</span>
+                         <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">// Add whichever settings we could grab from the format description to the compression settings dictionary.</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>cleanAperture <span class="token operator">||</span> pixelAspectRatio<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         NSMutableDictionary <span class="token operator">*</span>mutableCompressionSettings <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>cleanAperture<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              <span class="token punctuation">[</span>mutableCompressionSettings setObject<span class="token punctuation">:</span>cleanAperture forKey<span class="token punctuation">:</span>AVVideoCleanApertureKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>pixelAspectRatio<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              <span class="token punctuation">[</span>mutableCompressionSettings setObject<span class="token punctuation">:</span>pixelAspectRatio forKey<span class="token punctuation">:</span>AVVideoPixelAspectRatioKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                         compressionSettings <span class="token operator">=</span> mutableCompressionSettings<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+               <span class="token punctuation">}</span>
+               <span class="token comment" spellcheck="true">// Create the video settings dictionary for H.264.</span>
+               NSMutableDictionary <span class="token operator">*</span>videoSettings <span class="token operator">=</span> <span class="token punctuation">(</span>NSMutableDictionary <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">@</span><span class="token punctuation">{</span>
+                    AVVideoCodecKey  <span class="token punctuation">:</span> AVVideoCodecH264<span class="token punctuation">,</span>
+                    AVVideoWidthKey  <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithDouble<span class="token punctuation">:</span>trackDimensions<span class="token punctuation">.</span>width<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    AVVideoHeightKey <span class="token punctuation">:</span> <span class="token punctuation">[</span>NSNumber numberWithDouble<span class="token punctuation">:</span>trackDimensions<span class="token punctuation">.</span>height<span class="token punctuation">]</span>
+               <span class="token punctuation">}</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Put the compression settings into the video settings dictionary if we were able to grab them.</span>
+               <span class="token keyword">if</span> <span class="token punctuation">(</span>compressionSettings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">[</span>videoSettings setObject<span class="token punctuation">:</span>compressionSettings forKey<span class="token punctuation">:</span>AVVideoCompressionPropertiesKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span>
+               <span class="token comment" spellcheck="true">// Create the asset writer input and add it to the asset writer.</span>
+               <span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInput assetWriterInputWithMediaType<span class="token punctuation">:</span><span class="token punctuation">[</span>videoTrack mediaType<span class="token punctuation">]</span> outputSettings<span class="token punctuation">:</span>videoSettings<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter addInput<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">return</span> success<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>下面是重新编码 asset 的代码：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>startAssetReaderAndWriter<span class="token punctuation">:</span><span class="token punctuation">(</span>NSError <span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span>outError <span class="token punctuation">{</span>
+     BOOL success <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">// Attempt to start the asset reader.</span>
+     success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader startReading<span class="token punctuation">]</span><span class="token punctuation">;</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token operator">*</span>outError <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If the reader started successfully, attempt to start the asset writer.</span>
+          success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter startWriting<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token operator">*</span>outError <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If the asset reader and writer both started successfully, create the dispatch group where the reencoding will take place and start a sample-writing session.</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup <span class="token operator">=</span> <span class="token function">dispatch_group_create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter startSessionAtSourceTime<span class="token punctuation">:</span>kCMTimeZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// If there is audio to reencode, enter the dispatch group before beginning the work.</span>
+               <span class="token function">dispatch_group_enter</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Specify the block to execute when the asset writer is ready for audio media data, and specify the queue to call it on.</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput requestMediaDataWhenReadyOnQueue<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>rwAudioSerializationQueue usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// Because the block is called asynchronously, check to see whether its task is complete.</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token keyword">return</span><span class="token punctuation">;</span>
+                     <span class="token punctuation">}</span>
+                    BOOL completedOrFailed <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+                    <span class="token comment" spellcheck="true">// If the task isn't complete yet, make sure that the input is actually ready for more media data.</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput isReadyForMoreMediaData<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>completedOrFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token comment" spellcheck="true">// Get the next audio sample buffer, and append it to the output file.</span>
+                         CMSampleBufferRef sampleBuffer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderAudioOutput copyNextSampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>sampleBuffer <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              BOOL success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput appendSampleBuffer<span class="token punctuation">:</span>sampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                              <span class="token function">CFRelease</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                              sampleBuffer <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+                              completedOrFailed <span class="token operator">=</span> <span class="token operator">!</span>success<span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                              completedOrFailed <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>completedOrFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token comment" spellcheck="true">// Mark the input as finished, but only if we haven't already done so, and then leave the dispatch group (since the audio work has finished).</span>
+                         BOOL oldFinished <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished<span class="token punctuation">;</span>
+                         <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>oldFinished <span class="token operator">==</span> NO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                         <span class="token function">dispatch_group_leave</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+               <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// If we had video to reencode, enter the dispatch group before beginning the work.</span>
+               <span class="token function">dispatch_group_enter</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Specify the block to execute when the asset writer is ready for video media data, and specify the queue to call it on.</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput requestMediaDataWhenReadyOnQueue<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>rwVideoSerializationQueue usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// Because the block is called asynchronously, check to see whether its task is complete.</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token keyword">return</span><span class="token punctuation">;</span>
+                     <span class="token punctuation">}</span>
+                    BOOL completedOrFailed <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+                    <span class="token comment" spellcheck="true">// If the task isn't complete yet, make sure that the input is actually ready for more media data.</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput isReadyForMoreMediaData<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>completedOrFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token comment" spellcheck="true">// Get the next video sample buffer, and append it to the output file.</span>
+                         CMSampleBufferRef sampleBuffer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReaderVideoOutput copyNextSampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>sampleBuffer <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              BOOL success <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput appendSampleBuffer<span class="token punctuation">:</span>sampleBuffer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                              <span class="token function">CFRelease</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                              sampleBuffer <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+                              completedOrFailed <span class="token operator">=</span> <span class="token operator">!</span>success<span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                              completedOrFailed <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>completedOrFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token comment" spellcheck="true">// Mark the input as finished, but only if we haven't already done so, and then leave the dispatch group (since the video work has finished).</span>
+                         BOOL oldFinished <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished<span class="token punctuation">;</span>
+                         <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span>oldFinished <span class="token operator">==</span> NO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                         <span class="token function">dispatch_group_leave</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+               <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token comment" spellcheck="true">// Set up the notification that the dispatch group will send when the audio and video work have both finished.</span>
+          <span class="token function">dispatch_group_notify</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>mainSerializationQueue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+               BOOL finalSuccess <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+               NSError <span class="token operator">*</span>finalError <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// Check to see if the work has finished due to cancellation.</span>
+               <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>cancelled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// If so, cancel the reader and writer.</span>
+                    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader cancelReading<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter cancelWriting<span class="token punctuation">]</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// If cancellation didn't occur, first make sure that the asset reader didn't fail.</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader status<span class="token punctuation">]</span> <span class="token operator">==</span> AVAssetReaderStatusFailed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         finalSuccess <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+                         finalError <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">// If the asset reader didn't fail, attempt to stop the asset writer and check for any errors.</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>finalSuccess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         finalSuccess <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter finishWriting<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>finalSuccess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                              finalError <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter error<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                         <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+               <span class="token punctuation">}</span>
+               <span class="token comment" spellcheck="true">// Call the method to handle completion, and pass in the appropriate parameters to indicate whether reencoding was successful.</span>
+               <span class="token punctuation">[</span><span class="token keyword">self</span> readingAndWritingDidFinishSuccessfully<span class="token punctuation">:</span>finalSuccess withError<span class="token punctuation">:</span>finalError<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token comment" spellcheck="true">// Return success here to indicate whether the asset reader and writer were started successfully.</span>
+     <span class="token keyword">return</span> success<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>处理完成的代码：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>readingAndWritingDidFinishSuccessfully<span class="token punctuation">:</span><span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>success withError<span class="token punctuation">:</span><span class="token punctuation">(</span>NSError <span class="token operator">*</span><span class="token punctuation">)</span>error <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If the reencoding process failed, we need to cancel the asset reader and writer.</span>
+          <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetReader cancelReading<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriter cancelWriting<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// Handle any UI tasks here related to failure.</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// Reencoding was successful, reset booleans.</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>cancelled <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+          <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// Handle any UI tasks here related to success.</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>处理取消的代码：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>cancel
+<span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// Handle cancellation asynchronously, but serialize it with the main queue.</span>
+     <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>mainSerializationQueue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// If we had audio data to reencode, we need to cancel the audio work.</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// Handle cancellation asynchronously again, but this time serialize it with the audio queue.</span>
+               <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>rwAudioSerializationQueue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// Update the Boolean property indicating the task is complete and mark the input as finished if it hasn't already been marked as such.</span>
+                    BOOL oldFinished <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished<span class="token punctuation">;</span>
+                    <span class="token keyword">self</span><span class="token punctuation">.</span>audioFinished <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>oldFinished <span class="token operator">==</span> NO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterAudioInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">// Leave the dispatch group since the audio work is finished now.</span>
+                    <span class="token function">dispatch_group_leave</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token comment" spellcheck="true">// Handle cancellation asynchronously again, but this time serialize it with the video queue.</span>
+               <span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>rwVideoSerializationQueue<span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// Update the Boolean property indicating the task is complete and mark the input as finished if it hasn't already been marked as such.</span>
+                    BOOL oldFinished <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished<span class="token punctuation">;</span>
+                    <span class="token keyword">self</span><span class="token punctuation">.</span>videoFinished <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>oldFinished <span class="token operator">==</span> NO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>assetWriterVideoInput markAsFinished<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">// Leave the dispatch group, since the video work is finished now.</span>
+                    <span class="token function">dispatch_group_leave</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>dispatchGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token comment" spellcheck="true">// Set the cancelled Boolean property to YES to cancel any work on the main queue as well.</span>
+          <span class="token keyword">self</span><span class="token punctuation">.</span>cancelled <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="Asset-Output-设置助手"><a href="#Asset-Output-设置助手" class="headerlink" title="Asset Output 设置助手"></a>Asset Output 设置助手</h4><p><code>AVOutputSettingsAssistant</code> 类有助于为 <code>asset reader</code> 或 <code>writer</code> 创建输出设置字典。这使得设置更简单，特别是对于具有多个特定预设的高帧率 <code>H264</code> 电影。</p>
+<p>下面的示例是如何使用 <code>output settings assistant</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">AVOutputSettingsAssistant <span class="token operator">*</span>outputSettingsAssistant <span class="token operator">=</span> <span class="token punctuation">[</span>AVOutputSettingsAssistant outputSettingsAssistantWithPreset<span class="token punctuation">:</span><span class="token operator">&lt;</span>#some preset#<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+CMFormatDescriptionRef audioFormat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> getAudioFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>audioFormat <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>outputSettingsAssistant setSourceAudioFormat<span class="token punctuation">:</span><span class="token punctuation">(</span>CMAudioFormatDescriptionRef<span class="token punctuation">)</span>audioFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+CMFormatDescriptionRef videoFormat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> getVideoFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>videoFormat <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>outputSettingsAssistant setSourceVideoFormat<span class="token punctuation">:</span><span class="token punctuation">(</span>CMVideoFormatDescriptionRef<span class="token punctuation">)</span>videoFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+CMTime assetMinVideoFrameDuration <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> getMinFrameDuration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+CMTime averageFrameDuration <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> getAvgFrameDuration<span class="token punctuation">]</span>
+
+<span class="token punctuation">[</span>outputSettingsAssistant setSourceVideoAverageFrameDuration<span class="token punctuation">:</span>averageFrameDuration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>outputSettingsAssistant setSourceVideoMinFrameDuration<span class="token punctuation">:</span>assetMinVideoFrameDuration<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+AVAssetWriter <span class="token operator">*</span>assetWriter <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriter assetWriterWithURL<span class="token punctuation">:</span><span class="token operator">&lt;</span>#some URL#<span class="token operator">></span> fileType<span class="token punctuation">:</span><span class="token punctuation">[</span>outputSettingsAssistant outputFileType<span class="token punctuation">]</span> error<span class="token punctuation">:</span><span class="token constant">NULL</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetWriterInput <span class="token operator">*</span>audioInput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInput assetWriterInputWithMediaType<span class="token punctuation">:</span>AVMediaTypeAudio outputSettings<span class="token punctuation">:</span><span class="token punctuation">[</span>outputSettingsAssistant audioSettings<span class="token punctuation">]</span> sourceFormatHint<span class="token punctuation">:</span>audioFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+AVAssetWriterInput <span class="token operator">*</span>videoInput <span class="token operator">=</span> <span class="token punctuation">[</span>AVAssetWriterInput assetWriterInputWithMediaType<span class="token punctuation">:</span>AVMediaTypeVideo outputSettings<span class="token punctuation">:</span><span class="token punctuation">[</span>outputSettingsAssistant videoSettings<span class="token punctuation">]</span> sourceFormatHint<span class="token punctuation">:</span>videoFormat<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/04/AVAudioFoundation-4-：音视频录制/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
