@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            AVAudioFoundation(6)：时间和媒体表示 | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="AVAudioFoundation(6)：时间和媒体表示 | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#资源的表示方式"><span class="post-toc-number">1.</span> <span class="post-toc-text">资源的表示方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间的表示"><span class="post-toc-number">2.</span> <span class="post-toc-text">时间的表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用-CMTime-表示时长"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">用 CMTime 表示时长</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-CMTime"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用 CMTime</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CMTime-的特殊值"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">CMTime 的特殊值</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用对象的方式使用-CMTime"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">用对象的方式使用 CMTime</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#纪元"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">纪元</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用-CMTimeRange-来表示时间范围"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">用 CMTimeRange 来表示时间范围</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-CMTimeRange"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">使用 CMTimeRange</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用对象的方式使用-CMTimeRange"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">用对象的方式使用 CMTimeRange</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#媒体的表示"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">媒体的表示</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将-CMSampleBuffer-转换为-UIImage"><span class="post-toc-number">3.</span> <span class="post-toc-text">将 CMSampleBuffer 转换为 UIImage</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                AVAudioFoundation(6)：时间和媒体表示
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>7月 07, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AVAudioFoundation(6)：时间和媒体表示&url=http://yoursite.com//2017/07/07/AVAudioFoundation-6-：时间和媒体表示/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AVAudioFoundation(6)：时间和媒体表示&url=http://yoursite.com//2017/07/07/AVAudioFoundation-6-：时间和媒体表示/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/07/07/AVAudioFoundation-6-：时间和媒体表示/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/07/07/AVAudioFoundation-6-：时间和媒体表示/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本文转自：<a href="http://www.samirchen.com/ios-av-asset" target="_blank" rel="external">AVAudioFoundation(6)：时间和媒体表示 | www.samirchen.com</a><br>本文主要内容来自 <a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html" target="_blank" rel="external">AVFoundation Programming Guide</a>。</p>
+<p>基于时间的音视频数据，例如电影文件或视频流，在 <code>AVFoundation</code> 框架中用 <code>AVAsset</code> 来表示。<code>AVFoundation</code> 用于表示时间和媒体的几个底层数据结构，来自 <code>Core Media</code> 框架。</p>
+<h4 id="资源的表示方式"><a href="#资源的表示方式" class="headerlink" title="资源的表示方式"></a>资源的表示方式</h4><p><code>AVAsset</code> 是 <code>AVFoundation</code> 框架中的核心类。它对基于时间的音视频数据的进行了抽象，例如电影文件或视频流。主要关系如下图所示。在许多情况下，我们需要使用其子类之一。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%92%8C%E5%AA%92%E4%BD%93%E8%A1%A8%E7%A4%BA1.png" alt="图一"></p>
+<p><code>Asset</code> 包含了将在一起显示或处理的多个轨道，每个轨道均包含（但不限于）音频、视频、文本、可隐藏字幕和字幕。 <code>Asset</code> 提供了关于资源的完整信息，比如时长、标题，以及渲染时的提示、视频源尺寸等等。 资产还可以包含由 <code>AVMetadataItem</code> 表示的元数据。</p>
+<p>轨道用 <code>AVAssetTrack</code> 的实例表示，如下图所示。在典型的简单情况下，一个轨道表示音频分量，另一个表示视频分量; 在复杂的组合中，音频和视频可能有多个重叠的轨道。</p>
+<p><img src="http://oqepgj2jp.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%92%8C%E5%AA%92%E4%BD%93%E8%A1%A8%E7%A4%BA2.png" alt="图一"></p>
+<p>轨道具有许多属性，例如其类型（视频或音频），视频和/或音频特征，元数据和时间轴。轨道有一个数组用来描述其格式。该数组包含一组 <code>CMFormatDescription</code> 对象，每个对象描述轨道对应的媒体样本的格式。包含统一媒体的轨道（比如，都使用相同的设置来编码）将提供一个计数为 1 的数组。</p>
+<p>轨道本身可以被划分成多段，由 <code>AVAssetTrackSegment</code> 的实例表示。段是从源到资产轨道时间轴的时间映射。</p>
+<h4 id="时间的表示"><a href="#时间的表示" class="headerlink" title="时间的表示"></a>时间的表示</h4><p><code>AVFoundation</code> 中用来表示时间的数据结构主要来自于 <code>Core Media</code> 框架。</p>
+<h5 id="用-CMTime-表示时长"><a href="#用-CMTime-表示时长" class="headerlink" title="用 CMTime 表示时长"></a>用 CMTime 表示时长</h5><p><code>CMTime</code> 是一个 C 的数据结构，它表示时间为有理数，包含分子和分母。分子表示时间值，分母表示时间刻度，分子除以分母则表示时间，单位为秒。比如当时间刻度是 10，则表示每个单位的时间值表示 1/10 秒。最常用的时间刻度是 600，因为在场景的场景中，我们用 24 fps 的电影，30 fps 的 NTSC，25 fps 的 PAL。使用 600 的时间刻度，可以准确地表示这些系统中的任何数量的帧。</p>
+<p>除了简单的时间值之外，<code>CMTime</code> 结构可以表示非数值的值：正无穷大，负无穷大和无定义。 它也可以指示时间是否在某一点被舍入，并且它能保持一个纪元数字。</p>
+<h5 id="使用-CMTime"><a href="#使用-CMTime" class="headerlink" title="使用 CMTime"></a>使用 CMTime</h5><p>下面是一些使用 <code>CMTime</code> 示例：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTime time1 <span class="token operator">=</span> <span class="token function">CMTimeMake</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 200 half-seconds</span>
+CMTime time2 <span class="token operator">=</span> <span class="token function">CMTimeMake</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 400 quarter-seconds</span>
+
+<span class="token comment" spellcheck="true">// time1 and time2 both represent 100 seconds, but using different timescales.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CMTimeCompare</span><span class="token punctuation">(</span>time1<span class="token punctuation">,</span> time2<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"time1 and time2 are the same"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Float64 float64Seconds <span class="token operator">=</span> <span class="token number">200.0</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+CMTime time3 <span class="token operator">=</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>float64Seconds <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 66.66... third-seconds</span>
+time3 <span class="token operator">=</span> <span class="token function">CMTimeMultiply</span><span class="token punctuation">(</span>time3<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// time3 now represents 200 seconds; next subtract time1 (100 seconds).</span>
+time3 <span class="token operator">=</span> <span class="token function">CMTimeSubtract</span><span class="token punctuation">(</span>time3<span class="token punctuation">,</span> time1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CMTimeShow</span><span class="token punctuation">(</span>time3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CMTIME_COMPARE_INLINE</span><span class="token punctuation">(</span>time2<span class="token punctuation">,</span> <span class="token operator">==</span><span class="token punctuation">,</span> time3<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"time2 and time3 are the same"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="CMTime-的特殊值"><a href="#CMTime-的特殊值" class="headerlink" title="CMTime 的特殊值"></a>CMTime 的特殊值</h5><p><code>Core Media</code> 提供了一些关于 <code>CMTime</code> 的特殊值，比如：<code>kCMTimeZero</code>，<code>kCMTimeInvalid</code>，<code>kCMTimePositiveInfinity</code>，<code>kCMTimeNegativeInfinity</code>。要检查一个表示非数值的 <code>CMTime</code> 是否是合法的，可以用 <code>CMTIME_IS_INVALID</code>，<code>CMTIME_IS_POSITIVE_INFINITY</code>，<code>CMTIME_IS_INDEFINITE</code> 这些宏。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTime myTime <span class="token operator">=</span> <span class="token operator">&lt;</span>#Get a CMTime#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CMTIME_IS_INVALID</span><span class="token punctuation">(</span>myTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Perhaps treat this as an error; display a suitable alert to the user.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>不要去拿一个 <code>CMTime</code> 和 <code>kCMTimeInvalid</code> 做比较。</p>
+<h5 id="用对象的方式使用-CMTime"><a href="#用对象的方式使用-CMTime" class="headerlink" title="用对象的方式使用 CMTime"></a>用对象的方式使用 CMTime</h5><p>如果要使用 <code>Core Foundation</code> 中的一些容器来存储 <code>CMTime</code>，我们需要进行 <code>CMTime</code> 和 <code>CFDictionary</code> 之间的转换。这时我们需要用到 <code>CMTimeCopyAsDictionary</code> 和 <code>CMTimeMakeFromDictionary</code> 这些方法。我们还能用 <code>CMTimeCopyDescription</code> 来输出描述 <code>CMTime</code> 的字符串。</p>
+<h5 id="纪元"><a href="#纪元" class="headerlink" title="纪元"></a>纪元</h5><p>通常 <code>CMTime</code> 中的 <code>epoch</code> 设置为 0，不过我们也可以设置它为其他值来区分不相关的时间轴。比如，我们可以在循环遍历中递增<code>epoch</code> 的值，每一个 0 到 N 的循序递增一下 <code>epoch</code> 来区分不同的轮回。</p>
+<h5 id="用-CMTimeRange-来表示时间范围"><a href="#用-CMTimeRange-来表示时间范围" class="headerlink" title="用 CMTimeRange 来表示时间范围"></a>用 CMTimeRange 来表示时间范围</h5><p><code>CMTimeRange</code> 表示的时间范围包含两个字段：开始时间（start）和时长（duration），这两个字段都是 CMTime 类型。需要注意的是一个 <code>CMTimeRange</code> 不含开始时间加上时长算出来的那个时间点，即 [start, start + duration)。</p>
+<p>我们可以用 <code>CMTimeRangeMake</code> 和 <code>CMTimeRangeFromTimeToTime</code> 来创建 <code>CMTimeRange</code>。但是这里有一些限制：</p>
+<p><code>CMTimeRange</code> 不能跨越不同的纪元。<br><code>CMTime</code> 中的 <code>epoch</code> 字段可能不为 0，但是我们只能对 start 字段具有相同 <code>epoch</code> 的  <code>CMTimeRange</code> 执行相关操作（比如 <code>CMTimeRangeGetUnion</code>）。<br>表示 <code>duration</code> 的 <code>CMTime</code> 结构中的 <code>epoch</code> 应始终为 0，<code>value</code> 必须为非负数。</p>
+<h5 id="使用-CMTimeRange"><a href="#使用-CMTimeRange" class="headerlink" title="使用 CMTimeRange"></a>使用 CMTimeRange</h5><p><code>Core Media</code> 提供了一系列操作 <code>CMTimeRange</code> 的方法，比如 <code>CMTimeRangeContainsTime</code>、<code>CMTimeRangeEqual</code>、<code>CMTimeRangeContainsTimeRange</code>、<code>CMTimeRangeGetUnion</code>.</p>
+<p>下面的代码返回值永远为 <code>false</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token function">CMTimeRangeContainsTime</span><span class="token punctuation">(</span>range<span class="token punctuation">,</span> <span class="token function">CMTimeRangeGetEnd</span><span class="token punctuation">(</span>range<span class="token punctuation">)</span><span class="token punctuation">)</span>
+CMTimeRange 的特殊值
+</code></pre>
+<p><code>Core Media</code> 提供了 <code>kCMTimeRangeZero</code> 和 <code>kCMTimeRangeInvalid</code> 表示零长度 <code>range</code> 和错误 <code>range</code>。在很多情况下，<code>CMTimeRange</code> 结构可能无效，或者是零或不定式（如果其中一个 <code>CMTime</code> 字段是不确定的）。如果要测试 <code>CMTimeRange</code> 结构是否有效、零或不确定，可以使用一个适当的宏：<code>CMTIMERANGE_IS_VALID</code>，<code>CMTIMERANGE_IS_INVALID</code>，<code>CMTIMERANGE_IS_EMPTY</code> 或 <code>CMTIMERANGE_IS_EMPTY</code>。</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMTimeRange myTimeRange <span class="token operator">=</span> <span class="token operator">&lt;</span>#Get a CMTimeRange#<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CMTIMERANGE_IS_EMPTY</span><span class="token punctuation">(</span>myTimeRange<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// The time range is zero.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>不要拿任何 <code>CMTimeRange</code> 和 <code>kCMTimeRangeInvalid</code> 做比较。</p>
+<h5 id="用对象的方式使用-CMTimeRange"><a href="#用对象的方式使用-CMTimeRange" class="headerlink" title="用对象的方式使用 CMTimeRange"></a>用对象的方式使用 <code>CMTimeRange</code></h5><p>如果要在 <code>Core Foundation</code> 提供的容器中使用 <code>CMTimeRange</code> 结构，则可以分别使用 <code>CMTimeRangeCopyAsDictionary</code>和 <code>CMTimeRangeMakeFromDictionary</code> 将 <code>CMTimeRange</code> 结构转换为 <code>CFDictionary</code> 类型。 还可以使用 <code>CMTimeRangeCopyDescription</code> 函数获取 <code>CMTimeRange</code> 结构的字符串表示形式。</p>
+<h5 id="媒体的表示"><a href="#媒体的表示" class="headerlink" title="媒体的表示"></a>媒体的表示</h5><p>视频数据及其关联的元数据在 <code>AVFoundation</code> 中由 <code>Core Media</code> 框架中的对象表示。 <code>Core Media</code> 使用 <code>CMSampleBuffer</code> 表示视频数据。<code>CMSampleBuffer</code> 是一种 <code>Core Foundation</code> 风格的类型。<code>CMSampleBuffer</code> 的一个实例在对应的 <code>Core Video pixel buffer</code> 中包含了视频帧的数据（参见 <code>CVPixelBufferRef</code>）。 我们可以使用 <code>CMSampleBufferGetImageBuffer</code> 从样本缓冲区访问 <code>pixel buffer</code>：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CVPixelBufferRef pixelBuffer <span class="token operator">=</span> <span class="token function">CMSampleBufferGetImageBuffer</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>#A CMSampleBuffer#<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>从 <code>pixel buffer</code> 中，我们可以访问实际的视频数据。</p>
+<p>除了视频数据之外，您还可以检索视频帧的其他方面的数据：</p>
+<p>时间信息。我们可以分别使用 <code>CMSampleBufferGetPresentationTimeStamp</code> 和 <code>CMSampleBufferGetDecodeTimeStamp</code>获得原始演示时间和解码时间的准确时间戳。<br>格式信息。格式信息封装在 <code>CMFormatDescription</code> 对象中。从格式描述中，可以分别使用 <code>CMVideoFormatDescriptionGetCodecType</code> 和 <code>CMVideoFormatDescriptionGetDimensions</code> 获取像素类型和视频尺寸。<br>元数据。元数据作为附件存储在字典中。您使用 CMGetAttachment 检索字典。如下面代码所示：</p>
+<pre class=" language-objectivec"><code class="language-objectivec">CMSampleBufferRef sampleBuffer <span class="token operator">=</span> <span class="token operator">&lt;</span>#Get a sample buffer#<span class="token operator">></span><span class="token punctuation">;</span>
+CFDictionaryRef metadataDictionary <span class="token operator">=</span> <span class="token function">CMGetAttachment</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">,</span> <span class="token function">CFSTR</span><span class="token punctuation">(</span><span class="token string">"MetadataDictionary"</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>metadataDictionary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Do something with the metadata.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="将-CMSampleBuffer-转换为-UIImage"><a href="#将-CMSampleBuffer-转换为-UIImage" class="headerlink" title="将 CMSampleBuffer 转换为 UIImage"></a>将 CMSampleBuffer 转换为 UIImage</h4><p>以下代码显示如何将 <code>CMSampleBuffer</code> 转换为 <code>UIImage</code> 对象。 使用前，我们要仔细考虑对应的需求。 执行转换是比较昂贵的操作。例如，从每隔一秒钟拍摄的视频数据帧创建静止图像是合适的，但不应该使用它来实时操纵来自录制设备的每一帧视频。</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// Create a UIImage from sample buffer data.</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>imageFromSampleBuffer<span class="token punctuation">:</span><span class="token punctuation">(</span>CMSampleBufferRef<span class="token punctuation">)</span>sampleBuffer <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Get a CMSampleBuffer's Core Video image buffer for the media data</span>
+    CVImageBufferRef imageBuffer <span class="token operator">=</span> <span class="token function">CMSampleBufferGetImageBuffer</span><span class="token punctuation">(</span>sampleBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Lock the base address of the pixel buffer</span>
+    <span class="token function">CVPixelBufferLockBaseAddress</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Get the number of bytes per row for the pixel buffer</span>
+    <span class="token keyword">void</span> <span class="token operator">*</span>baseAddress <span class="token operator">=</span> <span class="token function">CVPixelBufferGetBaseAddress</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Get the number of bytes per row for the pixel buffer</span>
+    size_t bytesPerRow <span class="token operator">=</span> <span class="token function">CVPixelBufferGetBytesPerRow</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Get the pixel buffer width and height</span>
+    size_t width <span class="token operator">=</span> <span class="token function">CVPixelBufferGetWidth</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    size_t height <span class="token operator">=</span> <span class="token function">CVPixelBufferGetHeight</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Create a device-dependent RGB color space</span>
+    CGColorSpaceRef colorSpace <span class="token operator">=</span> <span class="token function">CGColorSpaceCreateDeviceRGB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Create a bitmap graphics context with the sample buffer data</span>
+    CGContextRef context <span class="token operator">=</span> <span class="token function">CGBitmapContextCreate</span><span class="token punctuation">(</span>baseAddress<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span>
+      bytesPerRow<span class="token punctuation">,</span> colorSpace<span class="token punctuation">,</span> kCGBitmapByteOrder32Little <span class="token operator">|</span> kCGImageAlphaPremultipliedFirst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Create a Quartz image from the pixel data in the bitmap graphics context</span>
+    CGImageRef quartzImage <span class="token operator">=</span> <span class="token function">CGBitmapContextCreateImage</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Unlock the pixel buffer</span>
+    <span class="token function">CVPixelBufferUnlockBaseAddress</span><span class="token punctuation">(</span>imageBuffer<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Free up the context and color space</span>
+    <span class="token function">CGContextRelease</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGColorSpaceRelease</span><span class="token punctuation">(</span>colorSpace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Create an image object from the Quartz image</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageWithCGImage<span class="token punctuation">:</span>quartzImage<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Release the Quartz image</span>
+    <span class="token function">CGImageRelease</span><span class="token punctuation">(</span>quartzImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/05/AVAudioFoundation-5-：音视频导出/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
