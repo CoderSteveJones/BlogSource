@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            iOS小经验（一） | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="iOS小经验（一） | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、禁止手机睡眠"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、禁止手机睡眠</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、隐藏某行cell"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、隐藏某行cell</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、禁用button高亮"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、禁用button高亮</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4、tableview遇到这种报错failed-to-obtain-a-cell-from-its-dataSource"><span class="post-toc-number">4.</span> <span class="post-toc-text">4、tableview遇到这种报错failed to obtain a cell from its dataSource</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5、cocoa-pods报这个错误：unable-to-access-‘https-github-com-facebook-pop-git-‘-Operation-timed-out-after-0-milliseconds-with-0-out-of-0-bytes-received"><span class="post-toc-number">5.</span> <span class="post-toc-text">5、cocoa pods报这个错误：unable to access ‘https://github.com/facebook/pop.git/‘: Operation timed out after 0 milliseconds with 0 out of 0 bytes received</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6、cocoa-pods-出现ERROR-While-executing-gem-…-Errno-EPERM"><span class="post-toc-number">6.</span> <span class="post-toc-text">6、cocoa pods 出现ERROR: While executing gem … (Errno::EPERM)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7、动画切换window的根控制器"><span class="post-toc-number">7.</span> <span class="post-toc-text">7、动画切换window的根控制器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8、去除数组中重复的对象"><span class="post-toc-number">8.</span> <span class="post-toc-text">8、去除数组中重复的对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9、编译的时候遇到-no-such-file-or-directory-／users／apple／XXX"><span class="post-toc-number">9.</span> <span class="post-toc-text">9、编译的时候遇到 no such file or directory: ／users／apple／XXX</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10、iOS8系统中，tableView最好实现下-tableView-heightForRowAtIndexPath-这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题"><span class="post-toc-number">10.</span> <span class="post-toc-text">10、iOS8系统中，tableView最好实现下-tableView: heightForRowAtIndexPath:这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑"><span class="post-toc-number">11.</span> <span class="post-toc-text">11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12、三个通知"><span class="post-toc-number">12.</span> <span class="post-toc-text">12、三个通知</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张-所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。"><span class="post-toc-number">13.</span> <span class="post-toc-text">13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张,所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14、上线前注意："><span class="post-toc-number">14.</span> <span class="post-toc-text">14、上线前注意：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15、跳进app权限设置"><span class="post-toc-number">15.</span> <span class="post-toc-text">15、跳进app权限设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16、给一个view截图"><span class="post-toc-number">16.</span> <span class="post-toc-text">16、给一个view截图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"><span class="post-toc-number">17.</span> <span class="post-toc-text">17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#18、注意对象为nil的时候，调用此对象分类的方法不会执行"><span class="post-toc-number">18.</span> <span class="post-toc-text">18、注意对象为nil的时候，调用此对象分类的方法不会执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动："><span class="post-toc-number">19.</span> <span class="post-toc-text">19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#20、设置navigationBar上的title颜色和大小"><span class="post-toc-number">20.</span> <span class="post-toc-text">20、设置navigationBar上的title颜色和大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#21、颜色转图片"><span class="post-toc-number">21.</span> <span class="post-toc-text">21、颜色转图片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#22、view设置圆角"><span class="post-toc-number">22.</span> <span class="post-toc-text">22、view设置圆角</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#23、强／弱引用"><span class="post-toc-number">23.</span> <span class="post-toc-text">23、强／弱引用</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                iOS小经验（一）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>2月 10, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS小经验（一）&url=http://yoursite.com//2016/02/10/iOS小经验（一）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS小经验（一）&url=http://yoursite.com//2016/02/10/iOS小经验（一）/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2016/02/10/iOS小经验（一）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/02/10/iOS小经验（一）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="1、禁止手机睡眠"><a href="#1、禁止手机睡眠" class="headerlink" title="1、禁止手机睡眠"></a>1、禁止手机睡眠</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">.</span>idleTimerDisabled <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="2、隐藏某行cell"><a href="#2、隐藏某行cell" class="headerlink" title="2、隐藏某行cell"></a>2、隐藏某行cell</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>tableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableView <span class="token operator">*</span><span class="token punctuation">)</span>tableView heightForRowAtIndexPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSIndexPath <span class="token operator">*</span><span class="token punctuation">)</span>indexPath
+<span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 如果是你需要隐藏的那一行，返回高度为0</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>indexPath<span class="token punctuation">.</span>row <span class="token operator">==</span> YouWantToHideRow<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> <span class="token number">44</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 然后再你需要隐藏cell的时候调用</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>tableView beginUpdates<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>tableView endUpdates<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="3、禁用button高亮"><a href="#3、禁用button高亮" class="headerlink" title="3、禁用button高亮"></a>3、禁用button高亮</h4><pre class=" language-objectivec"><code class="language-objectivec">button<span class="token punctuation">.</span>adjustsImageWhenHighlighted <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+或者在创建的时候
+ UIButton <span class="token operator">*</span>button <span class="token operator">=</span> <span class="token punctuation">[</span>UIButton buttonWithType<span class="token punctuation">:</span>UIButtonTypeCustom<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="4、tableview遇到这种报错failed-to-obtain-a-cell-from-its-dataSource"><a href="#4、tableview遇到这种报错failed-to-obtain-a-cell-from-its-dataSource" class="headerlink" title="4、tableview遇到这种报错failed to obtain a cell from its dataSource"></a>4、tableview遇到这种报错failed to obtain a cell from its dataSource</h4><blockquote>
+<p>是因为你的cell被调用的早了。先循环使用了cell，后又创建cell。顺序错了<br>可能原因：1、xib的cell没有注册 2、内存中已经有这个cell的缓存了(也就是说通过你的cellId找到的cell并不是你<br>想要的类型)，这时候需要改下cell的标识</p>
+</blockquote>
+<h4 id="5、cocoa-pods报这个错误：unable-to-access-‘https-github-com-facebook-pop-git-‘-Operation-timed-out-after-0-milliseconds-with-0-out-of-0-bytes-received"><a href="#5、cocoa-pods报这个错误：unable-to-access-‘https-github-com-facebook-pop-git-‘-Operation-timed-out-after-0-milliseconds-with-0-out-of-0-bytes-received" class="headerlink" title="5、cocoa pods报这个错误：unable to access ‘https://github.com/facebook/pop.git/‘: Operation timed out after 0 milliseconds with 0 out of 0 bytes received"></a>5、cocoa pods报这个错误：unable to access ‘<a href="https://github.com/facebook/pop.git/" target="_blank" rel="external">https://github.com/facebook/pop.git/</a>‘: Operation timed out after 0 milliseconds with 0 out of 0 bytes received</h4><blockquote>
+<p>解决办法：原因可能是网络问题，网络请求超时了，只需要重试就行了</p>
+</blockquote>
+<h4 id="6、cocoa-pods-出现ERROR-While-executing-gem-…-Errno-EPERM"><a href="#6、cocoa-pods-出现ERROR-While-executing-gem-…-Errno-EPERM" class="headerlink" title="6、cocoa pods 出现ERROR: While executing gem … (Errno::EPERM)"></a>6、cocoa pods 出现ERROR: While executing gem … (Errno::EPERM)</h4><blockquote>
+<p><a href="https://segmentfault.com/q/1010000002926243" target="_blank" rel="external">解决办法：https://segmentfault.com/q/1010000002926243</a></p>
+</blockquote>
+<h4 id="7、动画切换window的根控制器"><a href="#7、动画切换window的根控制器" class="headerlink" title="7、动画切换window的根控制器"></a>7、动画切换window的根控制器</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// options是动画选项</span>
+<span class="token punctuation">[</span>UIView transitionWithView<span class="token punctuation">:</span><span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">.</span>keyWindow duration<span class="token punctuation">:</span><span class="token number">0.5f</span> options<span class="token punctuation">:</span>UIViewAnimationOptionTransitionCrossDissolve animations<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+        BOOL oldState <span class="token operator">=</span> <span class="token punctuation">[</span>UIView areAnimationsEnabled<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>UIView setAnimationsEnabled<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">.</span>keyWindow<span class="token punctuation">.</span>rootViewController <span class="token operator">=</span> <span class="token punctuation">[</span>RootViewController new<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>UIView setAnimationsEnabled<span class="token punctuation">:</span>oldState<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> completion<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>BOOL finished<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="8、去除数组中重复的对象"><a href="#8、去除数组中重复的对象" class="headerlink" title="8、去除数组中重复的对象"></a>8、去除数组中重复的对象</h4><pre class=" language-objectivec"><code class="language-objectivec">NSArray <span class="token operator">*</span>newArr <span class="token operator">=</span> <span class="token punctuation">[</span>oldArr valueForKeyPath<span class="token punctuation">:</span><span class="token operator">@</span>“<span class="token operator">@</span>distinctUnionOfObjects<span class="token punctuation">.</span><span class="token keyword">self</span>"<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="9、编译的时候遇到-no-such-file-or-directory-／users／apple／XXX"><a href="#9、编译的时候遇到-no-such-file-or-directory-／users／apple／XXX" class="headerlink" title="9、编译的时候遇到 no such file or directory: ／users／apple／XXX"></a>9、编译的时候遇到 no such file or directory: ／users／apple／XXX</h4><blockquote>
+<p>是因为编译的时候，在此路径下找不到这个文件，解决这个问题，首先是是要检查缺少的文件是不是在工程中，如果不在工程中，需要从本地拖进去，如果发现已经存在工程中了，或者拖进去还是报错，这时候需要去build phases中搜索这个文件，这时候很可能会搜出现两个相同的文件，这时候，有一个路径是正确的，删除另外一个即可。如果删除了还是不行，需要把两个都删掉，然后重新往工程里拖进这个文件即可</p>
+</blockquote>
+<h4 id="10、iOS8系统中，tableView最好实现下-tableView-heightForRowAtIndexPath-这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题"><a href="#10、iOS8系统中，tableView最好实现下-tableView-heightForRowAtIndexPath-这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题" class="headerlink" title="10、iOS8系统中，tableView最好实现下-tableView: heightForRowAtIndexPath:这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题"></a>10、iOS8系统中，tableView最好实现下-tableView: heightForRowAtIndexPath:这个代理方法，要不然在iOS8中可能就会出现显示不全或者无法响应事件的问题</h4><h4 id="11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑"><a href="#11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑" class="headerlink" title="11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑"></a>11、iOS8中实现侧滑功能的时候这个方法必须实现，要不然在iOS8中无法侧滑</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 必须写的方法，和editActionsForRowAtIndexPath配对使用，里面什么不写也行</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>tableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableView <span class="token operator">*</span><span class="token punctuation">)</span>tableView commitEditingStyle<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableViewCellEditingStyle<span class="token punctuation">)</span>editingStyle forRowAtIndexPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSIndexPath <span class="token operator">*</span><span class="token punctuation">)</span>indexPath <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="12、三个通知"><a href="#12、三个通知" class="headerlink" title="12、三个通知"></a>12、三个通知</h4><blockquote>
+<p>NSSystemTimeZoneDidChangeNotification监听修改时间界面的两个按钮状态变化<br>UIApplicationSignificantTimeChangeNotification 监听用户改变时间 （只要点击自动设置按钮就会调用） NSSystemClockDidChangeNotification 监听用户修改时间（时间不同才会调用）</p>
+</blockquote>
+<h4 id="13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张-所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。"><a href="#13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张-所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。" class="headerlink" title="13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张,所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。"></a>13、SDWebImage本地缓存有时候会害人。如果之前缓存过一张图片，即使下次服务器换了这张图片，但是图片url没换，用sdwebimage下载下来的还是以前那张,所以遇到这种问题，不要先去怼服务器，清空下缓存再试就好了。</h4><h4 id="14、上线前注意："><a href="#14、上线前注意：" class="headerlink" title="14、上线前注意："></a>14、上线前注意：</h4><blockquote>
+<p>1）、删掉代码中所有的测试代码<br>2）、如果后台有审核模式，提醒后台开启此模式<br>3）、主流程再跑一跑<br>4）、全局搜索waring，检查所有标记waring的地方</p>
+</blockquote>
+<h4 id="15、跳进app权限设置"><a href="#15、跳进app权限设置" class="headerlink" title="15、跳进app权限设置"></a>15、跳进app权限设置</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 跳进app设置</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>UIApplicationOpenSettingsURLString <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                UIApplication <span class="token operator">*</span>application <span class="token operator">=</span> <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                NSURL <span class="token operator">*</span>URL <span class="token operator">=</span> <span class="token punctuation">[</span>NSURL URLWithString<span class="token punctuation">:</span>UIApplicationOpenSettingsURLString<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>application respondsToSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>openURL<span class="token punctuation">:</span>options<span class="token punctuation">:</span>completionHandler<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL options<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+                       completionHandler<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="16、给一个view截图"><a href="#16、给一个view截图" class="headerlink" title="16、给一个view截图"></a>16、给一个view截图</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token function">UIGraphicsBeginImageContextWithOptions</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">,</span> YES<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>view<span class="token punctuation">.</span>layer renderInContext<span class="token punctuation">:</span><span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>img <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"><a href="#17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。" class="headerlink" title="17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"></a>17、开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。</h4><h4 id="18、注意对象为nil的时候，调用此对象分类的方法不会执行"><a href="#18、注意对象为nil的时候，调用此对象分类的方法不会执行" class="headerlink" title="18、注意对象为nil的时候，调用此对象分类的方法不会执行"></a>18、注意对象为nil的时候，调用此对象分类的方法不会执行</h4><h4 id="19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动："><a href="#19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动：" class="headerlink" title="19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动："></a>19、collectionView的内容小于其宽高的时候是不能滚动的，设置可以滚动：</h4><pre class=" language-objectivec"><code class="language-objectivec">collectionView<span class="token punctuation">.</span>alwaysBounceHorizontal <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+collectionView<span class="token punctuation">.</span>alwaysBounceVertical <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="20、设置navigationBar上的title颜色和大小"><a href="#20、设置navigationBar上的title颜色和大小" class="headerlink" title="20、设置navigationBar上的title颜色和大小"></a>20、设置navigationBar上的title颜色和大小</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController<span class="token punctuation">.</span>navigationBar setTitleTextAttributes<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span>NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor youColor<span class="token punctuation">]</span><span class="token punctuation">,</span> NSFontAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont systemFontOfSize<span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre>
+<h4 id="21、颜色转图片"><a href="#21、颜色转图片" class="headerlink" title="21、颜色转图片"></a>21、颜色转图片</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>cl_imageWithColor<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color <span class="token punctuation">{</span>
+  CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  CGContextRef context <span class="token operator">=</span> <span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">CGContextSetFillColorWithColor</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token punctuation">[</span>color CGColor<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">CGContextFillRect</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="22、view设置圆角"><a href="#22、view设置圆角" class="headerlink" title="22、view设置圆角"></a>22、view设置圆角</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> ViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]] </span><span class="token comment" spellcheck="true">// view圆角</span>
+</code></pre>
+<h4 id="23、强／弱引用"><a href="#23、强／弱引用" class="headerlink" title="23、强／弱引用"></a>23、强／弱引用</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> WeakSelf(type)  __weak typeof(type) weak##type = type; </span><span class="token comment" spellcheck="true">// weak</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> StrongSelf(type)  __strong typeof(type) type = weak##type; </span><span class="token comment" spellcheck="true">// strong</span>
+</code></pre>
+<p>24、由角度转换弧度</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> DegreesToRadian(x) (M_PI * (x) / 180.0)</span>
+</code></pre>
+<p>25、由弧度转换角度</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> RadianToDegrees(radian) (radian*180.0)/(M_PI)</span>
+</code></pre>
+<p>26、获取图片资源</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> GetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]</span>
+</code></pre>
+<p>27、获取temp</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> PathTemp NSTemporaryDirectory()</span>
+</code></pre>
+<p>28、获取沙盒 Document</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> PathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]</span>
+</code></pre>
+<p>29、获取沙盒 Cache</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> PathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]</span>
+</code></pre>
+<p>30、GCD代码只执行一次</p>
+<pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;onceToken, onceBlock);</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/02/iOS消息转发机制-动态方法解析/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/02/">二月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS小经验/">iOS小经验<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
