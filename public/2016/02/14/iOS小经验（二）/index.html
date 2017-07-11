@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            iOS小经验（二） | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="iOS小经验（二） | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、自定义NSLog"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、自定义NSLog</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、Font"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、Font</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、FORMAT"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、FORMAT</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4、在主线程上运行"><span class="post-toc-number">4.</span> <span class="post-toc-text">4、在主线程上运行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5、开启异步线程"><span class="post-toc-number">5.</span> <span class="post-toc-text">5、开启异步线程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6、通知"><span class="post-toc-number">6.</span> <span class="post-toc-text">6、通知</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7、随机颜色"><span class="post-toc-number">7.</span> <span class="post-toc-text">7、随机颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8、获取window"><span class="post-toc-number">8.</span> <span class="post-toc-text">8、获取window</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9、修改textField的placeholder的字体颜色、大小"><span class="post-toc-number">9.</span> <span class="post-toc-text">9、修改textField的placeholder的字体颜色、大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10、统一收起键盘"><span class="post-toc-number">10.</span> <span class="post-toc-text">10、统一收起键盘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11、控制屏幕旋转，在控制器中写"><span class="post-toc-number">11.</span> <span class="post-toc-text">11、控制屏幕旋转，在控制器中写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12、获取app缓存大小"><span class="post-toc-number">12.</span> <span class="post-toc-text">12、获取app缓存大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13、清理app缓存"><span class="post-toc-number">13.</span> <span class="post-toc-text">13、清理app缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14、模型转字典"><span class="post-toc-number">14.</span> <span class="post-toc-text">14、模型转字典</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15、交换两个方法实现"><span class="post-toc-number">15.</span> <span class="post-toc-text">15、交换两个方法实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6、打印百分号和引号"><span class="post-toc-number">16.</span> <span class="post-toc-text">6、打印百分号和引号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17、几个常用权限判断"><span class="post-toc-number">17.</span> <span class="post-toc-text">17、几个常用权限判断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#18、获取手机型号"><span class="post-toc-number">18.</span> <span class="post-toc-text">18、获取手机型号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#19、长按复制功能"><span class="post-toc-number">19.</span> <span class="post-toc-text">19、长按复制功能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#20、cocoapods升级"><span class="post-toc-number">20.</span> <span class="post-toc-text">20、cocoapods升级</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#21、设置启动页后，依然显示之前的"><span class="post-toc-number">21.</span> <span class="post-toc-text">21、设置启动页后，依然显示之前的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#22、判断图片类型"><span class="post-toc-number">22.</span> <span class="post-toc-text">22、判断图片类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#23、获取手机和app信息"><span class="post-toc-number">23.</span> <span class="post-toc-text">23、获取手机和app信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#24、获取一个类的所有属性"><span class="post-toc-number">24.</span> <span class="post-toc-text">24、获取一个类的所有属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#25、image圆角"><span class="post-toc-number">25.</span> <span class="post-toc-text">25、image圆角</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#26、image拉伸"><span class="post-toc-number">26.</span> <span class="post-toc-text">26、image拉伸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#27、JSON字符串转字典"><span class="post-toc-number">27.</span> <span class="post-toc-text">27、JSON字符串转字典</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#28、身份证号验证"><span class="post-toc-number">28.</span> <span class="post-toc-text">28、身份证号验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#29、获取设备mac地址"><span class="post-toc-number">29.</span> <span class="post-toc-text">29、获取设备mac地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#30、导入自定义字体库"><span class="post-toc-number">30.</span> <span class="post-toc-text">30、导入自定义字体库</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                iOS小经验（二）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>2月 14, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS小经验（二）&url=http://yoursite.com//2016/02/14/iOS小经验（二）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS小经验（二）&url=http://yoursite.com//2016/02/14/iOS小经验（二）/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2016/02/14/iOS小经验（二）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/02/14/iOS小经验（二）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="1、自定义NSLog"><a href="#1、自定义NSLog" class="headerlink" title="1、自定义NSLog"></a>1、自定义NSLog</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">ifdef</span> DEBUG</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)</span>
+<span class="token macro property">#<span class="token directive keyword">else</span></span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NSLog(...)</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+</code></pre>
+<h4 id="2、Font"><a href="#2、Font" class="headerlink" title="2、Font"></a>2、Font</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> FontL(s)             [UIFont systemFontOfSize:s weight:UIFontWeightLight]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> FontR(s)             [UIFont systemFontOfSize:s weight:UIFontWeightRegular]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> FontB(s)             [UIFont systemFontOfSize:s weight:UIFontWeightBold]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> FontT(s)             [UIFont systemFontOfSize:s weight:UIFontWeightThin]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> Font(s)              FontL(s)</span>
+</code></pre>
+<h4 id="3、FORMAT"><a href="#3、FORMAT" class="headerlink" title="3、FORMAT"></a>3、FORMAT</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> FORMAT(f, ...)      [NSString stringWithFormat:f, ## __VA_ARGS__]</span>
+</code></pre>
+<h4 id="4、在主线程上运行"><a href="#4、在主线程上运行" class="headerlink" title="4、在主线程上运行"></a>4、在主线程上运行</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);</span>
+</code></pre>
+<h4 id="5、开启异步线程"><a href="#5、开启异步线程" class="headerlink" title="5、开启异步线程"></a>5、开启异步线程</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);</span>
+</code></pre>
+<h4 id="6、通知"><a href="#6、通知" class="headerlink" title="6、通知"></a>6、通知</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token macro property">#<span class="token directive keyword">define</span> NOTIF_ADD(n, f)     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(f) name:n object:nil]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NOTIF_POST(n, o)    [[NSNotificationCenter defaultCenter] postNotificationName:n object:o]</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NOTIF_REMV()        [[NSNotificationCenter defaultCenter] removeObserver:self]</span>
+</code></pre>
+<h4 id="7、随机颜色"><a href="#7、随机颜色" class="headerlink" title="7、随机颜色"></a>7、随机颜色</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>RandomColor <span class="token punctuation">{</span>
+    NSInteger aRedValue <span class="token operator">=</span> <span class="token function">arc4random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">255</span><span class="token punctuation">;</span>
+    NSInteger aGreenValue <span class="token operator">=</span> <span class="token function">arc4random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">255</span><span class="token punctuation">;</span>
+    NSInteger aBlueValue <span class="token operator">=</span> <span class="token function">arc4random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">255</span><span class="token punctuation">;</span>
+    UIColor <span class="token operator">*</span>randColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor colorWithRed<span class="token punctuation">:</span>aRedValue <span class="token operator">/</span> <span class="token number">255.0f</span> green<span class="token punctuation">:</span>aGreenValue <span class="token operator">/</span> <span class="token number">255.0f</span> blue<span class="token punctuation">:</span>aBlueValue <span class="token operator">/</span> <span class="token number">255.0f</span> alpha<span class="token punctuation">:</span><span class="token number">1.0f</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> randColor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="8、获取window"><a href="#8、获取window" class="headerlink" title="8、获取window"></a>8、获取window</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span><span class="token punctuation">(</span>UIWindow<span class="token operator">*</span><span class="token punctuation">)</span>getWindow <span class="token punctuation">{</span>
+    UIWindow<span class="token operator">*</span> win <span class="token operator">=</span> nil<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//[UIApplication sharedApplication].keyWindow;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>id item <span class="token keyword">in</span> <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">.</span>windows<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>item class<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token punctuation">[</span>UIWindow class<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token punctuation">(</span>UIWindow<span class="token operator">*</span><span class="token punctuation">)</span>item<span class="token punctuation">)</span><span class="token punctuation">.</span>hidden<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                win <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> win<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="9、修改textField的placeholder的字体颜色、大小"><a href="#9、修改textField的placeholder的字体颜色、大小" class="headerlink" title="9、修改textField的placeholder的字体颜色、大小"></a>9、修改textField的placeholder的字体颜色、大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>textField setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span><span class="token string">@"_placeholderLabel.textColor"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>textField setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIFont boldSystemFontOfSize<span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span><span class="token string">@"_placeholderLabel.font"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="10、统一收起键盘"><a href="#10、统一收起键盘" class="headerlink" title="10、统一收起键盘"></a>10、统一收起键盘</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span> keyWindow<span class="token punctuation">]</span> endEditing<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="11、控制屏幕旋转，在控制器中写"><a href="#11、控制屏幕旋转，在控制器中写" class="headerlink" title="11、控制屏幕旋转，在控制器中写"></a>11、控制屏幕旋转，在控制器中写</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">/** 是否支持自动转屏 */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>shouldAutorotate <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/** 支持哪些屏幕方向 */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>UIInterfaceOrientationMask<span class="token punctuation">)</span>supportedInterfaceOrientations <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> UIInterfaceOrientationMaskLandscapeLeft <span class="token operator">|</span> UIInterfaceOrientationMaskLandscapeRight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/** 默认的屏幕方向（当前ViewController必须是通过模态出来的UIViewController（模态带导航的无效）方式展现出来的，才会调用这个方法） */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>UIInterfaceOrientation<span class="token punctuation">)</span>preferredInterfaceOrientationForPresentation <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> UIInterfaceOrientationLandscapeLeft <span class="token operator">|</span> UIInterfaceOrientationLandscapeRight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="12、获取app缓存大小"><a href="#12、获取app缓存大小" class="headerlink" title="12、获取app缓存大小"></a>12、获取app缓存大小</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>getCachSize <span class="token punctuation">{</span>
+
+    NSUInteger imageCacheSize <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>SDImageCache sharedImageCache<span class="token punctuation">]</span> getSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取自定义缓存大小</span>
+    <span class="token comment" spellcheck="true">//用枚举器遍历 一个文件夹的内容</span>
+    <span class="token comment" spellcheck="true">//1.获取 文件夹枚举器</span>
+    NSString <span class="token operator">*</span>myCachePath <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token function">NSHomeDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> stringByAppendingPathComponent<span class="token punctuation">:</span><span class="token string">@"Library/Caches"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSDirectoryEnumerator <span class="token operator">*</span>enumerator <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> enumeratorAtPath<span class="token punctuation">:</span>myCachePath<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    __block NSUInteger count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//2.遍历</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span>fileName <span class="token keyword">in</span> enumerator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NSString <span class="token operator">*</span>path <span class="token operator">=</span> <span class="token punctuation">[</span>myCachePath stringByAppendingPathComponent<span class="token punctuation">:</span>fileName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        NSDictionary <span class="token operator">*</span>fileDict <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> attributesOfItemAtPath<span class="token punctuation">:</span>path error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        count <span class="token operator">+</span><span class="token operator">=</span> fileDict<span class="token punctuation">.</span>fileSize<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//自定义所有缓存大小</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 得到是字节  转化为M</span>
+    CGFloat totalSize <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>imageCacheSize<span class="token operator">+</span>count<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">1024</span><span class="token operator">/</span><span class="token number">1024</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> totalSize<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="13、清理app缓存"><a href="#13、清理app缓存" class="headerlink" title="13、清理app缓存"></a>13、清理app缓存</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>handleClearView <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//删除两部分</span>
+    <span class="token comment" spellcheck="true">//1.删除 sd 图片缓存</span>
+    <span class="token comment" spellcheck="true">//先清除内存中的图片缓存</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>SDImageCache sharedImageCache<span class="token punctuation">]</span> clearMemory<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//清除磁盘的缓存</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>SDImageCache sharedImageCache<span class="token punctuation">]</span> clearDisk<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//2.删除自己缓存</span>
+    NSString <span class="token operator">*</span>myCachePath <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token function">NSHomeDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> stringByAppendingPathComponent<span class="token punctuation">:</span><span class="token string">@"Library/Caches"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> removeItemAtPath<span class="token punctuation">:</span>myCachePath error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="14、模型转字典"><a href="#14、模型转字典" class="headerlink" title="14、模型转字典"></a>14、模型转字典</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">static</span> NSSet <span class="token operator">*</span>classes<span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSMutableDictionary <span class="token operator">*</span><span class="token punctuation">)</span>getParameterDictionary <span class="token punctuation">{</span>
+
+    NSMutableDictionary <span class="token operator">*</span>dict <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    Class c <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>class<span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">unsigned</span> count<span class="token punctuation">;</span>
+        objc_property_t <span class="token operator">*</span>properties <span class="token operator">=</span> <span class="token function">class_copyPropertyList</span><span class="token punctuation">(</span><span class="token punctuation">[</span>c class<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            NSString <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">property_getName</span><span class="token punctuation">(</span>properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            dict<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> valueForKey<span class="token punctuation">:</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 获得父类</span>
+        c <span class="token operator">=</span> <span class="token function">class_getSuperclass</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">self</span> isClassFromFoundation<span class="token punctuation">:</span>c<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> dict<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>isClassFromFoundation<span class="token punctuation">:</span><span class="token punctuation">(</span>Class<span class="token punctuation">)</span>c
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token punctuation">[</span>NSObject class<span class="token punctuation">]</span> <span class="token operator">||</span> c <span class="token operator">==</span> <span class="token punctuation">[</span>NSManagedObject class<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+
+    __block BOOL result <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> foundationClasses<span class="token punctuation">]</span> enumerateObjectsUsingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>Class foundationClass<span class="token punctuation">,</span> BOOL <span class="token operator">*</span>stop<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>c isSubclassOfClass<span class="token punctuation">:</span>foundationClass<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+            <span class="token operator">*</span>stop <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSSet <span class="token operator">*</span><span class="token punctuation">)</span>foundationClasses
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>classes <span class="token operator">==</span> nil<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 集合中没有NSObject，因为几乎所有的类都是继承自NSObject，具体是不是NSObject需要特殊判断</span>
+        classes <span class="token operator">=</span> <span class="token punctuation">[</span>NSSet setWithObjects<span class="token punctuation">:</span>
+                              <span class="token punctuation">[</span>NSURL class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSDate class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSValue class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSData class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSError class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSArray class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSDictionary class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSString class<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                              <span class="token punctuation">[</span>NSAttributedString class<span class="token punctuation">]</span><span class="token punctuation">,</span> nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> classes<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="15、交换两个方法实现"><a href="#15、交换两个方法实现" class="headerlink" title="15、交换两个方法实现"></a>15、交换两个方法实现</h4><pre class=" language-objectivec"><code class="language-objectivec">Class aClass <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+
+        SEL originalSelector <span class="token operator">=</span> <span class="token keyword">@selector</span><span class="token punctuation">(</span>viewWillAppear<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        SEL swizzledSelector <span class="token operator">=</span> <span class="token keyword">@selector</span><span class="token punctuation">(</span>xxx_viewWillAppear<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        Method originalMethod <span class="token operator">=</span> <span class="token function">class_getInstanceMethod</span><span class="token punctuation">(</span>aClass<span class="token punctuation">,</span> originalSelector<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        Method swizzledMethod <span class="token operator">=</span> <span class="token function">class_getInstanceMethod</span><span class="token punctuation">(</span>aClass<span class="token punctuation">,</span> swizzledSelector<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        BOOL didAddMethod <span class="token operator">=</span> 
+            <span class="token function">class_addMethod</span><span class="token punctuation">(</span>aClass<span class="token punctuation">,</span> 
+                originalSelector<span class="token punctuation">,</span> 
+                <span class="token function">method_getImplementation</span><span class="token punctuation">(</span>swizzledMethod<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                <span class="token function">method_getTypeEncoding</span><span class="token punctuation">(</span>swizzledMethod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>didAddMethod<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+            <span class="token function">class_replaceMethod</span><span class="token punctuation">(</span>aClass<span class="token punctuation">,</span> 
+                swizzledSelector<span class="token punctuation">,</span> 
+                <span class="token function">method_getImplementation</span><span class="token punctuation">(</span>originalMethod<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                <span class="token function">method_getTypeEncoding</span><span class="token punctuation">(</span>originalMethod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+            <span class="token function">method_exchangeImplementations</span><span class="token punctuation">(</span>originalMethod<span class="token punctuation">,</span> swizzledMethod<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="6、打印百分号和引号"><a href="#6、打印百分号和引号" class="headerlink" title="6、打印百分号和引号"></a>6、打印百分号和引号</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%%"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"\""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="17、几个常用权限判断"><a href="#17、几个常用权限判断" class="headerlink" title="17、几个常用权限判断"></a>17、几个常用权限判断</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>CLLocationManager authorizationStatus<span class="token punctuation">]</span> <span class="token operator">==</span>kCLAuthorizationStatusDenied<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"没有定位权限"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    AVAuthorizationStatus statusVideo <span class="token operator">=</span> <span class="token punctuation">[</span>AVCaptureDevice authorizationStatusForMediaType<span class="token punctuation">:</span>AVMediaTypeVideo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>statusVideo <span class="token operator">==</span> AVAuthorizationStatusDenied<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"没有摄像头权限"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//是否有麦克风权限</span>
+    AVAuthorizationStatus statusAudio <span class="token operator">=</span> <span class="token punctuation">[</span>AVCaptureDevice authorizationStatusForMediaType<span class="token punctuation">:</span>AVMediaTypeAudio<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>statusAudio <span class="token operator">==</span> AVAuthorizationStatusDenied<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"没有录音权限"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">[</span>PHPhotoLibrary requestAuthorization<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>PHAuthorizationStatus status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> PHAuthorizationStatusDenied<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"没有相册权限"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="18、获取手机型号"><a href="#18、获取手机型号" class="headerlink" title="18、获取手机型号"></a>18、获取手机型号</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>getDeviceInfo <span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> utsname systemInfo<span class="token punctuation">;</span>
+    <span class="token function">uname</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>systemInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>platform <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithCString<span class="token punctuation">:</span>systemInfo<span class="token punctuation">.</span>machine encoding<span class="token punctuation">:</span>NSASCIIStringEncoding<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone1,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 2G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone1,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 3G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone2,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 3GS"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone3,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone3,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone3,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone4,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 4S"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone5,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone5,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone5,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5c"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone5,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5c"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone6,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5s"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone6,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 5s"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone7,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 6 Plus"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone7,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 6"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone8,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 6s"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone8,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone 6s Plus"</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 日行两款手机型号均为日本独占，可能使用索尼FeliCa支付方案而不是苹果支付</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone9,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token string">@"国行、日版、港行iPhone 7"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone9,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token string">@"港行、国行iPhone 7 Plus"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone9,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token string">@"美版、台版iPhone 7"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone9,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token string">@"美版、台版iPhone 7 Plus"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPhone8,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone SE"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPod1,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPod Touch 1G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPod2,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPod Touch 2G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPod3,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPod Touch 3G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPod4,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPod Touch 4G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPod5,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPod Touch 5G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad1,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 1G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 2"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 2"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 2"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 2"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,5"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 1G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,6"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 1G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad2,7"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 1G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 3"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 3"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 3"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,5"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad3,6"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad 4"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Air"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Air"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Air"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 2G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,5"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 2G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"iPad4,6"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPad Mini 2G"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"i386"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone Simulator"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>platform isEqualToString<span class="token punctuation">:</span><span class="token string">@"x86_64"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">@"iPhone Simulator"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> platform<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="19、长按复制功能"><a href="#19、长按复制功能" class="headerlink" title="19、长按复制功能"></a>19、长按复制功能</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>viewDidLoad
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>view addGestureRecognizer<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span>UILongPressGestureRecognizer alloc<span class="token punctuation">]</span> initWithTarget<span class="token punctuation">:</span><span class="token keyword">self</span> action<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>pasteBoard<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>pasteBoard<span class="token punctuation">:</span><span class="token punctuation">(</span>UILongPressGestureRecognizer <span class="token operator">*</span><span class="token punctuation">)</span>longPress <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>longPress<span class="token punctuation">.</span>state <span class="token operator">==</span> UIGestureRecognizerStateBegan<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        UIPasteboard <span class="token operator">*</span>pasteboard <span class="token operator">=</span> <span class="token punctuation">[</span>UIPasteboard generalPasteboard<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        pasteboard<span class="token punctuation">.</span>string <span class="token operator">=</span> <span class="token string">@"需要复制的文本"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="20、cocoapods升级"><a href="#20、cocoapods升级" class="headerlink" title="20、cocoapods升级"></a>20、cocoapods升级</h4><pre class=" language-objectivec"><code class="language-objectivec">在终端执行 sudo gem install <span class="token operator">-</span>n <span class="token operator">/</span> usr <span class="token operator">/</span> local <span class="token operator">/</span> bin cocoapods <span class="token operator">--</span>pre
+</code></pre>
+<h4 id="21、设置启动页后，依然显示之前的"><a href="#21、设置启动页后，依然显示之前的" class="headerlink" title="21、设置启动页后，依然显示之前的"></a>21、设置启动页后，依然显示之前的</h4><pre class=" language-objectivec"><code class="language-objectivec">删除app，手机重启，重新安装
+</code></pre>
+<h4 id="22、判断图片类型"><a href="#22、判断图片类型" class="headerlink" title="22、判断图片类型"></a>22、判断图片类型</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">//通过图片Data数据第一个字节 来获取图片扩展名</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>contentTypeForImageData<span class="token punctuation">:</span><span class="token punctuation">(</span>NSData <span class="token operator">*</span><span class="token punctuation">)</span>data
+<span class="token punctuation">{</span>
+    uint8_t c<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>data getBytes<span class="token punctuation">:</span><span class="token operator">&amp;</span>c length<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token number">0xFF</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">@"jpeg"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">0x89</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">@"png"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">0x47</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">@"gif"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">0x49</span><span class="token punctuation">:</span>
+        <span class="token keyword">case</span> <span class="token number">0x4D</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">@"tiff"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">0x52</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>data length<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        NSString <span class="token operator">*</span>testString <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSString alloc<span class="token punctuation">]</span> initWithData<span class="token punctuation">:</span><span class="token punctuation">[</span>data subdataWithRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">]</span> encoding<span class="token punctuation">:</span>NSASCIIStringEncoding<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>testString hasPrefix<span class="token punctuation">:</span><span class="token string">@"RIFF"</span><span class="token punctuation">]</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span>testString hasSuffix<span class="token punctuation">:</span><span class="token string">@"WEBP"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">@"webp"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> nil<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="23、获取手机和app信息"><a href="#23、获取手机和app信息" class="headerlink" title="23、获取手机和app信息"></a>23、获取手机和app信息</h4><pre class=" language-objectivec"><code class="language-objectivec">NSDictionary <span class="token operator">*</span>infoDictionary <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundle mainBundle<span class="token punctuation">]</span> infoDictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+ <span class="token function">CFShow</span><span class="token punctuation">(</span>infoDictionary<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token comment" spellcheck="true">// app名称  </span>
+ NSString <span class="token operator">*</span>app_Name <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleDisplayName"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+ <span class="token comment" spellcheck="true">// app版本  </span>
+ NSString <span class="token operator">*</span>app_Version <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleShortVersionString"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+ <span class="token comment" spellcheck="true">// app build版本  </span>
+ NSString <span class="token operator">*</span>app_build <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleVersion"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+
+
+
+    <span class="token comment" spellcheck="true">//手机序列号  </span>
+    NSString<span class="token operator">*</span> identifierNumber <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> uniqueIdentifier<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"手机序列号: %@"</span><span class="token punctuation">,</span>identifierNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">//手机别名： 用户定义的名称  </span>
+    NSString<span class="token operator">*</span> userPhoneName <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> name<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"手机别名: %@"</span><span class="token punctuation">,</span> userPhoneName<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">//设备名称  </span>
+    NSString<span class="token operator">*</span> deviceName <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> systemName<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"设备名称: %@"</span><span class="token punctuation">,</span>deviceName <span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">//手机系统版本  </span>
+    NSString<span class="token operator">*</span> phoneVersion <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> systemVersion<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"手机系统版本: %@"</span><span class="token punctuation">,</span> phoneVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">//手机型号  </span>
+    NSString<span class="token operator">*</span> phoneModel <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> model<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"手机型号: %@"</span><span class="token punctuation">,</span>phoneModel <span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">//地方型号  （国际化区域名称）  </span>
+    NSString<span class="token operator">*</span> localPhoneModel <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIDevice currentDevice<span class="token punctuation">]</span> localizedModel<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"国际化区域名称: %@"</span><span class="token punctuation">,</span>localPhoneModel <span class="token punctuation">)</span><span class="token punctuation">;</span>  
+
+    NSDictionary <span class="token operator">*</span>infoDictionary <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundle mainBundle<span class="token punctuation">]</span> infoDictionary<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">// 当前应用名称  </span>
+    NSString <span class="token operator">*</span>appCurName <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleDisplayName"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"当前应用名称：%@"</span><span class="token punctuation">,</span>appCurName<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">// 当前应用软件版本  比如：1.0.1  </span>
+    NSString <span class="token operator">*</span>appCurVersion <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleShortVersionString"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"当前应用软件版本:%@"</span><span class="token punctuation">,</span>appCurVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">// 当前应用版本号码   int类型  </span>
+    NSString <span class="token operator">*</span>appCurVersionNum <span class="token operator">=</span> <span class="token punctuation">[</span>infoDictionary objectForKey<span class="token punctuation">:</span><span class="token string">@"CFBundleVersion"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"当前应用版本号码：%@"</span><span class="token punctuation">,</span>appCurVersionNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="24、获取一个类的所有属性"><a href="#24、获取一个类的所有属性" class="headerlink" title="24、获取一个类的所有属性"></a>24、获取一个类的所有属性</h4><pre class=" language-objectivec"><code class="language-objectivec">id LenderClass <span class="token operator">=</span> <span class="token function">objc_getClass</span><span class="token punctuation">(</span><span class="token string">"Lender"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">unsigned</span> <span class="token keyword">int</span> outCount<span class="token punctuation">,</span> i<span class="token punctuation">;</span>
+objc_property_t <span class="token operator">*</span>properties <span class="token operator">=</span> <span class="token function">class_copyPropertyList</span><span class="token punctuation">(</span>LenderClass<span class="token punctuation">,</span> <span class="token operator">&amp;</span>outCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> outCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    objc_property_t property <span class="token operator">=</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"%s %s\n"</span><span class="token punctuation">,</span> <span class="token function">property_getName</span><span class="token punctuation">(</span>property<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">property_getAttributes</span><span class="token punctuation">(</span>property<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="25、image圆角"><a href="#25、image圆角" class="headerlink" title="25、image圆角"></a>25、image圆角</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>circleImage
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// NO代表透明</span>
+    <span class="token function">UIGraphicsBeginImageContextWithOptions</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>size<span class="token punctuation">,</span> NO<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 获得上下文</span>
+    CGContextRef ctx <span class="token operator">=</span> <span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 添加一个圆</span>
+    CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 方形变圆形</span>
+    <span class="token function">CGContextAddEllipseInRect</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 裁剪</span>
+    <span class="token function">CGContextClip</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 将图片画上去</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> drawInRect<span class="token punctuation">:</span>rect<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="26、image拉伸"><a href="#26、image拉伸" class="headerlink" title="26、image拉伸"></a>26、image拉伸</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>resizableImage<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>imageName
+<span class="token punctuation">{</span>
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageNamed<span class="token punctuation">:</span>imageName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CGFloat imageW <span class="token operator">=</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+    CGFloat imageH <span class="token operator">=</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>image resizableImageWithCapInsets<span class="token punctuation">:</span><span class="token function">UIEdgeInsetsMake</span><span class="token punctuation">(</span>imageH <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> imageW <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> imageH <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> imageW <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span> resizingMode<span class="token punctuation">:</span>UIImageResizingModeStretch<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="27、JSON字符串转字典"><a href="#27、JSON字符串转字典" class="headerlink" title="27、JSON字符串转字典"></a>27、JSON字符串转字典</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>parseJSONStringToNSDictionary<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>JSONString <span class="token punctuation">{</span>
+    NSData <span class="token operator">*</span>JSONData <span class="token operator">=</span> <span class="token punctuation">[</span>JSONString dataUsingEncoding<span class="token punctuation">:</span>NSUTF8StringEncoding<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSDictionary <span class="token operator">*</span>responseJSON <span class="token operator">=</span> <span class="token punctuation">[</span>NSJSONSerialization JSONObjectWithData<span class="token punctuation">:</span>JSONData options<span class="token punctuation">:</span>NSJSONReadingMutableLeaves error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> responseJSON<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="28、身份证号验证"><a href="#28、身份证号验证" class="headerlink" title="28、身份证号验证"></a>28、身份证号验证</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>validateIdentityCard <span class="token punctuation">{</span>
+    BOOL flag<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        flag <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    NSString <span class="token operator">*</span>regex2 <span class="token operator">=</span> <span class="token string">@"^(\\d{14}|\\d{17})(\\d|[xX])$"</span><span class="token punctuation">;</span>
+    NSPredicate <span class="token operator">*</span>identityCardPredicate <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"SELF MATCHES %@"</span><span class="token punctuation">,</span>regex2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>identityCardPredicate evaluateWithObject<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="29、获取设备mac地址"><a href="#29、获取设备mac地址" class="headerlink" title="29、获取设备mac地址"></a>29、获取设备mac地址</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">+</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>macAddress <span class="token punctuation">{</span>
+    <span class="token keyword">int</span>                 mib<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    size_t              len<span class="token punctuation">;</span>
+    <span class="token keyword">char</span>                <span class="token operator">*</span>buf<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">char</span>       <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> if_msghdr    <span class="token operator">*</span>ifm<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> sockaddr_dl  <span class="token operator">*</span>sdl<span class="token punctuation">;</span>
+
+    mib<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> CTL_NET<span class="token punctuation">;</span>
+    mib<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> AF_ROUTE<span class="token punctuation">;</span>
+    mib<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    mib<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> AF_LINK<span class="token punctuation">;</span>
+    mib<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> NET_RT_IFLIST<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>mib<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">if_nametoindex</span><span class="token punctuation">(</span><span class="token string">"en0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Error: if_nametoindex error\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">sysctl</span><span class="token punctuation">(</span>mib<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>len<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Error: sysctl, take 1\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>buf <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Could not allocate memory. Rrror!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">sysctl</span><span class="token punctuation">(</span>mib<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token operator">&amp;</span>len<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Error: sysctl, take 2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    ifm <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> if_msghdr <span class="token operator">*</span><span class="token punctuation">)</span>buf<span class="token punctuation">;</span>
+    sdl <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr_dl <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>ifm <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">LLADDR</span><span class="token punctuation">(</span>sdl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>outstring <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%02X:%02X:%02X:%02X:%02X:%02X"</span><span class="token punctuation">,</span>
+                           <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr<span class="token operator">+</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> outstring<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="30、导入自定义字体库"><a href="#30、导入自定义字体库" class="headerlink" title="30、导入自定义字体库"></a>30、导入自定义字体库</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token number">1</span>、找到你想用的字体的 ttf 格式，拖入工程
+<span class="token number">2</span>、在工程的plist中增加一行数组，“Fonts provided by application”
+<span class="token number">3</span>、为这个key添加一个item，value为你刚才导入的ttf文件名
+<span class="token number">4</span>、直接使用即可：label<span class="token punctuation">.</span>font <span class="token operator">=</span> <span class="token punctuation">[</span>UIFont fontWithName<span class="token punctuation">:</span><span class="token string">@"你刚才导入的ttf文件名"</span> size<span class="token punctuation">:</span><span class="token number">20.0</span><span class="token punctuation">]</span>；
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/02/iOS消息转发机制-动态方法解析/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/02/10/iOS小经验（一）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/02/">二月 2016<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS小经验/">iOS小经验<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
