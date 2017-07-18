@@ -269,3 +269,389 @@ UIControlEventTouchUpInside 手指处于控制范围内的触摸事件
 UIControlEventTouchUpOutside 手指超出控制范围的控制中的触摸事件
 ```
 
+#### 18、UITextField文字周围增加边距
+```objectivec
+// 子类化UITextField，增加insert属性
+@interface WZBTextField : UITextField
+@property (nonatomic, assign) UIEdgeInsets insets;
+@end
+
+// 在.m文件重写下列方法
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);
+    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeUnlessEditing) {
+        return [self adjustRectWithWidthRightView:paddedRect];
+    }
+    return paddedRect;
+}
+
+- (CGRect)placeholderRectForBounds:(CGRect)bounds {
+    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);
+
+    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeUnlessEditing) {
+        return [self adjustRectWithWidthRightView:paddedRect];
+    }
+    return paddedRect;
+}
+
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);
+    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeWhileEditing) {
+        return [self adjustRectWithWidthRightView:paddedRect];
+    }
+    return paddedRect;
+}
+
+- (CGRect)adjustRectWithWidthRightView:(CGRect)bounds {
+    CGRect paddedRect = bounds;
+    paddedRect.size.width -= CGRectGetWidth(self.rightView.frame);
+
+    return paddedRect;
+}
+```
+
+#### 19、监听UISlider拖动状态
+```objectivec
+// 添加事件
+[slider addTarget:self action:@selector(sliderValurChanged:forEvent:) forControlEvents:UIControlEventValueChanged];
+
+// 实现方法
+- (void)sliderValurChanged:(UISlider*)slider forEvent:(UIEvent*)event {
+    UITouch *touchEvent = [[event allTouches] anyObject];
+    switch (touchEvent.phase) {
+        case UITouchPhaseBegan:
+            NSLog(@"开始拖动");
+            break;
+        case UITouchPhaseMoved:
+            NSLog(@"正在拖动");
+            break;
+        case UITouchPhaseEnded:
+            NSLog(@"结束拖动");
+            break;
+        default:
+            break;
+    }
+}
+```
+
+#### 20、设置UITextField光标位置
+```objectivec
+// textField需要设置的textField，index要设置的光标位置
+- (void)cursorLocation:(UITextField *)textField index:(NSInteger)index
+{
+    NSRange range = NSMakeRange(index, 0);
+    UITextPosition *start = [textField positionFromPosition:[textField beginningOfDocument] offset:range.location];
+    UITextPosition *end = [textField positionFromPosition:start offset:range.length];
+    [textField setSelectedTextRange:[textField textRangeFromPosition:start toPosition:end]];
+}
+```
+
+#### 21、去除webView底部黑色
+```objectivec
+[webView setBackgroundColor:[UIColor clearColor]];
+    [webView setOpaque:NO];
+
+    for (UIView *v1 in [webView subviews])
+    {
+        if ([v1 isKindOfClass:[UIScrollView class]])
+        {
+            for (UIView *v2 in v1.subviews)
+            {
+                if ([v2 isKindOfClass:[UIImageView class]])
+                {
+                    v2.hidden = YES;
+                }
+            }
+        }
+    }
+```
+#### 22、获取collectionViewCell在屏幕中的frame
+```objectivec
+UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
+CGRect cellRect = attributes.frame;
+CGRect cellFrameInSuperview = [collectionView convertRect:cellRect toView:[cv superview]];
+```
+
+#### 23、比较两个UIImage是否相等
+```objectivec
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+
+    return [data1 isEqual:data2];
+}
+```
+
+#### 24、解决当UIScrollView上有UIButton的时候，触摸到button滑动不了的问题
+```objectivec
+// 子类化UIScrollView，并重写以下方法
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.delaysContentTouches = NO;
+    }
+
+    return self;
+}
+
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view {
+    if ([view isKindOfClass:UIButton.class]) {
+        return YES;
+    }
+
+    return [super touchesShouldCancelInContentView:view];
+}
+```
+
+#### 25、UITextView中的文字添加阴影效果
+```objectivec
+- (void)setTextLayer:(UITextView *)textView color:(UIColor *)color
+{
+    CALayer *textLayer = ((CALayer *)[textView.layer.sublayers objectAtIndex:0]);
+    textLayer.shadowColor = color.CGColor;
+    textLayer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    textLayer.shadowOpacity = 1.0f;
+    textLayer.shadowRadius = 1.0f;
+}
+```
+
+#### 26、MD5加密
+```objectivec
++ (NSString *)md5:(NSString *)str
+{
+    const char *concat_str = [str UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(concat_str, (unsigned int)strlen(concat_str), result);
+    NSMutableString *hash = [NSMutableString string];
+    for (int i =0; i <16; i++){
+        [hash appendFormat:@"%02X", result[i]];
+    }
+    return [hash uppercaseString];
+}
+```
+
+
+#### 27、base64加密
+```objectivec
+@interface NSData (Base64)
+/**
+ *  @brief  字符串base64后转data
+ */
++ (NSData *)dataWithBase64EncodedString:(NSString *)string
+{
+    if (![string length]) return nil;
+    NSData *decoded = nil;
+#if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9 || __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    if (![NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+    {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        decoded = [[self alloc] initWithBase64Encoding:[string stringByReplacingOccurrencesOfString:@"[^A-Za-z0-9+/=]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [string length])]];
+#pragma clang diagnostic pop
+    }
+    else
+#endif
+    {
+        decoded = [[self alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    }
+    return [decoded length]? decoded: nil;
+}
+/**
+ *  @brief  NSData转string
+ *  @param wrapWidth 换行长度  76  64
+ */
+- (NSString *)base64EncodedStringWithWrapWidth:(NSUInteger)wrapWidth
+{
+    if (![self length]) return nil;
+    NSString *encoded = nil;
+#if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9 || __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    if (![NSData instancesRespondToSelector:@selector(base64EncodedStringWithOptions:)])
+    {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        encoded = [self base64Encoding];
+#pragma clang diagnostic pop
+
+    }
+    else
+#endif
+    {
+        switch (wrapWidth)
+        {
+            case 64:
+            {
+                return [self base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+            }
+            case 76:
+            {
+                return [self base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
+            }
+            default:
+            {
+                encoded = [self base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
+            }
+        }
+    }
+    if (!wrapWidth || wrapWidth >= [encoded length])
+    {
+        return encoded;
+    }
+    wrapWidth = (wrapWidth / 4) * 4;
+    NSMutableString *result = [NSMutableString string];
+    for (NSUInteger i = 0; i < [encoded length]; i+= wrapWidth)
+    {
+        if (i + wrapWidth >= [encoded length])
+        {
+            [result appendString:[encoded substringFromIndex:i]];
+            break;
+        }
+        [result appendString:[encoded substringWithRange:NSMakeRange(i, wrapWidth)]];
+        [result appendString:@"\r\n"];
+    }
+    return result;
+}
+/**
+ *  @brief  NSData转string 换行长度默认64
+ */
+- (NSString *)base64EncodedString
+{
+    return [self base64EncodedStringWithWrapWidth:0];
+}
+```
+
+#### 28、AES加密
+```objectivec
+#import <CommonCrypto/CommonCryptor.h>
+@interface NSData (AES)
+/**
+ *  利用AES加密数据
+ */
+- (NSData*)encryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
+
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+
+    size_t dataMoved;
+    NSMutableData *encryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSizeAES128];
+
+    CCCryptorStatus status = CCCrypt(kCCEncrypt,kCCAlgorithmAES128,kCCOptionPKCS7Padding,keyData.bytes,keyData.length,iv.bytes,self.bytes,self.length,encryptedData.mutableBytes, encryptedData.length,&dataMoved);
+
+    if (status == kCCSuccess) {
+        encryptedData.length = dataMoved;
+        return encryptedData;
+    }
+
+    return nil;
+
+}
+
+/**
+ *  @brief  利用AES解密据
+ */
+- (NSData*)decryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
+
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+
+    size_t dataMoved;
+    NSMutableData *decryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSizeAES128];
+
+    CCCryptorStatus result = CCCrypt(kCCDecrypt,kCCAlgorithmAES128,kCCOptionPKCS7Padding,keyData.bytes,keyData.length,iv.bytes,self.bytes,self.length,decryptedData.mutableBytes, decryptedData.length,&dataMoved);
+
+    if (result == kCCSuccess) {
+        decryptedData.length = dataMoved;
+        return decryptedData;
+    }
+
+    return nil;
+
+}
+```
+
+#### 29、3DES加密
+```objectivec
+#import <CommonCrypto/CommonCryptor.h>
+@interface NSData (3DES)
+/**
+ *  利用3DES加密数据
+ */
+- (NSData*)encryptedWith3DESUsingKey:(NSString*)key andIV:(NSData*)iv {
+
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+
+    size_t dataMoved;
+    NSMutableData *encryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSize3DES];
+
+    CCCryptorStatus result = CCCrypt(kCCEncrypt,kCCAlgorithm3DES,kCCOptionPKCS7Padding,keyData.bytes,keyData.length,iv.bytes,self.bytes,self.length,encryptedData.mutableBytes,encryptedData.length,&dataMoved);
+
+    if (result == kCCSuccess) {
+        encryptedData.length = dataMoved;
+        return encryptedData;
+    }
+
+    return nil;
+
+}
+/**
+ *  @brief   利用3DES解密数据
+ */
+- (NSData*)decryptedWith3DESUsingKey:(NSString*)key andIV:(NSData*)iv {
+
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+
+    size_t dataMoved;
+    NSMutableData *decryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSize3DES];
+
+    CCCryptorStatus result = CCCrypt(kCCDecrypt,kCCAlgorithm3DES,kCCOptionPKCS7Padding,keyData.bytes,keyData.length,iv.bytes,self.bytes,self.length,decryptedData.mutableBytes,decryptedData.length,&dataMoved);
+
+    if (result == kCCSuccess) {
+        decryptedData.length = dataMoved;
+        return decryptedData;
+    }
+
+    return nil;
+
+}
+```
+
+#### 30、单个页面多个网络请求的情况，需要监听所有网络请求结束后刷新UI
+```objectivec
+dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t serialQueue = dispatch_queue_create("com.wzb.test.www", DISPATCH_QUEUE_SERIAL);
+    dispatch_group_enter(group);
+    dispatch_group_async(group, serialQueue, ^{
+        // 网络请求一
+        [WebClick getDataSuccess:^(ResponseModel *model) {
+            dispatch_group_leave(group);
+        } failure:^(NSString *err) {
+            dispatch_group_leave(group);
+        }];
+    });
+    dispatch_group_enter(group);
+    dispatch_group_async(group, serialQueue, ^{
+        // 网络请求二
+        [WebClick getDataSuccess:getBigTypeRM onSuccess:^(ResponseModel *model) {
+            dispatch_group_leave(group);
+        }                                  failure:^(NSString *errorString) {
+            dispatch_group_leave(group);
+        }];
+    });
+    dispatch_group_enter(group);
+    dispatch_group_async(group, serialQueue, ^{
+        // 网络请求三
+        [WebClick getDataSuccess:^{
+            dispatch_group_leave(group);
+        } failure:^(NSString *errorString) {
+            dispatch_group_leave(group);
+        }];
+    });
+
+    // 所有网络请求结束后会来到这个方法
+    dispatch_group_notify(group, serialQueue, ^{
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 刷新UI
+            });
+        });
+    });
+```
+
+
