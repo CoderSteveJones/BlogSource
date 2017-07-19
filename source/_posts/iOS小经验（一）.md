@@ -2,7 +2,7 @@
 title: iOS小经验（一）
 date: 2016-02-10 09:53:06
 categories: 
-	- iOS小经验
+	- 小经验
 ---
 #### 1、禁止手机睡眠
 ```objectivec

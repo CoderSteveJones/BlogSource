@@ -2,7 +2,7 @@
 title: iOS小经验（六）
 date: 2016-03-17 09:53:06
 categories: 
-	- iOS小经验
+	- 小经验
 ---
 
 

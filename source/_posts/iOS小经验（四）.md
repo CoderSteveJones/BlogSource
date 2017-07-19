@@ -2,7 +2,7 @@
 title: iOS小经验（四）
 date: 2016-02-26 09:53:06
 categories: 
-	- iOS小经验
+	- 小经验
 ---
 #### 1、获取视频的时长
 ```objectivec

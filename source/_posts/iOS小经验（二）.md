@@ -2,7 +2,7 @@
 title: iOS小经验（二）
 date: 2016-02-14 09:53:06
 categories: 
-	- iOS小经验
+	- 小经验
 ---
 #### 1、自定义NSLog
 ```objectivec

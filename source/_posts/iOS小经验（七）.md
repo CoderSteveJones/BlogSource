@@ -2,7 +2,7 @@
 title: iOS小经验（七）
 date: 2016-03-20 09:53:06
 categories: 
-	- iOS小经验
+	- 小经验
 ---
 #### 1、地图上两个点之间的实际距离
 ```objectivec

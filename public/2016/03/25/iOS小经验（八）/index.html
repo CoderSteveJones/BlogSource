@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            iOS小经验（八） | 
+        
+        Aben
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Aben">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/icon.png">
+    <link rel="icon" sizes="192x192" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Aben">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="iOS小经验（八） | Aben">
+    <meta property="og:description" content="null">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、解决openUrl延时问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、解决openUrl延时问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、页面跳转实现翻转动画"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、页面跳转实现翻转动画</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、tableView实现无限滚动"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、tableView实现无限滚动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4、代码方式调整屏幕亮度"><span class="post-toc-number">4.</span> <span class="post-toc-text">4、代码方式调整屏幕亮度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5、获取当前应用CUP用量"><span class="post-toc-number">5.</span> <span class="post-toc-text">5、获取当前应用CUP用量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6、float数据取整四舍五入"><span class="post-toc-number">6.</span> <span class="post-toc-text">6、float数据取整四舍五入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7、删除UISearchBar系统默认边框"><span class="post-toc-number">7.</span> <span class="post-toc-text">7、删除UISearchBar系统默认边框</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8、为UICollectionViewCell设置圆角和阴影"><span class="post-toc-number">8.</span> <span class="post-toc-text">8、为UICollectionViewCell设置圆角和阴影</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动"><span class="post-toc-number">9.</span> <span class="post-toc-text">9、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动"><span class="post-toc-number">10.</span> <span class="post-toc-text">10、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11、根据经纬度获取城市等信息"><span class="post-toc-number">11.</span> <span class="post-toc-text">11、根据经纬度获取城市等信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12、如何防止添加多个NSNotification观察者？"><span class="post-toc-number">12.</span> <span class="post-toc-text">12、如何防止添加多个NSNotification观察者？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13、将一个xib添加到另外一个xib上"><span class="post-toc-number">13.</span> <span class="post-toc-text">13、将一个xib添加到另外一个xib上</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14、处理字符串，使其首字母大写"><span class="post-toc-number">14.</span> <span class="post-toc-text">14、处理字符串，使其首字母大写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15、判断一个UIAlertView-UIAlertController是否显示"><span class="post-toc-number">15.</span> <span class="post-toc-text">15、判断一个UIAlertView/UIAlertController是否显示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16、获取字符串中的数字"><span class="post-toc-number">16.</span> <span class="post-toc-text">16、获取字符串中的数字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17、为UIView的某个方向添加边框"><span class="post-toc-number">17.</span> <span class="post-toc-text">17、为UIView的某个方向添加边框</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#18、通过属性设置UISwitch、UIProgressView等控件的宽高"><span class="post-toc-number">18.</span> <span class="post-toc-text">18、通过属性设置UISwitch、UIProgressView等控件的宽高</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索-我这里设置的是0-5s，可根据需求更改"><span class="post-toc-number">19.</span> <span class="post-toc-text">19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索(我这里设置的是0.5s，可根据需求更改)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#20、修改UISearchBar的占位文字颜色"><span class="post-toc-number">20.</span> <span class="post-toc-text">20、修改UISearchBar的占位文字颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#21、某个界面多个事件同时响应引起的问题-比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠"><span class="post-toc-number">21.</span> <span class="post-toc-text">21、某个界面多个事件同时响应引起的问题(比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#22、修改tabBar的frame"><span class="post-toc-number">22.</span> <span class="post-toc-text">22、修改tabBar的frame</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#23、修改键盘背景颜色"><span class="post-toc-number">23.</span> <span class="post-toc-text">23、修改键盘背景颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#24、修改image颜色"><span class="post-toc-number">24.</span> <span class="post-toc-text">24、修改image颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#25、动画执行removeFromSuperview"><span class="post-toc-number">25.</span> <span class="post-toc-text">25、动画执行removeFromSuperview</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#26、启动页显示延时"><span class="post-toc-number">26.</span> <span class="post-toc-text">26、启动页显示延时</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#27、设置UIButton高亮时的背景颜色"><span class="post-toc-number">27.</span> <span class="post-toc-text">27、设置UIButton高亮时的背景颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#28、关于图片拉伸"><span class="post-toc-number">28.</span> <span class="post-toc-text">28、关于图片拉伸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#29、利用runtime获取一个类所有属性"><span class="post-toc-number">29.</span> <span class="post-toc-text">29、利用runtime获取一个类所有属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#30、设置textView的某段文字变成其他颜色"><span class="post-toc-number">30.</span> <span class="post-toc-text">30、设置textView的某段文字变成其他颜色</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#31、让push跳转动画像modal跳转动画那样效果-从下往上推上来"><span class="post-toc-number">31.</span> <span class="post-toc-text">31、让push跳转动画像modal跳转动画那样效果(从下往上推上来)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#32、上传图片太大，压缩图片"><span class="post-toc-number">32.</span> <span class="post-toc-text">32、上传图片太大，压缩图片</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                iOS小经验（八）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Aben</strong>
+        <span>3月 25, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS小经验（八）&url=http://yoursite.com//2016/03/25/iOS小经验（八）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS小经验（八）&url=http://yoursite.com//2016/03/25/iOS小经验（八）/index.html&via=Aben" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2016/03/25/iOS小经验（八）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/03/25/iOS小经验（八）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h4 id="1、解决openUrl延时问题"><a href="#1、解决openUrl延时问题" class="headerlink" title="1、解决openUrl延时问题"></a>1、解决openUrl延时问题</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 方法一</span>
+<span class="token function">dispatch_async</span><span class="token punctuation">(</span><span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+
+    UIApplication <span class="token operator">*</span>application <span class="token operator">=</span> <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>application respondsToSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>openURL<span class="token punctuation">:</span>options<span class="token punctuation">:</span>completionHandler<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL options<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+           completionHandler<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 方法二</span>
+<span class="token punctuation">[</span><span class="token keyword">self</span> performSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>redirectToURL<span class="token punctuation">:</span><span class="token punctuation">)</span> withObject<span class="token punctuation">:</span>url afterDelay<span class="token punctuation">:</span><span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> redirectToURL
+<span class="token punctuation">{</span>
+UIApplication <span class="token operator">*</span>application <span class="token operator">=</span> <span class="token punctuation">[</span>UIApplication sharedApplication<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>application respondsToSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>openURL<span class="token punctuation">:</span>options<span class="token punctuation">:</span>completionHandler<span class="token punctuation">:</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL options<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+           completionHandler<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>application openURL<span class="token punctuation">:</span>URL<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="2、页面跳转实现翻转动画"><a href="#2、页面跳转实现翻转动画" class="headerlink" title="2、页面跳转实现翻转动画"></a>2、页面跳转实现翻转动画</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// modal方式</span>
+    TestViewController <span class="token operator">*</span>vc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>TestViewController alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vc<span class="token punctuation">.</span>view<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vc<span class="token punctuation">.</span>modalTransitionStyle <span class="token operator">=</span> UIModalTransitionStyleCoverVertical<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> presentViewController<span class="token punctuation">:</span>vc animated<span class="token punctuation">:</span>YES completion<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// push方式</span>
+    TestViewController <span class="token operator">*</span>vc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>TestViewController alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vc<span class="token punctuation">.</span>view<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>UIView beginAnimations<span class="token punctuation">:</span><span class="token string">@"View Flip"</span> context<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>UIView setAnimationDuration<span class="token punctuation">:</span><span class="token number">0.80</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>UIView setAnimationCurve<span class="token punctuation">:</span>UIViewAnimationCurveEaseInOut<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>UIView setAnimationTransition<span class="token punctuation">:</span>UIViewAnimationTransitionFlipFromRight forView<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController<span class="token punctuation">.</span>view cache<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController pushViewController<span class="token punctuation">:</span>vc animated<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>UIView commitAnimations<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="3、tableView实现无限滚动"><a href="#3、tableView实现无限滚动" class="headerlink" title="3、tableView实现无限滚动"></a>3、tableView实现无限滚动</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>scrollViewDidScroll<span class="token punctuation">:</span><span class="token punctuation">(</span>UIScrollView <span class="token operator">*</span><span class="token punctuation">)</span>scrollView
+<span class="token punctuation">{</span>
+    CGFloat actualPosition <span class="token operator">=</span> scrollView<span class="token punctuation">.</span>contentOffset<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+    CGFloat contentHeight <span class="token operator">=</span> scrollView<span class="token punctuation">.</span>contentSize<span class="token punctuation">.</span>height <span class="token operator">-</span> scrollView<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>actualPosition <span class="token operator">>=</span> contentHeight<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>dataArr addObjectsFromArray<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>dataArr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>tableView reloadData<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="4、代码方式调整屏幕亮度"><a href="#4、代码方式调整屏幕亮度" class="headerlink" title="4、代码方式调整屏幕亮度"></a>4、代码方式调整屏幕亮度</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// brightness属性值在0-1之间，0代表最小亮度，1代表最大亮度</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>UIScreen mainScreen<span class="token punctuation">]</span> setBrightness<span class="token punctuation">:</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="5、获取当前应用CUP用量"><a href="#5、获取当前应用CUP用量" class="headerlink" title="5、获取当前应用CUP用量"></a>5、获取当前应用CUP用量</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token keyword">float</span> <span class="token function">cpu_usage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    kern_return_t kr<span class="token punctuation">;</span>
+    task_info_data_t tinfo<span class="token punctuation">;</span>
+    mach_msg_type_number_t task_info_count<span class="token punctuation">;</span>
+
+    task_info_count <span class="token operator">=</span> TASK_INFO_MAX<span class="token punctuation">;</span>
+    kr <span class="token operator">=</span> <span class="token function">task_info</span><span class="token punctuation">(</span><span class="token function">mach_task_self</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> TASK_BASIC_INFO<span class="token punctuation">,</span> <span class="token punctuation">(</span>task_info_t<span class="token punctuation">)</span>tinfo<span class="token punctuation">,</span> <span class="token operator">&amp;</span>task_info_count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>kr <span class="token operator">!=</span> KERN_SUCCESS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    task_basic_info_t      basic_info<span class="token punctuation">;</span>
+    thread_array_t         thread_list<span class="token punctuation">;</span>
+    mach_msg_type_number_t thread_count<span class="token punctuation">;</span>
+
+    thread_info_data_t     thinfo<span class="token punctuation">;</span>
+    mach_msg_type_number_t thread_info_count<span class="token punctuation">;</span>
+
+    thread_basic_info_t basic_info_th<span class="token punctuation">;</span>
+    uint32_t stat_thread <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Mach threads</span>
+
+    basic_info <span class="token operator">=</span> <span class="token punctuation">(</span>task_basic_info_t<span class="token punctuation">)</span>tinfo<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// get threads in the task</span>
+    kr <span class="token operator">=</span> <span class="token function">task_threads</span><span class="token punctuation">(</span><span class="token function">mach_task_self</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>thread_list<span class="token punctuation">,</span> <span class="token operator">&amp;</span>thread_count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>kr <span class="token operator">!=</span> KERN_SUCCESS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>thread_count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+        stat_thread <span class="token operator">+</span><span class="token operator">=</span> thread_count<span class="token punctuation">;</span>
+
+    <span class="token keyword">long</span> tot_sec <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">long</span> tot_usec <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> tot_cpu <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> j<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>thread_count<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        thread_info_count <span class="token operator">=</span> THREAD_INFO_MAX<span class="token punctuation">;</span>
+        kr <span class="token operator">=</span> <span class="token function">thread_info</span><span class="token punctuation">(</span>thread_list<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> THREAD_BASIC_INFO<span class="token punctuation">,</span>
+                         <span class="token punctuation">(</span>thread_info_t<span class="token punctuation">)</span>thinfo<span class="token punctuation">,</span> <span class="token operator">&amp;</span>thread_info_count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>kr <span class="token operator">!=</span> KERN_SUCCESS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        basic_info_th <span class="token operator">=</span> <span class="token punctuation">(</span>thread_basic_info_t<span class="token punctuation">)</span>thinfo<span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>basic_info_th<span class="token operator">-></span>flags <span class="token operator">&amp;</span> TH_FLAGS_IDLE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            tot_sec <span class="token operator">=</span> tot_sec <span class="token operator">+</span> basic_info_th<span class="token operator">-></span>user_time<span class="token punctuation">.</span>seconds <span class="token operator">+</span> basic_info_th<span class="token operator">-></span>system_time<span class="token punctuation">.</span>seconds<span class="token punctuation">;</span>
+            tot_usec <span class="token operator">=</span> tot_usec <span class="token operator">+</span> basic_info_th<span class="token operator">-></span>user_time<span class="token punctuation">.</span>microseconds <span class="token operator">+</span> basic_info_th<span class="token operator">-></span>system_time<span class="token punctuation">.</span>microseconds<span class="token punctuation">;</span>
+            tot_cpu <span class="token operator">=</span> tot_cpu <span class="token operator">+</span> basic_info_th<span class="token operator">-></span>cpu_usage <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>TH_USAGE_SCALE <span class="token operator">*</span> <span class="token number">100.0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// for each thread</span>
+
+    kr <span class="token operator">=</span> <span class="token function">vm_deallocate</span><span class="token punctuation">(</span><span class="token function">mach_task_self</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>vm_offset_t<span class="token punctuation">)</span>thread_list<span class="token punctuation">,</span> thread_count <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>thread_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span>kr <span class="token operator">==</span> KERN_SUCCESS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> tot_cpu<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="6、float数据取整四舍五入"><a href="#6、float数据取整四舍五入" class="headerlink" title="6、float数据取整四舍五入"></a>6、float数据取整四舍五入</h4><pre class=" language-objectivec"><code class="language-objectivec">    CGFloat f <span class="token operator">=</span> <span class="token number">4.65</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%d"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 打印结果4</span>
+
+    CGFloat f <span class="token operator">=</span> <span class="token number">4.65</span><span class="token punctuation">;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%d"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token function">round</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 打印结果5</span>
+</code></pre>
+<h4 id="7、删除UISearchBar系统默认边框"><a href="#7、删除UISearchBar系统默认边框" class="headerlink" title="7、删除UISearchBar系统默认边框"></a>7、删除UISearchBar系统默认边框</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token comment" spellcheck="true">// 方法一</span>
+    searchBar<span class="token punctuation">.</span>searchBarStyle <span class="token operator">=</span> UISearchBarStyleMinimal<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 方法二</span>
+    <span class="token punctuation">[</span>searchBar setBackgroundImage<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span>UIImage alloc<span class="token punctuation">]</span>init<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 方法三</span>
+    searchBar<span class="token punctuation">.</span>barTintColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor whiteColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="8、为UICollectionViewCell设置圆角和阴影"><a href="#8、为UICollectionViewCell设置圆角和阴影" class="headerlink" title="8、为UICollectionViewCell设置圆角和阴影"></a>8、为UICollectionViewCell设置圆角和阴影</h4><pre class=" language-objectivec"><code class="language-objectivec">cell<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>cornerRadius <span class="token operator">=</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>borderWidth <span class="token operator">=</span> <span class="token number">1.0f</span><span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>borderColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor clearColor<span class="token punctuation">]</span><span class="token punctuation">.</span>CGColor<span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>masksToBounds <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>shadowColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor lightGrayColor<span class="token punctuation">]</span><span class="token punctuation">.</span>CGColor<span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>shadowOffset <span class="token operator">=</span> <span class="token function">CGSizeMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>shadowRadius <span class="token operator">=</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>shadowOpacity <span class="token operator">=</span> <span class="token number">1.0f</span><span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>masksToBounds <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+cell<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>shadowPath <span class="token operator">=</span> <span class="token punctuation">[</span>UIBezierPath bezierPathWithRoundedRect<span class="token punctuation">:</span>cell<span class="token punctuation">.</span>bounds cornerRadius<span class="token punctuation">:</span>cell<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>cornerRadius<span class="token punctuation">]</span><span class="token punctuation">.</span>CGPath<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="9、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动"><a href="#9、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动" class="headerlink" title="9、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)"></a>9、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>scrollView setContentOffset<span class="token punctuation">:</span>scrollView<span class="token punctuation">.</span>contentOffset animated<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="10、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动"><a href="#10、让正在滑动的scrollView停止滚动-不是禁止，而是暂时停止滚动" class="headerlink" title="10、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)"></a>10、让正在滑动的scrollView停止滚动(不是禁止，而是暂时停止滚动)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>scrollView setContentOffset<span class="token punctuation">:</span>scrollView<span class="token punctuation">.</span>contentOffset animated<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="11、根据经纬度获取城市等信息"><a href="#11、根据经纬度获取城市等信息" class="headerlink" title="11、根据经纬度获取城市等信息"></a>11、根据经纬度获取城市等信息</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 创建经纬度</span>
+    CLLocation <span class="token operator">*</span>location <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CLLocation alloc<span class="token punctuation">]</span> initWithLatitude<span class="token punctuation">:</span>latitude longitude<span class="token punctuation">:</span>longitude<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//创建一个译码器</span>
+    CLGeocoder <span class="token operator">*</span>cLGeocoder <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>CLGeocoder alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>cLGeocoder reverseGeocodeLocation<span class="token punctuation">:</span>userLocation completionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>NSArray <span class="token operator">*</span>placemarks<span class="token punctuation">,</span> NSError <span class="token operator">*</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CLPlacemark <span class="token operator">*</span>place <span class="token operator">=</span> <span class="token punctuation">[</span>placemarks objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 位置名</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"name,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    　　<span class="token comment" spellcheck="true">// 街道</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"thoroughfare,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>thoroughfare<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    　　<span class="token comment" spellcheck="true">// 子街道</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"subThoroughfare,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>subThoroughfare<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    　　<span class="token comment" spellcheck="true">// 市</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"locality,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>locality<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    　　<span class="token comment" spellcheck="true">// 区</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"subLocality,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>subLocality<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    　　<span class="token comment" spellcheck="true">// 国家</span>
+    　　<span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"country,%@"</span><span class="token punctuation">,</span>place<span class="token punctuation">.</span>country<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/*  CLPlacemark中属性含义
+name                    地名
+
+thoroughfare            街道
+
+subThoroughfare        街道相关信息，例如门牌等
+
+locality                城市
+
+subLocality            城市相关信息，例如标志性建筑
+
+administrativeArea      直辖市
+
+subAdministrativeArea  其他行政区域信息（自治区等）
+
+postalCode              邮编
+
+ISOcountryCode          国家编码
+
+country                国家
+
+inlandWater            水源，湖泊
+
+ocean                  海洋
+
+areasOfInterest        关联的或利益相关的地标
+*/</span>
+</code></pre>
+<h4 id="12、如何防止添加多个NSNotification观察者？"><a href="#12、如何防止添加多个NSNotification观察者？" class="headerlink" title="12、如何防止添加多个NSNotification观察者？"></a>12、如何防止添加多个NSNotification观察者？</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 解决方案就是添加观察者之前先移除下这个观察者</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>NSNotificationCenter defaultCenter<span class="token punctuation">]</span> removeObserver<span class="token punctuation">:</span>observer name<span class="token punctuation">:</span>name object<span class="token punctuation">:</span>object<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token punctuation">[</span>NSNotificationCenter defaultCenter<span class="token punctuation">]</span> addObserver<span class="token punctuation">:</span>observer selector<span class="token punctuation">:</span>selector name<span class="token punctuation">:</span>name object<span class="token punctuation">:</span>object<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="13、将一个xib添加到另外一个xib上"><a href="#13、将一个xib添加到另外一个xib上" class="headerlink" title="13、将一个xib添加到另外一个xib上"></a>13、将一个xib添加到另外一个xib上</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 假设你的自定义view名字为CustomView，你需要在CustomView.m中重写 `- (instancetype)initWithCoder:(NSCoder *)aDecoder` 方法，代码如下：</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>instancetype<span class="token punctuation">)</span>initWithCoder<span class="token punctuation">:</span><span class="token punctuation">(</span>NSCoder <span class="token operator">*</span><span class="token punctuation">)</span>aDecoder <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> initWithCoder<span class="token punctuation">:</span>aDecoder<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token keyword">self</span> addSubview<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundle mainBundle<span class="token punctuation">]</span> loadNibNamed<span class="token punctuation">:</span><span class="token string">@"CustomView"</span> owner<span class="token punctuation">:</span><span class="token keyword">self</span> options<span class="token punctuation">:</span>nil<span class="token punctuation">]</span> objectAtIndex<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/1432270-1baa2a4dd2e2d08f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="14、处理字符串，使其首字母大写"><a href="#14、处理字符串，使其首字母大写" class="headerlink" title="14、处理字符串，使其首字母大写"></a>14、处理字符串，使其首字母大写</h4><pre class=" language-objectivec"><code class="language-objectivec">    NSString <span class="token operator">*</span>str <span class="token operator">=</span> <span class="token string">@"abcdefghijklmn"</span><span class="token punctuation">;</span>
+    NSString <span class="token operator">*</span>resultStr<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str <span class="token operator">&amp;&amp;</span> str<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        resultStr <span class="token operator">=</span> <span class="token punctuation">[</span>str stringByReplacingCharactersInRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> withString<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span>str substringToIndex<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span> capitalizedString<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> resultStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="15、判断一个UIAlertView-UIAlertController是否显示"><a href="#15、判断一个UIAlertView-UIAlertController是否显示" class="headerlink" title="15、判断一个UIAlertView/UIAlertController是否显示"></a>15、判断一个UIAlertView/UIAlertController是否显示</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// UIAlertView自带属性</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>alert<span class="token punctuation">.</span>visible<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+      <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"显示了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"未显示"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// UIAlertController没有visible属性，需要自己判断，添加一个全局变量 BOOL visible</span>
+UIAlertController <span class="token operator">*</span>alertController <span class="token operator">=</span> <span class="token punctuation">[</span>UIAlertController alertControllerWithTitle<span class="token punctuation">:</span><span class="token string">@"Title"</span> message<span class="token punctuation">:</span><span class="token string">@"message"</span> preferredStyle<span class="token punctuation">:</span>UIAlertControllerStyleAlert<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIAlertAction <span class="token operator">*</span>alertAction <span class="token operator">=</span> <span class="token punctuation">[</span>UIAlertAction actionWithTitle<span class="token punctuation">:</span><span class="token string">@"ActionTitle"</span> style<span class="token punctuation">:</span>UIAlertActionStyleDefault handler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>UIAlertAction <span class="token operator">*</span> _Nonnull action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>visible <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIAlertAction <span class="token operator">*</span>calcelAction <span class="token operator">=</span> <span class="token punctuation">[</span>UIAlertAction actionWithTitle<span class="token punctuation">:</span><span class="token string">@"calcelTitle"</span> style<span class="token punctuation">:</span>UIAlertActionStyleCancel handler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>UIAlertAction <span class="token operator">*</span> _Nonnull action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>visible <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>alertController addAction<span class="token punctuation">:</span>alertAction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>alertController addAction<span class="token punctuation">:</span>calcelAction<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> presentViewController<span class="token punctuation">:</span>alertController animated<span class="token punctuation">:</span>YES completion<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>visible <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="16、获取字符串中的数字"><a href="#16、获取字符串中的数字" class="headerlink" title="16、获取字符串中的数字"></a>16、获取字符串中的数字</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>getNumberFromStr<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>str
+<span class="token punctuation">{</span>
+    NSCharacterSet <span class="token operator">*</span>nonDigitCharacterSet <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSCharacterSet decimalDigitCharacterSet<span class="token punctuation">]</span> invertedSet<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>str componentsSeparatedByCharactersInSet<span class="token punctuation">:</span>nonDigitCharacterSet<span class="token punctuation">]</span> componentsJoinedByString<span class="token punctuation">:</span><span class="token string">@""</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> getNumberFromStr<span class="token punctuation">:</span><span class="token string">@"a0b0c1d2e3f4fda8fa8fad9fsad23"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 00123488923</span>
+</code></pre>
+<h4 id="17、为UIView的某个方向添加边框"><a href="#17、为UIView的某个方向添加边框" class="headerlink" title="17、为UIView的某个方向添加边框"></a>17、为UIView的某个方向添加边框</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 添加UIView分类</span>
+
+<span class="token comment" spellcheck="true">// UIView+WZB.h</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> &lt;UIKit/UIKit.h></span>
+
+
+<span class="token comment" spellcheck="true">/**
+ 边框方向
+
+ - WZBBorderDirectionTop: 顶部
+ - WZBBorderDirectionLeft: 左边
+ - WZBBorderDirectionBottom: 底部
+ - WZBBorderDirectionRight: 右边
+ */</span>
+<span class="token keyword">typedef</span> <span class="token function">NS_ENUM</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">,</span> WZBBorderDirectionType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    WZBBorderDirectionTop <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    WZBBorderDirectionLeft<span class="token punctuation">,</span>
+    WZBBorderDirectionBottom<span class="token punctuation">,</span>
+    WZBBorderDirectionRight
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">@interface</span> <span class="token function">UIView</span> <span class="token punctuation">(</span>WZB<span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true">/**
+ 为UIView的某个方向添加边框
+
+ @param direction 边框方向
+ @param color 边框颜色
+ @param width 边框宽度
+ */</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>wzb_addBorder<span class="token punctuation">:</span><span class="token punctuation">(</span>WZBBorderDirectionType<span class="token punctuation">)</span>direction color<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color width<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>width<span class="token punctuation">;</span>
+
+<span class="token keyword">@end</span>
+
+<span class="token comment" spellcheck="true">// UIView+WZB.m</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> "UIView+WZB.h"</span>
+
+<span class="token keyword">@implementation</span> <span class="token function">UIView</span> <span class="token punctuation">(</span>WZB<span class="token punctuation">)</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>wzb_addBorder<span class="token punctuation">:</span><span class="token punctuation">(</span>WZBBorderDirectionType<span class="token punctuation">)</span>direction color<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color width<span class="token punctuation">:</span><span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>width
+<span class="token punctuation">{</span>
+    CALayer <span class="token operator">*</span>border <span class="token operator">=</span> <span class="token punctuation">[</span>CALayer layer<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    border<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> color<span class="token punctuation">.</span>CGColor<span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>direction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> WZBBorderDirectionTop<span class="token punctuation">:</span>
+        <span class="token punctuation">{</span>
+            border<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> WZBBorderDirectionLeft<span class="token punctuation">:</span>
+        <span class="token punctuation">{</span>
+            border<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> WZBBorderDirectionBottom<span class="token punctuation">:</span>
+        <span class="token punctuation">{</span>
+            border<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height <span class="token operator">-</span> width<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> WZBBorderDirectionRight<span class="token punctuation">:</span>
+        <span class="token punctuation">{</span>
+            border<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width <span class="token operator">-</span> width<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>layer addSublayer<span class="token punctuation">:</span>border<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="18、通过属性设置UISwitch、UIProgressView等控件的宽高"><a href="#18、通过属性设置UISwitch、UIProgressView等控件的宽高" class="headerlink" title="18、通过属性设置UISwitch、UIProgressView等控件的宽高"></a>18、通过属性设置UISwitch、UIProgressView等控件的宽高</h4><pre class=" language-objectivec"><code class="language-objectivec">mySwitch<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token function">CGAffineTransformMakeScale</span><span class="token punctuation">(</span><span class="token number">5.0f</span><span class="token punctuation">,</span> <span class="token number">5.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+progressView<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token function">CGAffineTransformMakeScale</span><span class="token punctuation">(</span><span class="token number">5.0f</span><span class="token punctuation">,</span> <span class="token number">5.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索-我这里设置的是0-5s，可根据需求更改"><a href="#19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索-我这里设置的是0-5s，可根据需求更改" class="headerlink" title="19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索(我这里设置的是0.5s，可根据需求更改)"></a>19、自动搜索功能，用户连续输入的时候不搜索，用户停止输入的时候自动搜索(我这里设置的是0.5s，可根据需求更改)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 输入框文字改变的时候调用</span>
+<span class="token operator">-</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>searchBar<span class="token punctuation">:</span><span class="token punctuation">(</span>UISearchBar <span class="token operator">*</span><span class="token punctuation">)</span>searchBar textDidChange<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>searchText<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 先取消调用搜索方法</span>
+    <span class="token punctuation">[</span>NSObject cancelPreviousPerformRequestsWithTarget<span class="token punctuation">:</span><span class="token keyword">self</span> selector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>searchNewResult<span class="token punctuation">)</span> object<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 0.5秒后调用搜索方法</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> performSelector<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>searchNewResult<span class="token punctuation">)</span> withObject<span class="token punctuation">:</span>nil afterDelay<span class="token punctuation">:</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="20、修改UISearchBar的占位文字颜色"><a href="#20、修改UISearchBar的占位文字颜色" class="headerlink" title="20、修改UISearchBar的占位文字颜色"></a>20、修改UISearchBar的占位文字颜色</h4><pre class=" language-objectivec"><code class="language-objectivec">    <span class="token comment" spellcheck="true">// 方法一（推荐使用）</span>
+    UITextField <span class="token operator">*</span>searchField <span class="token operator">=</span> <span class="token punctuation">[</span>searchBar valueForKey<span class="token punctuation">:</span><span class="token string">@"_searchField"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>searchField setValue<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor blueColor<span class="token punctuation">]</span> forKeyPath<span class="token punctuation">:</span><span class="token string">@"_placeholderLabel.textColor"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 方法二（已过期）</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>UILabel appearanceWhenContainedIn<span class="token punctuation">:</span><span class="token punctuation">[</span>UISearchBar class<span class="token punctuation">]</span><span class="token punctuation">,</span> nil<span class="token punctuation">]</span> setTextColor<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 方法三（已过期）</span>
+    NSDictionary <span class="token operator">*</span>placeholderAttributes <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">{</span>NSForegroundColorAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">,</span> NSFontAttributeName <span class="token punctuation">:</span> <span class="token punctuation">[</span>UIFont fontWithName<span class="token punctuation">:</span><span class="token string">@"HelveticaNeue"</span> size<span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    NSAttributedString <span class="token operator">*</span>attributedPlaceholder <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSAttributedString alloc<span class="token punctuation">]</span> initWithString<span class="token punctuation">:</span>searchBar<span class="token punctuation">.</span>placeholder attributes<span class="token punctuation">:</span>placeholderAttributes<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>UITextField appearanceWhenContainedIn<span class="token punctuation">:</span><span class="token punctuation">[</span>UISearchBar class<span class="token punctuation">]</span><span class="token punctuation">,</span> nil<span class="token punctuation">]</span> setAttributedPlaceholder<span class="token punctuation">:</span>attributedPlaceholder<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="21、某个界面多个事件同时响应引起的问题-比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠"><a href="#21、某个界面多个事件同时响应引起的问题-比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠" class="headerlink" title="21、某个界面多个事件同时响应引起的问题(比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠)"></a>21、某个界面多个事件同时响应引起的问题(比如，两个button同时按push到新界面，两个都会响应，可能导致push重叠)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// UIView有个属性叫做exclusiveTouch，设置为YES后，其响应事件会和其他view互斥(有其他view事件响应的时候点击它不起作用)</span>
+view<span class="token punctuation">.</span>exclusiveTouch <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 一个一个设置太麻烦了，可以全局设置</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>UIView appearance<span class="token punctuation">]</span> setExclusiveTouch<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 或者只设置button</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>UIButton appearance<span class="token punctuation">]</span> setExclusiveTouch<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="22、修改tabBar的frame"><a href="#22、修改tabBar的frame" class="headerlink" title="22、修改tabBar的frame"></a>22、修改tabBar的frame</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 子类化UITabBarViewController，我这里以修改tabBar高度为例，重写viewWillLayoutSubviews方法</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> "WZBTabBarViewController.h"</span>
+
+<span class="token keyword">@interface</span> <span class="token function">WZBTabBarViewController</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">@end</span>
+
+<span class="token keyword">@implementation</span> WZBTabBarViewController
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>viewWillLayoutSubviews <span class="token punctuation">{</span>
+
+    CGRect tabFrame <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>tabBar<span class="token punctuation">.</span>frame<span class="token punctuation">;</span>
+    tabFrame<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    tabFrame<span class="token punctuation">.</span>origin<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>view<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height <span class="token operator">-</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>tabBar<span class="token punctuation">.</span>frame <span class="token operator">=</span> tabFrame<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@end</span>
+</code></pre>
+<h4 id="23、修改键盘背景颜色"><a href="#23、修改键盘背景颜色" class="headerlink" title="23、修改键盘背景颜色"></a>23、修改键盘背景颜色</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 设置某个键盘颜色</span>
+textField<span class="token punctuation">.</span>keyboardAppearance <span class="token operator">=</span> UIKeyboardAppearanceAlert<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 设置工程中所有键盘颜色</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>UITextField appearance<span class="token punctuation">]</span> setKeyboardAppearance<span class="token punctuation">:</span>UIKeyboardAppearanceAlert<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="24、修改image颜色"><a href="#24、修改image颜色" class="headerlink" title="24、修改image颜色"></a>24、修改image颜色</h4><pre class=" language-objectivec"><code class="language-objectivec">UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageNamed<span class="token punctuation">:</span><span class="token string">@"test"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+imageView<span class="token punctuation">.</span>image <span class="token operator">=</span> <span class="token punctuation">[</span>image imageWithRenderingMode<span class="token punctuation">:</span>UIImageRenderingModeAlwaysTemplate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+CGContextRef context <span class="token operator">=</span> <span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CGContextClipToMask</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> rect<span class="token punctuation">,</span> image<span class="token punctuation">.</span>CGImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CGContextSetFillColorWithColor</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span> CGColor<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CGContextFillRect</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+UIImage <span class="token operator">*</span>img <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+UIImage <span class="token operator">*</span>flippedImage <span class="token operator">=</span> <span class="token punctuation">[</span>UIImage imageWithCGImage<span class="token punctuation">:</span>img<span class="token punctuation">.</span>CGImage scale<span class="token punctuation">:</span><span class="token number">1.0</span> orientation<span class="token punctuation">:</span> UIImageOrientationDownMirrored<span class="token punctuation">]</span><span class="token punctuation">;</span>
+imageView<span class="token punctuation">.</span>image <span class="token operator">=</span> flippedImage<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="25、动画执行removeFromSuperview"><a href="#25、动画执行removeFromSuperview" class="headerlink" title="25、动画执行removeFromSuperview"></a>25、动画执行removeFromSuperview</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>UIView animateWithDuration<span class="token punctuation">:</span><span class="token number">0.2</span>
+                     animations<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+                         view<span class="token punctuation">.</span>alpha <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span>
+                     <span class="token punctuation">}</span> completion<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>BOOL finished<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                         <span class="token punctuation">[</span>view removeFromSuperview<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="26、启动页显示延时"><a href="#26、启动页显示延时" class="headerlink" title="26、启动页显示延时"></a>26、启动页显示延时</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>application<span class="token punctuation">:</span><span class="token punctuation">(</span>UIApplication <span class="token operator">*</span><span class="token punctuation">)</span>application didFinishLaunchingWithOptions<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>launchOptions
+<span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//  延时10s</span>
+    <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="27、设置UIButton高亮时的背景颜色"><a href="#27、设置UIButton高亮时的背景颜色" class="headerlink" title="27、设置UIButton高亮时的背景颜色"></a>27、设置UIButton高亮时的背景颜色</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token comment" spellcheck="true">// 方法一、子类化UIButton，重写setHighlighted:方法，代码如下</span>
+<span class="token macro property">#<span class="token directive keyword">import</span> "WZBButton.h"</span>
+
+<span class="token keyword">@implementation</span> WZBButton
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setHighlighted<span class="token punctuation">:</span><span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>highlighted <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> setHighlighted<span class="token punctuation">:</span>highlighted<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    UIColor <span class="token operator">*</span>normalColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor greenColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIColor <span class="token operator">*</span>highlightedColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> highlighted <span class="token operator">?</span> highlightedColor <span class="token punctuation">:</span> normalColor<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 方法二、利用setBackgroundImage:forState:方法</span>
+<span class="token punctuation">[</span>button setBackgroundImage<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token keyword">self</span> imageWithColor<span class="token punctuation">:</span><span class="token punctuation">[</span>UIColor blueColor<span class="token punctuation">]</span><span class="token punctuation">]</span> forState<span class="token punctuation">:</span>UIControlStateHighlighted<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>imageWithColor<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color <span class="token punctuation">{</span>
+    CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CGContextRef context <span class="token operator">=</span> <span class="token function">UIGraphicsGetCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">CGContextSetFillColorWithColor</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token punctuation">[</span>color CGColor<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">CGContextFillRect</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    UIImage <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> image<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="28、关于图片拉伸"><a href="#28、关于图片拉伸" class="headerlink" title="28、关于图片拉伸"></a>28、关于图片拉伸</h4><blockquote>
+<p>推荐看这个博客，讲的很详细<a href="http://blog.csdn.net/q199109106q/article/details/8615661" target="_blank" rel="external">http://blog.csdn.net/q199109106q/article/details/8615661</a></p>
+</blockquote>
+<h4 id="29、利用runtime获取一个类所有属性"><a href="#29、利用runtime获取一个类所有属性" class="headerlink" title="29、利用runtime获取一个类所有属性"></a>29、利用runtime获取一个类所有属性</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>NSArray <span class="token operator">*</span><span class="token punctuation">)</span>allPropertyNames<span class="token punctuation">:</span><span class="token punctuation">(</span>Class<span class="token punctuation">)</span>aClass
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> count<span class="token punctuation">;</span>
+    objc_property_t <span class="token operator">*</span>properties <span class="token operator">=</span> <span class="token function">class_copyPropertyList</span><span class="token punctuation">(</span>aClass<span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    NSMutableArray <span class="token operator">*</span>rv <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableArray array<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">unsigned</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        objc_property_t property <span class="token operator">=</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        NSString <span class="token operator">*</span>name <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithUTF8String<span class="token punctuation">:</span><span class="token function">property_getName</span><span class="token punctuation">(</span>property<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>rv addObject<span class="token punctuation">:</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">free</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> rv<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="30、设置textView的某段文字变成其他颜色"><a href="#30、设置textView的某段文字变成其他颜色" class="headerlink" title="30、设置textView的某段文字变成其他颜色"></a>30、设置textView的某段文字变成其他颜色</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>setupTextView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITextView <span class="token operator">*</span><span class="token punctuation">)</span>textView text<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>text color<span class="token punctuation">:</span><span class="token punctuation">(</span>UIColor <span class="token operator">*</span><span class="token punctuation">)</span>color <span class="token punctuation">{</span>
+    NSMutableAttributedString <span class="token operator">*</span>string <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSMutableAttributedString alloc<span class="token punctuation">]</span>initWithString<span class="token punctuation">:</span>textView<span class="token punctuation">.</span>text<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>string addAttribute<span class="token punctuation">:</span>NSForegroundColorAttributeName value<span class="token punctuation">:</span>color range<span class="token punctuation">:</span><span class="token punctuation">[</span>textView<span class="token punctuation">.</span>text rangeOfString<span class="token punctuation">:</span>text<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>textView setAttributedText<span class="token punctuation">:</span>string<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="31、让push跳转动画像modal跳转动画那样效果-从下往上推上来"><a href="#31、让push跳转动画像modal跳转动画那样效果-从下往上推上来" class="headerlink" title="31、让push跳转动画像modal跳转动画那样效果(从下往上推上来)"></a>31、让push跳转动画像modal跳转动画那样效果(从下往上推上来)</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>push
+<span class="token punctuation">{</span>
+TestViewController <span class="token operator">*</span>vc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>TestViewController alloc<span class="token punctuation">]</span> init<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vc<span class="token punctuation">.</span>view<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token punctuation">[</span>UIColor redColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    CATransition<span class="token operator">*</span> transition <span class="token operator">=</span> <span class="token punctuation">[</span>CATransition animation<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>duration <span class="token operator">=</span> <span class="token number">0.4f</span><span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>type <span class="token operator">=</span> kCATransitionMoveIn<span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>subtype <span class="token operator">=</span> kCATransitionFromTop<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController<span class="token punctuation">.</span>view<span class="token punctuation">.</span>layer addAnimation<span class="token punctuation">:</span>transition forKey<span class="token punctuation">:</span>kCATransition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController pushViewController<span class="token punctuation">:</span>vc animated<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>pop
+<span class="token punctuation">{</span>
+CATransition<span class="token operator">*</span> transition <span class="token operator">=</span> <span class="token punctuation">[</span>CATransition animation<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>duration <span class="token operator">=</span> <span class="token number">0.4f</span><span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>type <span class="token operator">=</span> kCATransitionReveal<span class="token punctuation">;</span>
+    transition<span class="token punctuation">.</span>subtype <span class="token operator">=</span> kCATransitionFromBottom<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController<span class="token punctuation">.</span>view<span class="token punctuation">.</span>layer addAnimation<span class="token punctuation">:</span>transition forKey<span class="token punctuation">:</span>kCATransition<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>navigationController popViewControllerAnimated<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="32、上传图片太大，压缩图片"><a href="#32、上传图片太大，压缩图片" class="headerlink" title="32、上传图片太大，压缩图片"></a>32、上传图片太大，压缩图片</h4><pre class=" language-objectivec"><code class="language-objectivec"><span class="token operator">-</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>resizeImage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span><span class="token punctuation">)</span>image
+<span class="token punctuation">{</span>
+    <span class="token keyword">float</span> actualHeight <span class="token operator">=</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> actualWidth <span class="token operator">=</span> image<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> maxHeight <span class="token operator">=</span> <span class="token number">300.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> maxWidth <span class="token operator">=</span> <span class="token number">400.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> imgRatio <span class="token operator">=</span> actualWidth<span class="token operator">/</span>actualHeight<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> maxRatio <span class="token operator">=</span> maxWidth<span class="token operator">/</span>maxHeight<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> compressionQuality <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//50 percent compression</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>actualHeight <span class="token operator">></span> maxHeight <span class="token operator">||</span> actualWidth <span class="token operator">></span> maxWidth<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>imgRatio <span class="token operator">&lt;</span> maxRatio<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//adjust width according to maxHeight</span>
+            imgRatio <span class="token operator">=</span> maxHeight <span class="token operator">/</span> actualHeight<span class="token punctuation">;</span>
+            actualWidth <span class="token operator">=</span> imgRatio <span class="token operator">*</span> actualWidth<span class="token punctuation">;</span>
+            actualHeight <span class="token operator">=</span> maxHeight<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>imgRatio <span class="token operator">></span> maxRatio<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//adjust height according to maxWidth</span>
+            imgRatio <span class="token operator">=</span> maxWidth <span class="token operator">/</span> actualWidth<span class="token punctuation">;</span>
+            actualHeight <span class="token operator">=</span> imgRatio <span class="token operator">*</span> actualHeight<span class="token punctuation">;</span>
+            actualWidth <span class="token operator">=</span> maxWidth<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            actualHeight <span class="token operator">=</span> maxHeight<span class="token punctuation">;</span>
+            actualWidth <span class="token operator">=</span> maxWidth<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    CGRect rect <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> actualWidth<span class="token punctuation">,</span> actualHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsBeginImageContext</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>image drawInRect<span class="token punctuation">:</span>rect<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UIImage <span class="token operator">*</span>img <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    NSData <span class="token operator">*</span>imageData <span class="token operator">=</span> <span class="token function">UIImageJPEGRepresentation</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> compressionQuality<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>UIImage imageWithData<span class="token punctuation">:</span>imageData<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/02/iOS消息转发机制-动态方法解析/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/03/20/iOS小经验（七）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Aben's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        benkong_ah@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: benkong_ah@foxmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/02/">二月 2016<span class="sidebar_archives-count">4</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/iOS合集/">iOS合集<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/小经验/">小经验<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术向/">技术向<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/知识簿/">知识簿<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/自言语/">自言语<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试经/">面试经<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="剪影">
+                
+                    <i class="material-icons sidebar-material-icons">camera</i>
+                
+                剪影
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Aben
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FFFAFA'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FFFAFA, 0 0 15px #FFFAFA'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FFFAFA',
+        'border-left-color': '#FFFAFA'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
