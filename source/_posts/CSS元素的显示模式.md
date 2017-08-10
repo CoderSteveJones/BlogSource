@@ -76,3 +76,61 @@ span buis strong em ins del
 </html>
 ```
 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS元素显示模式转换</title>
+    <style>
+        div{
+            display: inline;
+            background: red;
+            width: 200px;
+            height: 200px;
+        }
+        span{
+            display: block;
+            background: green;
+            width: 200px;
+            height: 200px;
+        }
+        .cc{
+            background: blue;
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<!--
+1.如何转换CSS元素的显示模式?
+设置元素的display属性
+
+2.display取值
+block 块级
+inline 行内
+inline-block 行内块级
+
+3.快捷键
+di display: inline;
+db display: block;
+dib display: inline-block;
+-->
+
+<div>我是div</div>
+<div>我是div</div>
+
+<span>我是span</span>
+<span>我是span</span>
+
+<p class="cc">我是段落</p>
+<b class="cc">我是加粗</b>
+
+</body>
+</html>
+```
+
+
